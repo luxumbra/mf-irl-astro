@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1, h2, h3 {
+    @apply font-heading text-primary text-6xl;
+  }
+
+  h2 {
+    @apply mb-6;
+
+    & + p {
+      @apply mb-6 text-2xl text-center max-w-2xl mx-auto;
+    }
+  }
+
+  h4, h5, h6 {
+    @apply font-sans text-primary text-4xl;
+  }
+
+  p {
+    @apply font-sans text-accent text-base text-left;
+  }
+
+
+}

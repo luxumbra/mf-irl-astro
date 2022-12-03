@@ -1,0 +1,14 @@
+{
+  "site": {
+    "id": "ff4cc32c-c162-4836-948e-18d3026027f6",
+    "team": "luxumbra-team",
+    "platform": "ipfs",
+    "source": "ipfs",
+    "name": "bold-fire-1039"
+  },
+  "build": {
+    "baseDir": "",
+    "publicDir": "dist",
+    "rootDir": ""
+  }
+}

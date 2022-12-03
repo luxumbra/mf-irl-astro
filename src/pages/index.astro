@@ -1,0 +1,31 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import About from '~/components/sections/About.astro';
+import Location from '~/components/sections/Location.astro';
+import Program from '~/components/sections/Program.astro';
+import Speakers from '~/components/sections/Speakers.astro';
+import Sponsors from '~/components/sections/Sponsors.astro';
+import GettingThere from '~/components/sections/GettingThere.astro';
+
+const meta = {
+	title: SITE.title,
+	description: SITE.description,
+	canonical: getCanonical(getHomePermalink()),
+};
+---
+
+<Layout {meta}>
+	<Hero />
+	<About />
+	<Location />
+	<Program />
+	<Speakers />
+	<Sponsors />
+	<GettingThere />
+	<CallToAction />
+</Layout>

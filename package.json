@@ -1,0 +1,59 @@
+{
+  "name": "@metafam/metafestirl",
+  "description": "MetaGame's MetaFest: IRL 2023",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier -w .",
+    "lint:eslint": "eslint . --ext .js,.ts,.astro",
+    "subfont": "subfont -ir --no-fallbacks --silent --root dist"
+  },
+  "devDependencies": {
+    "@astrojs/image": "^0.11.6",
+    "@astrojs/mdx": "^0.11.6",
+    "@astrojs/partytown": "^1.0.1",
+    "@astrojs/rss": "^1.0.3",
+    "@astrojs/sitemap": "^1.0.0",
+    "@astrojs/tailwind": "^2.1.2",
+    "@astrolib/analytics": "^0.2.4",
+    "@astrolib/seo": "^0.2.1",
+    "@fontsource/inter": "^4.5.14",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.8",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
+    "astro": "^1.6.10",
+    "astro-icon": "^0.8.0",
+    "eslint": "^8.28.0",
+    "eslint-plugin-astro": "^0.21.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "limax": "^2.1.0",
+    "mdast-util-to-string": "^3.1.0",
+    "prettier": "^2.8.0",
+    "prettier-plugin-astro": "^0.7.0",
+    "prettier-plugin-tailwindcss": "^0.2.0",
+    "reading-time": "^1.5.0",
+    "sharp": "^0.31.2",
+    "stylelint-config-tailwindcss": "^0.0.7",
+    "subfont": "^6.12.2",
+    "tailwindcss": "^3.2.4",
+    "tailwindcss-fluid-type": "^2.0.3",
+    "typescript": "^4.9.3"
+  },
+  "engines": {
+    "node": "^14.15.0 || >=16.0.0"
+  },
+  "dependencies": {
+    "@fontsource/exo-2": "^4.5.10",
+    "@fontsource/montserrat": "^4.5.13",
+    "accessible-astro-components": "^1.6.1",
+    "astro-sanity": "^1.0.0",
+    "daisyui": "^2.42.1",
+    "gsap": "^3.11.3"
+  }
+}
