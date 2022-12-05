@@ -28,7 +28,7 @@
 
   /* Track */
   ::-webkit-scrollbar-track {
-    @apply bg-secondary;
+    @apply bg-accent dark:bg-secondary;
 
     border-radius: 2px;
     box-shadow: inset 0 0 5px rgb(0 0 0 / 70%);
@@ -36,7 +36,7 @@
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    @apply bg-secondary dark:bg-primary transition-colors duration-300 ease-in-out opacity-70 ;
+    @apply bg-slate-300 dark:bg-primary transition-colors duration-300 ease-in-out opacity-70 ;
 
     border-radius: 2px;
     box-shadow: 0 0 5px rgb(0 0 0 / 70%);
@@ -95,6 +95,27 @@
 
     h2 {
       @apply mb-6 text-5xl font-bold text-center text-primary;
+    }
+  }
+
+  .swiper {
+
+    .swiper-slide {
+      @apply h-full;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      @apply absolute top-1/2 transform -translate-y-1/2 z-10;
+      @apply bg-primary;
+    }
+
+    .swiper-pagination-bullet {
+      @apply w-4 h-4 bg-transparent opacity-100 border-[1px] border-primary rounded-full;
+
+      &-active {
+        @apply bg-primary;
+      }
     }
   }
 }

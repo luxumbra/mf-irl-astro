@@ -4,7 +4,7 @@
 
 @layer components {
   .header {
-    @apply fixed bg-accent-light-alpha-30 text-slate-900 text-center w-full z-20 transition-colors duration-300;
+    @apply fixed bg-accent-light-alpha-30 text-slate-900 text-center w-full z-50 transition-colors duration-300;
 
     &__primary {
       @apply flex justify-around items-center max-w-7xl mx-auto py-4 transition-all duration-300;
@@ -13,8 +13,14 @@
     .logo {
       @apply transition-all duration-300;
 
-      g > path {
-        @apply !fill-current !text-secondary;
+      path {
+        @apply !fill-current !text-secondary transition-colors duration-300;
+      }
+
+      &:hover {
+        path {
+          @apply !text-primary;
+        }
       }
     }
 
