@@ -10,11 +10,13 @@ module.exports = {
 			colors: {
 				primary: '#82d36eff',
 				'primary-alpha-60': '#82d36e99',
-        secondary: '#0c1728ff',
+				secondary: '#0c1728ff',
+				'secondary-alpha-60': '#0c172899',
 				accent: '#1f8975ff',
 				'accent-alpha-60': '#1f897599',
         'accent-light': '#89c97cff',
-        'accent-light-alpha-30': '#89c97c4d',
+				'accent-light-alpha-30': '#89c97c4d',
+				'accent-alt': '#1f4a2cff',
 			},
 			fontFamily: {
 				sans: ['Montserrat', 'sans-serif'],

@@ -98,16 +98,49 @@
     }
   }
 
-  .swiper {
+  .carousel {
+    @apply relative w-full min-h-[50vh] mt-52;
+
+    overflow: unset !important;
 
     .swiper-slide {
       @apply h-full;
+      @apply transition-all duration-300 ease-in-out;
+
+      &__content {
+        @apply text-left pb-10 flex items-center bg-gradient-to-t from-accent-alt to-transparent w-full;
+
+        svg {
+          @apply translate-y-10 opacity-0 transition-all duration-300 delay-200 ease-in-out;
+        }
+
+        h4, p {
+          @apply text-lg text-primary translate-y-10 opacity-0 transition-all duration-300 delay-200 ease-in-out;
+        }
+      }
+
+      &-active {
+        .swiper-slide__content {
+          h4, p, svg {
+            @apply translate-y-0 opacity-100;
+          }
+        }
+      }
     }
+
 
     .swiper-button-next,
     .swiper-button-prev {
-      @apply absolute top-1/2 transform -translate-y-1/2 z-10;
-      @apply bg-primary;
+      @apply absolute top-1/2 transform -translate-y-1/2 z-20;
+      @apply text-primary;
+
+      svg {
+        @apply scale-150;
+      }
+
+      &::after {
+        content: '';
+      }
     }
 
     .swiper-pagination-bullet {
@@ -127,5 +160,14 @@
 
   .bg-gradient-secondary {
     @apply bg-gradient-to-tr from-accent-alpha-60 to-primary-alpha-60;
+  }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-accent-alpha-60 to-primary-alpha-60;
+  }
+  .gradient-text {
+    @apply text-transparent bg-clip-text;
+    @apply bg-gradient-to-br from-pink-300 via-teal-300 to-violet-700;
   }
 }
