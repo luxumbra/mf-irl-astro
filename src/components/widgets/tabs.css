@@ -52,7 +52,7 @@
       }
 
       p {
-        @apply text-primary
+        @apply text-primary leading-relaxed mb-3;
       }
     }
   }
