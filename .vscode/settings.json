@@ -7,6 +7,10 @@
     "typescriptreact" // Enable .tsx
   ],
   "prettier.documentSelectors": ["**/*.astro"],
+  "editor.codeActionsOnSave": {
+    "source.formatDocument": true,
+    "source.fixAll": true
+},
   "[astro]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }

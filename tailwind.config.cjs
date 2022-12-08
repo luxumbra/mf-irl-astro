@@ -17,6 +17,7 @@ module.exports = {
         'accent-light': '#89c97cff',
 				'accent-light-alpha-30': '#89c97c4d',
 				'accent-alt': '#1f4a2cff',
+				'secondary-alt': '#1f282cff'
 			},
 			fontFamily: {
 				sans: ['Montserrat', 'sans-serif'],

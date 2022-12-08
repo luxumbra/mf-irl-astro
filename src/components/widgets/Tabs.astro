@@ -1,0 +1,121 @@
+---
+import './tabs.css';
+---
+
+<!-- Slider main container -->
+<div class="tabs">
+  <ul role="tablist">
+    <li role="presentation" class="active">
+      <a href="#tab-section-1" id="tab1" role="tab" aria-selected="true">
+        <span>i. Side events</span>
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#tab-section-2" id="tab2" role="tab">
+        <span>ii. At MetaFest</span>
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#tab-section-3" id="tab3" role="tab">
+        <span>iii. After MetaFest</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="tab-section active" id="tab-section-1" role="tabpanel" aria-labelledby="tab1" aria-hidden="false" tabindex="-1">
+
+    <h3>I. Side Events</h3>
+    <div class="tab-section__content p-8 bg-gradient-to-r from-secondary-alt via-secondary-alt to-transparent">
+    <p>Self organised and optional</p>
+    <p>Adventure park, Water park, Quad-biking, Diving, Paintball, Rock
+      climbing, Panoramic fight, Boat trip & swimming, Sightseeing, Tasty
+      lunches & dinners and much more...</p>
+    </div>
+  </div>
+
+  <div class="tab-section" id="tab-section-2" role="tabpanel" aria-labelledby="tab2" aria-hidden="true" tabindex="-1" hidden>
+    <h3>ii. At MetaFest</h3>
+    <div class="tab-section__content p-8 bg-gradient-to-r from-secondary-alt via-secondary-alt to-transparent">
+    <p>Self organised and optional</p>
+    <p>Adventure park, Water park, Quad-biking, Diving, Paintball, Rock
+      climbing, Panoramic fight, Boat trip & swimming, Sightseeing, Tasty
+      lunches & dinners and much more...</p>
+    </div>
+  </div>
+
+  <div class="tab-section" id="tab-section-3" role="tabpanel" aria-labelledby="tab3" aria-hidden="true" tabindex="-1" hidden>
+    <h3>iii. After MetaFest</h3>
+    <div class="tab-section__content p-8 bg-gradient-to-r from-secondary-alt via-secondary-alt to-transparent">
+    <p>Self organised and optional</p>
+    <p>Adventure park, Water park, Quad-biking, Diving, Paintball, Rock
+      climbing, Panoramic fight, Boat trip & swimming, Sightseeing, Tasty
+      lunches & dinners and much more...</p>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+<script>
+  const tablist = document.querySelector("ul[role='tablist']") as HTMLElement;
+  const tabs = Array.from(tablist.querySelectorAll('a')) as HTMLElement[];
+  // eslint-disable-next-line no-undef
+  const panels = document.querySelectorAll(".tab-section[role='tabpanel']") as NodeListOf<HTMLElement>;
+
+  const LEFT_ARROW = 'leftarrow';
+  const RIGHT_ARROW = 'rightarrow';
+  const DOWN_ARROW = 'downarrow';
+
+
+  const switchTab = (oldTab: HTMLElement, newTab: HTMLElement) => {
+    console.log('switching tabs', oldTab, newTab);
+    newTab.focus();
+    newTab.removeAttribute('tabindex');
+    newTab.setAttribute('aria-selected', 'true');
+
+    oldTab.removeAttribute('aria-selected');
+    oldTab.setAttribute('tabindex', '-1');
+
+    panels[tabs.indexOf(oldTab)].hidden = true;
+    panels[tabs.indexOf(newTab)].hidden = false;
+    panels[tabs.indexOf(oldTab)].ariaHidden = 'true';
+    panels[tabs.indexOf(newTab)].ariaHidden = 'false';
+    panels[tabs.indexOf(newTab)].classList.add('active');
+    panels[tabs.indexOf(oldTab)].classList.remove('active');
+  };
+
+  window.addEventListener('load', () => {
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
+        let currentTab = tablist.querySelector('[aria-selected]') as HTMLElement;
+        if (e.currentTarget !== currentTab) {
+          switchTab(currentTab, e.currentTarget as HTMLElement);
+        }
+      });
+
+      tab.addEventListener('keydown', (e) => {
+        const index = tabs.indexOf(e.currentTarget as HTMLElement);
+        console.log('key pressed', e.key);
+        if (e.key === DOWN_ARROW) {
+          e.preventDefault();
+          panels[i].focus();
+        }
+
+        if (e.key === LEFT_ARROW) {
+          e.preventDefault();
+          if (tabs[index - 1]) {
+            switchTab(e.currentTarget as HTMLElement, tabs[index - 1]);
+          }
+        }
+
+        if (e.key === RIGHT_ARROW) {
+          e.preventDefault();
+          if (tabs[index + 1]) {
+            switchTab(e.currentTarget as HTMLElement, tabs[index + 1]);
+          }
+        }
+      });
+    });
+  });
+</script>
