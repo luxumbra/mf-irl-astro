@@ -20,7 +20,7 @@
   }
 
   p {
-    @apply font-sans text-accent text-base text-left;
+    @apply font-sans text-accent text-base text-left leading-relaxed mb-6;
   }
 
 

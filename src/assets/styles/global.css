@@ -91,10 +91,20 @@
 
     &__content {
       @apply max-w-7xl mx-auto py-24;
+
+      div {
+        p {
+          @apply text-center;
+        }
+      }
     }
 
     h2 {
       @apply mb-6 text-5xl font-bold text-center text-primary;
+    }
+
+    p {
+      @apply mb-3;
     }
   }
 
