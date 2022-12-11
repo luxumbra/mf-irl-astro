@@ -1,0 +1,37 @@
+---
+import { Icon } from 'astro-icon';
+
+type PlantProps = {
+  plantName: string,
+  position?: PlantPosition,
+  color?: string,
+  size?: string,
+  className?: string,
+}
+
+type PlantPosition = {
+  x: string,
+  y: string,
+  z: string,
+}
+
+const { plantName, position, color, size, className } = Astro.props as PlantProps;
+const plant = `plants/${plantName}`;
+---
+
+<style define:vars={{color, size}}>
+  .plant {
+    svg {
+      max-width: var(--size);
+
+
+      path {
+        fill: var(--color);
+      }
+    }
+  }
+</style>
+
+<div class:list={['plant absolute pointer-events-none', size, position?.x, position?.y, position?.z, className]}>
+  <Icon name={plant} class="h-auto group" />
+</div>

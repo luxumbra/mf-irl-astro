@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .plants {
+    svg {
+
+      g {
+        @apply !pointer-events-auto origin-bottom;
+      }
+    }
+  }
+}
