@@ -1,14 +1,14 @@
 ---
 import { Icon } from 'astro-icon';
 // import ToggleTheme from '~/components/core/ToggleTheme.astro';
-// import ToggleMenu from '~/components/core/ToggleMenu.astro';
+import ToggleMenu from '~/components/core/ToggleMenu.astro';
 
 import './header.css';
 ---
 
-<header class="header">
+<header class="header relative">
 	<div class="header__primary">
-		<menu class="header__menu--desktop hidden xl:flex">
+		<menu class="header__menu--desktop hidden md:flex">
 			<a href="/#about">About</a>
 			<a href="/#location">Location</a>
 			<a href="/#program">Program</a>
@@ -20,8 +20,8 @@ import './header.css';
 			<a href="/#join">Join</a>
 		</menu>
 
-		<menu class="header__menu--mobile flex xl:hidden">
-			<a href="/#about">About</a>
+		<menu class="header__menu--mobile flex flex-col h-screen md:hidden z-50">
+			<a href="/#about">Abouty</a>
 			<a href="/#location">Location</a>
 			<a href="/#program">Program</a>
 			<a href="/#start">
@@ -32,10 +32,9 @@ import './header.css';
 			<a href="/#join">Join</a>
 		</menu>
 	</div>
-	<!-- <div class="flex items-center absolute h-full top-0 right-8">
-		<ToggleTheme iconClass="w-8 h-8 text-secondary" />
+	<div class="inline-flex items-center absolute h-full top-0 right-8 md:hidden">
 		<ToggleMenu />
-	</div> -->
+	</div>
 </header>
 
 <script>

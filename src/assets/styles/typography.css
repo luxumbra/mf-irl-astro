@@ -4,14 +4,14 @@
 
 @layer base {
   h1, h2, h3 {
-    @apply font-heading text-primary text-6xl;
+    @apply font-heading text-primary text-4xl xl:text-6xl;
   }
 
   h2 {
-    @apply mb-6;
+    @apply mb-3 2xl:mb-6 text-4xl 2xl:text-5xl;
 
     & + p {
-      @apply mb-6 text-2xl text-center max-w-2xl mx-auto;
+      @apply mb-3 2xl:mb-6 text-lg 2xl:text-2xl text-center max-w-2xl mx-auto;
     }
   }
 

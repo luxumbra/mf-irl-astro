@@ -17,6 +17,9 @@
     } */
   }
 
+  main {
+    @apply w-full min-h-screen relative z-10;
+  }
 
   /* * {
     outline: 1px solid red;
@@ -90,7 +93,7 @@
     background-size: 50%;
 
     &__content {
-      @apply max-w-7xl mx-auto py-24;
+      @apply relative w-[90%] 2xl:max-w-7xl mx-auto py-24 z-10 ;
 
       div {
         p {
@@ -100,16 +103,20 @@
     }
 
     h2 {
-      @apply mb-6 text-5xl font-bold text-center text-primary;
+      @apply mb-6 font-bold text-center text-primary text-4xl 2xl:text-5xl;
     }
 
     p {
       @apply mb-3;
     }
+
+    &__decoration {
+      @apply z-0
+    }
   }
 
   .carousel {
-    @apply relative w-full min-h-[50vh] mt-52;
+    @apply relative w-full min-h-[50vh] mt-32 2xl:mt-52;
 
     overflow: unset !important;
 
