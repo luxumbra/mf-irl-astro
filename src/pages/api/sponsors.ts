@@ -6,24 +6,54 @@ export const get: APIRoute = async function get ({ params, request }) {
       message: 'Welcome to our sponsors & partners!',
       sponsorList: [
         {
-          "name": "MetaCartel",
-          "logo": "metacartel.png",
-          "url": "https://metacartel.xyz"
+          name: "MetaCartel",
+          logo: "metacartel.png",
+          url: "https://metacartel.xyz"
         },
         {
-          "name": "MetaFam",
-          "logo": "metagame.png",
-          "url": "https://metagame.wtf"
+          name: "MetaFam",
+          logo: "metagame.png",
+          url: "https://metagame.wtf"
         },
         {
           name: 'Sponsor 1',
           logo: 'metacartel.png',
-          link: 'https://google.com',
+          url: 'https://google.com',
         },
         {
           name: 'Sponsor 2',
           logo: 'metagame.png',
-          link: 'https://google.com',
+          url: 'https://google.com',
+        },
+        {
+          name: 'Sponsor 1',
+          logo: 'metacartel.png',
+          url: 'https://google.com',
+        },
+        {
+          name: 'Sponsor 2',
+          logo: 'metagame.png',
+          url: 'https://google.com',
+        },
+        {
+          name: 'Sponsor 1',
+          logo: 'metacartel.png',
+          url: 'https://google.com',
+        },
+        {
+          name: 'Sponsor 2',
+          logo: 'metagame.png',
+          url: 'https://google.com',
+        },
+        {
+          name: 'Sponsor 1',
+          logo: 'metacartel.png',
+          url: 'https://google.com',
+        },
+        {
+          name: 'Sponsor 2',
+          logo: 'metagame.png',
+          url: 'https://google.com',
         },
       ],
     }),
