@@ -69,38 +69,38 @@ import './plants.css';
   const revealButton = () => {
     trigger.addEventListener('mouseenter', () => {
       console.log('Mouse Enter trigger');
-      gsap.to('.plants svg', {
-        duration: 0.5,
-        delay: 0,
-        scale: 1.2,
-        yPercent: 5,
-        ease: 'circ.out',
-      });
+      // gsap.to('.plants svg', {
+      //   duration: 0.5,
+      //   delay: 0,
+      //   scale: 1.2,
+      //   yPercent: 5,
+      //   ease: 'circ.out',
+      // });
 
-      gsap.to('.wall, .cta__join-button', {
-        duration: 0.5,
-        delay: 0.1,
-        scale: 1.1,
-        yPercent: 1,
-        ease: 'circ.out',
-      });
+      // gsap.to('.wall, .cta__join-button', {
+      //   duration: 0.5,
+      //   delay: 0.1,
+      //   scale: 1.1,
+      //   yPercent: 1,
+      //   ease: 'circ.out',
+      // });
 
     });
 
     trigger.addEventListener('mouseleave', () => {
-      gsap.to('.plants svg', {
-        duration: 0.5,
-        scale: 1,
-        yPercent: 0,
-        ease: 'circ.out',
-      });
+      // gsap.to('.plants svg', {
+      //   duration: 0.5,
+      //   scale: 1,
+      //   yPercent: 0,
+      //   ease: 'circ.out',
+      // });
 
-      gsap.to('.wall, .cta__join-button', {
-        duration: 0.5,
-        scale: 1,
-        yPercent: 0,
-        ease: 'circ.out',
-      });
+      // gsap.to('.wall, .cta__join-button', {
+      //   duration: 0.5,
+      //   scale: 1,
+      //   yPercent: 0,
+      //   ease: 'circ.out',
+      // });
 
     });
   }
