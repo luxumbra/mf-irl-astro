@@ -28,16 +28,13 @@ console.log({sponsors});
           sponsors && sponsors.map((sponsor) => (
             <li class="flex group items-center justify-center rounded-2xl bg-gradient-to-br from-secondary via-secondary to-transparent text-center aspect-video hover:scale-105 transition-all duration-300 ease-in-out overflow-hidden">
               <a href={sponsor.url} target="_blank" rel="noopener noreferrer" class="h-full w-full text-center p-5">
-                <Image src={import(`../../assets/images/sponsors/${sponsor.logo}`)} alt={sponsor.name} class="w-auto h-full object-contain mx-auto group-hover:opacity-60 transition-opacity" height={150} aspectRatio="1:1"  />
+                <Image src={`../../assets/images/sponsors/${sponsor.logo}`} alt={sponsor.name} class="w-auto h-full object-contain mx-auto group-hover:opacity-60 transition-opacity" height={150} aspectRatio="1:1"  />
                 <div class="origin-bottom h-full w-full text-white translate-y-10 opacity-0 group-hover:-translate-y-1/2 group-hover:opacity-100 transition-all">{sponsor.name}</div>
               </a>
             </li>
           ))
         }
-        <!-- <li class="flex items-center justify-center rounded-2xl bg-gradient-to-br from-secondary via-secondary to-transparent px-8 py-6 text-center">
-          <Icon name="demo-logo-1" class="max-w-10 h-auto" />
-        </li> -->
-      </ul>
+WS      </ul>
     </div>
   </div>
 </section>

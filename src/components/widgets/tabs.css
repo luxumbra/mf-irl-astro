@@ -4,7 +4,7 @@
 
 @layer components {
   .tabs {
-    @apply flex flex-row items-start relative space-x-6;
+    @apply flex flex-row !items-start relative space-x-6;
 
     [role='tablist'] {
       @apply flex flex-col text-left m-0 p-0 space-y-6;
@@ -25,17 +25,12 @@
     }
 
     .tab-section {
-      @apply w-3/5 h-full min-h-fit overflow-hidden text-left relative;
-      @apply rounded-2xl opacity-0 translate-x-20;
+      @apply relative w-3/5 h-full min-h-fit overflow-hidden text-left  visible translate-x-0 scale-100 opacity-100;
+      @apply rounded-2xl transition-all duration-200 delay-100 ease-out;
 
-      &[aria-hidden="true"] {
-        @apply translate-x-20 opacity-0 transition-all duration-300 ease-in-out;
+      &[hidden] {
+        @apply flex fixed invisible scale-95 opacity-0 -translate-x-20;
       }
-
-      &[aria-hidden='false'] {
-        @apply translate-x-0 opacity-100;
-      }
-
 
       h3 {
         @apply text-2xl font-sans font-bold uppercase p-6 bg-gradient-to-r from-accent-alpha-60 to-transparent relative;
@@ -52,7 +47,7 @@
       }
 
       p {
-        @apply text-primary leading-relaxed mb-3;
+        @apply text-primary leading-relaxed mb-3 text-left;
       }
     }
   }
