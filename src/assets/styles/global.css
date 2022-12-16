@@ -82,10 +82,34 @@
     &__image {
       @apply z-0;
     }
+
+
+
+    &__dates {
+      @apply relative inline-flex items-center justify-between  rounded-lg bg-gradient-primary font-sans text-white uppercase text-lg p-0 font-black;
+
+      svg {
+        @apply  relative block w-10 h-auto mx-3 gradient-text stroke-accent;
+
+        path {
+          path: currentColor;
+        }
+      }
+
+      span {
+        @apply block rounded-xl bg-gradient-primary flex-shrink-0 p-3 w-auto;
+      }
+
+      &::before {
+        content: '';
+
+        @apply absolute inset-[1px] rounded-lg bg-secondary-alpha-60;
+      }
+    }
   }
 
   .section {
-    @apply bg-transparent min-h-[66vh] z-10;
+    @apply bg-transparent min-h-[66vh] z-10 overflow-hidden;
 
     background-image: url('../images/section-divider.png');
     background-position: bottom center;
@@ -207,5 +231,15 @@
   .gradient-text {
     @apply text-transparent bg-clip-text;
     @apply bg-gradient-to-br from-pink-300 via-teal-300 to-violet-700;
+  }
+
+  #gradient-horizontal {
+    --color-stop-1: #a770ef;
+    --color-stop-2: #cf8bf3;
+    --color-stop-3: #fdb99b;
+  }
+
+  .icon-gradient {
+    @apply stroke-current;
   }
 }

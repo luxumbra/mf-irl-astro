@@ -10,7 +10,11 @@
   "editor.codeActionsOnSave": {
     "source.formatDocument": true,
     "source.fixAll": true
-},
+  },
+  "files.associations": {
+    "*.astro": "astro",
+    "*.svg": "html",
+  },
   "[astro]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }

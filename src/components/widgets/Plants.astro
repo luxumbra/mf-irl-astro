@@ -6,10 +6,11 @@ import './plants.css';
 
 
 <div class="plants absolute inset-0 w-full min-h-full overflow-hidden z-10 pointer-events-none">
-  <div class="plants__active-area absolute inset-1/3 h-1/3 w-1/3 translate-y-3 flex items-center justify-center pointer-events-auto z-0" />
-  <Plant plantName="plants-group" size="w-full" position={{x: 'left-[0%]', y: 'bottom-0', z: 'z-0'}} className="opacity-100 pointer-events-none group" />
+  <div class="plants__active-area absolute inset-1/3 h-1/3 w-1/3 -translate-y-14 flex items-center justify-center pointer-events-auto z-0" />
+  <Plant plantName="plants-group" size="w-full" position={{x: 'left-[0%]', y: 'bottom-0', z: 'z-[2]'}} className="opacity-100 pointer-events-none" />
 </div>
 
+<Plant plantName="wall" size="w-full h-auto" position={{x: 'left-[0%]', y: 'bottom-0', z: 'z-0'}} className="opacity-100 pointer-events-auto wall z-0" />
 
 <script>
   import gsap from 'gsap';
@@ -21,54 +22,51 @@ import './plants.css';
    * @param {number} repeat - The number of times to repeat the animation
    */
 
-   const plantsGroup = document.querySelector('.plants svg');
-   const plants = Array.from(plantsGroup.querySelectorAll('g'));
+  //  const plantsGroup = document.querySelector('.plants svg');
+  //  const plants = Array.from(plantsGroup.querySelectorAll('g'));
    const trigger = document.querySelector('.plants__active-area');
-    const button = document.querySelector('.cta__join-button');
-    trigger.appendChild(button);
-   console.log('Plants: ', {plants});
-   console.log('plant info: ', plants[0].getAttribute('clip-path'));
+   const button = document.querySelector('.cta__join-button');
 
-   const plantsAnimation = (selector, speed, delay, repeat) => {
-      console.log('Plants Animation: ', {selector, speed, delay, repeat});
-    }
+   trigger.appendChild(button);
+
+  //  const plantsAnimation = (selector, speed, delay, repeat) => {
+  //     console.log('Plants Animation: ', {selector, speed, delay, repeat});
+  //   }
 
   /**
    * @description This is a function to animate the plants on hover
    */
-  const animateOnHover = (plants: SVGGElement[]) => {
-    plants.forEach((plant) => {
-      if (plant.parentElement === plantsGroup) handlePlantHover(plant);
-    });
-  }
+  // const animateOnHover = (plants: SVGGElement[]) => {
+  //   plants.forEach((plant) => {
+  //     if (plant.parentElement === plantsGroup) handlePlantHover(plant);
+  //   });
+  // }
 
-  const handlePlantHover = (plant: SVGGElement) => {
-    console.log('Plant: ', plant);
-    plant.addEventListener('mouseenter', () => {
-      console.log('Mouse Enter');
-      gsap.to(plant, {
-        duration: 0.5,
-        delay: 0.5,
-        scale: 0.95,
-        rotate: 2,
-        ease: 'circ.out',
-      });
-    });
+  // const handlePlantHover = (plant: SVGGElement) => {
+  //   console.log('Plant: ', plant);
+  //   plant.addEventListener('mouseenter', () => {
+  //     console.log('Mouse Enter');
+  //     gsap.to(plant, {
+  //       duration: 0.5,
+  //       delay: 0.5,
+  //       scale: 0.95,
+  //       rotate: 2,
+  //       ease: 'circ.out',
+  //     });
+  //   });
 
-    plant.addEventListener('mouseleave', () => {
-      console.log('Mouse Leave');
-      gsap.to(plant, {
-        duration: 0.5,
-        delay: 0.5,
-        scale: 1,
-        rotate: 0,
-        ease: 'circ.out',
-      });
-    });
-  }
+  //   plant.addEventListener('mouseleave', () => {
+  //     gsap.to(plant, {
+  //       duration: 0.5,
+  //       delay: 0.5,
+  //       scale: 1,
+  //       rotate: 0,
+  //       ease: 'circ.out',
+  //     });
+  //   });
+  // }
 
   const revealButton = () => {
-    console.log('Button Reveal');
     trigger.addEventListener('mouseenter', () => {
       console.log('Mouse Enter trigger');
       gsap.to('.plants svg', {
@@ -79,16 +77,17 @@ import './plants.css';
         ease: 'circ.out',
       });
 
-      gsap.to('.cta__join-button', {
+      gsap.to('.wall, .cta__join-button', {
         duration: 0.5,
-        delay: 0,
-        scale: 1.3,
-        ease: 'back',
+        delay: 0.1,
+        scale: 1.1,
+        yPercent: 1,
+        ease: 'circ.out',
       });
+
     });
 
     trigger.addEventListener('mouseleave', () => {
-      console.log('Mouse Leave trigger');
       gsap.to('.plants svg', {
         duration: 0.5,
         scale: 1,
@@ -96,18 +95,24 @@ import './plants.css';
         ease: 'circ.out',
       });
 
-      gsap.to('.cta__join-button', {
+      gsap.to('.wall, .cta__join-button', {
         duration: 0.5,
-        delay: 0,
         scale: 1,
-        ease: 'back',
+        yPercent: 0,
+        ease: 'circ.out',
       });
+
     });
   }
 
+  /**
+   * @description This is a function to run every frame for time based animations
+   */
+
+
   window.addEventListener('load', () => {
-    plantsAnimation('.plants svg', 1, 0, 0);
-    animateOnHover(plants);
+    // plantsAnimation('.plants svg', 1, 0, 0);
+    // animateOnHover(plants);
     revealButton();
   });
 </script>
