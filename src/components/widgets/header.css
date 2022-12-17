@@ -4,7 +4,7 @@
 
 @layer components {
   .header {
-    @apply fixed bg-accent md:bg-accent-light-alpha-30 text-slate-900 text-center w-full z-50 transition-colors duration-300;
+    @apply fixed bg-accent-light-alpha-30 text-slate-900 text-center w-full z-50 transition-all duration-300 h-16 md:h-28;
 
     &__primary {
       @apply flex justify-around items-center max-w-7xl mx-auto py-4 transition-all duration-300;
@@ -37,12 +37,25 @@
       }
 
       &--mobile {
-        @apply flex flex-col h-screen fixed md:hidden;
+        @apply flex flex-col space-y-5 py-32 justify-start items-center fixed md:hidden h-screen w-screen top-0 left-0 translate-y-full;
+        @apply bg-gradient-to-br from-accent to-accent-light-alpha-30 text-slate-900 text-center transition-all duration-300 backdrop-blur-xl z-20;
+
+        a {
+          @apply inline-flex;
+
+          .logo {
+            @apply w-24;
+          }
+        }
+
+        &.open {
+          @apply translate-y-0;
+        }
       }
     }
 
     &--scrolled {
-      @apply backdrop-blur-lg;
+      @apply backdrop-blur-lg h-20;
 
       .logo {
         @apply w-20

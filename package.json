@@ -45,8 +45,8 @@
     "prettier": "^2.8.0",
     "prettier-plugin-astro": "^0.7.0",
     "prettier-plugin-tailwindcss": "^0.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "reading-time": "^1.5.0",
     "sharp": "^0.31.2",
     "stylelint-config-prettier": "^9.0.4",
@@ -64,7 +64,10 @@
   "dependencies": {
     "@fontsource/exo-2": "^4.5.10",
     "@fontsource/montserrat": "^4.5.13",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
     "astro-sanity": "^1.0.0",
+    "astro-seo": "^0.6.0",
     "daisyui": "^2.42.1",
     "gsap": "^3.11.3",
     "swiper": "^8.4.5"

@@ -8,7 +8,7 @@ export const SITE = {
 	title: 'MetaFest: IRL - MetaGame 🐙',
 	description: 'A bit of a conference, a bit of a festival + a shitload of fun',
 
-	googleAnalyticsId: false, // or "G-XXXXXXXXXX",
+	googleAnalyticsId: 'G-4436889R1F',
 	googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
 };
 

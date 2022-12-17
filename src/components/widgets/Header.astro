@@ -4,6 +4,7 @@ import { Icon } from 'astro-icon';
 import ToggleMenu from '~/components/core/ToggleMenu.astro';
 
 import './header.css';
+
 ---
 
 <header class="header">
@@ -21,18 +22,18 @@ import './header.css';
 		</menu>
 
 		<menu class="header__menu--mobile flex flex-col h-screen md:hidden z-50">
-			<a href="/#about">Abouty</a>
-			<a href="/#location">Location</a>
-			<a href="/#program">Program</a>
 			<a href="/#start">
 				<Icon name="logo" className="logo group min-w-fit w-32 h-auto" />
 			</a>
+			<a href="/#about">About</a>
+			<a href="/#location">Location</a>
+			<a href="/#program">Program</a>
 			<a href="/#speakers">Speakers</a>
 			<a href="/#sponsors">Sponsors</a>
 			<a href="/#join">Join</a>
 		</menu>
 	</div>
-	<div class="inline-flex items-center absolute h-full top-0 right-8 md:hidden">
+	<div class="header__secondary flex items-center justify-end fixed w-full h-16 bottom-0 right-0 md:hidden z-50 border-t-[1px] border-accent-light">
 		<ToggleMenu />
 	</div>
 </header>
@@ -41,6 +42,22 @@ import './header.css';
 	// import { gsap } from 'gsap';
 	if (typeof window  !== 'undefined') {
 		const header = document.querySelector('.header');
+		const toolbar = document.querySelector('.header__secondary');
+		const mobileMenu = document.querySelector('.header__menu--mobile');
+		const body = document.querySelector('body');
+		const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+		if (isMobile) body.appendChild(toolbar);
+
+		const attachEvent = (selector, event, fn) => {
+			const matches = document.querySelectorAll(selector);
+			if (matches && matches.length) {
+				matches.forEach((elem) => {
+					elem.addEventListener(event, () => fn(elem), false);
+				});
+			}
+		}
+
 		// function to toggle the header class on scroll
 		const toggleHeader = () => {
 			console.log('scrolling');
@@ -51,7 +68,22 @@ import './header.css';
 			}
 		};
 
-		// add event listener
+		window.onload = function () {
+			attachEvent('[data-aw-toggle-menu]', 'click', function (elem) {
+
+				elem.classList.toggle('expanded');
+				document.body.classList.toggle('overflow-hidden');
+				// document.getElementById('header')?.classList.toggle('h-screen');
+				mobileMenu?.classList.toggle('open');
+			});
+
+			attachEvent('.header__menu--mobile a', 'click', function (elem) {
+				console.log('clicked', elem);
+				document.body.classList.remove('overflow-hidden');
+				mobileMenu?.classList.remove('open');
+			});
+		};
+
 		window.addEventListener('scroll', toggleHeader);
 	}
 </script>
