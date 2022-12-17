@@ -24,15 +24,15 @@ const { sponsorList: sponsors } = data;
     </p>
 
     <div
-      class="partners-list bg-gradient-to-r from-secondary-alt via-secondary-alt to-transparent p-8 border-b-2 border-l-2 border-accent rounded-2xl mt-10"
+      class="partners-list bg-gradient-to-r from-secondary-alt via-secondary-alt to-transparent p-3 lg:p-8 border-b-2 border-l-2 border-accent rounded-2xl mt-10"
     >
-      <ul class="grid grid-cols-5 gap-10">
+      <ul class="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-10">
         {
           sponsors &&
             sponsors.map((sponsor) => {
               const image = `/assets/images/sponsors/${sponsor.logo}`;
               return (
-                <li class="group rounded-2xl bg-gradient-to-br from-secondary via-secondary to-transparent text-center aspect-video hover:scale-105 transition-all duration-300 ease-in-out overflow-hidden">
+                <li class="group rounded-2xl bg-gradient-to-br from-secondary via-secondary to-transparent text-center apsect-square lg:aspect-video hover:scale-105 transition-all duration-300 ease-in-out overflow-hidden">
                   <a
                     href={sponsor.url}
                     target="_blank"
@@ -40,7 +40,7 @@ const { sponsorList: sponsors } = data;
                     class="relative flex items-center h-full w-full text-center p-5"
                   >
                     <div class="avatar  mx-auto">
-                      <div class="h-24">
+                      <div class="h-20 lg:h-24">
                         <Image
                           src={image}
                           alt={sponsor.name}

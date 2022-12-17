@@ -16,6 +16,8 @@ module.exports = {
 				'accent-alpha-60': '#1f897599',
         'accent-light': '#89c97cff',
 				'accent-light-alpha-30': '#89c97c4d',
+				'accent-light-alpha-60': '#89c97c99',
+				'accent-light-alpha-90': '#89c97ce6',
 				'accent-alt': '#1f4a2cff',
 				'secondary-alt': '#1f282cff'
 			},
