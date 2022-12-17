@@ -85,6 +85,8 @@ import './header.css';
 			attachEvent('.header__menu--mobile a', 'click', function (elem) {
 				console.log('clicked', elem);
 				document.body.classList.remove('overflow-hidden');
+				standaloneLogo?.classList.remove('opacity-0');
+				header?.classList.remove('bg-transparent');
 				mobileMenu?.classList.remove('open');
 			});
 		};
