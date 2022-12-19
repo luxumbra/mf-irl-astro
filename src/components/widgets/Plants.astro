@@ -5,114 +5,28 @@ import './plants.css';
 ---
 
 
-<div class="plants absolute inset-0 w-full min-h-full overflow-hidden z-10 pointer-events-none">
-  <div class="plants__active-area absolute inset-1/3 h-1/3 w-1/3 -translate-y-14 flex items-center justify-center pointer-events-auto z-0" />
-  <Plant plantName="plants-group" size="w-full" position={{x: 'left-[0%]', y: 'bottom-0', z: 'z-[2]'}} className="opacity-100 pointer-events-none" />
+<div class="plants absolute inset-0 w-full min-h-full overflow-hidden z-10 pointer-events-none invisible"
+  x-show="shown"
+  x-bind:class="{ 'invisible': !shown, 'visible': shown }"
+  x-transition:enter="transition ease-out duration-500"
+  x-transition:enter-start="opacity-0 transform translate-y-8"
+  x-transition:enter-end="opacity-100 transform translate-y-0"
+  x-transition:leave="transition ease-in duration-500"
+  x-transition:leave-start="opacity-100 transform translate-y-0"
+  x-transition:leave-end="opacity-0 transform translate-y-8"
+>
+  <div class="plants__active-area absolute inset-1/3 md:h-1/3 w-1/3 flex bottom-[10vh] xxs:bottom-32 md:bottom-0 md:-translate-y-14 items-center justify-center pointer-events-auto z-0" />
+  <Plant plantName="plants-group" size="w-[200%] 2xl:w-full" position={{x: '-left-[50%] 2xl:left-[0%]', y: 'bottom-0', z: 'z-[2]'}} className="pointer-events-none"
+
+  />
 </div>
 
-<Plant plantName="wall" size="w-full h-auto" position={{x: 'left-[0%]', y: 'bottom-0', z: 'z-0'}} className="opacity-100 pointer-events-auto wall z-0" />
+<Plant plantName="wall" size="w-full h-auto" position={{x: 'left-[-50%] md:left-[0%]', y: 'bottom-0', z: 'z-0'}} className="opacity-100 hidden md:block pointer-events-none md:pointer-events-auto wall z-0" />
 
 <script>
-  import gsap from 'gsap';
-  /**
-   * @description This is a function to make the plants move out of the way to reveal the button behind them
-   * @param {string} selector - The selector of the element to animate
-   * @param {number} speed - The speed of the animation
-   * @param {number} delay - The delay of the animation
-   * @param {number} repeat - The number of times to repeat the animation
-   */
-
-  //  const plantsGroup = document.querySelector('.plants svg');
-  //  const plants = Array.from(plantsGroup.querySelectorAll('g'));
    const trigger = document.querySelector('.plants__active-area');
    const button = document.querySelector('.cta__join-button');
 
    trigger.appendChild(button);
 
-  //  const plantsAnimation = (selector, speed, delay, repeat) => {
-  //     console.log('Plants Animation: ', {selector, speed, delay, repeat});
-  //   }
-
-  /**
-   * @description This is a function to animate the plants on hover
-   */
-  // const animateOnHover = (plants: SVGGElement[]) => {
-  //   plants.forEach((plant) => {
-  //     if (plant.parentElement === plantsGroup) handlePlantHover(plant);
-  //   });
-  // }
-
-  // const handlePlantHover = (plant: SVGGElement) => {
-  //   console.log('Plant: ', plant);
-  //   plant.addEventListener('mouseenter', () => {
-  //     console.log('Mouse Enter');
-  //     gsap.to(plant, {
-  //       duration: 0.5,
-  //       delay: 0.5,
-  //       scale: 0.95,
-  //       rotate: 2,
-  //       ease: 'circ.out',
-  //     });
-  //   });
-
-  //   plant.addEventListener('mouseleave', () => {
-  //     gsap.to(plant, {
-  //       duration: 0.5,
-  //       delay: 0.5,
-  //       scale: 1,
-  //       rotate: 0,
-  //       ease: 'circ.out',
-  //     });
-  //   });
-  // }
-
-  const revealButton = () => {
-    trigger.addEventListener('mouseenter', () => {
-      console.log('Mouse Enter trigger');
-      // gsap.to('.plants svg', {
-      //   duration: 0.5,
-      //   delay: 0,
-      //   scale: 1.2,
-      //   yPercent: 5,
-      //   ease: 'circ.out',
-      // });
-
-      // gsap.to('.wall, .cta__join-button', {
-      //   duration: 0.5,
-      //   delay: 0.1,
-      //   scale: 1.1,
-      //   yPercent: 1,
-      //   ease: 'circ.out',
-      // });
-
-    });
-
-    trigger.addEventListener('mouseleave', () => {
-      // gsap.to('.plants svg', {
-      //   duration: 0.5,
-      //   scale: 1,
-      //   yPercent: 0,
-      //   ease: 'circ.out',
-      // });
-
-      // gsap.to('.wall, .cta__join-button', {
-      //   duration: 0.5,
-      //   scale: 1,
-      //   yPercent: 0,
-      //   ease: 'circ.out',
-      // });
-
-    });
-  }
-
-  /**
-   * @description This is a function to run every frame for time based animations
-   */
-
-
-  window.addEventListener('load', () => {
-    // plantsAnimation('.plants svg', 1, 0, 0);
-    // animateOnHover(plants);
-    revealButton();
-  });
 </script>

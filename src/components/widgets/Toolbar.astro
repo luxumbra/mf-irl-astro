@@ -9,7 +9,7 @@ import { Icon } from 'astro-icon';
   x-intersect:leave="shown = false"
 >
 <div
-  class="flex items-center justify-end w-full h-full border-t-[1px] border-accent-light backdrop-blur-2xl invisible"
+  class="flex items-center justify-end w-full h-full border-t-[1px] bg-secondary-alpha-60 border-accent-light backdrop-blur-2xl invisible"
   x-show="shown"
   x-bind:class="{ 'invisible': !shown }"
   x-transition:enter="transition ease-out duration-300 delay-100"
@@ -41,8 +41,8 @@ import { Icon } from 'astro-icon';
   <template x-teleport="body">
     <menu
       x-show="menuOpen"
-      x-cloak
-      class="mobile-menu flex flex-col space-y-5 py-32 justify-end items-center content-center fixed md:hidden h-screen w-screen inset-0 z-40"
+      x-bind:class="{ 'invisible': !shown }"
+      class="mobile-menu flex flex-col space-y-5 py-32 justify-end items-center content-center fixed md:hidden h-screen w-screen inset-0 z-40 invisible"
       x-transition:enter="transition ease-out duration-300 transform"
       x-transition:enter-start="opacity-0 translate-y-full"
       x-transition:enter-end="opacity-100 translate-y-0"

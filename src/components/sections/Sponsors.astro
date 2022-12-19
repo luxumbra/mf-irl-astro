@@ -1,5 +1,6 @@
 ---
 import { Image } from '@astrojs/image/components';
+import Section from '../core/Section.astro';
 // import { Icon } from "astro-icon";
 
 const host = 'http://localhost:1144';
@@ -9,8 +10,17 @@ const data = await fetch(`${host}/api/sponsors`).then((res) => res.json());
 const { sponsorList: sponsors } = data;
 ---
 
-<section id="sponsors" class="section">
-  <div class="section__content">
+<Section id="sponsors" class="section">
+  <div class="section__content invisible"
+  x-show="shown"
+  x-bind:class="{ 'invisible': !shown }"
+  x-transition:enter="transition ease-out duration-500"
+  x-transition:enter-start="opacity-0 transform translate-y-8"
+  x-transition:enter-end="opacity-100 transform translate-y-0"
+  x-transition:leave="transition ease-in duration-500"
+  x-transition:leave-start="opacity-100 transform translate-y-0"
+  x-transition:leave-end="opacity-0 transform translate-y-8"
+  >
     <h2>Partners &amp; Sponsors</h2>
     <p>
       MetaFest will be organized in collaboration between MetaFam, MetaCartel & MetaAlliance as well as other local &

@@ -26,6 +26,9 @@ module.exports = {
 				heading: ['"relicregular"', 'sans-serif'],
 				alt: ['"Exo 2"', 'sans-serif'],
 			},
+			screens: {
+				xxs: '400px',
+			},
 		},
 	},
 	plugins: [formsPlugin, typographyPlugin, daisyui],
