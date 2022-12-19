@@ -35,23 +35,6 @@
           @apply hover:text-primary;
         }
       }
-
-      &--mobile {
-        @apply flex flex-col space-y-5 py-32 justify-start items-center fixed md:hidden h-screen w-screen top-0 left-0 translate-y-full;
-        @apply bg-gradient-to-br from-accent to-accent-alpha-60 text-slate-900 text-center transition-all duration-300 backdrop-blur-xl z-20;
-
-        a {
-          @apply inline-flex font-bold;
-
-          .logo {
-            @apply w-24;
-          }
-        }
-
-        &.open {
-          @apply translate-y-0;
-        }
-      }
     }
 
     &--scrolled {
@@ -62,4 +45,5 @@
       }
     }
   }
+
 }

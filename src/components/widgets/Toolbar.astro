@@ -1,0 +1,65 @@
+---
+import { Icon } from 'astro-icon';
+---
+
+<div
+  class="toolbar fixed overflow-y-visible flex items-center justify-end w-full h-12 left-0 bottom-0 right-0 md:hidden z-50"
+  x-data="{ menuOpen: false, shown: false }"
+  x-intersect="shown = true"
+  x-intersect:leave="shown = false"
+>
+<div
+  class="flex items-center justify-end w-full h-full border-t-[1px] border-accent-light backdrop-blur-2xl invisible"
+  x-show="shown"
+  x-bind:class="{ 'invisible': !shown }"
+  x-transition:enter="transition ease-out duration-300 delay-100"
+  x-transition:enter-start="opacity-0 transform translate-y-8"
+  x-transition:enter-end="opacity-100 transform translate-y-0"
+  x-transition:leave="transition ease-in duration-500"
+  x-transition:leave-start="opacity-100 transform translate-y-0"
+  x-transition:leave-end="opacity-0 transform translate-y-8"
+  >
+  <button
+    x-on:click="menuOpen = !menuOpen"
+    type="button"
+    class="btn btn-ghost ml-1.5 text-primary hover:bg-transparent focus:outline-none focus:ring-2 focus:ring-primary-alpha-60 focus:bg-transparent p-0 items-center transition z-50"
+    aria-label="Menu toggle"
+  >
+    <Icon
+      name="tabler:menu"
+      class="w-10 h-10"
+      x-bind:class="{'hidden': menuOpen, 'block': !menuOpen}"
+      optimize={false}
+    />
+    <Icon
+      name="mdi:close"
+      class="w-10 h-10 hidden"
+      x-bind:class="{'hidden': !menuOpen, 'block': menuOpen}"
+      optimize={false}
+    />
+  </button>
+  <template x-teleport="body">
+    <menu
+      x-show="menuOpen"
+      x-cloak
+      class="mobile-menu flex flex-col space-y-5 py-32 justify-end items-center content-center fixed md:hidden h-screen w-screen inset-0 z-40"
+      x-transition:enter="transition ease-out duration-300 transform"
+      x-transition:enter-start="opacity-0 translate-y-full"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-200 transform"
+      x-transition:leave-start="opacity-100 translate-y-0"
+      x-transition:leave-end="opacity-0 translate-y-full"
+    >
+      <a href="/#start">
+        <Icon name="logo" className="logo group min-w-fit w-32 h-auto" />
+      </a>
+      <a href="/#about">About</a>
+      <a href="/#location">Location</a>
+      <a href="/#program">Program</a>
+      <a href="/#speakers">Speakers</a>
+      <a href="/#sponsors">Sponsors</a>
+      <a href="/#join">Join</a>
+    </menu>
+  </template>
+  </div>
+</div>

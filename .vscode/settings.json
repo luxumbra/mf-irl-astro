@@ -16,6 +16,7 @@
     "*.svg": "html",
   },
   "[astro]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "editor.formatOnSave": false
 }

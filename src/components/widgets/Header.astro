@@ -1,96 +1,46 @@
 ---
-import { Icon } from 'astro-icon';
-// import ToggleTheme from '~/components/core/ToggleTheme.astro';
-import ToggleMenu from '~/components/core/ToggleMenu.astro';
-
 import './header.css';
 
+import { Icon } from 'astro-icon';
+// import ToggleTheme from '~/components/core/ToggleTheme.astro';
 ---
 
-<header class="header">
-	<div class="header__primary">
-		<menu class="header__menu--desktop hidden md:flex">
-			<a href="/#about">About</a>
-			<a href="/#location">Location</a>
-			<a href="/#program">Program</a>
-			<a href="/#start">
-				<Icon name="logo" className="logo min-w-fit w-32 h-auto" />
-			</a>
-			<a href="/#speakers">Speakers</a>
-			<a href="/#sponsors">Sponsors</a>
-			<a href="/#join">Join</a>
-		</menu>
+<header class="header" >
+  <div class="header__primary">
+    <menu class="header__menu--desktop hidden md:flex">
+      <a href="/#about">About</a>
+      <a href="/#location">Location</a>
+      <a href="/#program">Program</a>
+      <a href="/#start">
+        <Icon name="logo" className="logo min-w-fit w-32 h-auto" />
+      </a>
+      <a href="/#speakers">Speakers</a>
+      <a href="/#sponsors">Sponsors</a>
+      <a href="/#join">Join</a>
+    </menu>
 
-		<a href="/#start" class="block md:hidden transition-all duration-200">
-			<Icon name="logo" className="logo min-w-fit w-20 h-auto" />
-		</a>
-		<menu class="header__menu--mobile flex flex-col h-screen md:hidden z-50">
-			<a href="/#start">
-				<Icon name="logo" className="logo group min-w-fit w-32 h-auto" />
-			</a>
-			<a href="/#about">About</a>
-			<a href="/#location">Location</a>
-			<a href="/#program">Program</a>
-			<a href="/#speakers">Speakers</a>
-			<a href="/#sponsors">Sponsors</a>
-			<a href="/#join">Join</a>
-		</menu>
-	</div>
-	<div class="header__secondary flex items-center justify-end fixed w-full h-12 bottom-0 right-0 md:hidden z-50 border-t-[1px] border-accent-light backdrop-blur-2xl">
-		<ToggleMenu />
-	</div>
+    <a href="/#start" class="block md:hidden transition-all duration-200">
+      <Icon name="logo" className="logo min-w-fit w-20 h-auto" />
+    </a>
+  </div>
 </header>
 
+
+
 <script>
-	// import { gsap } from 'gsap';
-	if (typeof window  !== 'undefined') {
-		const header = document.querySelector('.header');
-		const standaloneLogo = header.querySelector('.header__primary > a')
-		const toolbar = document.querySelector('.header__secondary');
-		const mobileMenu = document.querySelector('.header__menu--mobile');
-		const body = document.querySelector('body');
-		const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  if (typeof window !== 'undefined') {
+    const header = document.querySelector('.header');
 
-		if (isMobile) body.appendChild(toolbar);
+    // function to toggle the header class on scroll
+    const scrollHeader = () => {
+      console.log('scrolling');
+      if (window.scrollY > 0) {
+        header.classList.add('header--scrolled');
+      } else {
+        header.classList.remove('header--scrolled');
+      }
+    };
 
-		const attachEvent = (selector, event, fn) => {
-			const matches = document.querySelectorAll(selector);
-			if (matches && matches.length) {
-				matches.forEach((elem) => {
-					elem.addEventListener(event, () => fn(elem), false);
-				});
-			}
-		}
-
-		// function to toggle the header class on scroll
-		const toggleHeader = () => {
-			console.log('scrolling');
-			if (window.scrollY > 0) {
-				header.classList.add('header--scrolled');
-			} else {
-				header.classList.remove('header--scrolled');
-			}
-		};
-
-		window.onload = function () {
-			attachEvent('[data-toggle-menu]', 'click', function (elem) {
-
-				elem.classList.toggle('expanded');
-				document.body.classList.toggle('overflow-hidden');
-				header?.classList.toggle('bg-transparent');
-				standaloneLogo?.classList.toggle('opacity-0');
-				mobileMenu?.classList.toggle('open');
-			});
-
-			attachEvent('.header__menu--mobile a', 'click', function (elem) {
-				console.log('clicked', elem);
-				document.body.classList.remove('overflow-hidden');
-				standaloneLogo?.classList.remove('opacity-0');
-				header?.classList.remove('bg-transparent');
-				mobileMenu?.classList.remove('open');
-			});
-		};
-
-		window.addEventListener('scroll', toggleHeader);
-	}
+    window.addEventListener('scroll', scrollHeader);
+  }
 </script>

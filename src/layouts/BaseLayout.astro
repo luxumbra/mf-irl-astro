@@ -1,6 +1,10 @@
 ---
 import '~/assets/styles/index.css';
 
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import Toolbar from '~/components/widgets/Toolbar.astro';
+
 import MetaTags from '~/components/core/MetaTags.astro';
 import BasicScripts from '~/components/core/BasicScripts.astro';
 
@@ -14,7 +18,10 @@ const { meta = {} } = Astro.props;
 	</head>
 
 	<body class="antialiased text-gray-900 dark:text-accent tracking-normal">
+		<Header />
+		<Toolbar />
 		<slot />
+		<Footer />
 		<BasicScripts />
 		<style is:global>
 			img {

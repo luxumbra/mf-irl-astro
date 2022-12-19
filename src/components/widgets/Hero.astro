@@ -3,51 +3,79 @@
 import { Picture } from '@astrojs/image/components'
 import { Icon } from 'astro-icon';
 
+import heroImageLg from '~/assets/images/hero/hero-castle-full.jpg';
+import heroImageSm from '~/assets/images/hero/hero-castle-sm.jpg';
+
 ---
 
+<script>
+	const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches;
+</script>
 
-<div id="start" class="hero relative flex w-full h-screen max-h-[96vh] p-0 overflow-hidden">
-	<div class="hero__content h-full w-full lg:w-10/12 px-3 py-16 lg:p-16">
-		<div class="hero__content__primary">
+<div id="start" class="hero relative flex w-full h-screen max-h-[96vh] p-0 overflow-hidden"
+	x-data="{ shown: false }"
+	x-intersect="shown = true"
+  x-intersect:leave="shown = false"
+	>
+	<div class="hero__content h-full w-full lg:w-10/12 px-3 py-16 lg:p-16 justify-end">
+		<div class="hero__content__primary invisible"
+			x-show="shown"
+			x-bind:class="{ 'invisible': !shown }"
+			x-transition:enter="transition ease-out duration-500"
+			x-transition:enter-start="opacity-0 transform translate-y-8"
+			x-transition:enter-end="opacity-100 transform translate-y-0"
+			x-transition:leave="transition ease-in duration-500"
+			x-transition:leave-start="opacity-100 transform translate-y-0"
+			x-transition:leave-end="opacity-0 transform translate-y-8"
+		>
 			<h1 class="hero__title">A bit of a conference,<br /> a bit of a festival</h1>
 			<p class="hero__subtitle">+ a shitload of fun</p>
 			<span class="hero__dates"><Icon name="ic:baseline-calendar-today" className="icon-gradient" /> <span class="rounded-lg bg-gradient-primary z-10">16 - 18 August</span></span>
 		</div>
-		<div class="hero__content__secondary flex">
-			<div class="cta">
-				<a href="/" class="cta__button flex items-center flex-col border-2 border-black font-sans text-black rounded-full bg-gradient-secondary overflow-hidden aspect-square p-6">
+		<div class="hero__content__secondary flex justify-end mt-3 md:mt-0">
+			<div class="cta invisible"
+			x-show="shown"
+			x-bind:class="{ 'invisible': !shown }"
+			x-transition:enter="transition ease-out duration-500 delay-300"
+			x-transition:enter-start="opacity-0 transform translate-y-8"
+			x-transition:enter-end="opacity-100 transform translate-y-0"
+			x-transition:leave="transition ease-in duration-500"
+			x-transition:leave-start="opacity-100 transform translate-y-0"
+			x-transition:leave-end="opacity-0 transform translate-y-8"
+			>
+				<a href="/" class="cta__button flex items-center flex-row md:flex-col border-2 border-black font-sans text-black rounded-lg md:rounded-full bg-gradient-secondary overflow-hidden md:aspect-square py-2 px-5 md:p-6 text-xl md:text-inherit">
 					<span class="font-extrabold">LFG!</span>
-					<Icon name="mdi:arrow-right"  />
+					<Icon name="mdi:arrow-right" className="w-8 h-8" />
 				</a>
 			</div>
 		</div>
 	</div>
 	<div class="hero__image absolute w-full h-full inset-0 overflow-hidden">
 		<Picture
-			src={import('~/assets/images/hero/hero-castle-full.jpg')}
-			class="mx-auto w-full z-0 hidden lg:block"
-			widths={[400, 768, 1480]}
-			sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
+			src={heroImageSm}
+			class="w-full h-full lg:h-auto block md:hidden"
 			alt="Hero Image"
-			aspectRatio={1480/833}
+			sizes="(max-width: 400px) 400px, (max-width: 767px) 768px, 1280px"
+			widths={[400, 768, 1280]}
+			aspectRatio={833/1480}
 			loading="eager"
-			width={1480}
-			height={833}
-
+			width={768}
+			formats={['webp', 'jpeg']}
 		/>
 
 		<Picture
-		src={import('~/assets/images/hero/hero-castle-full.jpg')}
-		class="mx-auto w-full z-0 block lg:hidden"
-		widths={[400, 768]}
-		sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
+		src={heroImageLg}
+		class="w-full h-full lg:h-auto hidden md:block"
 		alt="Hero Image"
-		aspectRatio={768/1024}
+		sizes="(max-width: 400px) 400px, (max-width: 767px) 768px, (max-width: 1479px) 1480px, 1920px"
+		widths={[400, 768, 1480]}
+		aspectRatio={1480/833}
 		loading="eager"
-		width={768}
-		height={1024}
-		fit="cover"
+		width={1480}
+		height={833}
+		formats={['webp', 'jpeg']}
 	/>
+
 		<div class="hero__image__overlay absolute inset-x-0 -bottom-1 h-16 bg-gradient-to-t from-secondary via-secondary to-transparent z-10" />
 	</div>
 </div>

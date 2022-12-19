@@ -1,110 +1,98 @@
 ---
+// import { Picture } from '@astrojs/image/components';
 import { Picture } from '@astrojs/image/components';
 import { Icon } from 'astro-icon';
+
+const host = 'http://localhost:1144';
+
+const data = await fetch(`${host}/api/carousel`).then((res) => res.json());
+
+const { slides } = data;
 ---
 
 <!-- Slider main container -->
 <div class="carousel">
-	<div class="swiper w-full rounded-box border-l-8 border-b-8 border-accent relative">
-		<!-- Additional required wrapper -->
-		<div class="swiper-wrapper">
-			<!-- Slides -->
-			<div class="swiper-slide">
-				<Picture
-					src={import('~/assets/images/hero/hero-castle-lg.jpg')}
-					class="mx-auto w-full z-0"
-					widths={[400, 768, 1480]}
-					sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
-					alt="Hero Image"
-					aspectRatio={1480 / 833}
-					loading="eager"
-					width={1480}
-					height={833}
-				/>
-				<div class="swiper-slide__content absolute bottom-0 left-0 px-8">
-					<Icon name="map-marker" className="w-10 h-auto max-h-10" />
-					<div class="group ml-2">
-						<h4 class="text-primary text-lg font-sans">Hello World</h4>
-						<p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
-					</div>
-				</div>
-			</div>
-			<div class="swiper-slide">
-				<Picture
-					src={import('~/assets/images/carousel/purple-octo-midjourney.png')}
-					class="mx-auto w-full z-0"
-					widths={[400, 768, 1480]}
-					sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
-					alt="Hero Image"
-					aspectRatio={1480 / 833}
-					loading="eager"
-					width={1480}
-					height={833}
-				/>
-        <div class="swiper-slide__content absolute bottom-0 left-0 px-8">
-					<Icon name="map-marker" className="w-10 h-auto max-h-10" />
-					<div class="group ml-2">
-						<h4 class="text-primary text-lg font-sans">Hello Anon</h4>
-						<p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
-					</div>
-				</div>
-			</div>
-			<div class="swiper-slide">
-				<Picture
-					src={import('~/assets/images/carousel/purple-octo-midjourney-2.png')}
-					class="mx-auto w-full z-0"
-					widths={[400, 768, 1480]}
-					sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
-					alt="Hero Image"
-					aspectRatio={1480 / 833}
-					loading="eager"
-					width={1480}
-					height={833}
-				/>
-        <div class="swiper-slide__content absolute bottom-0 left-0 px-8">
-					<Icon name="map-marker" className="w-10 h-auto max-h-10" />
-					<div class="group ml-2">
-						<h4 class="text-primary text-lg font-sans">Hello Octo</h4>
-						<p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
-					</div>
-				</div>
-			</div>
-		</div>
+  <div class="swiper w-full rounded-box border-l-8 border-b-8 border-accent relative">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      {
+        slides &&
+          slides.length > 0 &&
+          slides.map((slide) => {
+            const image = `/assets/images/carousel/${slide.image}`;
 
-		<div class="swiper-pagination"></div>
-	</div>
-	<div class="swiper-button-prev -translate-x-16">
-		<Icon name="left-pointer" className="w-32 h-auto" />
-	</div>
-	<div class="swiper-button-next  translate-x-16">
-		<Icon name="right-pointer" class="w-32 h-auto min-h-16" />
-	</div>
+            return (
+              <div class="swiper-slide">
+                <Picture
+									class="hidden md:block"
+                  src={image}
+                  sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
+                  alt="Hero Image"
+                  widths={[400, 768, 1480]}
+                  aspectRatio={1480 / 833}
+                  loading="eager"
+                  width={1480}
+                  height={833}
+                />
+
+								<Picture
+								  class="block md:hidden"
+                  src={image}
+                  sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
+                  alt="Hero Image"
+                  widths={[400, 768, 1480]}
+                  aspectRatio={833 / 1480}
+                  loading="eager"
+                  width={400}
+                />
+                <div class="swiper-slide__content absolute bottom-0 left-0 px-8">
+                  <Icon name="map-marker" className="w-10 h-auto max-h-10" />
+                  <div class="group ml-2">
+                    <h4>{slide.title}</h4>
+                    <p>{slide.description}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+      }
+    </div>
+
+    <div class="swiper-pagination"></div>
+  </div>
+  <div class="swiper-button-prev -translate-x-16">
+    <Icon name="left-pointer" className="w-32 h-auto" />
+  </div>
+  <div class="swiper-button-next translate-x-16">
+    <Icon name="right-pointer" class="w-32 h-auto min-h-16" />
+  </div>
 </div>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 
 <script type="module">
-	import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js';
+  import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js';
 
-	const swiper = new Swiper('.swiper', {
-		direction: 'horizontal',
-		loop: true,
+  const swiper = new Swiper('.swiper', {
+    direction: 'horizontal',
+    loop: true,
     effect: 'fade',
-		pagination: {
-			el: '.swiper-pagination',
-		},
+    pagination: {
+      el: '.swiper-pagination',
+    },
 
-		navigation: {
-			nextEl: '.swiper-button-next',
-			prevEl: '.swiper-button-prev',
-		},
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
 
-		scrollbar: {
-			el: '.swiper-scrollbar',
-		},
-	});
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });
 
-	window.addEventListener('load', () => {
-		swiper.update();
-	});
+  window.addEventListener('load', () => {
+    swiper.update();
+  });
 </script>

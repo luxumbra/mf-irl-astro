@@ -4,13 +4,13 @@
 
 @layer components {
   .tabs {
-    @apply flex flex-row !items-start relative space-x-6;
+    @apply flex flex-col md:flex-row !items-start relative md:space-x-6;
 
     [role='tablist'] {
-      @apply flex flex-col text-left m-0 p-0 space-y-6;
+      @apply flex flex-row md:flex-col text-left m-0 p-0 space-y-0 space-x-0 md:space-y-6 md:space-x-0;
 
       a {
-        @apply flex p-1 text-2xl uppercase text-left  text-accent opacity-30 border-b-[1px] border-accent transition-all duration-300 ease-in-out;
+        @apply flex p-1 text-xs md:text-lg 2xl:text-2xl uppercase text-left  text-accent opacity-30 border-b-[1px] border-accent transition-all duration-300 ease-in-out;
 
         &:hover {
           @apply text-primary opacity-60;
@@ -25,15 +25,19 @@
     }
 
     .tab-section {
-      @apply relative w-3/5 h-full min-h-fit overflow-hidden text-left  visible translate-x-0 scale-100 opacity-100;
+      @apply relative w-full md:w-3/5 h-full min-h-fit mt-3 md:mt-0 overflow-hidden text-left  visible translate-x-0 scale-100 opacity-100;
       @apply rounded-2xl transition-all duration-200 delay-100 ease-out;
 
       &[hidden] {
         @apply flex fixed invisible scale-95 opacity-0 -translate-x-20;
       }
 
+      &__content {
+
+      }
+
       h3 {
-        @apply text-2xl font-sans font-bold uppercase p-6 bg-gradient-to-r from-accent-alpha-60 to-transparent relative;
+        @apply text-sm md:text-lg 2xl:text-2xl font-sans font-bold uppercase p-3 md:p-4 2xl:p-6 bg-gradient-to-r from-accent-alpha-60 to-transparent relative;
 
         &::after {
           @apply block absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-accent via-accent to-transparent;

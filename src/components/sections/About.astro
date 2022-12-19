@@ -1,26 +1,36 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from 'astro-icon';
+import Section from '../core/Section.astro';
 ---
 
-<section id="about" class="section relative">
+<Section sectionId="about">
   <div class="section__content">
-    <h2>About the festival</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt,
-      mauris sit
-    </p>
-    <p>MetaFest is a crypto conference that isn’t a conference. Why? Because most people go to
-      conferences not to listen to talks, but to meet like-minded people, hang out with internet
-      friends & have fun. In the spirit of MetaGame, MetaFest is about much more than crypto -
-      its about anything from self-improvement to world-improvement. About self-organizing &
-      problem-solving.</p>
-      <p>Expect talks & workshops to range on anything from DAOs & ReFi over audio & visual
-      production to walking the tightrope, yoga & meditation. As opposed to normal festivals that
-      you leave & wake up depressed after, we want you to leave MetaFest inspired & with clear
-      goals of what you want to achieve & where you want to go.</p>
+    <div
+      x-show="shown"
+      x-bind:class="{ 'invisible': !shown }"
+      x-transition:enter="transition ease-out duration-500"
+      x-transition:enter-start="opacity-0 transform translate-y-8"
+      x-transition:enter-end="opacity-100 transform translate-y-0"
+      x-transition:leave="transition ease-in duration-500"
+      x-transition:leave-start="opacity-100 transform translate-y-0"
+      x-transition:leave-end="opacity-0 transform translate-y-8"
+    >
+      <h2>About the festival</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt, mauris sit</p>
+      <p>
+        MetaFest is a crypto conference that isn’t a conference. Why? Because most people go to conferences not to
+        listen to talks, but to meet like-minded people, hang out with internet friends & have fun. In the spirit of
+        MetaGame, MetaFest is about much more than crypto - its about anything from self-improvement to
+        world-improvement. About self-organizing & problem-solving.
+      </p>
+      <p>
+        Expect talks & workshops to range on anything from DAOs & ReFi over audio & visual production to walking the
+        tightrope, yoga & meditation. As opposed to normal festivals that you leave & wake up depressed after, we want
+        you to leave MetaFest inspired & with clear goals of what you want to achieve & where you want to go.
+      </p>
+    </div>
   </div>
   <div class="section__decoration absolute right-0 top-1/4 z-0">
     <Icon name="archway" className="w-40" />
   </div>
-</section>
-
+</Section>

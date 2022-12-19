@@ -1,0 +1,13 @@
+---
+const { sectionId } = Astro.props;
+---
+
+<section
+  x-data="{ shown: false }"
+  id={sectionId}
+  class="section relative"
+  x-intersect="shown = true"
+  x-intersect:leave="shown = false"
+>
+  <slot />
+</section>
