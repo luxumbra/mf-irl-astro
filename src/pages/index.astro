@@ -3,7 +3,7 @@ import { SITE } from '~/config.mjs';
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/PageLayout.astro';
 
-import Hero from '~/components/widgets/Hero.astro';
+import Hero, { HeroProps } from '~/components/widgets/Hero.astro';
 import About from '~/components/sections/About.astro';
 import Location from '~/components/sections/Location.astro';
 import Program from '~/components/sections/Program.astro';
@@ -18,10 +18,18 @@ const meta = {
 	description: SITE.description,
 	canonical: getCanonical(getHomePermalink()),
 };
+
+const heroCopy: HeroProps = {
+	titleLn1: 'A bit of a conference,',
+	titleLn2: 'a bit of a festival',
+	subtitle: '+ a shitload of fun',
+	ctaUrl: '/tickets',
+	dates: '16 - 18 August'
+}
 ---
 
 <Layout {meta}>
-	<Hero />
+	<Hero titleLn1={heroCopy.titleLn1} titleLn2={heroCopy.titleLn2} subtitle={heroCopy.subtitle} ctaUrl={heroCopy.ctaUrl} dates={heroCopy.dates} />
 	<About />
 	<Location />
 	<Program />

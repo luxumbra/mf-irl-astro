@@ -159,7 +159,7 @@
         }
 
         h4, p {
-          @apply text-base lg:text-lg text-primary translate-y-10 opacity-0 transition-all duration-300 delay-200 ease-in-out;
+          @apply text-sm lg:text-lg text-primary translate-y-10 opacity-0 transition-all duration-300 delay-200 ease-in-out;
         }
       }
 

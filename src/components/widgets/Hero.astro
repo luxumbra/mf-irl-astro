@@ -6,11 +6,22 @@ import { Icon } from 'astro-icon';
 import heroImageLg from '~/assets/images/hero/hero-castle-full.jpg';
 import heroImageSm from '~/assets/images/hero/hero-castle-sm.jpg';
 
----
+export interface HeroProps {
+	titleLn1: string;
+	titleLn2: string;
+	subtitle: string;
+	dates: string;
+	ctaUrl: string;
+}
 
-<script>
-	const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches;
-</script>
+const  {
+	titleLn1,
+	titleLn2,
+	subtitle,
+	dates,
+	ctaUrl
+} = Astro.props as HeroProps;
+---
 
 <div id="start" class="hero relative flex w-full h-screen max-h-[96vh] p-0 overflow-hidden"
 	x-data="{ shown: false }"
@@ -28,9 +39,9 @@ import heroImageSm from '~/assets/images/hero/hero-castle-sm.jpg';
 			x-transition:leave-start="opacity-100 transform translate-y-0"
 			x-transition:leave-end="opacity-0 transform translate-y-8"
 		>
-			<h1 class="hero__title">A bit of a conference,<br /> a bit of a festival</h1>
-			<p class="hero__subtitle">+ a shitload of fun</p>
-			<span class="hero__dates"><Icon name="ic:baseline-calendar-today" className="icon-gradient" /> <span class="rounded-lg bg-gradient-primary z-10">16 - 18 August</span></span>
+			<h1 class="hero__title">{titleLn1}<br /> {titleLn2}</h1>
+			<p class="hero__subtitle">{subtitle}</p>
+			<span class="hero__dates"><Icon name="ic:baseline-calendar-today" className="icon-gradient" /> <span class="rounded-lg bg-gradient-primary z-10">{dates}</span></span>
 		</div>
 		<div class="hero__content__secondary flex justify-end mt-3 md:mt-0">
 			<div class="cta invisible"
@@ -43,14 +54,23 @@ import heroImageSm from '~/assets/images/hero/hero-castle-sm.jpg';
 			x-transition:leave-start="opacity-100 transform translate-y-0"
 			x-transition:leave-end="opacity-0 transform translate-y-8"
 			>
-				<a href="/" class="cta__button flex items-center flex-row md:flex-col border-2 border-black font-sans text-black rounded-lg md:rounded-full bg-gradient-secondary overflow-hidden md:aspect-square py-2 px-5 md:p-6 text-xl md:text-inherit">
+				<a href={ctaUrl} class="cta__button flex items-center flex-row md:flex-col border-2 border-black font-sans text-black rounded-lg md:rounded-full bg-gradient-secondary overflow-hidden md:aspect-square py-2 px-5 md:p-6 text-xl md:text-inherit">
 					<span class="font-extrabold">LFG!</span>
 					<Icon name="mdi:arrow-right" className="w-8 h-8" />
 				</a>
 			</div>
 		</div>
 	</div>
-	<div class="hero__image absolute w-full h-full inset-0 overflow-hidden">
+	<div class="hero__image absolute w-full h-full inset-0 overflow-hidden invisible"
+	x-show="shown"
+	x-bind:class="{ 'invisible': !shown }"
+	x-transition:enter="transition ease-out duration-500 delay-300"
+	x-transition:enter-start="opacity-0"
+	x-transition:enter-end="opacity-100"
+	x-transition:leave="transition ease-in duration-500"
+	x-transition:leave-start="opacity-100"
+	x-transition:leave-end="opacity-0"
+	>
 		<Picture
 			src={heroImageSm}
 			class="w-full h-full lg:h-auto block md:hidden"

@@ -29,6 +29,14 @@ module.exports = {
 			screens: {
 				xxs: '400px',
 			},
+			transitionDelay: {
+				'0': '0ms',
+				'200': '200ms',
+				'400': '400ms',
+				'600': '600ms',
+				'800': '800ms',
+				'900': '900ms',
+			},
 		},
 	},
 	plugins: [formsPlugin, typographyPlugin, daisyui],
