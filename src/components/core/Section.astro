@@ -1,5 +1,9 @@
 ---
-const { sectionId } = Astro.props;
+export interface SectionProps {
+  sectionId: string;
+}
+
+const { sectionId } = Astro.props as SectionProps;
 ---
 
 <section

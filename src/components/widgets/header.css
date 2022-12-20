@@ -4,10 +4,10 @@
 
 @layer components {
   .header {
-    @apply fixed bg-accent-light-alpha-30 text-slate-900 text-center w-full z-20 transition-all duration-300 h-16 md:h-28;
+    @apply fixed bg-accent-light-alpha-30 text-slate-900 text-center w-full z-20 transition-all duration-300 h-16 md:h-20 3xl:h-28;
 
     &__primary {
-      @apply flex justify-around items-center max-w-7xl mx-auto py-1 md:py-4 transition-all duration-300;
+      @apply flex justify-around items-center max-w-4xl 3xl:max-w-7xl mx-auto py-1 3xl:py-4 transition-all duration-300;
     }
 
     .logo {
@@ -31,14 +31,14 @@
         @apply w-full justify-between;
 
         a {
-          @apply text-secondary text-lg font-sans uppercase inline-flex items-center px-4 transition-colors duration-200;
+          @apply text-secondary text-base 3xl:text-lg font-sans uppercase inline-flex items-center px-4 transition-colors duration-200;
           @apply hover:text-primary;
         }
       }
     }
 
     &--scrolled {
-      @apply backdrop-blur-lg h-12 md:h-20;
+      @apply backdrop-blur-lg h-12 md:h-16 3xl:h-20;
 
       .logo {
         @apply w-14 md:w-20

@@ -23,12 +23,12 @@ const  {
 } = Astro.props as HeroProps;
 ---
 
-<div id="start" class="hero relative flex w-full h-screen max-h-[96vh] p-0 overflow-hidden"
+<div id="start" class="hero relative flex w-full h-screen 2xl:max-h-[90vh] 3xl:max-h-[96vh] p-0 overflow-hidden"
 	x-data="{ shown: false }"
 	x-intersect="shown = true"
   x-intersect:leave="shown = false"
 	>
-	<div class="hero__content h-full w-full lg:w-10/12 px-3 py-16 lg:p-16 justify-end">
+	<div class="hero__content h-full w-full lg:w-10/12 px-3 py-16 2xl:p-16 justify-end">
 		<div class="hero__content__primary invisible"
 			x-show="shown"
 			x-bind:class="{ 'invisible': !shown }"
@@ -43,7 +43,7 @@ const  {
 			<p class="hero__subtitle">{subtitle}</p>
 			<span class="hero__dates"><Icon name="ic:baseline-calendar-today" className="icon-gradient" /> <span class="rounded-lg bg-gradient-primary z-10">{dates}</span></span>
 		</div>
-		<div class="hero__content__secondary flex justify-end mt-3 md:mt-0">
+		<div class="hero__content__secondary flex justify-end md:justify-start mt-3 md:mt-0">
 			<div class="cta invisible"
 			x-show="shown"
 			x-bind:class="{ 'invisible': !shown }"
@@ -54,9 +54,9 @@ const  {
 			x-transition:leave-start="opacity-100 transform translate-y-0"
 			x-transition:leave-end="opacity-0 transform translate-y-8"
 			>
-				<a href={ctaUrl} class="cta__button flex items-center flex-row md:flex-col border-2 border-black font-sans text-black rounded-lg md:rounded-full bg-gradient-secondary overflow-hidden md:aspect-square py-2 px-5 md:p-6 text-xl md:text-inherit">
-					<span class="font-extrabold">LFG!</span>
-					<Icon name="mdi:arrow-right" className="w-8 h-8" />
+				<a href={ctaUrl} class="cta__button flex items-center flex-row md:flex-col border-2 border-black font-sans text-black rounded-lg md:rounded-full bg-gradient-secondary overflow-hidden md:aspect-square py-2 px-5 md:p-6 text-xl 2xl:text-3xl md:text-inherit ">
+					<span class="font-extrabold text-black">LFG!</span>
+					<Icon name="mdi:arrow-right" className="w-8 h-8 text-black" />
 				</a>
 			</div>
 		</div>
@@ -88,7 +88,7 @@ const  {
 		class="w-full h-full lg:h-auto hidden md:block"
 		alt="Hero Image"
 		sizes="(max-width: 400px) 400px, (max-width: 767px) 768px, (max-width: 1479px) 1480px, 1920px"
-		widths={[400, 768, 1480]}
+		widths={[400, 768, 1366, 1920]}
 		aspectRatio={1480/833}
 		loading="eager"
 		width={1480}

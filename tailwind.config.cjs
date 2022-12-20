@@ -28,6 +28,8 @@ module.exports = {
 			},
 			screens: {
 				xxs: '400px',
+				'2xl': '1440px',
+				'3xl': '1920px',
 			},
 			transitionDelay: {
 				'0': '0ms',

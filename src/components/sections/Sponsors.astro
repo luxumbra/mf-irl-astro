@@ -10,7 +10,7 @@ const data = await fetch(`${host}/api/sponsors`).then((res) => res.json());
 const { sponsorList: sponsors } = data;
 ---
 
-<Section id="sponsors" class="section">
+<Section sectionId="sponsors" class="section">
   <div class="section__content invisible"
   x-show="shown"
   x-bind:class="{ 'invisible': !shown }"
