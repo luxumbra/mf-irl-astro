@@ -89,7 +89,7 @@
 
 
     &__dates {
-      @apply relative inline-flex items-center justify-between rounded-lg bg-gradient-primary font-sans text-white uppercase text-base md:text-lg p-0 font-black;
+      @apply relative inline-flex items-center justify-between rounded-lg bg-gradient-primary font-sans text-white uppercase text-base md:text-lg p-0 font-bold;
 
       svg {
         @apply  relative block w-10 h-auto mx-3 gradient-text stroke-accent;
@@ -109,6 +109,7 @@
         @apply absolute inset-[1px] rounded-lg bg-secondary-alpha-60;
       }
     }
+
   }
 
   .section {
@@ -218,10 +219,17 @@
     }
   }
 
+  .partners-list {
+    .partner {
+      background-image: url('../images/hammered-bg.png');
+
+      @apply bg-top bg-cover;
+    }
+  }
+
   .mobile-menu {
     @apply bg-gradient-to-br from-accent to-accent-alpha-60 text-slate-900 text-center backdrop-blur-xl;
   }
-}
 
 @layer utilities {
   .bg-gradient-primary {
@@ -250,4 +258,5 @@
   .icon-gradient {
     @apply stroke-current;
   }
+}
 }

@@ -42,7 +42,7 @@ const { sponsorList: sponsors } = data;
             sponsors.map((sponsor) => {
               const image = `/assets/images/sponsors/${sponsor.logo}`;
               return (
-                <li class="group rounded-2xl bg-gradient-to-br from-secondary via-secondary to-transparent text-center apsect-square lg:aspect-video hover:scale-105 transition-all duration-300 ease-in-out overflow-hidden">
+                <li class="partner group rounded-2xl bg-gradient-to-br from-secondary via-secondary to-transparent text-center w-full apsect-square lg:aspect-[196/117] hover:scale-105 transition-all duration-300 ease-in-out overflow-hidden">
                   <a
                     href={sponsor.url}
                     target="_blank"
@@ -54,9 +54,10 @@ const { sponsorList: sponsors } = data;
                         <Image
                           src={image}
                           alt={sponsor.name}
-                          class="group-hover:opacity-60 transition-opacity"
+                          class="group-hover:opacity-60 transition-opacity h-full w-auto"
                           height={150}
-                          aspectRatio="1:1"
+                          aspectRatio={1}
+                          fit="fill"
                         />
                       </div>
                     </div>
