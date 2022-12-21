@@ -19,7 +19,7 @@ import Section from "../core/Section.astro";
     x-transition:leave-end="opacity-0 transform translate-y-8">Location</h2>
     <p>
     </p>
-    <p class="max-w-fit md:max-w-2xl mx-auto md:ml-[33%] invisible"
+    <p class="max-w-fit md:max-w-2xl mx-auto md:ml-[33%] invisible text-center"
     x-show="shown"
     x-bind:class="{ 'invisible': !shown }"
     x-transition:enter="transition ease-out duration-500"
@@ -41,7 +41,7 @@ import Section from "../core/Section.astro";
       <Carousel />
   </div>
 
-  <div class="decoration absolute w-10/12 md:w-2/12 left-5 md:left-72 top-10 z-0 opacity-60 2xl:opacity-100">
+  <div class="decoration absolute w-10/12 md:w-2/12 left-5 md:left-72 4xl:left-[20vw] top-10 z-0 opacity-60 2xl:opacity-100">
     <Icon name="island" className="w-full" />
   </div>
 </Section>

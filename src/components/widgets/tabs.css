@@ -10,7 +10,7 @@
       @apply flex flex-row md:flex-col text-left m-0 p-0 space-y-0 space-x-0 md:space-y-6 md:space-x-0;
 
       a {
-        @apply flex p-1 text-xs md:text-lg 2xl:text-2xl uppercase text-left  text-accent opacity-30 border-b-[1px] border-accent transition-all duration-300 ease-in-out;
+        @apply flex p-1 text-xs md:text-lg 2xl:text-2xl uppercase text-left  text-accent opacity-60 border-b-[1px] border-accent transition-all duration-300 ease-in-out;
 
         &:hover {
           @apply text-primary opacity-60;
@@ -25,7 +25,7 @@
     }
 
     .tab-section {
-      @apply relative w-full md:w-3/5 h-full min-h-fit mt-3 md:mt-0 overflow-hidden text-left  visible translate-x-0 scale-100 opacity-100;
+      @apply relative w-full md:w-3/5 h-full min-h-fit flex-grow mt-3 md:mt-0 overflow-hidden text-left  visible translate-x-0 scale-100 opacity-100;
       @apply rounded-2xl transition-all duration-200 delay-100 ease-out;
 
       &[hidden] {
@@ -51,7 +51,7 @@
       }
 
       p {
-        @apply text-primary leading-relaxed mb-3 text-left;
+        @apply text-primary leading-relaxed mb-3 text-left 4xl:text-xl;
       }
     }
   }

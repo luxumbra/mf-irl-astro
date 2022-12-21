@@ -1,110 +1,50 @@
 ---
-import { Icon } from 'astro-icon';
-import { getHomePermalink, getRelativeLink } from '~/utils/permalinks';
+// import { Icon } from 'astro-icon';
+// import { getHomePermalink, getRelativeLink } from '~/utils/permalinks';
 
-const links = [
-	{
-		title: 'MetaFest',
-		items: [
-			{ title: 'About', href: '/#about' },
-			{ title: 'Location', href: '/#location' },
-			{ title: 'Program', href: '/#program' },
-			{ title: 'Speakers', href: '/#speakers' },
-			{ title: 'Sponsors', href: '/#sponsors' },
-		],
-	},
-	{
-		title: 'MetaGame',
-		items: [
-			{ title: 'Join', href: 'https://metagame.wtf', external: true },
-			{ title: 'Quests', href: 'https://metagame.wtf/quests', external: true  },
-			{ title: 'Players', href: 'https://metagame.wtf/players', external: true  },
-			{ title: 'Wiki', href: 'https://wiki.metagame.wtf', external: true  },
-			{ title: 'Forum', href: 'https://forum.metagame.wtf', external: true  },
-		],
-	},
-];
+// const links = [
+// 	{
+// 		title: 'MetaFest',
+// 		items: [
+// 			{ title: 'About', href: '/#about' },
+// 			{ title: 'Location', href: '/#location' },
+// 			{ title: 'Program', href: '/#program' },
+// 			{ title: 'Speakers', href: '/#speakers' },
+// 			{ title: 'Sponsors', href: '/#sponsors' },
+// 		],
+// 	},
+// 	{
+// 		title: 'MetaGame',
+// 		items: [
+// 			{ title: 'Join', href: 'https://metagame.wtf', external: true },
+// 			{ title: 'Quests', href: 'https://metagame.wtf/quests', external: true  },
+// 			{ title: 'Players', href: 'https://metagame.wtf/players', external: true  },
+// 			{ title: 'Wiki', href: 'https://wiki.metagame.wtf', external: true  },
+// 			{ title: 'Forum', href: 'https://forum.metagame.wtf', external: true  },
+// 		],
+// 	},
+// ];
 
-const social = [
-	{ label: 'Twitter', icon: 'tabler:brand-twitter', href: '#' },
-	{ label: 'Discord', icon: 'tabler:brand-discord', href: '#' },
-	{ label: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/metafam' },
-	{ label: 'RSS', icon: 'tabler:rss', href: getRelativeLink('/rss.xml') },
-];
+// const social = [
+// 	{ label: 'Twitter', icon: 'tabler:brand-twitter', href: '#' },
+// 	{ label: 'Discord', icon: 'tabler:brand-discord', href: '#' },
+// 	{ label: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/metafam' },
+// 	{ label: 'RSS', icon: 'tabler:rss', href: getRelativeLink('/rss.xml') },
+// ];
 ---
 
-<footer class="border-t border-gray-200 dark:border-slate-800 relative">
-	<div class="max-w-6xl mx-auto px-4 sm:px-6">
-		<div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
-			<div class="col-span-12 lg:col-span-4 text-left">
-				<div class="mb-2">
-					<a class="inline-block font-heading text-xl" href={getHomePermalink()}>MetaFest: IRL</a>
+<footer class="group absolute w-full h-96 bottom-0 left-0 z-10 ">
+	<div class="absolute bottom-0 left-0 w-full bg-transparent backdrop-blur-2xl group-hover:bg-secondary-alpha-60 transition duration-300 ease-in-out opacity-0 group-hover:opacity-100 invisible group-hover:visible">
+		<div class="max-w-6xl mx-auto h-auto px-4 sm:px-6">
+
+			<div class="md:flex md:items-center md:justify-between py-6 md:py-8">
+
+				<div class="text-sm text-white md:order-1">
+					&copy; 2022 MetaFam. All rights reserved.
 				</div>
-				<div class="text-sm text-gray-600">
-					<a
-						class="text-gray-600 hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
-						href="#">Terms</a
-					> ·
-					<a
-						class="text-gray-600 hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
-						href="#">Privacy Policy</a
-					>
+				<div class="text-sm text-white mr-4 dark:text-slate-400">
+					Made with 💚 by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://luxumbra.dev/"> luxumbra</a>·
 				</div>
-			</div>
-			{
-				links.map(({ title, items }) => (
-					<div class="col-span-6 md:col-span-3 lg:col-span-2">
-						<div class="text-gray-800 dark:text-gray-300 font-medium mb-2 text-left">{title}</div>
-						{items && Array.isArray(items) && items.length > 0 && (
-							<ul class="text-sm text-left">
-								{items.map(({ title, href, external }) => (
-									<li class="mb-2">
-										{external ? (
-											<a
-											class="text-gray-600 hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
-											href={href}
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											{title}
-										</a>
-										) : (
-										<a
-											class="text-gray-600 hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
-											href={href}
-										>
-											{title}
-										</a>
-										)}
-									</li>
-								))}
-							</ul>
-						)}
-					</div>
-				))
-			}
-		</div>
-		<div class="md:flex md:items-center md:justify-between py-6 md:py-8">
-			<ul class="flex mb-4 md:order-2 -ml-2 md:ml-4 md:mb-0">
-				{
-					social.map(({ label, href, icon }) => (
-						<li>
-							<a
-								class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-								aria-label={label}
-								href={href}
-							>
-								<Icon name={icon} class="w-5 h-5" />
-							</a>
-						</li>
-					))
-				}
-			</ul>
-			<div class="text-sm text-gray-600 md:order-1">
-				&copy; 2022 MetaFam. All rights reserved.
-			</div>
-			<div class="text-sm text-gray-700 mr-4 dark:text-slate-400">
-				Made with 💚 by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://luxumbra.dev/"> luxumbra</a>·
 			</div>
 		</div>
 	</div>

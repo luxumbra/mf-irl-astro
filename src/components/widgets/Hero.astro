@@ -28,7 +28,7 @@ const  {
 	x-intersect="shown = true"
   x-intersect:leave="shown = false"
 	>
-	<div class="hero__content h-full w-full lg:w-10/12 px-3 py-16 2xl:p-16 justify-end">
+	<div class="hero__content h-full w-full lg:w-10/12 px-3 py-16 2xl:px-16 2xl:py-32 justify-end">
 		<div class="hero__content__primary invisible"
 			x-show="shown"
 			x-bind:class="{ 'invisible': !shown }"
@@ -55,8 +55,7 @@ const  {
 			x-transition:leave-end="opacity-0 transform translate-y-8"
 			>
 				<a href={ctaUrl} class="cta__button relative group flex items-center justify-center flex-row md:flex-col border-2 border-black font-sans text-secondary rounded-lg md:rounded-full bg-gradient-secondary md:aspect-square py-2 px-5 text-xl 2xl:text-5xl space-y-0 leading-tight">
-					<span class="font-black font-sans text-secondary pt-1">LFG!</span>
-					<Icon name="arrow-right" className="w-8 h-8 md:w-14 md:h-14 text-secondary" />
+					<span class="font-black font-sans text-secondary ">LFG!</span>
 					<span class="group-hover:animate-ping inset-0 absolute w-full h-full rounded-full bg-gradient-primary opacity-25"></span>
 				</a>
 			</div>

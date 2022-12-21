@@ -19,7 +19,10 @@ module.exports = {
 				'accent-light-alpha-60': '#89c97c99',
 				'accent-light-alpha-90': '#89c97ce6',
 				'accent-alt': '#1f4a2cff',
-				'secondary-alt': '#1f282cff'
+				'secondary-alt': '#1f282cff',
+				tertiary: '#77c64e',
+				'tertiary-alpha-30': '#77c64e4d',
+				'tertiary-alpha-60': '#77c64e99',
 			},
 			fontFamily: {
 				sans: ['Montserrat', 'sans-serif'],
@@ -30,6 +33,7 @@ module.exports = {
 				xxs: '400px',
 				'2xl': '1440px',
 				'3xl': '1920px',
+				'4xl': '2560px',
 			},
 			transitionDelay: {
 				'0': '0ms',

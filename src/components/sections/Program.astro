@@ -1,20 +1,35 @@
 ---
-import Section from "../core/Section.astro";
-import Tabs from "../widgets/Tabs.astro";
+import Section from '../core/Section.astro';
+import Tabs from '../widgets/Tabs.astro';
 ---
-<Section sectionId="activities" class="section ">
-  <div class="section__content invisible"
-  x-show="shown"
-  x-bind:class="{ 'invisible': !shown }"
-  x-transition:enter="transition ease-out duration-500"
-  x-transition:enter-start="opacity-0 transform translate-y-8"
-  x-transition:enter-end="opacity-100 transform translate-y-0"
-  x-transition:leave="transition ease-in duration-500"
-  x-transition:leave-start="opacity-100 transform translate-y-0"
-  x-transition:leave-end="opacity-0 transform translate-y-8"
+
+<Section sectionId="activities" class="section">
+  <div
+    class="section__content invisible"
+    x-show="shown"
+    x-bind:class="{ 'invisible': !shown }"
+    x-transition:enter="transition ease-out duration-500"
+    x-transition:enter-start="opacity-0 transform translate-y-8"
+    x-transition:enter-end="opacity-100 transform translate-y-0"
+    x-transition:leave="transition ease-in duration-500"
+    x-transition:leave-start="opacity-100 transform translate-y-0"
+    x-transition:leave-end="opacity-0 transform translate-y-8"
   >
     <h2>Activities</h2>
-
-    <Tabs />
+    <div class="flex items-start flex-row flex-nowrap space-x-6">
+      <div class="w-1/4 text-left">
+        <p class="text-left 4xl:text-lg">
+          MetaFest will be a week long festival including everything you’d expect of a festival + everything you’d
+          expect of a conference + an optional week-long trip.
+        </p>
+        <p class="text-left 4xl:text-lg">
+          It will start with 4 days of warm-up followed by 3 days of the main event. Days will start with random
+          activities & workshops during daytime then transition into talks & music in the evening.
+        </p>
+      </div>
+      <div class="w-3/4 flex-shrink-0">
+        <Tabs />
+      </div>
+    </div>
   </div>
 </Section>

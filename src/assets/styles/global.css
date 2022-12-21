@@ -113,7 +113,7 @@
   }
 
   .section {
-    @apply bg-transparent min-h-[66vh] z-10 overflow-hidden;
+    @apply bg-transparent min-h-[66vh] z-10 overflow-hidden flex items-center;
 
     background-image: url('../images/section-divider.png');
     background-position: bottom center;
@@ -123,20 +123,16 @@
     &__content {
       @apply relative w-[90%] md:max-w-5xl 3xl:max-w-7xl mx-auto py-24 z-10 ;
 
-      div {
-        p {
-          @apply text-left md:text-center;
-        }
-      }
+
     }
 
     h2 {
-      @apply mb-6 font-bold text-center text-primary text-4xl xl:text-5xl;
+      @apply mb-6 font-bold text-center text-primary text-4xl xl:text-5xl 4xl:text-7xl;
     }
 
-    p {
+    /* p {
       @apply mb-3;
-    }
+    } */
 
     &__decoration {
       @apply z-0
@@ -238,6 +234,14 @@
 
   .bg-gradient-secondary {
     @apply bg-gradient-to-tr from-accent-alpha-60 to-primary-alpha-60;
+  }
+
+  .bg-gradient-tertiary {
+    @apply bg-gradient-to-t from-tertiary to-primary;
+  }
+
+  .bg-gradient-quarternary {
+    @apply bg-gradient-to-r from-[#f4f49299] to-[#89c97c99];
   }
 
   .text-gradient-primary {
