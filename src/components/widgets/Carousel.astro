@@ -4,9 +4,11 @@ import { Picture } from '@astrojs/image/components';
 import { Icon } from 'astro-icon';
 import { SITE } from '~/config.mjs';
 
-const host = import.meta.env.PUBLIC_HOSTNAME ?? SITE.origin;
+const host = import.meta.env.PUBLIC_HOSTNAME as string ?? SITE.origin as string;
+console.log('Carousel host', {host});
 
 const data = await fetch(`${host}/api/carousel`).then((res) => res.json());
+console.log('Carousel data', data);
 
 const { slides } = data;
 ---

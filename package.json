@@ -11,7 +11,8 @@
     "astro": "astro",
     "format": "prettier -w .",
     "lint:eslint": "eslint . --ext .js,.ts,.astro",
-    "subfont": "subfont -ir --no-fallbacks --silent --root dist"
+    "subfont": "subfont -ir --no-fallbacks --silent --root dist",
+    "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
     "@alpine-collective/toolkit": "^1.0.2",

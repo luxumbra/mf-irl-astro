@@ -20,7 +20,8 @@ export default defineConfig({
   trailingSlash: SITE.trailingSlash ? 'always' : 'never',
   output: 'static',
   server: {
-    port: 1144
+    port: 1144,
+    host: true
   },
   integrations: [
     tailwind({

@@ -6,12 +6,11 @@ export const SITE = {
 	trailingSlash: false,
 
 	title: 'MetaFest: IRL - MetaGame 🐙',
-	description: 'A bit of a conference, a bit of a festival + a shitload of fun',
+	description: 'A bit of a conference, a bit of a festival + a shitload of fun; Talks, workshops, games & music; a festival for DAOists & Regens',
 
 	googleAnalyticsId: 'G-4436889R1F',
 	googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
 };
-
 
 export const BLOG = {
 	disabled: false,
