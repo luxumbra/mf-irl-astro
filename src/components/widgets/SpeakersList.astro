@@ -1,8 +1,9 @@
 ---
 import { Image } from '@astrojs/image/components';
 import './tabs.css';
+import { SITE } from '~/config.mjs';
 
-const host = import.meta.env.PUBLIC_HOSTNAME ?? 'http://metafest.wtf' ;
+const host = import.meta.env.PUBLIC_HOSTNAME ?? SITE.origin;
 
 const data = await fetch(`${host}/api/speakers`).then((res) => res.json());
 

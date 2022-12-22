@@ -1,9 +1,10 @@
 ---
 import { Image } from '@astrojs/image/components';
 import Section from '../core/Section.astro';
+import { SITE } from '~/config.mjs';
 // import { Icon } from "astro-icon";
 
-const host = import.meta.env.PUBLIC_HOSTNAME ?? 'http://metafest.wtf' ;
+const host = import.meta.env.PUBLIC_HOSTNAME ?? SITE.origin;
 
 const data = await fetch(`${host}/api/sponsors`).then((res) => res.json());
 
