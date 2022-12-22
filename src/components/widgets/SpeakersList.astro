@@ -2,7 +2,7 @@
 import { Image } from '@astrojs/image/components';
 import './tabs.css';
 
-const host = 'http://localhost:1144';
+const host = import.meta.env.PUBLIC_HOSTNAME ?? 'http://metafest.wtf' ;
 
 const data = await fetch(`${host}/api/speakers`).then((res) => res.json());
 

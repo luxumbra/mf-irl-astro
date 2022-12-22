@@ -1,7 +1,7 @@
 export const SITE = {
 	name: 'MetaFest:IRL',
 
-	origin: 'https://metafest.metagame.wtf',
+	origin: 'https://metafest.wtf',
 	basePathname: '/',
 	trailingSlash: false,
 
