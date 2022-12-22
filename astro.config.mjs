@@ -6,6 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
+import glsl from 'vite-plugin-glsl';
 import { remarkReadingTime } from './src/utils/frontmatter.mjs';
 import { SITE } from './src/config.mjs';
 import alpinejs from "@astrojs/alpinejs";
@@ -57,6 +58,16 @@ export default defineConfig({
       alias: {
         '~': path.resolve(__dirname, './src')
       }
-    }
+    },
+    plugins: [
+      glsl({
+        include: [                   // Glob pattern, or array of glob patterns to import
+          '**/*.glsl', '**/*.wgsl',
+          '**/*.vert', '**/*.frag',
+          '**/*.vs', '**/*.fs'
+        ],
+        defaultExtension: 'glsl',
+      }),
+    ],
   }
 });

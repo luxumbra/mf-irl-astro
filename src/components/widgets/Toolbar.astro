@@ -5,7 +5,7 @@ import NavItem from '../atoms/NavItem.astro';
 
 <div
   class="toolbar fixed overflow-y-visible flex items-center justify-end w-full h-12 left-0 bottom-0 right-0 md:hidden z-50"
-  x-data="{ menuOpen: false, shown: false }"
+  x-data="{ menuOpen: false, shown: false, toggleMenu() { this.menuOpen = !this.menuOpen; } }"
   x-intersect="shown = true"
   x-intersect:leave="shown = false"
 >
@@ -22,7 +22,6 @@ import NavItem from '../atoms/NavItem.astro';
   >
   <button
     x-on:click="menuOpen = !menuOpen"
-    x-on:click.away="menuOpen = false"
     type="button"
     class="btn btn-ghost ml-1.5 text-primary hover:bg-transparent focus:outline-none focus:ring-2 focus:ring-primary-alpha-60 focus:bg-transparent p-0 items-center transition z-50"
     aria-label="Menu toggle"
@@ -43,6 +42,7 @@ import NavItem from '../atoms/NavItem.astro';
   <template x-teleport="body">
     <menu
       x-show="menuOpen"
+      x-ref="mobileMenu"
       x-trap.noscroll="menuOpen"
       x-bind:class="{'visible': menuOpen, 'invisible': !menuOpen}"
       class="mobile-menu flex flex-col space-y-5 py-32 justify-end items-center content-center fixed md:hidden h-screen w-screen inset-0 z-40 backdrop-blur-0"

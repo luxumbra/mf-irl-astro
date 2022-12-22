@@ -16,8 +16,8 @@ import Tabs from '../widgets/Tabs.astro';
     x-transition:leave-end="opacity-0 transform translate-y-8"
   >
     <h2>Activities</h2>
-    <div class="flex items-start flex-row flex-nowrap space-x-6">
-      <div class="w-1/4 text-left">
+    <div class="flex items-start flex-col xl:flex-row flex-nowrap xl:space-x-6">
+      <div class="w-full xl:w-1/4 text-left">
         <p class="text-left 4xl:text-lg">
           MetaFest will be a week long festival including everything you’d expect of a festival + everything you’d
           expect of a conference + an optional week-long trip.
@@ -27,7 +27,7 @@ import Tabs from '../widgets/Tabs.astro';
           activities & workshops during daytime then transition into talks & music in the evening.
         </p>
       </div>
-      <div class="w-3/4 flex-shrink-0">
+      <div class="w-full xl:w-3/4 xl:flex-shrink-0">
         <Tabs />
       </div>
     </div>

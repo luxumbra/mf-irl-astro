@@ -113,26 +113,24 @@
   }
 
   .section {
-    @apply bg-transparent min-h-[66vh] z-10 overflow-hidden flex items-center;
+    @apply bg-transparent py-20 xl:py-32 z-10 overflow-hidden flex items-center;
 
     background-image: url('../images/section-divider.png');
     background-position: bottom center;
     background-repeat: no-repeat;
     background-size: 50%;
 
+    @media (max-width: 1024px) {
+      background-size: 100%;
+    }
+
     &__content {
-      @apply relative w-[90%] md:max-w-5xl 3xl:max-w-7xl mx-auto py-24 z-10 ;
-
-
+      @apply relative w-[90%] md:max-w-5xl 3xl:max-w-7xl mx-auto z-10;
     }
 
     h2 {
       @apply mb-6 font-bold text-center text-primary text-4xl xl:text-5xl 4xl:text-7xl;
     }
-
-    /* p {
-      @apply mb-3;
-    } */
 
     &__decoration {
       @apply z-0
@@ -140,7 +138,7 @@
   }
 
   .carousel {
-    @apply relative w-full min-h-[66vh] md:min-h-[50vh] mt-16 md:mt-32 2xl:mt-52;
+    @apply relative w-full min-h-[66vh] md:min-h-[50vh] mt-16 md:mt-32 xl:mt-48;
 
     overflow: unset !important;
 

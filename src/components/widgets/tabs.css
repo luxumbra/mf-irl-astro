@@ -4,7 +4,7 @@
 
 @layer components {
   .tabs {
-    @apply flex flex-col md:flex-row !items-start relative md:space-x-6;
+    @apply flex flex-col md:flex-row !items-start relative xl:space-x-6;
 
     [role='tablist'] {
       @apply flex flex-row md:flex-col text-left m-0 p-0 space-y-0 space-x-0 md:space-y-6 md:space-x-0;

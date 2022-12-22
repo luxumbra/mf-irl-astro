@@ -10,7 +10,7 @@ import { Icon } from 'astro-icon';
   x-intersect:end="shown = false"
 >
   <div class="header__primary">
-    <menu class="header__menu--desktop hidden md:flex">
+    <menu class="header__menu--desktop hidden xl:flex">
       <a href="/#about">About</a>
       <a href="/#location">Location</a>
       <a href="/#activities">Activities</a>
@@ -22,7 +22,7 @@ import { Icon } from 'astro-icon';
       <a href="/#join">Join</a>
     </menu>
 
-    <a href="/#start" class="block md:hidden transition-all duration-200 invisible"
+    <a href="/#start" class="block xl:hidden transition-all duration-200 invisible"
       x-show="shown"
       x-bind:class="{ 'invisible': !shown, 'visible': shown }"
       x-transition:enter="transition ease-out duration-200 "

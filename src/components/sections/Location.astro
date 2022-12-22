@@ -17,7 +17,17 @@ import Section from "../core/Section.astro";
     x-transition:leave="transition ease-in duration-500"
     x-transition:leave-start="opacity-100 transform translate-y-0"
     x-transition:leave-end="opacity-0 transform translate-y-8">Location</h2>
-    <p>
+    <p class="font-bold invisible"
+    x-show="shown"
+    x-bind:class="{ 'invisible': !shown }"
+    x-transition:enter="transition ease-out duration-500"
+    x-transition:enter-start="opacity-0 transform translate-y-8"
+    x-transition:enter-end="opacity-100 transform translate-y-0"
+    x-transition:leave="transition ease-in duration-500"
+    x-transition:leave-start="opacity-100 transform translate-y-0"
+    x-transition:leave-end="opacity-0 transform translate-y-8"
+    >
+      Fort Punta Christo, Croatia
     </p>
     <p class="max-w-fit md:max-w-2xl mx-auto md:ml-[33%] invisible text-center"
     x-show="shown"
@@ -28,20 +38,26 @@ import Section from "../core/Section.astro";
     x-transition:leave="transition ease-in duration-500"
     x-transition:leave-start="opacity-100 transform translate-y-0"
     x-transition:leave-end="opacity-0 transform translate-y-8"
-    >We chose this epic, unique & historical location - a 200 years old
-      fortress called Punta Christo, built to defend the city of Pula & the
-      Austro-Hungarian empire’s massive navy feet harbored within.
-      City of Pula itself; from the Neolithic era pottery indicating settlement
-      between 6000-2000 BC, to pre-Christ era Roman monuments long
-      outlasting the empire, such as the 2000+ years old Roman
-      Amphitheatre, Augustus’ Temple & the Arch of Sergii.
-      Other than the rich history, beautiful sights & good food, the area
-      offer all kinds of activities, more below.</p>
+    >At the bottom of a peninsula called Istria, we chose this epic historical location - a 200 years old fortress called Punta Christo.
+
+    In the city of Pula itself: from Neolithic era artefacts indicating settlement between 6000-2000 BC, to the Roman Empire’s era monuments & architecture long outlasting the empire.
+
+    Other than rich history, beautiful sights & good food,
+    the area offers all kinds of activities - more below!</p>
 
       <Carousel />
   </div>
 
-  <div class="decoration absolute w-10/12 md:w-2/12 left-5 md:left-72 4xl:left-[20vw] top-10 z-0 opacity-60 2xl:opacity-100">
+  <div class="decoration absolute w-10/12 md:w-2/12 xl:w-3/12 2xl:w-2/12 left-5 md:left-72 xl:left-32 2xl:left-72 4xl:left-[20vw] top-16 z-0 opacity-60 2xl:opacity-100 invisible"
+  x-show="shown"
+  x-bind:class="{ 'invisible': !shown }"
+  x-transition:enter="transition ease-out duration-500"
+  x-transition:enter-start="opacity-08"
+  x-transition:enter-end="opacity-100"
+  x-transition:leave="transition ease-in duration-500"
+  x-transition:leave-start="opacity-1000"
+  x-transition:leave-end="opacity-0"
+  >
     <Icon name="island" className="w-full" />
   </div>
 </Section>

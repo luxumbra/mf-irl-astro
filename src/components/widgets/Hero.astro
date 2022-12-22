@@ -28,7 +28,7 @@ const  {
 	x-intersect="shown = true"
   x-intersect:leave="shown = false"
 	>
-	<div class="hero__content h-full w-full lg:w-10/12 px-3 py-16 2xl:px-16 2xl:py-32 justify-end">
+	<div class="hero__content h-full w-full lg:w-10/12 px-3 py-32 2xl:px-16 2xl:py-32 justify-end">
 		<div class="hero__content__primary invisible"
 			x-show="shown"
 			x-bind:class="{ 'invisible': !shown }"
@@ -73,7 +73,7 @@ const  {
 	>
 		<Picture
 			src={heroImageSm}
-			class="w-full h-full block md:hidden"
+			class="w-full h-full block xl:hidden"
 			alt="Hero Image"
 			sizes="(max-width: 400px) 400px, (max-width: 767px) 768px, 1280px"
 			widths={[400, 768, 1280]}
@@ -81,11 +81,12 @@ const  {
 			loading="eager"
 			width={768}
 			formats={['webp', 'jpeg']}
+			fit="cover"
 		/>
 
 		<Picture
 		src={heroImageLg}
-		class="w-full h-full hidden md:block"
+		class="w-full h-full hidden xl:block"
 		alt="Hero Image"
 		sizes="(max-width: 400px) 400px, (max-width: 767px) 768px, (max-width: 1479px) 1480px, 1920px"
 		widths={[400, 768, 1366, 1440, 1920]}

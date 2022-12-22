@@ -4,7 +4,7 @@ import Section from '../core/Section.astro';
 ---
 
 <Section sectionId="about">
-  <div class="section__content">
+  <div class="section__content flex justify-center">
     <div
       x-show="shown"
       x-bind:class="{ 'invisible': !shown }"
@@ -16,18 +16,18 @@ import Section from '../core/Section.astro';
       x-transition:leave-end="opacity-0 transform translate-y-8"
     >
       <h2>About the festival</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt, mauris sit</p>
-      <p>
-        MetaFest is a crypto conference that isn’t a conference. Why? Because most people go to conferences not to
-        listen to talks, but to meet like-minded people, hang out with internet friends & have fun. In the spirit of
-        MetaGame, MetaFest is about much more than crypto - its about anything from self-improvement to
-        world-improvement. About self-organizing & problem-solving.
-      </p>
-      <p>
-        Expect talks & workshops to range on anything from DAOs & ReFi over audio & visual production to walking the
-        tightrope, yoga & meditation. As opposed to normal festivals that you leave & wake up depressed after, we want
-        you to leave MetaFest inspired & with clear goals of what you want to achieve & where you want to go.
-      </p>
+      <p>Talks, workshops, games & music; a festival for DAOists & Regens.</p>
+      <div class="max-w-4xl">
+      <p> A conference that’s not a conference!</p>
+
+      <p>Why?</p>
+
+      <p>‘Cuz most people go to conferences to meet like-minded people, hang out with internet friends & have fun - not just listen to talks.</p>
+
+      <p>Topics will be ranging anywhere from self-organization & problem-solving to self-improvement & world-improvement.</p>
+
+      <p>Yep! Anything from DAOs & ReFi to walking the tightrope, juggling & guided meditation.</p>
+    </div>
     </div>
   </div>
   <div class="section__decoration absolute opacity-50 md:opacity-100 right-0 top-36 md:top-1/4 z-0">

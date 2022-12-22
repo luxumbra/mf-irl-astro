@@ -1,0 +1,92 @@
+---
+import Icon from 'astro-icon';
+---
+
+<!-- <div class="animated-plants">
+
+  <div class="animated-plants__plant-group__001 absolute w-[300px] h-auto top-[25%]  rotate-[20deg]">
+    <Icon name="plants/fern2-1-1" class="fixed h-auto w-full animate-wave origin-bottom" />
+    <Icon name="plants/fern2-2" class="fixed top-64 left-0 h-auto w-full animate-wave2 origin-bottom" />
+  </div>
+
+  <div class="animated-plants__plant-group__002 absolute w-[300px] h-auto top-[35%]  rotate-[20deg]">
+    <Icon name="plants/fern7" class="fixed h-auto w-full animate-wave origin-bottom" />
+    <Icon name="plants/fern6" class="fixed top-48 -left-20 h-auto w-full animate-wave2 origin-bottom" />
+  </div>
+
+
+  <div class="animated-plants__plant-group__003 absolute w-screen h-[33vh] top-[35%] border-2">
+    <Icon name="plants/circle-01" class="fixed h-auto w-[50px] left-[10%] animate-float origin-bottom" />
+    <Icon name="plants/circle-02" class="fixed h-auto w-[50px] top-[15%] right-[10%] animate-float origin-bottom" />
+    <Icon name="plants/circle-02" class="fixed h-auto w-[50px] top-[25%] right-[13%] animate-float2 origin-bottom" />
+  </div>
+</div> -->
+<canvas class="fixed top-0 left-0 w-screen h-full z-50 pointer-events-none"></canvas>
+
+<script>
+  import * as THREE from 'three';
+  import * as dat from 'lil-gui'
+  import firefliesVertexShader from '../../three/shaders/fireflies/vertex.glsl';
+  import firefliesFragmentShader from '../../three/shaders/fireflies/fragment.glsl';
+  const gui = new dat.GUI();
+  const body = document.querySelector('body');
+  const canvas = document.querySelector('canvas');
+  const scene = new THREE.Scene();
+  const firefliesGeometry = new THREE.BufferGeometry();
+
+  const firefliesCount = 100;
+  const positionArray = new Float32Array(firefliesCount * 3);
+  const sizes = {
+    width: body.offsetWidth,
+    height: body.offsetHeight,
+  };
+
+  console.log(sizes);
+
+  const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
+  camera.position.z = 3;
+  scene.add(camera);
+
+  for (let i = 0; i < firefliesCount; i++) {
+    positionArray[i * 3 + 0] = Math.random() * 4;
+    positionArray[i * 3 + 1] = Math.random() * 4;
+    positionArray[i * 3 + 2] = Math.random() * 4;
+  }
+
+  firefliesGeometry.setAttribute('position', new THREE.BufferAttribute(positionArray, 3));
+
+  const firefliesMaterial = new THREE.ShaderMaterial({
+    uniforms:
+    {
+        uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
+        uSize: { value: 200 }
+    },
+    vertexShader: firefliesVertexShader,
+    fragmentShader: firefliesFragmentShader,
+    transparent: true,
+})
+
+  const fireflies = new THREE.Points(firefliesGeometry, firefliesMaterial);
+  scene.add(fireflies);
+
+  const renderer = new THREE.WebGLRenderer({
+    alpha: true,
+    canvas: canvas,
+  });
+
+  renderer.setSize(sizes.width, sizes.height);
+  gui.add(firefliesMaterial.uniforms.uSize, 'value').min(0).max(500).step(1).name('firefliesSize')
+  window.addEventListener('resize', () =>
+{
+
+    firefliesMaterial.uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2)
+})
+
+  const tick = () => {
+    fireflies.rotation.y += 0.001;
+    renderer.render(scene, camera);
+    window.requestAnimationFrame(tick);
+  };
+
+  tick();
+</script>

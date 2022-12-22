@@ -3,14 +3,14 @@ import CallToAction from "~/components/widgets/CallToAction.astro";
 import Plants from "../widgets/Plants.astro";
 ---
 
-<section id="join" class="section bg-none relative  3xl:pb-64 4xl:pb-[35vh]"
+<section id="join" class="section bg-none relative xl:py-16  3xl:pb-64 4xl:pb-[35vh]"
   x-data="{shown: false}"
   x-intersect="shown = true"
   x-intersect:leave="shown = false"
 >
-  <div class="section__content relative z-20 pointer-events-none">
-    <h2
-    class="invisible"
+  <div class="section__content relative z-20 mb-32 pointer-events-none">
+    <h4
+    class="text-4xl 3xl:text-6xl font-heading invisible xl:mb-48 2xl:mb-32"
     x-show="shown"
     x-bind:class="{ 'invisible': !shown, 'visible': shown }"
     x-transition:enter="transition ease-out duration-300"
@@ -19,7 +19,7 @@ import Plants from "../widgets/Plants.astro";
     x-transition:leave="transition ease-in duration-300"
     x-transition:leave-start="opacity-100 transform translate-y-0"
     x-transition:leave-end="opacity-0 transform translate-y-8"
-    >MetaFest, steadfast and manifest the future.</h2>
+    >MetaFest, steadfast and manifest the future.</h4>
 
     <CallToAction />
 
