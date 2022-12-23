@@ -4,10 +4,8 @@ import Section from '../core/Section.astro';
 import { SITE } from '~/config.mjs';
 
 const host = import.meta.env.PUBLIC_HOSTNAME as string ?? SITE.origin as string;
-console.log('Sponsors host', host);
 
 const data = await fetch(`${host}/api/sponsors`).then((res) => res.json());
-console.log('Sponsors data', data);
 
 const { sponsorList: sponsors } = data;
 ---

@@ -4,10 +4,8 @@ import './tabs.css';
 import { SITE } from '~/config.mjs';
 
 const host = import.meta.env.PUBLIC_HOSTNAME as string ?? SITE.origin as string;
-console.log('Speakers host', host);
 
 const data = await fetch(`${host}/api/speakers`).then((res) => res.json());
-console.log('Speakers data', data);
 
 const { speakers } = data;
 ---
