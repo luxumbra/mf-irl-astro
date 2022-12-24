@@ -10,13 +10,7 @@ const ThreeD = () => {
   return (
     <div className="fixed top-0 left-0 w-screen h-full z-[2] pointer-events-none">
       <Canvas
-        className='w-full h-full pointer-events-none'
-        camera={{
-          fov: 45,
-          near: 0.1,
-          far: 200,
-          position: [-4, 3, 6],
-        }}
+        className='fixed top-0 left-0 w-screen h-full pointer-events-none bg-secondary'
       >
         <Experience />
       </Canvas>
