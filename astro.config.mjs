@@ -10,8 +10,11 @@ import glsl from 'vite-plugin-glsl';
 import { remarkReadingTime } from './src/utils/frontmatter.mjs';
 import { SITE } from './src/config.mjs';
 import alpinejs from "@astrojs/alpinejs";
+import react from "@astrojs/react";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const whenExternalScripts = (items = []) => SITE.googleAnalyticsId ? Array.isArray(items) ? items.map(item => item()) : [items()] : [];
+
+// https://astro.build/config
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,26 +26,19 @@ export default defineConfig({
     port: 1144,
     host: true
   },
-  integrations: [
-    tailwind({
+  integrations: [tailwind({
     config: {
       applyBaseStyles: false
     }
-    }),
-    sitemap(),
-    image({
-      serviceEntryPoint: '@astrojs/image/sharp'
-    }),
-    mdx(),
-    ...whenExternalScripts(() => partytown({
+  }), sitemap(), image({
+    serviceEntryPoint: '@astrojs/image/sharp'
+  }), mdx(), ...whenExternalScripts(() => partytown({
     config: {
       forward: ['dataLayer.push']
     }
-    })),
-    alpinejs()
-  ],
+  })), alpinejs(), react()],
   experimental: {
-    integrations: true,
+    integrations: true
   },
   markdown: {
     remarkPlugins: [remarkReadingTime],
@@ -51,8 +47,8 @@ export default defineConfig({
   define: {
     global: "globalThis",
     process: {
-      env: "development",
-    },
+      env: "development"
+    }
   },
   vite: {
     resolve: {
@@ -60,15 +56,11 @@ export default defineConfig({
         '~': path.resolve(__dirname, './src')
       }
     },
-    plugins: [
-      glsl({
-        include: [                   // Glob pattern, or array of glob patterns to import
-          '**/*.glsl', '**/*.wgsl',
-          '**/*.vert', '**/*.frag',
-          '**/*.vs', '**/*.fs'
-        ],
-        defaultExtension: 'glsl',
-      }),
-    ],
+    plugins: [glsl({
+      include: [
+      // Glob pattern, or array of glob patterns to import
+      '**/*.glsl', '**/*.wgsl', '**/*.vert', '**/*.frag', '**/*.vs', '**/*.fs'],
+      defaultExtension: 'glsl'
+    })]
   }
 });
