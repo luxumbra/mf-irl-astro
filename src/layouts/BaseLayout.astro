@@ -22,12 +22,12 @@ const { meta = {} } = Astro.props;
 		<Toolbar />
 		<slot />
 		<Footer />
+		<div id="root" class="fixed top-0 left-0 w-screen h-full overflow-hidden" />
 		<BasicScripts />
 		<style is:global>
 			img {
 				content-visibility: auto;
 			}
 		</style>
-		<div class="page-bg" />
 	</body>
 </html>

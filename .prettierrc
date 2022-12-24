@@ -7,11 +7,14 @@
   "useTabs": false,
   "overrides": [
     {
+      "files": "**/*.astro",
+      "options": { "parser": "astro" }
+    },
+    {
       "files": [".*", "*.json", "*.md", "*.toml", "*.yml"],
       "options": {
         "useTabs": false
       }
     }
-  ],
-  "parser": "vue"
+  ]
 }
