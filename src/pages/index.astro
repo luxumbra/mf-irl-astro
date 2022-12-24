@@ -9,10 +9,8 @@ import Location from '~/components/sections/Location.astro';
 import Program from '~/components/sections/Program.astro';
 import Speakers from '~/components/sections/Speakers.astro';
 import Sponsors from '~/components/sections/Sponsors.astro';
-// import GettingThere from '~/components/sections/GettingThere.astro';
-// import ByWhom from '~/components/sections/ByWhom.astro';
 import Join from '~/components/sections/Join.astro';
-// import Canvas from '~/components/widgets/Canvas.astro';
+import ThreeD from '~/components/widgets/ThreeD';
 
 const meta = {
 	title: SITE.title,
@@ -37,5 +35,5 @@ const heroCopy: HeroProps = {
 	<Speakers />
 	<Sponsors />
 	<Join />
-	<!-- <Canvas /> -->
+	<ThreeD client:load />
 </Layout>
