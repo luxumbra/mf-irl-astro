@@ -15,12 +15,12 @@ export const get: APIRoute = async function get ({ params, request }) {
         {
           title: "Hello Octo",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-          image: "purple-octo-midjourney.png"
+          image: "8.jpg"
         },
         {
           title: "Hello Anon",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-          image: "purple-octo-midjourney-2.png"
+          image: "13.jpg"
         },
       ],
     }),
