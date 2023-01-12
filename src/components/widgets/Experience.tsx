@@ -184,7 +184,7 @@ function Experience() {
           </Center>
         </R3FSceneSection>
 
-        <R3FSceneSection name="SectionTwo" count={1}>
+        {/* <R3FSceneSection name="SectionTwo" count={1}>
           <Float
             position={[0, 0, 0]}
             floatingRange={[0.1, 1]}
@@ -199,7 +199,7 @@ function Experience() {
             </mesh>
 
           </Float>
-        </R3FSceneSection>
+        </R3FSceneSection> */}
       </Suspense>
     </>
   )

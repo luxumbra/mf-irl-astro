@@ -24,7 +24,6 @@ export default defineConfig({
   output: 'static',
   server: {
     port: 1144,
-    host: true
   },
   integrations: [tailwind({
     config: {
