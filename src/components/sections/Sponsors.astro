@@ -1,13 +1,59 @@
 ---
 import { Image } from '@astrojs/image/components';
 import Section from '~/components/core/Section.astro';
-import { SITE } from '~/config.mjs';
 
-const host = (import.meta.env.PUBLIC_HOSTNAME as string) ?? (SITE.origin as string);
-
-const data = await fetch(`${host}/api/sponsors.json`).then((res) => res.json());
-
-const { sponsorList: sponsors } = data;
+const sponsors = [
+        {
+          name: "MetaCartel",
+          logo: "metacartel.png",
+          url: "https://metacartel.xyz"
+        },
+        {
+          name: "MetaFam",
+          logo: "metagame.png",
+          url: "https://metagame.wtf"
+        },
+        {
+          name: 'Sponsor 1',
+          logo: 'metacartel.png',
+          url: 'https://google.com',
+        },
+        {
+          name: 'Sponsor 2',
+          logo: 'metagame.png',
+          url: 'https://google.com',
+        },
+        {
+          name: 'Sponsor 1',
+          logo: 'metacartel.png',
+          url: 'https://google.com',
+        },
+        {
+          name: 'Sponsor 2',
+          logo: 'metagame.png',
+          url: 'https://google.com',
+        },
+        {
+          name: 'Sponsor 1',
+          logo: 'metacartel.png',
+          url: 'https://google.com',
+        },
+        {
+          name: 'Sponsor 2',
+          logo: 'metagame.png',
+          url: 'https://google.com',
+        },
+        {
+          name: 'Sponsor 1',
+          logo: 'metacartel.png',
+          url: 'https://google.com',
+        },
+        {
+          name: 'Sponsor 2',
+          logo: 'metagame.png',
+          url: 'https://google.com',
+        },
+      ]
 ---
 
 <Section sectionId="sponsors">

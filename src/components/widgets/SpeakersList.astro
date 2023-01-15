@@ -1,13 +1,39 @@
 ---
 import { Image } from '@astrojs/image/components';
 import './tabs.css';
-import { SITE } from '~/config.mjs';
 
-const host = import.meta.env.PUBLIC_HOSTNAME as string ?? SITE.origin as string;
-
-const data = await fetch(`${host}/api/speakers.json`).then((res) => res.json());
-
-const { speakers } = data;
+const speakers = [
+        {
+          name: "Speaker 1",
+          image: "purple-octo-midjourney-2.png",
+          url: "https://metagame.wtf/players/luxumbra"
+        },
+        {
+          name: "Speaker 2",
+          image: "purple-octo-midjourney.png",
+          url: "https://metagame.wtf/players/luxumbra"
+        },
+        {
+          name: "Speaker 3",
+          image: "purple-octo-midjourney-2.png",
+          url: "https://metagame.wtf/players/luxumbra"
+        },
+        {
+          name: "Speaker 1",
+          image: "purple-octo-midjourney-2.png",
+          url: "https://metagame.wtf/players/luxumbra"
+        },
+        {
+          name: "Speaker 2",
+          image: "purple-octo-midjourney.png",
+          url: "https://metagame.wtf/players/luxumbra"
+        },
+        {
+          name: "Speaker 3",
+          image: "purple-octo-midjourney-2.png",
+          url: "https://metagame.wtf/players/luxumbra"
+        },
+      ]
 ---
 
 

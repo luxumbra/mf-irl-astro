@@ -5,6 +5,7 @@ export const get: APIRoute = async function get ({ params, request }) {
   return {
     body: JSON.stringify({
       url: SITE.origin,
+      path: new URL(request.url).pathname,
       message: 'Welcome to the Carousel api!',
       slides: [
         {
@@ -18,6 +19,11 @@ export const get: APIRoute = async function get ({ params, request }) {
           image: "8.jpg"
         },
         {
+          title: "How good does this look?!",
+          description: "This venue has witnessed some amazing events. MetaFest: IRL is gonna be one of them! Don't miss it",
+          image: "9.jpg"
+        },
+        {
           title: "A shit ton of fun",
           description: "The surrounding area of Pula & the Kristo peninsula is stunning and full of places to explore and things to do. ",
           image: "13.jpg"
@@ -29,7 +35,7 @@ export const get: APIRoute = async function get ({ params, request }) {
         },
         {
           title: "How clear is this water?!",
-          description: "",
+          description: "Go diving off the rocks around the coastline. ",
           image: "12.jpg"
         },
       ],

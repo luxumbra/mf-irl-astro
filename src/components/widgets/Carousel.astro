@@ -1,13 +1,47 @@
 ---
 import { Picture } from '@astrojs/image/components';
 import { Icon } from 'astro-icon';
-import { SITE } from '~/config.mjs';
+// import { SITE } from '~/config.mjs';
+// import slides from '~/data/carousel.json';
 
-const host = import.meta.env.PUBLIC_HOSTNAME as string ?? SITE.origin as string;
+// const host = import.meta.env.PUBLIC_HOSTNAME as string ?? SITE.origin as string;
 
-const data = await fetch(`${host}/api/carousel.json`).then((res) => res.json());
+// const data = await fetch(`${host}/api/carousel.json`).then((res) => res.json());
 
-const { slides } = data;
+// const { slides } = data;
+
+const slides = [
+  {
+    "title": "Fort Punta Christo",
+    "description": "The fortress overlooks the entrance to Pula Bay and out to Muzil and the Brijuni islands from the other side and has been host to a bunch of great festivals over the years.",
+    "image": "hero-castle-lg.jpg"
+  },
+  {
+    "title": "Enjoy live music",
+    "description": "There will be a great line-up featuring artists from inside & outside the Web3 community. Where better to see them than this amazing & unique venue.",
+    "image": "8.jpg"
+  },
+  {
+    "title": "How good does this look?!",
+    "description": "This venue has witnessed some amazing events. MetaFest: IRL is gonna be one of them! Don't miss it",
+    "image": "9.jpg"
+  },
+  {
+    "title": "A shit ton of fun",
+    "description": "The surrounding area of Pula & the Kristo peninsula is stunning and full of places to explore and things to do. ",
+    "image": "13.jpg"
+  },
+  {
+    "title": "... and shit tons more fun",
+    "description": "Hire quads, kayaks and other stuff and go get off the beaten track. ",
+    "image": "10.jpg"
+  },
+  {
+    "title": "How clear is this water?!",
+    "description": "Go diving off the rocks around the coastline. ",
+    "image": "12.jpg"
+  }
+]
 ---
 
 <!-- Slider main container -->
