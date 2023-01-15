@@ -147,7 +147,7 @@
       @apply transition-all duration-300 ease-in-out;
 
       &__content {
-        @apply text-left pb-10 flex items-center content-center bg-gradient-to-t from-accent-alt via-accent-alt to-transparent w-full;
+        @apply text-left py-10 flex items-center content-center bg-gradient-to-t from-accent-alt to-transparent w-full;
 
         svg {
           @apply translate-y-10 opacity-0 transition-all duration-300 delay-200 ease-in-out;
