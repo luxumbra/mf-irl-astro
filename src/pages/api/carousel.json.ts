@@ -22,6 +22,16 @@ export const get: APIRoute = async function get ({ params, request }) {
           description: "The surrounding area of Pula & the Kristo peninsula is stunning and full of places to explore and things to do. ",
           image: "13.jpg"
         },
+        {
+          title: "... and shit tons more fun",
+          description: "Hire quads, kayaks and other stuff and go get off the beaten track. ",
+          image: "10.jpg"
+        },
+        {
+          title: "How clear is this water?!",
+          description: "",
+          image: "12.jpg"
+        },
       ],
     }),
   }

@@ -5,7 +5,7 @@ import { SITE } from '~/config.mjs';
 
 const host = (import.meta.env.PUBLIC_HOSTNAME as string) ?? (SITE.origin as string);
 
-const data = await fetch(`${host}/api/sponsors`).then((res) => res.json());
+const data = await fetch(`${host}/api/sponsors.json`).then((res) => res.json());
 
 const { sponsorList: sponsors } = data;
 ---
