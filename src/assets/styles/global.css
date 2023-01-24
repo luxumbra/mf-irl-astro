@@ -43,7 +43,7 @@
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    @apply bg-slate-300 dark:bg-primary transition-colors duration-300 ease-in-out opacity-70 ;
+    @apply bg-slate-300 dark:bg-primary transition-colors duration-300 ease-in-out opacity-70;
 
     border-radius: 2px;
     box-shadow: 0 0 5px rgb(0 0 0 / 70%);
@@ -51,7 +51,7 @@
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-zinc-500 dark:bg-accent
+    @apply bg-zinc-500 dark:bg-accent;
   }
 }
 
@@ -87,12 +87,11 @@
       @apply z-0;
     }
 
-
     &__dates {
       @apply relative inline-flex items-center justify-between rounded-lg bg-gradient-primary font-sans text-white uppercase text-base md:text-lg p-0 font-bold;
 
       svg {
-        @apply  relative block w-10 h-auto mx-3 gradient-text stroke-accent;
+        @apply relative block w-10 h-auto mx-3 gradient-text stroke-accent;
 
         path {
           path: currentColor;
@@ -109,7 +108,6 @@
         @apply absolute inset-[1px] rounded-lg bg-secondary-alpha-60;
       }
     }
-
   }
 
   .section {
@@ -126,6 +124,30 @@
 
     &__content {
       @apply relative w-[90%] md:max-w-5xl 3xl:max-w-7xl mx-auto z-10;
+
+      &--alt {
+        @apply relative w-[90%] md:max-w-5xl 3xl:max-w-[75%] mx-auto z-10 ;
+
+        p {
+
+          &:first-of-type {
+            @apply text-xl;
+          }
+        }
+
+        ul {
+          @apply text-left;
+
+          li {
+            @apply flex justify-start items-start space-x-5 mb-3 text-accent;
+
+            &::before {
+              content: '✅';
+              @apply w-3 h-3 mr-5 bg-accent;
+            }
+          }
+        }
+      }
     }
 
     h2 {
@@ -133,7 +155,7 @@
     }
 
     &__decoration {
-      @apply z-0
+      @apply z-0;
     }
   }
 
@@ -153,20 +175,22 @@
           @apply translate-y-10 opacity-0 transition-all duration-300 delay-200 ease-in-out;
         }
 
-        h4, p {
+        h4,
+        p {
           @apply text-sm lg:text-lg text-primary translate-y-10 opacity-0 transition-all duration-300 delay-200 ease-in-out;
         }
       }
 
       &-active {
         .swiper-slide__content {
-          h4, p, svg {
+          h4,
+          p,
+          svg {
             @apply translate-y-0 opacity-100;
           }
         }
       }
     }
-
 
     .swiper-button-next,
     .swiper-button-prev {
@@ -232,40 +256,40 @@
     @apply bg-gradient-to-br from-accent to-accent-alpha-60 text-slate-900 text-center backdrop-blur-xl;
   }
 
-@layer utilities {
-  .bg-gradient-primary {
-    @apply bg-gradient-to-r from-accent-alpha-60 to-primary-alpha-60;
-  }
+  @layer utilities {
+    .bg-gradient-primary {
+      @apply bg-gradient-to-r from-accent-alpha-60 to-primary-alpha-60;
+    }
 
-  .bg-gradient-secondary {
-    @apply bg-gradient-to-tr from-accent-alpha-60 to-primary-alpha-60;
-  }
+    .bg-gradient-secondary {
+      @apply bg-gradient-to-tr from-accent-alpha-60 to-primary-alpha-60;
+    }
 
-  .bg-gradient-tertiary {
-    @apply bg-gradient-to-t from-tertiary to-primary;
-  }
+    .bg-gradient-tertiary {
+      @apply bg-gradient-to-t from-tertiary to-primary;
+    }
 
-  .bg-gradient-quarternary {
-    @apply bg-gradient-to-r from-[#f4f49299] to-[#89c97c99];
-  }
+    .bg-gradient-quarternary {
+      @apply bg-gradient-to-r from-[#f4f49299] to-[#89c97c99];
+    }
 
-  .text-gradient-primary {
-    @apply bg-clip-text text-transparent;
-    @apply bg-gradient-to-r from-accent-alpha-60 to-primary-alpha-60;
-  }
-  .gradient-text {
-    @apply text-transparent bg-clip-text;
-    @apply bg-gradient-to-br from-pink-300 via-teal-300 to-violet-700;
-  }
+    .text-gradient-primary {
+      @apply bg-clip-text text-transparent;
+      @apply bg-gradient-to-r from-accent-alpha-60 to-primary-alpha-60;
+    }
+    .gradient-text {
+      @apply text-transparent bg-clip-text;
+      @apply bg-gradient-to-br from-pink-300 via-teal-300 to-violet-700;
+    }
 
-  #gradient-horizontal {
-    --color-stop-1: #a770ef;
-    --color-stop-2: #cf8bf3;
-    --color-stop-3: #fdb99b;
-  }
+    #gradient-horizontal {
+      --color-stop-1: #a770ef;
+      --color-stop-2: #cf8bf3;
+      --color-stop-3: #fdb99b;
+    }
 
-  .icon-gradient {
-    @apply stroke-current;
+    .icon-gradient {
+      @apply stroke-current;
+    }
   }
-}
 }

@@ -69,6 +69,7 @@
     "@alpinejs/focus": "^3.10.5",
     "@alpinejs/intersect": "^3.10.5",
     "@astrojs/alpinejs": "^0.1.2",
+    "@astrojs/markdown-component": "^1.0.2",
     "@astrojs/react": "^1.2.2",
     "@fontsource/exo-2": "^4.5.10",
     "@fontsource/montserrat": "^4.5.13",

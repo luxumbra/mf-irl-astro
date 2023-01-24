@@ -4,7 +4,7 @@ export const SITE = {
 	basePathname: '/',
 	trailingSlash: false,
 
-	title: 'MetaFest: IRL - MetaGame 🐙',
+	title: 'MetaFest Croatia',
 	description: 'A bit of a conference, a bit of a festival + a shitload of fun; Talks, workshops, games & music; a festival for DAOists & Regens',
 
 	googleAnalyticsId: 'G-4436889R1F',

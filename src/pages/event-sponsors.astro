@@ -1,0 +1,250 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+import ThreeD from '~/components/widgets/ThreeD';
+import SponsorsSection from '~/components/core/SponsorsSection.astro';
+
+const meta = {
+  title: `${SITE.title}: Sponsors`,
+  description: SITE.description,
+  canonical: getCanonical(getHomePermalink()),
+};
+
+export const sponsorshipTiers = [
+	{
+		title: 'Bronze',
+		price: 2,
+		summary: 'A minimum viable sponsorship of MetaFest by fellow DAOs or regen projects.',
+		perks: [
+			{
+				summary: 'Your logo on all of the online material, multimedia & at the venue'
+			},
+			{
+				summary: '2 ticket NFTs (worth $300)'
+			},
+			{
+				summary: 'Sponsor swag bags & bracelets'
+			}
+		]
+	},
+	{
+		title: 'Gold',
+		price: 5,
+		summary: 'The best way to support MetaFest. Give us $5k & our hat goes off for you.',
+		perks: [
+			{
+				summary: 'Your logo on all of the online material, multimedia & at the venue'
+			},
+			{
+				summary: 'Talk or workshop'
+			},
+			{
+				summary: '8 ticket NFTs (worth $1200)'
+			},
+			{
+				summary: 'Rare swag bags & bracelets'
+			}
+		]
+	},
+	{
+		title: 'Diamond',
+		price: 10,
+		summary: 'Reserved for the best to signal their support for the DAO & regen movements.',
+		perks: [
+			{
+				summary: 'Your logo on all of the online material, multimedia & at the venue'
+			},
+			{
+				summary: 'Talk and workshop'
+			},
+			{
+				summary: 'Private chamber & a table in the dungeon (coworking) for your org'
+			},
+			{
+				summary: 'A promo booth for your project (first 8, first come, first served)'
+			},
+			{
+				summary: '16 ticket NFTs (worth $2400)'
+			},
+			{
+				summary: 'Epic swag bags & project-specific bracelets'
+			}
+		]
+	}
+]
+
+export const expansionPacks = [
+	{
+		title: 'Activity',
+		cost: 1,
+		summary: 'Have an activity powered by your organizations, why don’t you?',
+		examples: [
+			{
+				summary: 'Jetskiing by XYZ DAO',
+			},
+			{
+				summary: 'Paintball by XYZ DAO',
+			},
+			{
+				summary: 'Panoramic flight by XYZ DAO',
+			},
+		]
+	},
+	{
+		title: 'Drinks/food’s on You',
+		cost: 5,
+		summary: 'Want to be known as the ones that feed the people & quench the thirst?',
+		examples: [
+			{
+				summary: 'Would be announced that all the drinks are “courtesy of DAO X”',
+			},
+			{
+				summary: 'Would be announced that all the food is “courtesy of DAO X”',
+			},
+		]
+	},
+	{
+		title: 'Hosted by DAO X',
+		cost: 10,
+		summary: 'Want to be known as a host? Pay for 10+ person accommodation!',
+		examples: [
+			{
+				summary: 'Villa with a pool hosted by Your DAO',
+			},
+		]
+	},
+]
+---
+
+<Layout {meta}>
+  <SponsorsSection title="Who’s behind it?" precis="MetaFest IRL is being summoned by MetaGame.">
+    <p>
+      After organizing a conference, a hackathon, two MetaFests & countless meetups all in the metaverse over the past 3
+      years, we’ve decided to take it up a notch & organize MetaFest IRL!
+    </p>
+
+    <p>
+      MetaGame is an EVM based coordination game & a DAO, kickstarted by MetaCartel and in close ties with projects such
+      as DAOhaus, MetaFactory, Raid Guild etc. - there’s actually a whole network of loosely related projects.
+    </p>
+  </SponsorsSection>
+
+  <SponsorsSection title="Why the balkans?">
+    <p>
+      Regardless of their proclivity towards social coordination because of its history (ex-Yugoslavia countries) & a
+      distrust of the state system (which is more than slightly corrupt in most), the DAO presence in the balkans is
+      weak.
+    </p>
+    <p>
+      The people who get past the “what coin should I buy” stage of crypto curiosity, generally end up working for
+      alt-L1 protocols that offer the best money to effort ratio, eg. Near, Cardano & Polkadot. Time to change that.
+    </p>
+  </SponsorsSection>
+
+  <SponsorsSection title="Why Croatia?">
+    <p>A few reasons:</p>
+    <ul>
+      <li>Beautiful</li>
+      <li>Fairly cheap</li>
+      <li>Good tax laws (no tax if you hodl 2+ years)</li>
+      <li>Digital nomad friendly visas</li>
+      <li>Solid infrastructure & high safety</li>
+      <li>Functional yet corrupt & bureacratic states, small enough to influence & disrupt with great tech</li>
+      <li>Population that’s naturally inclined to local governance (known in our space as DAOs)</li>
+      <li>
+        Overall a great place to nomad around as well as a place that could benefit from implementing crypto tach both
+        at the local as well as the state level, with the high need of financial transparency & better governance
+        technology
+      </li>
+      <li>
+        Also, great timezone compatibility, a good educational system (everybody speaks English & there are blockchain
+        courses at the local tech uni) as well as a relatively low standard of living make balkans a great place to hire
+        from 🙃
+      </li>
+    </ul>
+  </SponsorsSection>
+
+  <SponsorsSection title="Who is it for?">
+    <p>Attendees would still mostly be people from the Ethereum/EVM DAO & regen ecosystems, from outside of Croatia.</p>
+    <p>
+      They will all have an absolutely amazing time getting deep into DAOs & regen topics on the fort as well as having
+      a blast in activities in the surrounding area.
+    </p>
+    <p>
+      I will attempt to raise the funds necessary from as many different DAOs & regen projects in the Ethereum/EVM space
+      so that we don’t have to promote projects such as Near or Cardano.
+    </p>
+
+    <p>Please don’t disappoint us.</p>
+
+    <h3>Wait a minute…</h3>
+    <p>
+      Seems like there was this whole spiel about why Croatia is a great place for DAOs, but now it sounds like I’m just
+      offering a great time for you, fellow DAOists from outside Croatia…
+    </p>
+
+    <p>Not quite!</p>
+
+    <p>
+      The point is, Croatia is a great place for crypto adoption, but also, don’t expect a conference swarming with
+      complete DAO newbies & content being geared towards intro talks!
+    </p>
+
+    <p>Overall, we are aiming for:</p>
+    <ul>
+      <li>~300 attendees in total, mostly EVM DAOists</li>
+      <li>
+        10-15% being the select locals, some from the local tech uni, a youth DAO & some from wider balkans region; some
+        deeply & some loosely involved in the crypto space.
+      </li>
+      <li>
+        Having an epic time with fellow DAOists & regens, doing fun stuff with a lot of the people you already know,
+        meeting new ones & exchanging cutting edge DAO & regen knowledge & usecases.
+      </li>
+      <li>
+        Inspiring & dragging in more of the balkan people to step into the decentralize governance & regen space,
+        potentially helping them start local DAOs &/or implement crypto tech at the local, municipal or state level
+        while getting covered by mainstream local & regional media.
+      </li>
+    </ul>
+    <p>Sound good?</p>
+    <p>Let us proceed!</p>
+  </SponsorsSection>
+
+  <SponsorsSection title="Sponsorship Tiers" full>
+		<div class="tiers flex flex-row justify-evenly items-start space-x-8">
+			{sponsorshipTiers && sponsorshipTiers.map((tier, i) => (
+				<div class={`tier tier--${i + 1}`}>
+					<h4 class="mb-3">{tier.title}</h4>
+					<p class="text-xl">{tier.summary}</p>
+					<div class="tier__perks text-left">
+						<strong class="text-lg">Perks:</strong>
+						<ul>
+							{tier.perks.map((perk) => (
+								<li>{perk.summary}</li>
+							))}
+						</ul>
+					</div>
+				</div>
+			))}
+		</div>
+
+		<div class="expansion-packs my-8 max-w-7xl mx-auto">
+			<h4 class="mb-3 font-heading">Expansion Packs</h4>
+			<p class="text-xl max-w-5xl mx-auto text-center">
+				We have a few expansion packs that you can add to your sponsorship tier. These are not required, but they
+				will help us make the event even better.
+			</p>
+			<div class="expansion-packs__list flex flex-row justify-evenly items-start">
+				{expansionPacks && expansionPacks.map((pack) => (
+					<div class="expansion-pack">
+						<h5 class="mb-3">{pack.title}</h5>
+						<p class="text-xl">{pack.summary}</p>
+					</div>
+				))}
+			</div>
+		</div>
+  </SponsorsSection>
+  <ThreeD client:load />
+</Layout>

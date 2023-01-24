@@ -37,7 +37,7 @@
       }
 
       h3 {
-        @apply text-sm md:text-lg 2xl:text-2xl font-sans font-bold uppercase p-3 md:p-4 2xl:p-6 bg-gradient-to-r from-accent-alpha-60 to-transparent relative;
+        @apply text-sm md:text-lg 2xl:text-2xl font-sans font-bold uppercase p-3 md:p-4 2xl:p-6 mb-0 bg-gradient-to-r from-accent-alpha-60 to-transparent relative;
 
         &::after {
           @apply block absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-accent via-accent to-transparent;

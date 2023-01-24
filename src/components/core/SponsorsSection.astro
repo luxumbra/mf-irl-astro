@@ -1,0 +1,45 @@
+---
+// import { Icon } from 'astro-icon';
+import Section from '../core/Section.astro';
+
+export interface SponsorsSectionProps {
+  title: string;
+  precis?: string;
+  full?: boolean;
+}
+
+const { full, title, precis } = Astro.props as SponsorsSectionProps;
+
+---
+
+<Section sectionId="about">
+  <div class="section__content--alt flex justify-center">
+    <div
+      x-show="shown"
+      class="invisible"
+      x-bind:class="{ 'invisible': !shown }"
+      x-transition:enter="transition ease-out duration-500"
+      x-transition:enter-start="opacity-0 transform translate-y-8"
+      x-transition:enter-end="opacity-100 transform translate-y-0"
+      x-transition:leave="transition ease-in duration-500"
+      x-transition:leave-start="opacity-100 transform translate-y-0"
+      x-transition:leave-end="opacity-0 transform translate-y-8"
+    >
+      <h2>{title}</h2>
+      {precis && <p>{precis}</p>}
+      {!full ? (
+        <div class="max-w-4xl">
+          <slot />
+        </div>
+      ) : (
+        <div class="w-full">
+        <slot />
+        </div>
+      )}
+    </div>
+  </div>
+  <!-- <div class="section__decoration absolute opacity-30 xl:opacity-100 right-0 top-0 z-0">
+    <Icon name="fortgate-main" className="w-64 md:w-72 hidden xl:block" />
+    <Icon name="fortgate-alt" className="w-64 md:w-72 block xl:hidden" />
+  </div> -->
+</Section>
