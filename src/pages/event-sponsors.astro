@@ -4,6 +4,7 @@ import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/PageLayout.astro';
 import ThreeD from '~/components/widgets/ThreeD';
 import SponsorsSection from '~/components/core/SponsorsSection.astro';
+import Icon from 'astro-icon';
 
 const meta = {
   title: `${SITE.title}: Sponsors`,
@@ -77,7 +78,7 @@ export const sponsorshipTiers = [
 export const expansionPacks = [
 	{
 		title: 'Activity',
-		cost: 1,
+		price: 1,
 		summary: 'Have an activity powered by your organizations, why don’t you?',
 		examples: [
 			{
@@ -93,7 +94,7 @@ export const expansionPacks = [
 	},
 	{
 		title: 'Drinks/food’s on You',
-		cost: 5,
+		price: 5,
 		summary: 'Want to be known as the ones that feed the people & quench the thirst?',
 		examples: [
 			{
@@ -106,7 +107,7 @@ export const expansionPacks = [
 	},
 	{
 		title: 'Hosted by DAO X',
-		cost: 10,
+		price: 10,
 		summary: 'Want to be known as a host? Pay for 10+ person accommodation!',
 		examples: [
 			{
@@ -145,19 +146,19 @@ export const expansionPacks = [
   <SponsorsSection title="Why Croatia?">
     <p>A few reasons:</p>
     <ul>
-      <li>Beautiful</li>
-      <li>Fairly cheap</li>
-      <li>Good tax laws (no tax if you hodl 2+ years)</li>
-      <li>Digital nomad friendly visas</li>
-      <li>Solid infrastructure & high safety</li>
-      <li>Functional yet corrupt & bureacratic states, small enough to influence & disrupt with great tech</li>
-      <li>Population that’s naturally inclined to local governance (known in our space as DAOs)</li>
-      <li>
-        Overall a great place to nomad around as well as a place that could benefit from implementing crypto tach both
+      <li><Icon name="uim:scenery" class="h-auto max-w-8 w-10"/>Beautiful</li>
+      <li><Icon name="mdi:piggy-bank" class="h-auto max-w-8 w-10"/>Fairly cheap</li>
+      <li><Icon name="codicon:law" class="h-auto max-w-8 w-10"/>Good tax laws (no tax if you hodl 2+ years)</li>
+      <li><Icon name="mdi:passport-biometric" class="h-auto max-w-8 w-10"/>Digital nomad friendly visas</li>
+      <li><Icon name="ic:round-location-city" class="h-auto max-w-8 w-10"/>Solid infrastructure & high safety</li>
+      <li><Icon name="ri:government-fill" class="h-auto max-w-8 w-10"/>Functional yet corrupt & bureacratic states, small enough to influence & disrupt with great tech</li>
+      <li><Icon name="carbon:chart-population" class="h-auto max-w-8 w-10"/>Population that’s naturally inclined to local governance (known in our space as DAOs)</li>
+      <li><Icon name="fa-solid:laptop-house" class="h-auto max-w-8 w-10 text-accent"/>
+        Overall a great place to nomad around as well as a place that could benefit from implementing crypto tech both
         at the local as well as the state level, with the high need of financial transparency & better governance
         technology
       </li>
-      <li>
+      <li><Icon name="mdi:timezone-outline" class="h-auto max-w-8 w-10"/>
         Also, great timezone compatibility, a good educational system (everybody speaks English & there are blockchain
         courses at the local tech uni) as well as a relatively low standard of living make balkans a great place to hire
         from 🙃
@@ -193,16 +194,16 @@ export const expansionPacks = [
 
     <p>Overall, we are aiming for:</p>
     <ul>
-      <li>~300 attendees in total, mostly EVM DAOists</li>
-      <li>
+      <li><Icon name="ic:round-check-circle-outline" class="h-auto max-w-8 w-10"/> ~300 attendees in total, mostly EVM DAOists</li>
+      <li><Icon name="ic:round-check-circle-outline" class="h-auto max-w-8 w-10"/>
         10-15% being the select locals, some from the local tech uni, a youth DAO & some from wider balkans region; some
         deeply & some loosely involved in the crypto space.
       </li>
-      <li>
+      <li><Icon name="ic:round-check-circle-outline" class="h-auto max-w-8 w-10"/>
         Having an epic time with fellow DAOists & regens, doing fun stuff with a lot of the people you already know,
         meeting new ones & exchanging cutting edge DAO & regen knowledge & usecases.
       </li>
-      <li>
+      <li><Icon name="ic:round-check-circle-outline" class="h-auto max-w-8 w-10"/>
         Inspiring & dragging in more of the balkan people to step into the decentralize governance & regen space,
         potentially helping them start local DAOs &/or implement crypto tech at the local, municipal or state level
         while getting covered by mainstream local & regional media.
@@ -217,12 +218,13 @@ export const expansionPacks = [
 			{sponsorshipTiers && sponsorshipTiers.map((tier, i) => (
 				<div class={`tier tier--${i + 1}`}>
 					<h4 class="mb-3">{tier.title}</h4>
+					<span class="tier__price text-3xl">${tier.price}K</span>
 					<p class="text-xl">{tier.summary}</p>
 					<div class="tier__perks text-left">
-						<strong class="text-lg">Perks:</strong>
+						<h5 class="text-xl font-normal uppercase mb-3">Perks:</h5>
 						<ul>
 							{tier.perks.map((perk) => (
-								<li>{perk.summary}</li>
+								<li><Icon name="ic:round-check-circle" class="h-auto max-w-8 w-10"/><span>{perk.summary}</span></li>
 							))}
 						</ul>
 					</div>
@@ -230,7 +232,7 @@ export const expansionPacks = [
 			))}
 		</div>
 
-		<div class="expansion-packs my-8 max-w-7xl mx-auto">
+		<div class="expansion-packs my-8 mx-auto">
 			<h2 class="mb-3">Expansion Packs</h2>
 			<p class="text-xl max-w-5xl mx-auto text-center">
 				We have a few expansion packs that you can add to your sponsorship tier. These are not required, but they
@@ -240,9 +242,19 @@ export const expansionPacks = [
 				{expansionPacks && expansionPacks.map((pack) => (
 					<div class="expansion-pack">
 						<h4 class="mb-3">{pack.title}</h4>
+						<span class="expansion-pack__price text-3xl">${pack.price}K</span>
 						<p class="text-xl">{pack.summary}</p>
-					</div>
-				))}
+						<div class="expansion-pack__perks text-left">
+							<h5 class="text-xl font-normal uppercase mb-3">Examples:</h5>
+							<ul>
+								{pack.examples.map((example) => (
+									<li><Icon name="ic:round-check-circle" class="h-auto max-w-8 w-10"/><span>{example.summary}</span></li>
+								))}
+							</ul>
+						</div>
+						</div>
+				)
+			)}
 			</div>
 		</div>
   </SponsorsSection>

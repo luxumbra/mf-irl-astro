@@ -139,12 +139,11 @@
           @apply text-left;
 
           li {
-            @apply flex justify-start items-start space-x-5 mb-3 text-accent;
+            @apply flex justify-start items-center space-x-5 mb-3 text-accent;
 
-            &::before {
-              content: '✅';
-              @apply w-3 h-3 mr-5 bg-accent;
-            }
+            & > svg {
+            @apply flex-shrink-0 w-8 mr-3;
+          }
           }
         }
       }
@@ -156,6 +155,26 @@
 
     &__decoration {
       @apply z-0;
+    }
+  }
+
+  .tiers, .expansion-packs {
+    .tier, .expansion-pack {
+      @apply mx-5;
+
+      ul {
+        li {
+          @apply flex justify-start items-center space-x-5 mb-3 text-accent w-3/4;
+
+          &::before {
+            content: '';
+            @apply hidden;
+          }
+          & > svg {
+            @apply flex-shrink-0 w-8;
+          }
+        }
+      }
     }
   }
 
