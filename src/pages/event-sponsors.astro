@@ -7,8 +7,8 @@ import SponsorsSection from '~/components/core/SponsorsSection.astro';
 import Icon from 'astro-icon';
 
 const meta = {
-  title: `${SITE.title}: Sponsors`,
-  description: SITE.description,
+  title: `${SITE.title}: Event sponsors`,
+  description: 'Sponsor the DAO event of 2023',
   canonical: getCanonical(getHomePermalink()),
 };
 
@@ -93,7 +93,7 @@ export const expansionPacks = [
 		]
 	},
 	{
-		title: 'Drinks/food’s on You',
+		title: 'Drinks & Food',
 		price: 5,
 		summary: 'Want to be known as the ones that feed the people & quench the thirst?',
 		examples: [
@@ -106,7 +106,7 @@ export const expansionPacks = [
 		]
 	},
 	{
-		title: 'Hosted by DAO X',
+		title: 'Hosted By',
 		price: 10,
 		summary: 'Want to be known as a host? Pay for 10+ person accommodation!',
 		examples: [
@@ -153,7 +153,7 @@ export const expansionPacks = [
       <li><Icon name="ic:round-location-city" class="h-auto max-w-8 w-10"/>Solid infrastructure & high safety</li>
       <li><Icon name="ri:government-fill" class="h-auto max-w-8 w-10"/>Functional yet corrupt & bureacratic states, small enough to influence & disrupt with great tech</li>
       <li><Icon name="carbon:chart-population" class="h-auto max-w-8 w-10"/>Population that’s naturally inclined to local governance (known in our space as DAOs)</li>
-      <li><Icon name="fa-solid:laptop-house" class="h-auto max-w-8 w-10 text-accent"/>
+      <li><Icon name="fa-solid:laptop-house" class="h-auto max-w-8 w-10"/>
         Overall a great place to nomad around as well as a place that could benefit from implementing crypto tech both
         at the local as well as the state level, with the high need of financial transparency & better governance
         technology
@@ -217,8 +217,10 @@ export const expansionPacks = [
 		<div class="tiers flex flex-row justify-evenly items-start space-x-8">
 			{sponsorshipTiers && sponsorshipTiers.map((tier, i) => (
 				<div class={`tier tier--${i + 1}`}>
-					<h4 class="mb-3">{tier.title}</h4>
-					<span class="tier__price text-3xl">${tier.price}K</span>
+					<div class="tier__header text-left">
+						<h4 class="mb-3 uppercase">{tier.title}</h4>
+						<span class="tier__price text-4xl inline-flex"><span class="tier__currency"><Icon name="cryptocurrency:usd" class="h-auto max-w-8 w-10" /></span><strong class="font-black">{tier.price}K</strong></span>
+					</div>
 					<p class="text-xl">{tier.summary}</p>
 					<div class="tier__perks text-left">
 						<h5 class="text-xl font-normal uppercase mb-3">Perks:</h5>
@@ -240,9 +242,11 @@ export const expansionPacks = [
 			</p>
 			<div class="expansion-packs__list flex flex-row justify-evenly items-start">
 				{expansionPacks && expansionPacks.map((pack) => (
-					<div class="expansion-pack">
-						<h4 class="mb-3">{pack.title}</h4>
-						<span class="expansion-pack__price text-3xl">${pack.price}K</span>
+					<div class="tier">
+						<div class="tier__header">
+							<h4 class="mb-3 uppercase">{pack.title}</h4>
+							<span class="expansion-pack__price inline-flex text-3xl"><span class="tier__currency"><Icon name="cryptocurrency:usd" class="h-auto max-w-8 w-10" /></span><strong class="font-black">{pack.price}K</strong></span>
+						</div>
 						<p class="text-xl">{pack.summary}</p>
 						<div class="expansion-pack__perks text-left">
 							<h5 class="text-xl font-normal uppercase mb-3">Examples:</h5>

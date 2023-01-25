@@ -4,29 +4,34 @@
 
 @layer base {
   body {
-  h1, h2, h3 {
-    @apply font-heading text-primary text-4xl xl:text-6xl;
-  }
+    @apply text-slate-300;
 
-  h2 {
-    @apply mb-3 2xl:mb-6 4xl:mb-10 text-4xl 2xl:text-5xl;
+    h1,
+    h2,
+    h3 {
+      @apply font-heading text-primary text-4xl xl:text-6xl;
+    }
 
-    & + p {
-      @apply mb-3 2xl:mb-6 text-lg 2xl:text-2xl 4xl:text-3xl text-center max-w-2xl 4xl:max-w-3xl mx-auto;
+    h2 {
+      @apply mb-3 2xl:mb-6 4xl:mb-10 text-4xl 2xl:text-5xl;
+
+      & + p {
+        @apply mb-3 2xl:mb-6 text-lg 2xl:text-2xl 4xl:text-3xl text-center max-w-2xl 4xl:max-w-3xl mx-auto;
+      }
+    }
+
+    h3 {
+      @apply mb-3 2xl:mb-6 text-2xl 2xl:text-3xl 4xl:text-4xl text-center max-w-2xl 4xl:max-w-3xl mx-auto;
+    }
+
+    h4,
+    h5,
+    h6 {
+      @apply font-sans text-primary text-4xl;
+    }
+
+    p {
+      @apply font-sans text-slate-400 text-sm md:text-base 4xl:text-2xl text-left leading-relaxed mb-6;
     }
   }
-
-  h3 {
-    @apply mb-3 2xl:mb-6 text-2xl 2xl:text-3xl 4xl:text-4xl text-center max-w-2xl 4xl:max-w-3xl mx-auto;
-  }
-
-  h4, h5, h6 {
-    @apply font-sans text-primary text-4xl;
-  }
-
-  p {
-    @apply font-sans text-accent text-sm md:text-base 4xl:text-2xl text-left leading-relaxed mb-6;
-  }
-  }
-
 }

@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply relative bg-secondary text-center font-sans font-normal text-base w-full min-h-screen max-w-full p-0 m-0 overflow-x-hidden;
+    @apply relative bg-slate-900 text-center font-sans font-normal text-base w-full min-h-screen max-w-full p-0 m-0 overflow-x-hidden;
 
     /* background-image: url('../images/page-bg.png');
     background-position: top left;
@@ -35,7 +35,7 @@
 
   /* Track */
   ::-webkit-scrollbar-track {
-    @apply bg-accent dark:bg-secondary;
+    @apply bg-accent dark:bg-slate-900;
 
     border-radius: 2px;
     box-shadow: inset 0 0 5px rgb(0 0 0 / 70%);
@@ -139,7 +139,7 @@
           @apply text-left;
 
           li {
-            @apply flex justify-start items-center space-x-5 mb-3 text-accent;
+            @apply flex justify-start items-center space-x-5 mb-3 text-slate-400;
 
             & > svg {
             @apply flex-shrink-0 w-8 mr-3;
@@ -160,11 +160,15 @@
 
   .tiers, .expansion-packs {
     .tier, .expansion-pack {
-      @apply mx-5;
+      @apply mx-5 hover:cursor-pointer hover:scale-110 transform transition-all duration-300 ease-in-out;
+
+      &__header {
+        @apply flex flex-row justify-between;
+      }
 
       ul {
         li {
-          @apply flex justify-start items-center space-x-5 mb-3 text-accent w-3/4;
+          @apply flex justify-start items-center space-x-5 mb-3 text-slate-400 w-3/4;
 
           &::before {
             content: '';
