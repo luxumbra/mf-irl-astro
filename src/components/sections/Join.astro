@@ -8,7 +8,7 @@ import Plants from "../widgets/Plants.astro";
   x-intersect="shown = true"
   x-intersect:leave="shown = false"
 >
-  <div class="section__content relative z-20 mb-32 pointer-events-none">
+  <div class="section__content relative z-20 pointer-events-none">
     <h4
     class="text-4xl 3xl:text-6xl font-heading invisible xl:mb-48 2xl:mb-32"
     x-show="shown"
@@ -21,6 +21,23 @@ import Plants from "../widgets/Plants.astro";
     x-transition:leave-end="opacity-0 transform translate-y-8"
     >MetaFest, steadfast and manifest the future.</h4>
 
+    <div class="max-w-7xl">
+    <div class="event-info flex flex-row items-center justify-center">
+      <div class="event-info__item w-auto border-2 px-6 py-2 bg-gradient-primary rounded-lg">
+        <h5 class="text-2xl uppercase font-semibold">WarmUp</h5>
+        <p class="text-lg mb-0"><span>11 - 15</span> <span>August</span></p>
+      </div>
+      <div class="event-info__item border-2 px-6 py-2 scale-125 bg-gradient-primary-solid rounded-lg">
+        <h5 class="text-2xl uppercase font-bold">Main Event</h5>
+        <p class="text-lg mb-0"><span>16 - 18</span> <span>August</span></p>
+      </div>
+      <div class="event-info__item border-2 px-6 py-2 bg-gradient-primary rounded-lg">
+        <h5 class="text-2xl uppercase font-semibold">Bus Trip</h5>
+        <p class="text-lg mb-0"><span>19 - 25</span> <span>August</span></p>
+      </div>
+    </div>
+    <div class="location text-accent-light my-14 text-4xl font-normal uppercase">Fort Punta Christo, Pula, Croatia</div>
+  </div>
     <CallToAction />
 
   </div>

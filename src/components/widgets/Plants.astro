@@ -5,7 +5,7 @@ import './plants.css';
 ---
 
 
-<div class="plants absolute inset-0 w-full min-h-full overflow-hidden z-10 pointer-events-none invisible"
+<div class="plants absolute inset-0 w-full min-h-full overflow-hidden z-0 pointer-events-none invisible"
   x-show="shown"
   x-bind:class="{ 'invisible': !shown, 'visible': shown }"
   x-transition:enter="transition ease-out duration-500"
@@ -21,10 +21,10 @@ import './plants.css';
   />
 </div>
 
-<script>
+<!-- <script>
    const trigger = document.querySelector('.plants__active-area');
    const button = document.querySelector('.cta__join-button');
 
    trigger.appendChild(button);
 
-</script>
+</script> -->
