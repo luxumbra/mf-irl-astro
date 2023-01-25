@@ -15,10 +15,10 @@ const {count, tier, isExpansion} = Astro.props;
     </span>
   </div>
   <div class="tier__content relative text-left p-0 rounded-2xl">
-    <div class="p-3 z-10 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark">
+    <div class="p-5 z-10 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark">
       <p class="text-xl text-primary">{tier.summary}</p>
       <div class="tier__perks text-left">
-        <h5 class="text-xl font-normal uppercase mb-3">{isExpansion ? 'Examples' : 'Perks'}:</h5>
+        <h5 class="text-off-white text-lg font-semibold uppercase mb-3">{isExpansion ? 'Examples' : 'Perks'}:</h5>
         <ul>
           {tier.perks.map((perk) => (
             <li>

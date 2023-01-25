@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply text-slate-300;
+    @apply text-accent;
 
     h1,
     h2,
@@ -31,7 +31,7 @@
     }
 
     p {
-      @apply font-sans text-slate-400 text-sm md:text-base 4xl:text-2xl text-left leading-relaxed mb-6;
+      @apply font-sans text-accent text-sm md:text-base 4xl:text-2xl text-left leading-relaxed mb-6;
     }
   }
 }

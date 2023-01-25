@@ -8,9 +8,9 @@ import Plants from "../widgets/Plants.astro";
   x-intersect="shown = true"
   x-intersect:leave="shown = false"
 >
-  <div class="section__content relative z-20 pointer-events-none">
+  <div class="section__content relative z-20">
     <h4
-    class="text-4xl 3xl:text-6xl font-heading invisible xl:mb-48 2xl:mb-32"
+    class="text-4xl 3xl:text-6xl font-heading invisible xl:mb-48 2xl:mb-20"
     x-show="shown"
     x-bind:class="{ 'invisible': !shown, 'visible': shown }"
     x-transition:enter="transition ease-out duration-300"
@@ -19,24 +19,22 @@ import Plants from "../widgets/Plants.astro";
     x-transition:leave="transition ease-in duration-300"
     x-transition:leave-start="opacity-100 transform translate-y-0"
     x-transition:leave-end="opacity-0 transform translate-y-8"
-    >MetaFest, steadfast and manifest the future.</h4>
+    >MetaFest, manifest the future.</h4>
 
     <div class="max-w-7xl">
-    <div class="event-info flex flex-row items-center justify-center">
-      <div class="event-info__item w-auto border-2 px-6 py-2 bg-gradient-primary rounded-lg">
-        <h5 class="text-2xl uppercase font-semibold">WarmUp</h5>
-        <p class="text-lg mb-0"><span>11 - 15</span> <span>August</span></p>
-      </div>
-      <div class="event-info__item border-2 px-6 py-2 scale-125 bg-gradient-primary-solid rounded-lg">
-        <h5 class="text-2xl uppercase font-bold">Main Event</h5>
-        <p class="text-lg mb-0"><span>16 - 18</span> <span>August</span></p>
-      </div>
-      <div class="event-info__item border-2 px-6 py-2 bg-gradient-primary rounded-lg">
-        <h5 class="text-2xl uppercase font-semibold">Bus Trip</h5>
-        <p class="text-lg mb-0"><span>19 - 25</span> <span>August</span></p>
-      </div>
+    <div class="event-info flex flex-row items-start justify-center space-x-10">
+        <div class="text-right">
+          <h5 class="font-heading">Where?</h5>
+          <p class="text-2xl text-right text-off-white">Fort Punta Christo<br /> Pula<br /> Croatia</p>
+        </div>
+
+        <div class="text-left">
+          <h5 class="font-heading">When?</h5>
+          <p class="text-2xl mb-0 text-off-white uppercase">Warmup 11 - 15 Aug</p>
+          <p class="text-2xl mb-0 text-off-white font-semibold uppercase">Main event 15 - 18 Aug</p>
+          <p class="text-2xl mb-0 text-off-white uppercase">Bus Trip 19 - 25 Aug</p>
+        </div>
     </div>
-    <div class="location text-accent-light my-14 text-4xl font-normal uppercase">Fort Punta Christo, Pula, Croatia</div>
   </div>
     <CallToAction />
 

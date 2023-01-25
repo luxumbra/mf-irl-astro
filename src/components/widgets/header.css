@@ -19,7 +19,7 @@
 
       &:hover {
         path {
-          @apply !text-secondary;
+          @apply !text-primary;
         }
       }
     }
@@ -38,7 +38,7 @@
     }
 
     &--scrolled {
-      @apply backdrop-blur-lg h-12 md:h-16 3xl:h-20;
+      @apply backdrop-blur-lg bg-accent-light-alpha-60 h-12 md:h-16 3xl:h-20;
 
       .logo {
         @apply w-14 md:w-20
