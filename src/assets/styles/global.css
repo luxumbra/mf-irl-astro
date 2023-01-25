@@ -279,6 +279,23 @@
     @apply bg-gradient-to-br from-accent to-accent-alpha-60 text-slate-900 text-center backdrop-blur-xl;
   }
 
+  .chat {
+
+    .chat__messages {
+
+      .chat__message {
+          @apply max-w-[66%] flex flex-col items-start space-y-2 mb-3;
+      }
+
+      .chat__message__marker {
+        svg {
+          @apply w-[41px];
+
+        }
+      }
+    }
+  }
+
   @layer utilities {
     .bg-gradient-primary {
       @apply bg-gradient-to-r from-accent-alpha-60 to-primary-alpha-60;

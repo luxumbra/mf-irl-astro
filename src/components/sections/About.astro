@@ -1,6 +1,46 @@
 ---
 import { Icon } from 'astro-icon';
 import Section from '../core/Section.astro';
+
+export interface ChatMessage {
+  user: string;
+  message: string;
+  status: 'sent' | 'delivered' | 'read';
+}
+
+export const metafestConvo = [
+  {
+    user: 'anon',
+    message: 'Wait, wtf is MetFest?',
+    status: 'sent',
+  },
+  {
+    user: 'nova',
+    message: 'A conference that’s not a conference!',
+    status: 'sent',
+  },
+  {
+    user: 'anon',
+    message: 'Why?',
+    status: 'sent',
+  },
+  {
+    user: 'nova',
+    message:
+      '‘Cuz most people go to conferences to meet like-minded people, hang out with internet friends & have fun - not just listen to talks.',
+    status: 'sent',
+  },
+  {
+    user: 'anon',
+    message: 'What kind of topics tho?',
+    status: 'sent',
+  },
+  {
+    user: 'nova',
+    message: 'Anything from DAOs & ReFi to walking the tightrope, juggling & guided meditation.',
+    status: 'sent',
+  },
+];
 ---
 
 <Section sectionId="about">
@@ -18,17 +58,41 @@ import Section from '../core/Section.astro';
     >
       <h2>About the festival</h2>
       <p>Talks, workshops, games & music; a festival for DAOists & Regens.</p>
-      <div class="max-w-4xl">
-      <p> A conference that’s not a conference!</p>
-
-      <p>Why?</p>
-
-      <p>‘Cuz most people go to conferences to meet like-minded people, hang out with internet friends & have fun - not just listen to talks.</p>
-
-      <p>Topics will be ranging anywhere from self-organization & problem-solving to self-improvement & world-improvement.</p>
-
-      <p>Yep! Anything from DAOs & ReFi to walking the tightrope, juggling & guided meditation.</p>
-    </div>
+      <div class="chat relative flex max-w-4xl p-0">
+        <div class="chat__content w-full h-full rounded-2xl bg-gradient-to-r from-secondary to-secondary-dark p-6 z-10">
+          <ol class="chat__messages flex flex-col w-full">
+            {
+              metafestConvo &&
+                metafestConvo.map((message) => (
+                  <li class={`chat__message relative ${message.user === 'anon' ? 'self-start' : 'self-end'}`}>
+                    <div
+                      class={`chat__message__content relative p-3 bg-gradient-to-br ${
+                        message.user === 'anon'
+                          ? 'from-[#1D3037] via-[#1D3037] to-secondary-dark'
+                          : 'from-accent-alpha-30 via-[#206D69] to-[#206D69]'
+                      } rounded-lg z-10`}
+                    >
+                      <div class="chat__message__content__text">
+                        <p class="mb-0 text-primary font-medium">{message.message}</p>
+                      </div>
+                    </div>
+                    <div
+                      class={`chat__message__marker absolute w-[51px] h-[15px] ${
+                        message.user === 'anon' ? '-left-[9px]' : '-right-[18px]'
+                      } -bottom-[3px] z-0`}
+                    >
+                      <Icon name={message.user === 'anon' ? 'speech-anon' : 'speech-nova'} />
+                    </div>
+                  </li>
+                ))
+            }
+          </ol>
+        </div>
+        <div
+          class="chat__bg absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-accent via-accent to-secondary -z-10"
+        >
+        </div>
+      </div>
     </div>
   </div>
 </Section>
