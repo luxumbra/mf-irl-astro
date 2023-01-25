@@ -139,10 +139,10 @@
           @apply text-left;
 
           li {
-            @apply flex justify-start items-center space-x-5 mb-3 text-accent;
+            @apply flex justify-start items-center space-x-3 mb-3 text-accent;
 
             & > svg {
-            @apply flex-shrink-0 w-8 mr-2;
+            @apply flex-shrink-0 w-8;
           }
           }
         }
@@ -168,7 +168,7 @@
 
       ul {
         li {
-          @apply flex justify-start items-center space-x-5 mb-3 text-accent w-11/12;
+          @apply flex justify-start items-center space-x-3 mb-3 text-accent w-11/12;
 
           &::before {
             content: '';

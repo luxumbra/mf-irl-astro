@@ -22,7 +22,7 @@ const {count, tier, isExpansion} = Astro.props;
         <ul>
           {tier.perks.map((perk) => (
             <li>
-              <Icon name="ic:round-check-circle" class="h-auto max-w-8 w-10" />
+              <Icon name="ic:round-check-circle" />
               <span>{perk.summary}</span>
             </li>
           ))}
