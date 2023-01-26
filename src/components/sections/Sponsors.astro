@@ -14,45 +14,25 @@ const sponsors = [
           url: "https://metagame.wtf"
         },
         {
-          name: 'Sponsor 1',
+          name: 'Your DAO',
           logo: 'metacartel.png',
-          url: 'https://google.com',
+          url: 'https://metagame.wtf',
         },
         {
-          name: 'Sponsor 2',
+          name: 'Your Project',
           logo: 'metagame.png',
-          url: 'https://google.com',
+          url: 'https://metagame.wtf',
         },
         {
-          name: 'Sponsor 1',
+          name: 'Your DAO',
           logo: 'metacartel.png',
-          url: 'https://google.com',
+          url: 'https://metagame.wtf',
         },
         {
-          name: 'Sponsor 2',
+          name: 'Your DAO',
           logo: 'metagame.png',
-          url: 'https://google.com',
-        },
-        {
-          name: 'Sponsor 1',
-          logo: 'metacartel.png',
-          url: 'https://google.com',
-        },
-        {
-          name: 'Sponsor 2',
-          logo: 'metagame.png',
-          url: 'https://google.com',
-        },
-        {
-          name: 'Sponsor 1',
-          logo: 'metacartel.png',
-          url: 'https://google.com',
-        },
-        {
-          name: 'Sponsor 2',
-          logo: 'metagame.png',
-          url: 'https://google.com',
-        },
+          url: 'https://metagame.wtf',
+        }
       ]
 ---
 
@@ -80,46 +60,30 @@ const sponsors = [
         MetaFest is a celebration of the future we’re building, together&hellip;
       </p>
 
-      <a class="btn btn-ghost text-secondary mb-4 sm:mb-0 bg-gradient-tertiary text-base xs:text-2xl md:text-4xl 4xl:text-7xl px-5 py-6 md:px-8 md:py-10 4xl:py-16 leading-[0] inline-flex content-center rounded-xl hover:scale-105 transition-all delay-100 duration-300 ease-in-out border-2" href="/event-sponsors">Sponsor the event</a>
-<!--
-      <div
-        class="partners-list bg-gradient-to-r from-secondary-alt via-secondary-alt to-transparent p-3 lg:p-8 border-b-2 border-l-2 border-accent rounded-2xl mt-10"
-      >
-        <ul class="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-10">
-          {
-            sponsors &&
-              sponsors.map((sponsor) => {
-                const image = `/assets/images/sponsors/${sponsor.logo}`;
-                return (
-                  <li class="partner group rounded-2xl bg-gradient-to-br from-secondary via-secondary to-transparent text-center w-full apsect-square lg:aspect-[196/117] hover:scale-105 transition-all duration-300 ease-in-out overflow-hidden">
-                    <a
-                      href={sponsor.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="relative flex items-center h-full w-full text-center p-5"
-                    >
-                      <div class="avatar  mx-auto">
-                        <div class="h-20 lg:h-24">
-                          <Image
-                            src={image}
-                            alt={sponsor.name}
-                            class="group-hover:opacity-60 transition-opacity h-full w-auto"
-                            height={150}
-                            aspectRatio={1}
-                            fit="fill"
-                          />
-                        </div>
-                      </div>
-                      <div class="absolute flex items-center justify-center inset-0 origin-bottom h-full w-full text-white translate-y-10 opacity-0 group-hover:-translate-y-0 group-hover:opacity-100 transition-all">
-                        <span class="font-bold">{sponsor.name}</span>
-                      </div>
-                    </a>
-                  </li>
-                );
-              })
-          }
+      <div class="speakers-list max-w-7xl mb-10">
+        <ul class="">
+          {sponsors && sponsors.length > 0 && sponsors.map((sponsor) => {
+            const image = `/assets/images/sponsors/${sponsor.logo}`
+
+            return (
+              <li class="rounded-2xl bg-gradient-to-br from-secondary-alt via-secondary-alt to-transparent">
+                <a href={sponsor.url} class="flex flex-col p-5" title={sponsor.name}>
+                  <Image
+                    class="rounded-full border-2 border-primary mx-auto"
+                    src={image}
+                    aspectRatio={1}
+                    alt={sponsor.name}
+                    width="100"
+                    height="100" />
+                  <span>{sponsor.name}</span>
+                </a>
+              </li>
+            )
+          })}
         </ul>
-      </div> -->
+      </div>
+
+      <a class="btn btn-ghost text-secondary mb-4 sm:mb-0 bg-gradient-tertiary text-base xs:text-2xl md:text-2xl px-5 py-6 md:px-8 md:py-8 leading-[0] inline-flex content-center rounded-xl hover:scale-105 transition-all delay-100 duration-300 ease-in-out border-2" href="/event-sponsors">Sponsor the event</a>
     </div>
   </div>
 </Section>

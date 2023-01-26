@@ -6,6 +6,11 @@ import ThreeD from '~/components/widgets/ThreeD';
 import SponsorsSection from '~/components/core/SponsorsSection.astro';
 import Icon from 'astro-icon';
 import Tier from '~/components/atoms/Tier.astro';
+import Markdown from '@astrojs/markdown-component';
+import { Image } from '@astrojs/image/components';
+
+import mgLogo from '~/assets/images/mg-logo.gif';
+import Plants from '~/components/widgets/Plants.astro';
 
 const meta = {
   title: `${SITE.title}: Event sponsors`,
@@ -20,10 +25,13 @@ export const sponsorshipTiers = [
     summary: 'A minimum viable sponsorship of MetaFest by fellow DAOs or regen projects.',
     perks: [
       {
-        summary: 'Your logo on all of the online material, multimedia & at the venue',
+        summary: 'Your logo on the website, most promo materials, media & aftermovie',
       },
+			{
+				summary: 'Your logo in swag bags & at the venue',
+			},
       {
-        summary: '2 ticket NFTs (worth $300)',
+        summary: '3 ticket NFTs (worth $600)',
       },
       {
         summary: 'Sponsor swag bags & bracelets',
@@ -33,11 +41,14 @@ export const sponsorshipTiers = [
   {
     title: 'Gold',
     price: 5,
-    summary: 'The best way to support MetaFest. Give us $5k & our hat goes off for you.',
+    summary: 'A much better way to support - give us $5k & our hat goes off.',
     perks: [
       {
-        summary: 'Your logo on all of the online material, multimedia & at the venue',
+        summary: 'Your logo on the website, most promo materials, media & aftermovie',
       },
+			{
+				summary: 'Your logo in swag bags & at the venue',
+			},
       {
         summary: 'Talk or workshop',
       },
@@ -52,11 +63,20 @@ export const sponsorshipTiers = [
   {
     title: 'Diamond',
     price: 10,
-    summary: 'Reserved for the best to signal their support for the DAO & regen movements.',
+    summary: 'Reserved for the best to signal their support of the movement.',
     perks: [
       {
-        summary: 'Your logo on all of the online material, multimedia & at the venue',
+        summary: 'Your logo on the website, all promo materials, media & aftermovie',
       },
+			{
+				summary: 'Your logo in swag bags & at the venue',
+			},
+			{
+				summary: 'Your logo on the livestreams',
+			},
+			{
+				summary: 'Your name in local & regional media',
+			},
       {
         summary: 'Talk and workshop',
       },
@@ -64,7 +84,7 @@ export const sponsorshipTiers = [
         summary: 'Private chamber & a table in the dungeon (coworking) for your org',
       },
       {
-        summary: 'A promo booth for your project (first 8, first come, first served)',
+        summary: 'A promo booth for your project (first 5, first come, first served)',
       },
       {
         summary: '16 ticket NFTs (worth $2400)',
@@ -80,7 +100,7 @@ export const expansionPacks = [
   {
     title: 'Activity',
     price: 1,
-    summary: 'Have an activity powered by your organizations, why don’t you?',
+    summary: 'Have an activity powered by your organization, why don’t you?',
     perks: [
       {
         summary: 'Jetskiing by XYZ DAO',
@@ -120,136 +140,137 @@ export const expansionPacks = [
 ---
 
 <Layout {meta}>
-  <SponsorsSection title="Who’s behind it?" precis="MetaFest IRL is being summoned by MetaGame.">
-    <p>
-      After organizing a conference, a hackathon, two MetaFests & countless meetups all in the metaverse over the past 3
-      years, we’ve decided to take it up a notch & organize MetaFest IRL!
-    </p>
+  <div class="pt-32"></div>
+  <SponsorsSection
+    title="Who’s behind it?"
+    precis="MetaFest Croatia is organized by MetaFam of [MetaGame](https://metagame.wtf)."
+  >
+    <Markdown>
+      After doing [a conference](https://metagame.substack.com/p/intercon-what-how-even), [a
+      hackathon](https://metagame.substack.com/p/fork-the-world-opening-), two MetaFests
+      ([1](https://metagame.substack.com/p/metaspecial-metafest-is-alive) &
+      [2](https://metagame.substack.com/p/metafest2-is-happening-now)) & countless meetups all in the metaverse, we’ve
+      decided to level up & organize IRL!
+    </Markdown>
 
-    <p>
-      MetaGame is an EVM based coordination game & a DAO, kickstarted by MetaCartel and in close ties with projects such
-      as DAOhaus, MetaFactory, Raid Guild etc. - there’s actually a whole network of loosely related projects.
-    </p>
+    <Markdown>
+      [MetaGame](https://metagame.wtf) is an EVM based coordination game kickstarted by MetaCartel. A decentralized
+      factory & a [network of projects](https://metagame.wtf/guilds) currently concerned with onboarding people into the
+      DAO space.
+    </Markdown>
+
+    <!-- <Image
+		src={mgLogo}
+		alt="3D"
+		loading="lazy"
+		quality={100}
+		width={512}
+		height={512}
+		layout="responsive"
+		class="absolute -top-14 -left-32 z-0 opacity-25"
+		/> -->
   </SponsorsSection>
-
-  <SponsorsSection title="Why the balkans?">
+  <Image
+    src={mgLogo}
+    alt="3D"
+    loading="lazy"
+    quality={100}
+    width={512}
+    height={512}
+    layout="responsive"
+    class="absolute top-20 left-1/4 right-1/4 w-1/2 z-[9] opacity-5"
+  />
+  <SponsorsSection title="Why the Balkans, why Croatia?">
     <p>
-      Regardless of their proclivity towards social coordination because of its history (ex-Yugoslavia countries) & a
-      distrust of the state system (which is more than slightly corrupt in most), the DAO presence in the balkans is
-      weak.
+      Despite proclivity towards self-organization due to a distrust of the state system & privatizing profiteers, DAO
+      presence in the Balkans is weak.
     </p>
-    <p>
-      The people who get past the “what coin should I buy” stage of crypto curiosity, generally end up working for
-      alt-L1 protocols that offer the best money to effort ratio, eg. Near, Cardano & Polkadot. Time to change that.
-    </p>
-  </SponsorsSection>
-
-  <SponsorsSection title="Why Croatia?">
-    <p>A few reasons:</p>
+    <p>About Croatia:</p>
     <ul>
-      <li><Icon name="uim:scenery" />Beautiful</li>
-      <li><Icon name="mdi:piggy-bank" />Fairly cheap</li>
-      <li><Icon name="codicon:law" />Good tax laws (no tax if you hodl 2+ years)</li>
-      <li><Icon name="mdi:passport-biometric" />Digital nomad friendly visas</li>
-      <li><Icon name="ic:round-location-city" />Solid infrastructure & high safety</li>
-      <li>
-        <Icon name="ri:government-fill" />Functional yet corrupt & bureacratic states, small
-        enough to influence & disrupt with great tech
-      </li>
-      <li>
-        <Icon name="carbon:chart-population" />Population that’s naturally inclined to local
-        governance (known in our space as DAOs)
-      </li>
-      <li>
-        <Icon name="fa-solid:laptop-house" />
-        Overall a great place to nomad around as well as a place that could benefit from implementing crypto tech both at
-        the local as well as the state level, with the high need of financial transparency & better governance technology
-      </li>
-      <li>
-        <Icon name="mdi:timezone-outline" />
-        Also, great timezone compatibility, a good educational system (everybody speaks English & there are blockchain courses
-        at the local tech uni) as well as a relatively low standard of living make balkans a great place to hire from 🙃
-      </li>
+      <li><Icon name="ic:round-check-circle-outline" />Beautiful & Fairly cheap</li>
+      <li><Icon name="ic:round-check-circle-outline" />Good tax laws (no tax if you hodl 2+ years)</li>
+      <li><Icon name="ic:round-check-circle-outline" />Digital nomad friendly visas</li>
+      <li><Icon name="ic:round-check-circle-outline" />Solid infrastructure & high safety</li>
+      <li><Icon name="ic:round-check-circle-outline" />Functional but corrupt states, small enough to influence</li>
     </ul>
+    <p>
+      With a need for financial transparency & better governance tech, there is high potential for Web3 adoption at the
+      local as well as the state level.
+    </p>
+    <p>
+      Great time-zone compatibility & good educational system combined with relatively low standards of living also make
+      the Balkans a great place to hire from.
+    </p>
   </SponsorsSection>
 
   <SponsorsSection title="Who is it for?">
-    <p>Attendees would still mostly be people from the Ethereum/EVM DAO & regen ecosystems, from outside of Croatia.</p>
     <p>
-      They will all have an absolutely amazing time getting deep into DAOs & regen topics on the fort as well as having
-      a blast in activities in the surrounding area.
-    </p>
-    <p>
-      I will attempt to raise the funds necessary from as many different DAOs & regen projects in the Ethereum/EVM space
-      so that we don’t have to promote projects such as Near or Cardano.
-    </p>
-
-    <p>Please don’t disappoint us.</p>
-
-    <h3>Wait a minute…</h3>
-    <p>
-      Seems like there was this whole spiel about why Croatia is a great place for DAOs, but now it sounds like I’m just
-      offering a great time for you, fellow DAOists from outside Croatia…
-    </p>
-
-    <p>Not quite!</p>
-
-    <p>
-      The point is, Croatia is a great place for crypto adoption, but also, don’t expect a conference swarming with
-      complete DAO newbies & content being geared towards intro talks!
+      Attendees will mostly be people from the EVM DAO & ReFi ecosystems but mixed in with the wider regenerative,
+      self-organization & Game B/Metamodern space.
     </p>
 
     <p>Overall, we are aiming for:</p>
     <ul>
       <li>
-        <Icon name="ic:round-check-circle-outline" /> ~300 attendees in total, mostly EVM DAOists
+        <Icon name="ic:round-check-circle-outline" /> ~70% EVM DAOists & Regens.
       </li>
       <li>
-        <Icon name="ic:round-check-circle-outline" />
-        10-15% being the select locals, some from the local tech uni, a youth DAO & some from wider balkans region; some
-        deeply & some loosely involved in the crypto space.
+        <Icon name="ic:round-check-circle-outline" /> ~15% wider non-crypto-but-adjacent spaces.
       </li>
       <li>
-        <Icon name="ic:round-check-circle-outline" />
-        Having an epic time with fellow DAOists & regens, doing fun stuff with a lot of the people you already know, meeting
-        new ones & exchanging cutting edge DAO & regen knowledge & usecases.
+        <Icon name="ic:round-check-circle-outline" /> ~15% select locals, from the tech uni, a youth DAO etc.
       </li>
       <li>
-        <Icon name="ic:round-check-circle-outline" />
-        Inspiring & dragging in more of the balkan people to step into the decentralize governance & regen space, potentially
-        helping them start local DAOs &/or implement crypto tech at the local, municipal or state level while getting covered
-        by mainstream local & regional media.
+        <Icon name="ic:round-check-circle-outline" />Having an epic time while exchanging cutting edge DAO/regen/meta
+        knowledge & usecases.
+      </li>
+      <li>
+        <Icon name="ic:round-check-circle-outline" />Inspiring more people to join the space, start local DAOs &/or
+        implement Web3 tech at the local, municipal or state level.
       </li>
     </ul>
-    <p>Sound good?</p>
-    <p>Let us proceed!</p>
   </SponsorsSection>
 
-  <SponsorsSection title="Sponsorship Tiers" full>
-    <div class="tiers flex flex-row justify-evenly items-start space-x-8">
-      {
-        sponsorshipTiers &&
-          sponsorshipTiers.map((tier, i) => (
-						<Tier tier={tier} count={i} />
-          ))
-      }
+  <SponsorsSection
+    title="Sponsorship"
+    precis="It’s in all of our best interest these technologies get adopted IRL."
+    full
+  >
+    <p>
+      You may benefit directly or indirectly through increased demand or through being affiliated with projects that
+      drive adoption.
+    </p>
+
+    <p>
+      Being affiliated means your logo being distributed through our YT channel (1.5k subscribers), our twitter account
+      (5k followers), our newsletter (12k subscribers) & our promo partners (with a combined total of ???k followers) as
+      well as local & regional media (Diamond tier).
+    </p>
+
+    <div class="tiers flex flex-col xl:flex-row justify-evenly items-start mx-auto">
+      {sponsorshipTiers && sponsorshipTiers.map((tier, i) => <Tier tier={tier} count={i} />)}
     </div>
 
     <div class="expansion-packs my-8 mx-auto">
       <h2 class="mb-3">Expansion Packs</h2>
-      <p class="text-xl max-w-5xl mx-auto text-center mb-10">
+      <p class="text-xl w-full max-w-5xl mx-auto text-center mb-10">
         We have a few expansion packs that you can add to your sponsorship tier. These are not required, but they will
         help us make the event even better.
       </p>
       <div class="expansion-packs__list flex flex-row justify-evenly items-start">
-        {
-          expansionPacks &&
-            expansionPacks.map((pack, i) => (
-							<Tier tier={pack} count={i} isExpansion />
-            ))
-        }
+        {expansionPacks && expansionPacks.map((pack, i) => <Tier tier={pack} count={i} isExpansion />)}
       </div>
     </div>
   </SponsorsSection>
+
+	<SponsorsSection title="Interested?" precis="Apply to join as a partner organization, a sponsor or both!">
+		<button
+				class="cta__join-button btn btn-ghost text-secondary mb-4 sm:mb-0 bg-gradient-tertiary text-base xs:text-2xl md:text-2xl px-5 py-6 md:px-8 md:py-8 leading-[0] inline-flex content-center rounded-xl hover:scale-105 transition-all delay-100 duration-300 ease-in-out border-2"
+				data-tally-open="wkbKeR" data-tally-layout="modal" data-tally-width="675" data-tally-align-left="1" data-tally-emoji-text="👋" data-tally-emoji-animation="wave" data-tally-auto-close="5000"
+			>
+				Apply now!
+		</button>
+	</SponsorsSection>
+
   <ThreeD client:load />
 </Layout>

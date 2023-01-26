@@ -10,8 +10,13 @@ export interface ChatMessage {
 
 export const metafestConvo = [
   {
+    user: 'nova',
+    message: 'Yooo, going to MetaFest?',
+    status: 'sent',
+  },
+  {
     user: 'anon',
-    message: 'Wait, wtf is MetFest?',
+    message: 'WTF is MetaFest?',
     status: 'sent',
   },
   {
@@ -21,23 +26,32 @@ export const metafestConvo = [
   },
   {
     user: 'anon',
-    message: 'Why?',
+    message: 'Lolwut?',
     status: 'sent',
   },
   {
     user: 'nova',
-    message:
-      '‘Cuz most people go to conferences to meet like-minded people, hang out with internet friends & have fun - not just listen to talks.',
+    message: 'Ya, you go to conferences to meet people, hang out with frens & have fun - not just listen to talks, aye?',
     status: 'sent',
   },
   {
     user: 'anon',
-    message: 'What kind of topics tho?',
+    message: 'So whats it about?',
     status: 'sent',
   },
   {
     user: 'nova',
-    message: 'Anything from DAOs & ReFi to walking the tightrope, juggling & guided meditation.',
+    message: 'Having fun & coping with trying to build a better future amidst global economical, ecological & meaning crises lol',
+    status: 'sent',
+  },
+  {
+    user: 'nova',
+    message: 'Topics & workshops on anything from decentralized organizing & regeneration to walking the tightrope, juggling & guided meditation.',
+    status: 'sent',
+  },
+  {
+    user: 'nova',
+    message: 'Plus a shitload of random optional activities like going to the national park, water park, adrenaline park, paintball &hellip; AND a week-long bus trip down the coast to Dubrovnik 👀',
     status: 'sent',
   },
 ];
@@ -57,17 +71,17 @@ export const metafestConvo = [
       x-transition:leave-end="opacity-0 transform translate-y-8"
     >
       <h2>About the festival</h2>
-      <p>Talks, workshops, games & music; a festival for DAOists & Regens.</p>
+      <p>Talks, workshops, games & music; a festival for DAOists and Regens.</p>
       <div class="chat relative flex max-w-4xl p-0">
         <div class="chat__content w-full h-full rounded-2xl bg-gradient-to-r from-secondary to-secondary-dark p-6 z-10">
           <ol class="chat__messages flex flex-col w-full">
             {
               metafestConvo &&
                 metafestConvo.map((message) => (
-                  <li class={`chat__message relative ${message.user === 'anon' ? 'self-start' : 'self-end'}`}>
+                  <li class={`chat__message relative ${message.user === 'nova' ? 'self-start nova' : 'self-end anon'}`}>
                     <div
                       class={`chat__message__content relative p-3 bg-gradient-to-br ${
-                        message.user === 'anon'
+                        message.user === 'nova'
                           ? 'from-[#1D3037] via-[#1D3037] to-secondary-dark'
                           : 'from-accent-alpha-30 via-[#206D69] to-[#206D69]'
                       } rounded-lg z-10`}
@@ -78,10 +92,10 @@ export const metafestConvo = [
                     </div>
                     <div
                       class={`chat__message__marker absolute w-[51px] h-[15px] ${
-                        message.user === 'anon' ? '-left-[9px]' : '-right-[18px]'
+                        message.user === 'nova' ? '-left-[9px]' : '-right-[18px]'
                       } -bottom-[3px] z-0`}
                     >
-                      <Icon name={message.user === 'anon' ? 'speech-anon' : 'speech-nova'} />
+                      <Icon name={message.user === 'nova' ? 'speech-anon' : 'speech-nova'} />
                     </div>
                   </li>
                 ))

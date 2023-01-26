@@ -14,7 +14,7 @@
       @apply transition-all duration-300;
 
       path {
-        @apply !fill-current !text-secondary transition-colors duration-300;
+        @apply !fill-current !text-secondary-dark transition-colors duration-300;
       }
 
       &:hover {
@@ -31,7 +31,7 @@
         @apply w-full justify-between;
 
         a {
-          @apply text-secondary text-base  3xl:text-2xl 4xl:text-4xl font-sans uppercase inline-flex items-center px-4 transition-colors duration-200;
+          @apply text-secondary-dark text-base  3xl:text-xl 4xl:text-2xl font-sans uppercase inline-flex items-center px-4 transition-colors duration-200;
           @apply hover:text-primary;
         }
       }

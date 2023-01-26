@@ -1,6 +1,7 @@
 ---
 // import { Icon } from 'astro-icon';
 import Section from '../core/Section.astro';
+import Markdown from '@astrojs/markdown-component';
 
 export interface SponsorsSectionProps {
   title: string;
@@ -12,7 +13,7 @@ const { full, title, precis } = Astro.props as SponsorsSectionProps;
 
 ---
 
-<Section sectionId="about">
+<Section sectionId="event-sponsors">
   <div class="section__content--alt flex justify-center">
     <div
       x-show="shown"
@@ -26,13 +27,13 @@ const { full, title, precis } = Astro.props as SponsorsSectionProps;
       x-transition:leave-end="opacity-0 transform translate-y-8"
     >
       <h2>{title}</h2>
-      {precis && <p>{precis}</p>}
+      {precis && <Markdown>{precis}</Markdown>}
       {!full ? (
         <div class="max-w-4xl">
           <slot />
         </div>
       ) : (
-        <div class="w-full">
+        <div class="w-[90%] mx-auto">
         <slot />
         </div>
       )}
