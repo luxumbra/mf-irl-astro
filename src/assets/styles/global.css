@@ -287,7 +287,7 @@
     .chat__messages {
 
       .chat__message {
-          @apply max-w-[66%] flex flex-col items-start space-y-2 mb-3;
+          @apply max-w-[85%] flex flex-col items-start space-y-2 mb-3;
       }
 
       .chat__message__marker {
