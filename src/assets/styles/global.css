@@ -122,6 +122,10 @@
       background-size: 100%;
     }
 
+    &:last-of-type {
+      background-image: none;
+    }
+
     &__content {
       @apply relative w-[90%] md:max-w-5xl 3xl:max-w-7xl mx-auto z-10;
 
