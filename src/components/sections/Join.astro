@@ -1,42 +1,45 @@
 ---
-import CallToAction from "~/components/widgets/CallToAction.astro";
-import Plants from "../widgets/Plants.astro";
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Plants from '../widgets/Plants.astro';
 ---
 
-<section id="join" class="section bg-none relative xl:py-16  3xl:pb-64 4xl:pb-[35vh]"
+<section
+  id="join"
+  class="section bg-none relative xl:py-16 3xl:pb-64 4xl:pb-[35vh]"
   x-data="{shown: false}"
   x-intersect:once="shown = true"
 >
   <div class="section__content relative z-20">
     <h4
-    class="text-4xl 3xl:text-6xl font-heading invisible xl:mb-24 2xl:mb-14"
-    x-show="shown"
-    x-bind:class="{ 'invisible': !shown, 'visible': shown }"
-    x-transition:enter="transition ease-out duration-300"
-    x-transition:enter-start="opacity-0 transform translate-y-8"
-    x-transition:enter-end="opacity-100 transform translate-y-0"
-    x-transition:leave="transition ease-in duration-300"
-    x-transition:leave-start="opacity-100 transform translate-y-0"
-    x-transition:leave-end="opacity-0 transform translate-y-8"
-    >MetaFest, manifest the future.</h4>
+      class="text-4xl 3xl:text-6xl font-heading invisible mb-10 xl:mb-24 2xl:mb-14"
+      x-show="shown"
+      x-bind:class="{ 'invisible': !shown, 'visible': shown }"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0 transform translate-y-8"
+      x-transition:enter-end="opacity-100 transform translate-y-0"
+      x-transition:leave="transition ease-in duration-300"
+      x-transition:leave-start="opacity-100 transform translate-y-0"
+      x-transition:leave-end="opacity-0 transform translate-y-8"
+    >
+      MetaFest, manifest the future.
+    </h4>
 
-    <div class="max-w-7xl">
-    <div class="event-info flex flex-row items-start justify-center space-x-10">
-        <div class="text-right">
+    <div class="w-full  xl:max-w-7xl mx-auto">
+      <div class="event-info flex flex-row items-start justify-between space-x-5 xl:space-x-10">
+        <div class="text-right w-1/2">
           <h5 class="font-heading">Where?</h5>
-          <p class="text-2xl text-right text-off-white">Fort Punta Christo<br /> Pula<br /> Croatia</p>
+          <p class="text-xs xl:text-2xl text-right text-off-white">Fort Punta Christo<br /> Pula<br /> Croatia</p>
         </div>
 
-        <div class="text-left">
+        <div class="text-left w-1/2">
           <h5 class="font-heading">When?</h5>
-          <p class="text-2xl mb-0 text-off-white uppercase">Warmup 11 - 15 Aug</p>
-          <p class="text-2xl mb-0 text-off-white font-semibold uppercase">Main event 15 - 18 Aug</p>
-          <p class="text-2xl mb-0 text-off-white uppercase">Bus Trip 19 - 25 Aug</p>
+          <p class="text-xs xl:text-2xl mb-0 text-off-white uppercase">Warmup 11 - 15 Aug</p>
+          <p class="text-xs xl:text-2xl mb-0 text-off-white font-semibold uppercase">Main event 15 - 18 Aug</p>
+          <p class="text-xs xl:text-2xl mb-0 text-off-white uppercase">Bus Trip 19 - 25 Aug</p>
         </div>
+      </div>
     </div>
-  </div>
     <CallToAction />
-
   </div>
 
   <Plants />

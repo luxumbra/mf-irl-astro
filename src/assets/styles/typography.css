@@ -16,7 +16,7 @@
       @apply mb-3 2xl:mb-6 4xl:mb-10 text-4xl 2xl:text-5xl;
 
       & + p {
-        @apply mb-3 2xl:mb-6 text-lg 2xl:text-2xl 4xl:text-3xl text-center max-w-2xl 2xl:max-w-4xl mx-auto;
+        @apply mb-3 2xl:mb-6 text-base 2xl:text-2xl 4xl:text-3xl text-center max-w-2xl 2xl:max-w-4xl mx-auto;
       }
     }
 
@@ -27,10 +27,10 @@
     h4,
     h5,
     h6 {
-      @apply font-sans text-primary text-4xl;
+      @apply font-sans text-primary text-2xl xl:text-4xl;
     }
 
-    p {
+    p, li {
       @apply font-sans text-accent text-sm md:text-base 4xl:text-2xl text-left leading-relaxed mb-6;
     }
   }
