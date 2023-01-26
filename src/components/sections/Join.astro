@@ -5,8 +5,7 @@ import Plants from "../widgets/Plants.astro";
 
 <section id="join" class="section bg-none relative xl:py-16  3xl:pb-64 4xl:pb-[35vh]"
   x-data="{shown: false}"
-  x-intersect="shown = true"
-  x-intersect:leave="shown = false"
+  x-intersect:once="shown = true"
 >
   <div class="section__content relative z-20">
     <h4
