@@ -178,7 +178,7 @@ export const expansionPacks = [
     width={512}
     height={512}
     layout="responsive"
-    class="absolute top-20 left-1/4 right-1/4 w-1/2 z-[9] opacity-5"
+    class="absolute top-20 w-full left-0 xl:left-1/4 xl:right-1/4 xl:w-1/2 z-[9] opacity-5"
   />
   <SponsorsSection title="Why the Balkans, why Croatia?">
     <p>
@@ -257,7 +257,7 @@ export const expansionPacks = [
         We have a few expansion packs that you can add to your sponsorship tier. These are not required, but they will
         help us make the event even better.
       </p>
-      <div class="expansion-packs__list flex flex-row justify-evenly items-start mt-14">
+      <div class="expansion-packs__list flex flex-col xl:flex-row justify-evenly items-start mt-14">
         {expansionPacks && expansionPacks.map((pack, i) => <Tier tier={pack} count={i} isExpansion />)}
       </div>
     </div>
@@ -270,7 +270,7 @@ export const expansionPacks = [
 			>
 				Apply now!
 		</button>
-		<div class="  3xl:pb-64 4xl:pb-[35vh]" />
+		<div class="pb-[10vh] 3xl:pb-64 4xl:pb-[35vh]" />
 	</SponsorsSection>
 
 	<div class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto">
