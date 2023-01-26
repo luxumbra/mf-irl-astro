@@ -10,8 +10,7 @@ const { sectionId } = Astro.props as SectionProps;
   x-data="{ shown: false }"
   id={sectionId}
   class="section relative"
-  x-intersect:half="shown = true"
-  x-intersect:leave="shown = false"
+  x-intersect:once="shown = true"
 >
   <slot />
 </section>
