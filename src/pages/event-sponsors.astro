@@ -236,28 +236,28 @@ export const expansionPacks = [
     precis="It’s in all of our best interest these technologies get adopted IRL."
     full
   >
-    <p>
+    <p class="w-full max-w-5xl mx-auto">
       You may benefit directly or indirectly through increased demand or through being affiliated with projects that
       drive adoption.
     </p>
 
-    <p>
+    <p class="w-full max-w-5xl mx-auto">
       Being affiliated means your logo being distributed through our YT channel (1.5k subscribers), our twitter account
       (5k followers), our newsletter (12k subscribers) & our promo partners (with a combined total of ???k followers) as
       well as local & regional media (Diamond tier).
     </p>
 
-    <div class="tiers flex flex-col xl:flex-row justify-evenly items-start mx-auto">
+    <div class="tiers flex flex-col xl:flex-row justify-evenly items-start mx-auto mt-14">
       {sponsorshipTiers && sponsorshipTiers.map((tier, i) => <Tier tier={tier} count={i} />)}
     </div>
 
     <div class="expansion-packs my-8 mx-auto">
       <h2 class="mb-3">Expansion Packs</h2>
-      <p class="text-xl w-full max-w-5xl mx-auto text-center mb-10">
+      <p class="text-xl w-full max-w-5xl mx-auto text-center">
         We have a few expansion packs that you can add to your sponsorship tier. These are not required, but they will
         help us make the event even better.
       </p>
-      <div class="expansion-packs__list flex flex-row justify-evenly items-start">
+      <div class="expansion-packs__list flex flex-row justify-evenly items-start mt-14">
         {expansionPacks && expansionPacks.map((pack, i) => <Tier tier={pack} count={i} isExpansion />)}
       </div>
     </div>
