@@ -9,6 +9,10 @@
     [role='tablist'] {
       @apply flex flex-row md:flex-col text-left m-0 p-0 space-y-0 space-x-0 md:space-y-6 md:space-x-0;
 
+      li {
+        @apply mb-0;
+      }
+
       a {
         @apply flex p-1 text-xs md:text-lg 2xl:text-2xl uppercase text-left  text-accent opacity-60 border-b-[1px] border-accent transition-all duration-300 ease-in-out;
 
@@ -37,7 +41,7 @@
       }
 
       h3 {
-        @apply text-sm md:text-lg 2xl:text-2xl font-sans font-bold uppercase p-3 md:p-4 2xl:p-6 mb-0 bg-gradient-to-r from-accent-alpha-60 to-transparent relative;
+        @apply text-sm md:text-lg 2xl:text-2xl text-left font-sans font-normal uppercase mx-0 p-3 md:p-4 2xl:p-6 mb-0 bg-gradient-to-r from-accent-alpha-60 to-transparent relative;
 
         &::after {
           @apply block absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-accent via-accent to-transparent;
