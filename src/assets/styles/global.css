@@ -126,7 +126,7 @@
       @apply relative w-[90%] md:max-w-5xl 3xl:max-w-7xl mx-auto z-10;
 
       &--alt {
-        @apply relative w-[90%] md:max-w-5xl 3xl:max-w-[75%] mx-auto z-10;
+        @apply relative w-[90%] xl:max-w-7xl 3xl:max-w-[75%] mx-auto z-10;
 
         /* p {
           &:first-of-type {
