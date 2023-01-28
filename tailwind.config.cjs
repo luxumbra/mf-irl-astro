@@ -27,6 +27,8 @@ module.exports = {
 				'tertiary-alpha-60': '#77c64e99',
 				'off-white': '#cef4d0ff',
 				'secondary-dark': '#060c14ff',
+				'secondary-dark-alpha-30': '#060c144d',
+				'secondary-dark-alpha-60': '#060c1499',
 				'another-color': '#217470ff',
 			},
 			fontFamily: {

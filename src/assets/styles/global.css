@@ -122,6 +122,10 @@
       background-size: 100%;
     }
 
+    &:last-of-type {
+          background-image: none;
+        }
+
     &__content {
       @apply relative w-[90%] md:max-w-5xl 3xl:max-w-7xl mx-auto z-10;
 
@@ -151,16 +155,6 @@
               @apply flex-shrink-0 w-8 mr-3;
             }
           }
-        }
-
-        &:last-of-type {
-          background-image: none;
-/*
-          p {
-            &:first-of-type {
-              @apply text-lg 2xl:text-3xl;
-            }
-          } */
         }
       }
     }
@@ -206,7 +200,7 @@
       @apply transition-all duration-300 ease-in-out;
 
       &__content {
-        @apply text-left py-10 flex items-center content-center bg-gradient-to-t from-accent-alt to-transparent w-full;
+        @apply text-left py-10 flex items-center content-center bg-gradient-to-t from-secondary-dark via-secondary-dark-alpha-60 to-transparent w-full;
 
         svg {
           @apply translate-y-10 opacity-0 transition-all duration-300 delay-200 ease-in-out;

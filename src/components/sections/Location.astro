@@ -7,38 +7,11 @@ import Section from "../core/Section.astro";
 ---
 <Section sectionId="location">
   <div class="section__content">
-    <h2
-    x-show="shown"
-    class="invisible"
-    x-bind:class="{ 'invisible': !shown }"
-    x-transition:enter="transition ease-out duration-500"
-    x-transition:enter-start="opacity-0 transform translate-y-8"
-    x-transition:enter-end="opacity-100 transform translate-y-0"
-    x-transition:leave="transition ease-in duration-500"
-    x-transition:leave-start="opacity-100 transform translate-y-0"
-    x-transition:leave-end="opacity-0 transform translate-y-8">Location</h2>
-    <p class="font-bold invisible"
-    x-show="shown"
-    x-bind:class="{ 'invisible': !shown }"
-    x-transition:enter="transition ease-out duration-500"
-    x-transition:enter-start="opacity-0 transform translate-y-8"
-    x-transition:enter-end="opacity-100 transform translate-y-0"
-    x-transition:leave="transition ease-in duration-500"
-    x-transition:leave-start="opacity-100 transform translate-y-0"
-    x-transition:leave-end="opacity-0 transform translate-y-8"
-    >
+    <h2>Location</h2>
+    <p class="font-bold">
       Fort Punta Christo, Croatia
     </p>
-    <p class="max-w-fit md:max-w-2xl mx-auto md:ml-[33%] invisible text-center"
-    x-show="shown"
-    x-bind:class="{ 'invisible': !shown }"
-    x-transition:enter="transition ease-out duration-500"
-    x-transition:enter-start="opacity-0 transform translate-y-8"
-    x-transition:enter-end="opacity-100 transform translate-y-0"
-    x-transition:leave="transition ease-in duration-500"
-    x-transition:leave-start="opacity-100 transform translate-y-0"
-    x-transition:leave-end="opacity-0 transform translate-y-8"
-    >At the bottom of a peninsula called Istria, we chose this epic historical location - a 200 years old fortress called Punta Christo.
+    <p class="max-w-fit md:max-w-2xl mx-auto text-center">At the bottom of a peninsula called Istria, we chose this epic historical location - a 200 years old fortress called Punta Christo.
 
     In the city of Pula itself: from Neolithic era artefacts indicating settlement between 6000-2000 BC, to the Roman Empire’s era monuments & architecture long outlasting the empire.
 
@@ -49,7 +22,7 @@ import Section from "../core/Section.astro";
       <Carousel />
   </div>
 
-  <div class="decoration absolute w-10/12 md:w-2/12 xl:w-3/12 2xl:w-2/12 left-5 md:left-72 xl:left-32 2xl:left-72 4xl:left-[20vw] top-16 z-0 opacity-60 2xl:opacity-100 invisible"
+  <div class="decoration absolute w-10/12 md:w-2/12 xl:w-3/12 2xl:w-3/12 -right-32 top-16 z-0 opacity-60 2xl:opacity-100 invisible"
   x-show="shown"
   x-bind:class="{ 'invisible': !shown }"
   x-transition:enter="transition ease-out duration-500"
@@ -62,7 +35,7 @@ import Section from "../core/Section.astro";
     <Icon name="island" className="w-full" />
   </div>
 
-  <div class="section__decoration absolute opacity-30 xl:opacity-100 right-0 top-0 z-0">
+  <div class="section__decoration absolute opacity-30 xl:opacity-100 left-0  top-16 z-0 -scale-x-100">
     <Icon name="fortgate-main" className="w-64 md:w-48 hidden xl:block" />
     <Icon name="fortgate-alt" className="w-64 md:w-72 block xl:hidden" />
   </div>
