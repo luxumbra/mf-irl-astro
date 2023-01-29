@@ -2,38 +2,7 @@
 import { Image } from '@astrojs/image/components';
 import './tabs.css';
 
-const speakers = [
-        {
-          name: "Speaker 1",
-          image: "purple-octo-midjourney-2.png",
-          url: "https://metagame.wtf/players/luxumbra"
-        },
-        {
-          name: "Speaker 2",
-          image: "purple-octo-midjourney.png",
-          url: "https://metagame.wtf/players/luxumbra"
-        },
-        {
-          name: "Speaker 3",
-          image: "purple-octo-midjourney-2.png",
-          url: "https://metagame.wtf/players/luxumbra"
-        },
-        {
-          name: "Speaker 1",
-          image: "purple-octo-midjourney-2.png",
-          url: "https://metagame.wtf/players/luxumbra"
-        },
-        {
-          name: "Speaker 2",
-          image: "purple-octo-midjourney.png",
-          url: "https://metagame.wtf/players/luxumbra"
-        },
-        {
-          name: "Speaker 3",
-          image: "purple-octo-midjourney-2.png",
-          url: "https://metagame.wtf/players/luxumbra"
-        },
-      ]
+import speakers from '~/data/speakers.json';
 ---
 
 
@@ -45,7 +14,7 @@ const speakers = [
 
       return (
         <li class="rounded-2xl bg-gradient-to-br from-secondary-alt via-secondary-alt to-transparent">
-          <a href={speaker.url} class="flex flex-col p-5 text-center" title={speaker.name}>
+          <a href={speaker.url} class="flex flex-col p-5 text-center" title={speaker.name} target="_blank" rel="nofollow">
             <Image
               class="rounded-full border-2 border-primary mx-auto"
               src={image}

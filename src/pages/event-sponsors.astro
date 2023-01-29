@@ -27,9 +27,9 @@ export const sponsorshipTiers = [
       {
         summary: 'Your logo on the website, most promo materials, media & aftermovie',
       },
-			{
-				summary: 'Your logo in swag bags & at the venue',
-			},
+      {
+        summary: 'Your logo in swag bags & at the venue',
+      },
       {
         summary: '3 ticket NFTs (worth $600)',
       },
@@ -46,9 +46,9 @@ export const sponsorshipTiers = [
       {
         summary: 'Your logo on the website, most promo materials, media & aftermovie',
       },
-			{
-				summary: 'Your logo in swag bags & at the venue',
-			},
+      {
+        summary: 'Your logo in swag bags & at the venue',
+      },
       {
         summary: 'Talk or workshop',
       },
@@ -68,15 +68,15 @@ export const sponsorshipTiers = [
       {
         summary: 'Your logo on the website, all promo materials, media & aftermovie',
       },
-			{
-				summary: 'Your logo in swag bags & at the venue',
-			},
-			{
-				summary: 'Your logo on the livestreams',
-			},
-			{
-				summary: 'Your name in local & regional media',
-			},
+      {
+        summary: 'Your logo in swag bags & at the venue',
+      },
+      {
+        summary: 'Your logo on the livestreams',
+      },
+      {
+        summary: 'Your name in local & regional media',
+      },
       {
         summary: 'Talk and workshop',
       },
@@ -200,6 +200,23 @@ export const expansionPacks = [
       Great time-zone compatibility & good educational system combined with relatively low standards of living also make
       the Balkans a great place to hire from.
     </p>
+
+    <div class="section__decoration absolute w-10/12 md:w-2/12 xl:w-3/12 2xl:w-3/12 -right-32 top-16 z-0 opacity-60 2xl:opacity-100 invisible"
+    x-show="shown"
+    x-bind:class="{ 'invisible': !shown }"
+    x-transition:enter="transition ease-out duration-500"
+    x-transition:enter-start="opacity-08"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-500"
+    x-transition:leave-start="opacity-1000"
+    x-transition:leave-end="opacity-0"
+    >
+      <Icon name="island" className="w-full" />
+    </div>
+    <!-- <div class="section__decoration absolute opacity-30 xl:opacity-100 right-0 top-0 z-0">
+    <Icon name="fortgate-main" className="w-64 md:w-72 hidden xl:block" />
+    <Icon name="fortgate-alt" className="w-64 md:w-72 block xl:hidden" />
+  </div> -->
   </SponsorsSection>
 
   <SponsorsSection
@@ -218,12 +235,12 @@ export const expansionPacks = [
         <Icon name="ic:round-check-circle-outline" /> ~15% select locals, from the tech uni, a youth DAO etc.
       </li>
       <li>
-        <Icon name="ic:round-check-circle-outline" /> Having an epic time while exchanging cutting edge DAO/regen/meta
-        knowledge & usecases.
+        <Icon name="ic:round-check-circle-outline" /> Having an epic time while exchanging cutting edge DAO/regen/meta knowledge
+        & usecases.
       </li>
       <li>
-        <Icon name="ic:round-check-circle-outline" /> Inspiring more people to join the space, start local DAOs &/or
-        implement Web3 tech at the local, municipal or state level.
+        <Icon name="ic:round-check-circle-outline" /> Inspiring more people to join the space, start local DAOs &/or implement
+        Web3 tech at the local, municipal or state level.
       </li>
     </ul>
   </SponsorsSection>
@@ -260,24 +277,27 @@ export const expansionPacks = [
     </div>
   </SponsorsSection>
 
-	<SponsorsSection title="Interested?" precis="Apply to join as a partner organization, a sponsor or both!">
-		<button
-				class="cta__join-button btn btn-ghost text-secondary mb-4 sm:mb-0 bg-gradient-tertiary text-base xs:text-2xl md:text-2xl px-5 py-6 md:px-8 md:py-8 leading-[0] inline-flex content-center rounded-xl hover:scale-95 transition-all delay-100 duration-300 ease-in-out border-2 btn-disabled opacity-60"
-				data-tally-open="wdbe1y" data-tally-layout="modal" data-tally-width="675" data-tally-align-left="1" data-tally-emoji-text="👋" data-tally-emoji-animation="wave" data-tally-auto-close="5000"
-        aria-disabled="true"
-			>
-				Apply now!
-		</button>
-		<div class="pb-[10vh] xl:pb-32 3xl:pb-64 4xl:pb-[35vh]" />
-	</SponsorsSection>
+  <SponsorsSection title="Interested?" precis="Apply to join as a partner organization, a sponsor or both!">
+    <button
+      class="cta__join-button btn btn-ghost text-secondary mb-4 sm:mb-0 bg-gradient-tertiary text-base xs:text-2xl md:text-2xl px-5 py-6 md:px-8 md:py-8 leading-[0] inline-flex content-center rounded-xl hover:scale-95 transition-all delay-100 duration-300 ease-in-out border-2 btn-disabled opacity-60"
+      data-tally-open="wdbe1y"
+      data-tally-layout="modal"
+      data-tally-width="675"
+      data-tally-align-left="1"
+      data-tally-emoji-text="👋"
+      data-tally-emoji-animation="wave"
+      data-tally-auto-close="5000"
+      aria-disabled="true"
+    >
+      Apply now!
+    </button>
+    <div class="pb-[10vh] xl:pb-32 3xl:pb-64 4xl:pb-[35vh]"></div>
+  </SponsorsSection>
 
-	<div class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto">
-		<div class="relative w-full h-full"
-		x-data="{shown: false}"
-		x-intersect:once="shown = true"
-		>
-			<Plants />
-		</div>
-	</div>
+  <div class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto">
+    <div class="relative w-full h-full" x-data="{shown: false}" x-intersect:once="shown = true">
+      <Plants />
+    </div>
+  </div>
   <ThreeD client:load />
 </Layout>
