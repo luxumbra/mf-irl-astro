@@ -315,6 +315,10 @@
     }
     .bg-gradient-secondary {
       @apply bg-gradient-to-tr from-accent-alpha-60 to-primary-alpha-60;
+
+      &-solid {
+        @apply bg-gradient-to-r from-accent to-primary;
+      }
     }
 
     .bg-gradient-tertiary {
