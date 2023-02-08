@@ -300,14 +300,19 @@
       @apply grid grid-cols-2  lg:grid-cols-6 gap-3 lg:gap-6;
 
       li {
-        @apply hover:scale-105 transition-all duration-300 ease-in-out;
+        @apply relative overflow-hidden hover:scale-105 transition-all duration-300 ease-in-out;
 
-        &::after {
+        background-image: url('../images/hammered-bg.png');
+
+        @apply bg-top bg-cover;
+
+        /* &::after {
           content: '';
-          @apply absolute bottom-0 left-0 w-full;
+          @apply absolute bottom-0 left-0 w-full h-[1px] z-20;
 
           background-image: url('../images/section-divider.png');
-        }
+          @apply bg-bottom bg-cover;
+        } */
       }
 
       a {
@@ -322,13 +327,13 @@
     }
   }
 
-  .partners-list {
+  /* .partners-list {
     .partner {
       background-image: url('../images/hammered-bg.png');
 
       @apply bg-top bg-cover;
     }
-  }
+  } */
 
   .mobile-menu {
     @apply bg-gradient-to-br from-accent to-accent-alpha-60 text-slate-900 text-center backdrop-blur-xl;
