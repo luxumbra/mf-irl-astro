@@ -116,6 +116,14 @@
 
         &--highlight {
           @apply opacity-100 z-10;
+
+          h5 {
+            @apply px-3;
+          }
+        }
+
+        h5 {
+          @apply text-lg px-6;
         }
 
         div {
