@@ -40,7 +40,7 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl } = Astro.props as HeroProps
       <p class="hero__subtitle text-this-color">{subtitle}</p>
 
       <!-- <div class="max-w-7xl"> -->
-      <div class="event-info flex flex-row items-center lg:justify-end mt-6 py-6 space-x-3">
+      <div class="event-info">
         <div class="event-info__item w-auto text-center"
         x-show="shown"
         x-bind:class="{ 'invisible': !shown }"

@@ -110,7 +110,7 @@
     }
 
     .event-info {
-      @apply justify-center lg:justify-end;
+      @apply  flex flex-row items-center lg:justify-end mt-6 py-6 space-x-3;
 
       &__item {
         @apply opacity-70 z-0;
