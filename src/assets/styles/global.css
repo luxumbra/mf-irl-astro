@@ -110,6 +110,7 @@
     }
 
     .event-info {
+      @apply justify-center lg:justify-end;
 
       &__item {
         @apply opacity-70 z-0;
@@ -118,12 +119,12 @@
           @apply opacity-100 z-10;
 
           h5 {
-            @apply text-xl px-3;
+            @apply text-sm lg:text-xl px-0 lg:px-3;
           }
         }
 
         h5 {
-          @apply text-base px-6;
+          @apply text-xs lg:text-base px-3 lg:px-6;
         }
 
         div {
@@ -134,10 +135,10 @@
           }
 
           p {
-            @apply text-lg font-normal uppercase leading-none space-y-0;
+            @apply text-base lg:text-lg font-normal uppercase leading-none space-y-0;
 
             span:first-of-type {
-              @apply text-3xl font-bold tracking-tighter;
+              @apply text-xl lg:text-3xl font-bold tracking-tighter;
             }
           }
 
@@ -297,10 +298,10 @@
     @apply mt-10;
 
     ul {
-      @apply grid grid-cols-2  lg:grid-cols-6 gap-3 lg:gap-6;
+      @apply grid grid-cols-2  lg:grid-cols-6 gap-3 lg:gap-4 3xl:gap-6;
 
       li {
-        @apply relative overflow-hidden hover:scale-105 transition-all duration-300 ease-in-out;
+        @apply relative items-center overflow-hidden hover:scale-105 transition-all duration-300 ease-in-out;
 
         background-image: url('../images/hammered-bg.png');
 
@@ -317,6 +318,10 @@
 
       a {
         @apply space-y-3 capitalize;
+
+        span {
+          @apply text-xs lg:text-sm 3xl:text-base whitespace-nowrap;
+        }
       }
     }
 
