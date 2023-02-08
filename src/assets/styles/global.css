@@ -79,7 +79,7 @@
       @apply text-3xl lg:text-7xl text-primary text-right tracking-wide;
 
       & + p {
-        @apply text-2xl lg:text-3xl text-green-200 text-right mt-0 mb-3 font-normal;
+        @apply text-2xl lg:text-3xl text-this-color text-right mt-0 mb-3 font-normal;
       }
     }
 
