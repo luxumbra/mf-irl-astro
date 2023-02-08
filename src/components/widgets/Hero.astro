@@ -41,7 +41,16 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl } = Astro.props as HeroProps
 
       <!-- <div class="max-w-7xl"> -->
       <div class="event-info flex flex-row items-center justify-end mt-6 py-6 space-x-3">
-        <div class="event-info__item w-auto text-center">
+        <div class="event-info__item w-auto text-center"
+        x-show="shown"
+        x-bind:class="{ 'invisible': !shown }"
+        x-transition:enter="transition ease-out duration-500 delay-[250ms]"
+        x-transition:enter-start="opacity-0 transform translate-y-8"
+        x-transition:enter-end="opacity-100 transform translate-y-0"
+        x-transition:leave="transition ease-in duration-500"
+        x-transition:leave-start="opacity-100 transform translate-y-0"
+        x-transition:leave-end="opacity-0 transform translate-y-8"
+        >
           <h5 class="text-off-white uppercase font-normal">WarmUp</h5>
           <div class="px-3 py-2 bg-gradient-primary-solid rounded-lg">
             <p class="mb-0 text-off-white flex flex-col justify-center text-center">
@@ -50,7 +59,16 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl } = Astro.props as HeroProps
             </p>
           </div>
         </div>
-        <div class="event-info__item event-info__item--highlight w-auto text-center scale-125">
+        <div class="event-info__item event-info__item--highlight w-auto text-center scale-125"
+        x-show="shown"
+        x-bind:class="{ 'invisible': !shown }"
+        x-transition:enter="transition ease-out duration-500 delay-[350ms]"
+        x-transition:enter-start="opacity-0 transform translate-y-8"
+        x-transition:enter-end="opacity-100 transform translate-y-0"
+        x-transition:leave="transition ease-in duration-500"
+        x-transition:leave-start="opacity-100 transform translate-y-0"
+        x-transition:leave-end="opacity-0 transform translate-y-8"
+        >
           <h5 class="text-off-white uppercase font-extrabold">Main Event</h5>
           <div class="px-3 py-2 bg-gradient-primary-solid rounded-lg shadow-2xl shadow-black">
             <p class="mb-0 text-off-white flex flex-col justify-center text-center">
@@ -59,7 +77,16 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl } = Astro.props as HeroProps
             </p>
           </div>
         </div>
-        <div class="event-info__item w-auto text-center">
+        <div class="event-info__item w-auto text-center"
+        x-show="shown"
+        x-bind:class="{ 'invisible': !shown }"
+        x-transition:enter="transition ease-out duration-500 delay-[400ms]"
+        x-transition:enter-start="opacity-0 transform translate-y-8"
+        x-transition:enter-end="opacity-100 transform translate-y-0"
+        x-transition:leave="transition ease-in duration-500"
+        x-transition:leave-start="opacity-100 transform translate-y-0"
+        x-transition:leave-end="opacity-0 transform translate-y-8"
+        >
           <h5 class="text-off-white uppercase font-normal">Bus Trip</h5>
           <div class="px-3 py-2 bg-gradient-primary-solid rounded-lg">
             <p class="mb-0 text-off-white flex flex-col justify-center text-center">

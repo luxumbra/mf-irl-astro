@@ -118,12 +118,12 @@
           @apply opacity-100 z-10;
 
           h5 {
-            @apply px-3;
+            @apply text-xl px-3;
           }
         }
 
         h5 {
-          @apply text-lg px-6;
+          @apply text-base px-6;
         }
 
         div {
@@ -134,7 +134,7 @@
           }
 
           p {
-            @apply text-2xl font-normal uppercase leading-none space-y-0;
+            @apply text-lg font-normal uppercase leading-none space-y-0;
 
             span:first-of-type {
               @apply text-3xl font-bold tracking-tighter;
