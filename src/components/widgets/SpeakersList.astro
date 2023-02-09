@@ -7,15 +7,15 @@ import speakers from '~/data/speakers.json';
 
 
 <!-- Slider main container -->
-<div class="speakers-list max-w-7xl">
+<div class="speakers-list partners-list max-w-7xl">
   <ul class="">
     {speakers && speakers.length > 0 && speakers.map((speaker) => {
       const image = `/assets/images/speakers/${speaker.image}`
       const isExternal = speaker.url.startsWith('https')
 
       return (
-        <li class="rounded-2xl bg-gradient-to-br from-secondary-alt via-secondary-alt to-transparent">
-          <a href={speaker.url} class="flex flex-col p-5 text-center" title={speaker.name} target={isExternal &&"_blank"} rel={isExternal && "nofollow"}>
+        <li class="partner rounded-2xl bg-gradient-to-br from-secondary-alt via-secondary-alt to-transparent">
+          <a href={speaker.url} class="flex flex-col p-3 lg:p-5 text-center" title={speaker.name} target={isExternal &&"_blank"} rel={isExternal && "nofollow"}>
             <Image
               class="rounded-full border-2 border-primary mx-auto"
               src={image}

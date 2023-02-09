@@ -30,6 +30,7 @@ module.exports = {
 				'secondary-dark-alpha-30': '#060c144d',
 				'secondary-dark-alpha-60': '#060c1499',
 				'another-color': '#217470ff',
+				'this-color': '#D4DB48'
 			},
 			fontFamily: {
 				sans: ['Montserrat', 'sans-serif'],
