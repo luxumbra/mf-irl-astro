@@ -1,0 +1,118 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+import ThreeD from '~/components/widgets/ThreeD';
+import SponsorsSection from '~/components/core/SponsorsSection.astro';
+import {TicketMethod, TicketMethodType} from '~/components/atoms/TicketMethod';
+import Markdown from '@astrojs/markdown-component';
+import { Image } from '@astrojs/image/components';
+// import { v4 as uuidv4 } from 'uuid';
+import mgLogo from '~/assets/images/mg-logo.gif';
+import Plants from '~/components/widgets/Plants.astro';
+
+const meta = {
+  title: `${SITE.title}: Event sponsors`,
+  description: 'Sponsor the DAO event of 2023. MetaFest Croatia is organized by MetaFam of MetaGame.',
+  canonical: getCanonical(getHomePermalink()),
+};
+
+
+
+export const ticketMethods: TicketMethodType[] = [
+  {
+    title: 'Dump Fiat',
+    price: 2,
+    summary: 'Want to dump some fiat for a MetaFest ticket? This is the place for you.',
+		method: 'fiat',
+		ctaText: 'Buy a ticket'
+  },
+  {
+    title: 'Buy with Crypto',
+    price: 5,
+    summary: 'Of course, we accept crypto.',
+    method: 'crypto',
+		ctaText: 'Buy a ticket'
+  },
+  {
+    title: 'Buy with Seeds',
+    price: 5,
+    summary: 'We also give a discount for those paying with Seeds.',
+    method: 'seeds',
+		ctaText: 'Buy a ticket'
+  },
+	{
+		title: 'Be useful',
+		price: 5,
+		summary: "Don't want to pay? Apply to speak, help with promoting the event, cleaning etc.",
+		method: 'crew',
+		ctaText: 'Apply'
+	},
+	{
+		title: 'Be a MetaGamer',
+		price: 0,
+		summary: 'Silver league & above in MetaGame? You get to join for free.',
+		method: 'metagamer',
+		ctaText: 'Claim'
+	},
+	{
+		title: 'Sponsor or Partner',
+		price: 5,
+		summary: 'Want to have your project sponsor or help MetaFest? sponsors & partners get a few tix',
+		method: 'sponsor',
+		ctaText: 'Check it out'
+	}
+];
+
+
+---
+
+<Layout {meta}>
+  <div class="pt-32"></div>
+  <Image
+    src={mgLogo}
+    alt="3D"
+    loading="lazy"
+    quality={100}
+    width={512}
+    height={512}
+    layout="responsive"
+    class="absolute top-20 w-full left-0 xl:left-1/4 xl:right-1/4 xl:w-1/2 z-[9] opacity-5"
+  />
+
+
+  <SponsorsSection
+    title="Tickets"
+    precis="It’s in all of our best interest these technologies get adopted IRL."
+    full
+  >
+
+    <div class="tiers grid grid-cols-3 flex-wrap mx-auto mt-14 gap-5">
+      {ticketMethods && ticketMethods.map((method) => <TicketMethod {...method} client:load />)}
+    </div>
+
+  </SponsorsSection>
+
+  <SponsorsSection title="Interested?" precis="Apply to join as a partner organization, a sponsor or both!">
+    <button
+      class="cta__join-button btn btn-ghost text-secondary mb-4 sm:mb-0 bg-gradient-tertiary text-base xs:text-2xl md:text-2xl px-5 py-6 md:px-8 md:py-8 leading-[0] inline-flex content-center rounded-xl hover:scale-95 transition-all delay-100 duration-300 ease-in-out border-2"
+      data-tally-open="w2XEaj"
+      data-tally-layout="modal"
+      data-tally-width="800"
+      data-tally-align-left="1"
+      data-tally-emoji-text="👋"
+      data-tally-emoji-animation="wave"
+      data-tally-auto-close="5000"
+    >
+      Apply now!
+    </button>
+    <div class="pb-[10vh] xl:pb-32 2xl:pb-64 4xl:pb-[35vh]" />
+  </SponsorsSection>
+
+  <div class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto">
+    <div class="relative w-full h-full" x-data="{shown: false}" x-intersect:once="shown = true">
+      <Plants />
+    </div>
+  </div>
+  <ThreeD client:load />
+</Layout>
