@@ -2,23 +2,7 @@
 import { Image } from '@astrojs/image/components';
 import Section from '~/components/core/Section.astro';
 
-const sponsors = [
-        {
-          name: "MetaCartel",
-          logo: "metacartel.png",
-          url: "https://metacartel.xyz"
-        },
-        {
-          name: "MetaFam",
-          logo: "metagame.png",
-          url: "https://metagame.wtf"
-        },
-        {
-          name: 'Your DAO?',
-          logo: 'mystery.png',
-          url: '/event-sponsors',
-        }
-      ]
+import sponsors from '~/data/sponsors.json';
 ---
 
 <Section sectionId="sponsors">
@@ -37,12 +21,6 @@ const sponsors = [
       <p>
         MetaFest will be organized in collaboration between MetaFam, MetaCartel & MetaAlliance as well as other local &
         global partner organizations.
-      </p>
-      <p class="mb-6 text-center max-w-2xl 4xl:max-w-3xl mx-auto">
-        Most importantly, we want you to co-create it with us&hellip;
-      </p>
-      <p class="mb-10 text-center max-w-2xl 4xl:max-w-3xl mx-auto">
-        MetaFest is a celebration of the future we’re building, together&hellip;
       </p>
 
       <div class="speakers-list partners-list max-w-7xl mb-10">

@@ -139,10 +139,10 @@ export const TicketMethod = ({ title,
 
 	return (
 		<div className={`ticket-method w-auto`}>
-			<div className="tier__header text-left">
+			<div className="ticket-method__header text-left">
 				<h4 className="mb-3 uppercase text-off-white">{title}</h4>
 			</div>
-			<div className="tier__content relative text-left p-0 rounded-2xl">
+			<div className="ticket-method__content relative text-left p-0 rounded-2xl">
 				<div className="p-5 z-10 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark">
 					<p className="text-sm xl:text-xl text-primary">{summary}</p>
 					<div className="tier__perks text-center">

@@ -87,7 +87,7 @@ export const ticketMethods: TicketMethodType[] = [
     full
   >
 
-    <div class="tiers grid grid-cols-3 flex-wrap mx-auto mt-14 gap-5">
+    <div class="ticket-methods grid grid-cols-3 flex-wrap mx-auto mt-14 gap-8">
       {ticketMethods && ticketMethods.map((method) => <TicketMethod {...method} client:load />)}
     </div>
 
