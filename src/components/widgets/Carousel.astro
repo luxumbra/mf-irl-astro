@@ -3,7 +3,6 @@ import { Picture } from '@astrojs/image/components';
 import { Icon } from 'astro-icon';
 // import { SITE } from '~/config.mjs';
 import slides from '~/data/carousel.json';
-
 ---
 
 <!-- Slider main container -->
@@ -16,20 +15,26 @@ import slides from '~/data/carousel.json';
         slides &&
           slides.length > 0 &&
           slides.map((slide) => {
-						const isVideo = slide.image.includes('youtube');
+            const isVideo = slide.image.includes('youtube');
             const image = `/assets/images/carousel/${slide.image}`;
-						const videoUrl = isVideo ? slide.image : '';
+            const videoUrl = isVideo ? slide.image : '';
 
-						return (
-							isVideo ?
-						<div class="swiper-slide">
-							<iframe width="560" height="315" src={videoUrl} title="YouTube video player" class="w-full h-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-						</div>
-						:
+            return isVideo ? (
+              <div class="swiper-slide">
+                <iframe
+                  width="560"
+                  height="315"
+                  src={videoUrl}
+                  title={slide.title}
+                  class="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                />
+              </div>
+            ) : (
               <div class="swiper-slide">
                 <Picture
-									class="hidden md:block"
+                  class="hidden md:block"
                   src={image}
                   sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
                   alt="Hero Image"
@@ -40,8 +45,8 @@ import slides from '~/data/carousel.json';
                   height={833}
                 />
 
-								<Picture
-								  class="block md:hidden"
+                <Picture
+                  class="block md:hidden"
                   src={image}
                   sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
                   alt="Hero Image"
@@ -58,8 +63,7 @@ import slides from '~/data/carousel.json';
                   </div>
                 </div>
               </div>
-							)
-
+            );
           })
       }
     </div>
