@@ -11,6 +11,9 @@ export const SITE = {
 	googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
 };
 
+export const paycekSecret = 'xnILyM2jrBhcAw2bDC_AS7lgapVIMK0wocQd7zt5lIMH'
+export const paycekProfileCode = 'Qdo-KLy9RrSr5rbNuqbEFNw826xpHadFCplkrnX5xnZ3'
+
 export const BLOG = {
 	disabled: false,
 	postsPerPage: 4,

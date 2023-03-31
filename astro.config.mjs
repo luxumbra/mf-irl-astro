@@ -44,7 +44,8 @@ export default defineConfig({
     extendDefaultPlugins: true
   },
   define: {
-    global: "globalThis",
+		global: "globalThis",
+		Buffer: () => null,
     process: {
       env: "development"
     }
