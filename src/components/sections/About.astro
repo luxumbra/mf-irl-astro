@@ -74,33 +74,8 @@ export const metafestConvo = [
       <p>Talks, workshops, games & music; a festival for DAOists and Regens.</p>
       <div class="chat relative flex max-w-2xl p-0 mx-auto">
         <div class="chat__content w-full h-full rounded-2xl bg-gradient-to-r from-secondary to-secondary-dark p-6 z-10">
-          <ol class="chat__messages flex flex-col w-full">
-            {
-              metafestConvo &&
-                metafestConvo.map((message) => (
-                  <li class={`chat__message relative ${message.user === 'nova' ? 'self-start nova' : 'self-end anon'}`}>
-                    <div
-                      class={`chat__message__content relative p-3 bg-gradient-to-br ${
-                        message.user === 'nova'
-                          ? 'from-[#1D3037] via-[#1D3037] to-secondary-dark'
-                          : 'from-accent-alpha-30 via-[#206D69] to-[#206D69]'
-                      } rounded-lg z-10`}
-                    >
-                      <div class="chat__message__content__text">
-                        <p class="mb-0 text-primary font-medium">{message.message}</p>
-                      </div>
-                    </div>
-                    <div
-                      class={`chat__message__marker absolute w-[51px] h-[15px] ${
-                        message.user === 'nova' ? '-left-[9px]' : '-right-[18px]'
-                      } -bottom-[3px] z-0`}
-                    >
-                      <Icon name={message.user === 'nova' ? 'speech-anon' : 'speech-nova'} />
-                    </div>
-                  </li>
-                ))
-            }
-          </ol>
+
+					<p>Lets get some decent content here!!</p>
         </div>
         <div
           class="chat__bg absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-accent via-accent to-secondary -z-10"

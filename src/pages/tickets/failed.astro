@@ -4,7 +4,7 @@ import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/PageLayout.astro';
 import ThreeD from '~/components/widgets/ThreeD';
 import SponsorsSection from '~/components/core/SponsorsSection.astro';
-import {TicketMethod, TicketMethodType} from '~/components/atoms/TicketMethod';
+import { TicketMethod, TicketMethodType } from '~/components/atoms/TicketMethod';
 import Markdown from '@astrojs/markdown-component';
 import { Image } from '@astrojs/image/components';
 // import { v4 as uuidv4 } from 'uuid';
@@ -16,9 +16,8 @@ const meta = {
   description: 'Grab your tickets to the best event of 2023, MetaFest!',
   canonical: getCanonical(getHomePermalink()),
 };
-
-
 ---
+
 <script>
   if (typeof window !== 'undefined') {
     const timer = 10;
@@ -39,6 +38,7 @@ const meta = {
     countdown(timer);
   }
 </script>
+
 <Layout {meta}>
   <div class="pt-32"></div>
   <Image
@@ -49,20 +49,12 @@ const meta = {
     width={512}
     height={512}
     layout="responsive"
-    class="absolute top-20 w-full left-0 xl:left-1/4 xl:right-1/4 xl:w-1/2 z-[9] opacity-5"
+    class="absolute top-20 w-full left-0 xl:left-1/4 xl:right-1/4 xl:w-1/2 z-[9] opacity-70"
   />
 
-  <SponsorsSection
-    title="Awesome!!"
-    precis="You're coming to MetaFest 2023!! 🎉"
-    full
-   >
-		<p>Thanks for buying a ticket! Check your email for confirmation.</p>
-		<p>See you there!!</p>
-
-		<p class="mt-4">You will be redirected to the <a href="/">homepage</a> in <span class="countdown"></span> seconds.</p>
-	 </SponsorsSection>
-
+  <SponsorsSection title="Ru roh!!" precis="There was an error processing your payment. Please try again." full>
+    <p>Please wait <span class="countdown"></span> and you'll be redirected to the tickets page.</p>
+  </SponsorsSection>
 
   <div class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto">
     <div class="relative w-full h-full" x-data="{shown: false}" x-intersect:once="shown = true">
@@ -70,5 +62,5 @@ const meta = {
     </div>
   </div>
 
-	<ThreeD client:load />
+  <ThreeD client:load />
 </Layout>

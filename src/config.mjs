@@ -11,8 +11,16 @@ export const SITE = {
 	googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
 };
 
-export const paycekSecret = 'xnILyM2jrBhcAw2bDC_AS7lgapVIMK0wocQd7zt5lIMH'
-export const paycekProfileCode = 'Qdo-KLy9RrSr5rbNuqbEFNw826xpHadFCplkrnX5xnZ3'
+
+export const paycekProfileCode = import.meta.env.PUBLIC_PAYCEK_PROFILE_CODE
+export const paycekSecret = import.meta.env.PUBLIC_PAYCEK_SECRET_KEY
+
+export const isDev = import.meta.env.DEV
+export const isProd = import.meta.env.PROD
+
+export const uri = isDev ? 'https://0017-146-70-48-3.eu.ngrok.io' : 'https://test.metafest.wtf'
+export const currencySymbol = '€'
+export const currencyTicker = 'EUR'
 
 export const BLOG = {
 	disabled: false,

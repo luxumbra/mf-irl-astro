@@ -1,11 +1,13 @@
 import { v4 as uuid } from 'uuid';
 import { generatePaymentUrl } from '~/utils/utils';
-
+import { AnimatePresence, motion } from 'framer-motion';
 import type { CryptoItemType, PaymentUrlOptions } from '~/utils/utils';
-import { paycekProfileCode, paycekSecret } from '~/config.mjs';
+import { currencySymbol, isDev, paycekProfileCode, paycekSecret, uri } from '~/config.mjs';
 import './tier.css';
 import { useState } from 'react';
 import { Button, Modal } from 'flowbite-react';
+import { Icon }	from '@iconify/react';
+
 
 export interface TicketMethodProps {
 	title: string;
@@ -33,6 +35,7 @@ export type TicketMethodType = {
 
 export interface BuyButtonProps {
 	text: string;
+	prices?: TicketMethodType['price'];
 }
 
 export interface PayloadOptions {
@@ -44,7 +47,7 @@ export const FiatButton = ({ text }: BuyButtonProps): JSX.Element => {
 	return (
 		<button
 			data-buy-method="fiat"
-			className="btn btn-ghost bg-gradient-tertiary  text-secondary ticket-method w-auto"
+			className="btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto"
 			data-tally-open="w2XEaj"
 			data-tally-layout="modal"
 			data-tally-width="800"
@@ -58,7 +61,7 @@ export const FiatButton = ({ text }: BuyButtonProps): JSX.Element => {
 	);
 };
 
-export const CryptoModalButton = ({ text }: BuyButtonProps): JSX.Element => {
+export const CryptoModalButton = ({ text, prices }: BuyButtonProps): JSX.Element => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [quantity, setQuantity] = useState(1);
 	const [quantityB, setQuantityB] = useState(1);
@@ -80,7 +83,6 @@ export const CryptoModalButton = ({ text }: BuyButtonProps): JSX.Element => {
 			total: PayloadOptions['total'],
 			items: PayloadOptions['items'],
 		) => {
-			console.log({ total, items });
 
 			return {
 				profileID: paycekProfileCode,
@@ -89,9 +91,9 @@ export const CryptoModalButton = ({ text }: BuyButtonProps): JSX.Element => {
 				totalAmount: total,
 				items: items,
 				email: null,
-				successUrl: 'https://test.metafest.wtf/tickets/success',
-				failUrl: '',
-				backUrl: '',
+				successUrl: `${uri}/tickets/success`,
+				failUrl: `${uri}/tickets/failed`,
+				backUrl: `${uri}/tickets`,
 				statusUrlCallback: '',
 				description: '',
 				language: 'en',
@@ -100,22 +102,23 @@ export const CryptoModalButton = ({ text }: BuyButtonProps): JSX.Element => {
 
 		// get the total amount of the basket
 		const total = basketData.reduce((acc, item) => {
-			return acc + parseInt(item.amount);
+			return acc + parseFloat(item.amount);
 		}, 0);
 
-		const data = payload(total.toString(), basketData);
+		const data = payload(total.toFixed(2), basketData);
 
 		const url = generatePaymentUrl(data);
-		window.open(url, '_blank');
+
+		window.location.replace(url);
 	};
 
 	/**
 	 * delete an item from the basket and subtract the quantity and total from the basket total
 	 */
-	const deleteItem = (name: string) => {
+	const removeFromBasket = (name: string) => {
 		const updatedBasket = basket.filter((item) => item.name !== name);
 		const total = updatedBasket.reduce((acc, item) => {
-			return acc + parseInt(item.amount);
+			return acc + parseFloat(item.amount);
 		}, 0);
 		setBasketTotal(total);
 
@@ -125,7 +128,7 @@ export const CryptoModalButton = ({ text }: BuyButtonProps): JSX.Element => {
 	/**
 	 * add an item to the basket
 	 * @param tier - the tier of the item to be added to the basket
-	 * @param quantity - the quantity of the item to be added to the basket
+	 * @param quantity - TODO: the quantity of the item to be added to the basket
 	 */
 	const addToBasket = (tier: string) => {
 		const amountInput = document.querySelector('input[name="amount"]');
@@ -139,7 +142,7 @@ export const CryptoModalButton = ({ text }: BuyButtonProps): JSX.Element => {
 
 		/**
 		 *  if an item of the same type is already in the basket, update the quantity and total instead of adding a new item, if not, add a new item to the basket and update the basket total
-		 */
+		*/
 		const itemExists = basket.find((item) => item.name === name);
 		const patronItemExists = basket.find((item) => item.name === patronName);
 
@@ -148,7 +151,7 @@ export const CryptoModalButton = ({ text }: BuyButtonProps): JSX.Element => {
 				const updatedItem = {
 					...itemExists,
 					units: itemExists.units + quantity,
-					amount: (parseInt(amount) * (itemExists.units + quantity)).toString(),
+					amount: (parseFloat(amount) * (itemExists.units + quantity)).toFixed(2),
 				};
 				const updatedBasket = basket.map((item) => {
 					if (item.name === name) {
@@ -157,10 +160,12 @@ export const CryptoModalButton = ({ text }: BuyButtonProps): JSX.Element => {
 					return item;
 				});
 				setBasket(updatedBasket);
+				setBasketTotal(basketTotal + parseFloat(amount) * quantity);
 			} else {
-				const total = (parseInt(amount) * quantity).toString();
+				const total = (parseFloat(amount) * quantity).toFixed(2);
 				const standardItem = { name, units: quantity, amount: total };
 				setBasket([...basket, standardItem]);
+				setBasketTotal(+(basketTotal + parseFloat(amount) * quantity).toFixed(2));
 			}
 		}
 
@@ -169,7 +174,7 @@ export const CryptoModalButton = ({ text }: BuyButtonProps): JSX.Element => {
 				const updatedItem = {
 					...patronItemExists,
 					units: patronItemExists.units + quantityB,
-					amount: (parseInt(patronAmount) * (patronItemExists.units + quantityB)).toString(),
+					amount: (parseFloat(patronAmount) * (patronItemExists.units + quantityB)).toFixed(2),
 				};
 				const updatedBasket = basket.map((item) => {
 					if (item.name === patronName) {
@@ -178,17 +183,20 @@ export const CryptoModalButton = ({ text }: BuyButtonProps): JSX.Element => {
 					return item;
 				});
 				setBasket(updatedBasket);
+				setBasketTotal(basketTotal + parseFloat(patronAmount) * quantityB);
 			} else {
-				const total = (parseInt(patronAmount) * quantityB).toString();
+				const total = (parseFloat(patronAmount) * quantityB).toFixed(2);
 				const patronItem = { name: patronName, units: quantityB, amount: total };
 				setBasket([...basket, patronItem]);
+				setBasketTotal(+(basketTotal + parseFloat(patronAmount) * quantityB).toFixed(2));
 			}
 		}
+
 	};
 
 	return (
 		<>
-			<button className="btn btn-ghost bg-gradient-tertiary text-secondary ticket-method w-auto" onClick={toggleModal}>
+			<button className="btn btn-ghost bg-gradient-tertiary text-secondary focus:outline-dashed focus:outline-primary w-auto" onClick={toggleModal}>
 				{text}
 			</button>
 			<Modal
@@ -207,31 +215,29 @@ export const CryptoModalButton = ({ text }: BuyButtonProps): JSX.Element => {
 				</Modal.Header>
 				<Modal.Body>
 					<div className="flex flex-col items-start justify-center space-y-3">
-						<h4 className="text-lg">Prices</h4>
-						<p className='text-base'>We&apos;ve got two tiers of tickets for you.</p>
-						<p className="text-xl text-off-white flex items-center justify-between w-full"><span>Standard tickets</span> <span className="text-3xl font-extrabold">$150</span></p>
-						<p className="text-xl text-off-white flex items-center justify-between w-full"><span className="relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">Patron tickets <i className="-translate-x-5 -translate-y-8">✨</i></span> <span className="text-3xl font-extrabold">$420</span></p>
+						<p className="text-xl text-off-white flex items-center justify-between w-full"><span>Standard tickets</span> <span className="text-3xl font-bold">{currencySymbol}{prices.standard}</span></p>
+						<p className="text-xl text-off-white flex items-center justify-between w-full"><span className="relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">Patron tickets <i className="-translate-x-5 -translate-y-8">✨</i></span> <span className="text-3xl font-bold">{currencySymbol}{prices.patron}</span></p>
 
 						<p className="text-sm">
 							Just select the number of each ticket you want to buy, add to your crypto cart then hit &apos;Buy&apos; when you&apos;re done. You&apos;ll be re-directed to a new page on the Paycek website where you can fill out the remaining info.
 						</p>
-						<div className="flex flex-row items-end justify-center space-y-3">
-							<input type="hidden" name="amount" value="100" />
+						<div className="flex flex-row items-center justify-center space-y-3 w-full">
+							<input type="hidden" name="amount" value={prices.standard} />
 							<input type="hidden" name="name" value="MetaFest ticket" />
 							<div className="form-control">
 								<label className="input-group input-group-sm justify-center" htmlFor="quantity">
-									<span className="w-1/4">Standard</span>
+									<span className="w-1/4 bg-gradient-primary font-bold text-secondary-dark uppercase">Standard</span>
 									<input
 										type="number"
 										name="quantity"
 										id="quantity"
 										value={quantity}
 										onChange={(e) => setQuantity(+e.target.value)}
-										className="input w-1/4"
+										className="input font-bold text-center text-2xl w-2/12"
 									/>
 									<button
 										data-buy-method="crypto"
-										className="btn btn-ghost bg-gradient-tertiary text-secondary ticket-method w-auto focus:outline-dashed focus:outline-green-400"
+										className="btn btn-ghost bg-gradient-tertiary text-secondary ticket-method w-auto focus:outline-dashed focus:outline-primary"
 										onClick={() => addToBasket('standard')}
 									>
 										Add to cart
@@ -240,24 +246,23 @@ export const CryptoModalButton = ({ text }: BuyButtonProps): JSX.Element => {
 							</div>
 						</div>
 
-						{/* buy a $420 ticket for extra perks */}
-						<div className="flex flex-row items-end justify-center space-y-3">
-							<input type="hidden" name="patronAmount" value="420" />
+						<div className="flex flex-row items-center justify-center space-y-3 w-full">
+							<input type="hidden" name="patronAmount" value={prices.patron} />
 							<input type="hidden" name="patronName" value="MetaFest patron" />
 							<div className="form-control">
 								<label className="input-group input-group-sm  justify-center" htmlFor="quantityB">
-									<span className="w-1/4">Patron</span>
+									<span className="w-1/4 bg-gradient-to-r from-tertiary to-accent font-bold text-secondary-dark uppercase">Patron</span>
 									<input
 										type="number"
 										name="quantityB"
 										id="quantityB"
 										value={quantityB}
 										onChange={(e) => setQuantityB(+e.target.value)}
-										className="input w-1/4"
+										className="input font-bold text-center text-2xl w-2/12"
 									/>
 									<button
 										data-buy-method="crypto"
-										className="btn btn-ghost bg-gradient-tertiary text-secondary ticket-method w-auto focus:outline-dashed focus:outline-green-400"
+										className="btn btn-ghost bg-gradient-tertiary text-secondary ticket-method w-auto focus:outline-dashed focus:outline-primary"
 										onClick={() => addToBasket('patron')}
 									>
 										Add to cart
@@ -265,28 +270,59 @@ export const CryptoModalButton = ({ text }: BuyButtonProps): JSX.Element => {
 								</label>
 							</div>
 						</div>
-
-						<div className="flex flex-col items-start justify-center space-y-1">
-							{basket && basket.length > 0 && (
-								<>
-									<p>Here&apos;s what&apos;s in your cart:</p>
-									{basket.map((item, index) => (
-										<div key={index} className="flex flex-row items-center justify-between w-full">
-											<p>{item.name}</p>
-											<p>{item.units}</p>
-											<p>{item.amount}</p>
-										</div>
-									))}
-									<button
-										className="btn btn-ghost bg-gradient-tertiary text-secondary ticket-method w-auto focus:outline-dashed focus:outline-green-400"
-										type='button'
-										onClick={() => handlePurchase(basket)}
+						<AnimatePresence>
+						{basket && basket.length > 0 && (
+							<motion.div className="flex flex-col items-start justify-center space-y-3 w-full"
+								initial={{ opacity: 0 }}
+								whileInView={{ opacity: 1 }}
+								viewport={{ once: false }}
+								transition={{ duration: 0.3, delay: 0 }}>
+								<p className='mb-0'>Your cart:</p>
+								<motion.table className="table table-compact w-full table-zebra"
+								initial={{ opacity: 0 }}
+								whileInView={{ opacity: 1 }}
+								viewport={{ once: false }}
+								transition={{ duration: 0.3, delay: 0 }}
+								>
+									<thead>
+									<tr>
+										<th>Ticket type</th>
+										<th>Quantity</th>
+										<th>Amount</th>
+										<th>Remove</th>
+										</tr>
+									</thead>
+									<tbody className="text-off-white">
+								{basket.map((item, index) => (
+									<motion.tr key={index}
+										initial={{ opacity: 0, y: 20 }}
+										whileInView={{ opacity: 1, y: 0 }}
+										viewport={{ once: false }}
+										transition={{ duration: 0.3, delay: 0.1 }}
 									>
-										Buy
-									</button>
-								</>
+										<td>{item.name}</td>
+										<td className="text-center">{item.units}</td>
+										<td className='text-right'>{currencySymbol}{item.amount}</td>
+										<td className="text-center"><button className="btn btn-circle btn-xs btn-error w-auto focus:outline-dashed focus:outline-red-400" onClick={() => removeFromBasket(item.name)}><span className="sr-only">Remove</span> <Icon icon="mdi:delete-forever" className="w-full h-full" /></button></td>
+									</motion.tr>
+								))}
+										<tr>
+											<td></td>
+											<td className='text-right'>Total</td>
+											<td className="text-right">{currencySymbol}{basketTotal}</td>
+											<td></td>
+											</tr>
+										</tbody>
+									</motion.table>
+								<button
+									className="btn btn-ghost bg-gradient-tertiary text-secondary w-1/3 focus:outline-dashed focus:outline-primary self-end"
+									onClick={() => handlePurchase(basket)}
+								>
+									Buy
+								</button>
+							</motion.div>
 							)}
-						</div>
+							</AnimatePresence>
 					</div>
 				</Modal.Body>
 			</Modal>
@@ -297,13 +333,13 @@ export const CryptoModalButton = ({ text }: BuyButtonProps): JSX.Element => {
 export const SeedButton = ({ text }: BuyButtonProps): JSX.Element => {
 	const handleClick = () => {
 		const payCek = 'Need to add seed pay Tally/Modal here';
-		console.log(payCek);
+		alert(payCek);
 	};
 
 	return (
 		<button
 			data-buy-method="seed"
-			className="btn btn-ghost bg-gradient-tertiary  text-secondary ticket-method w-auto"
+			className="btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto"
 			onClick={handleClick}
 		>
 			{text}
@@ -314,13 +350,13 @@ export const SeedButton = ({ text }: BuyButtonProps): JSX.Element => {
 export const SponsorButton = ({ text }: BuyButtonProps): JSX.Element => {
 	const handleClick = () => {
 		const payCek = 'Need to add sponsor pay Tally/Modal here';
-		console.log(payCek);
+		alert(payCek);
 	};
 
 	return (
 		<button
 			data-buy-method="sponsor"
-			className="btn btn-ghost bg-gradient-tertiary  text-secondary ticket-method w-auto"
+			className="btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto"
 			onClick={handleClick}
 		>
 			{text}
@@ -331,13 +367,13 @@ export const SponsorButton = ({ text }: BuyButtonProps): JSX.Element => {
 export const CrewButton = ({ text }: BuyButtonProps): JSX.Element => {
 	const handleClick = () => {
 		const payCek = 'Need to add crew pay Tally/Modal here';
-		console.log(payCek);
+		alert(payCek);
 	};
 
 	return (
 		<button
 			data-buy-method="crew"
-			className="btn btn-ghost bg-gradient-tertiary  text-secondary ticket-method w-auto"
+			className="btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto"
 			onClick={handleClick}
 		>
 			{text}
@@ -348,13 +384,13 @@ export const CrewButton = ({ text }: BuyButtonProps): JSX.Element => {
 export const MetagamerButton = ({ text }: BuyButtonProps): JSX.Element => {
 	const handleClick = () => {
 		const payCek = 'Need to add metagamer pay Tally/Modal here';
-		console.log(payCek);
+		alert(payCek);
 	};
 
 	return (
 		<button
 			data-buy-method="metagamer"
-			className="btn btn-ghost bg-gradient-tertiary  text-secondary ticket-method w-auto"
+			className="btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto"
 			onClick={handleClick}
 		>
 			{text}
@@ -368,7 +404,7 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount 
 			case 'fiat':
 				return <FiatButton text={cta} />;
 			case 'crypto':
-				return <CryptoModalButton text={cta} />;
+				return <CryptoModalButton text={cta} prices={price} />;
 			case 'seeds':
 				return <SeedButton text={cta} />;
 			case 'sponsor':
@@ -404,13 +440,14 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount 
 					<p className="text-sm xl:text-xl text-primary flex-grow">{summary}</p>
 					<p className="text-xl text-off-white flex items-center justify-between w-full">
 						<span>Standard tickets</span>
-						<span className="text-3xl font-extrabold">${applyDiscount(price.standard, discount)}</span>
+						<span className="text-3xl font-bold uppercase">{currencySymbol}{applyDiscount(price.standard, discount)}</span>
 					</p>
-
-					<p className="text-xl text-off-white flex items-center justify-between w-full">
-						<span className="relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">Patron tickets <i className="-translate-x-5 -translate-y-8">✨</i></span>
-						<span className="text-3xl font-extrabold">${applyDiscount(price.patron, discount)}</span>
-					</p>
+					{price.patron && (
+						<p className="text-xl text-off-white flex items-center justify-between w-full">
+							<span className="relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">Patron tickets <i className="-translate-x-5 -translate-y-8">✨</i></span>
+							<span className="text-3xl font-bold uppercase">{currencySymbol}{applyDiscount(price.patron, discount)}</span>
+						</p>
+					)}
 					<div className="text-center w-full self-end">{handleMethod(method, ctaText)}</div>
 				</div>
 				<div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-none" />
