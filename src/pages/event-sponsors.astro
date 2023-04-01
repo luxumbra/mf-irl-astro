@@ -133,6 +133,7 @@ export const expansionPacks = [
       },
     ],
   },
+
 ];
 ---
 
@@ -258,7 +259,7 @@ export const expansionPacks = [
       well as local & regional media (Diamond tier).
     </p>
 
-    <div class="tiers flex flex-col xl:flex-row justify-evenly items-start mx-auto mt-14">
+    <div class="tiers grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 mx-auto gap-8 mt-14">
       {sponsorshipTiers && sponsorshipTiers.map((tier, i) => <Tier tier={tier} count={i} />)}
     </div>
 
@@ -268,7 +269,7 @@ export const expansionPacks = [
         We have a few expansion packs that you can add to your sponsorship tier. These are not required, but they will
         help us make the event even better.
       </p>
-      <div class="expansion-packs__list flex flex-col xl:flex-row justify-evenly items-start mt-14">
+      <div class="expansion-packs__list grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 mx-auto gap-8 mt-14">
         {expansionPacks && expansionPacks.map((pack, i) => <Tier tier={pack} count={i} isExpansion />)}
       </div>
     </div>

@@ -2,13 +2,18 @@
 const daisyui = require('daisyui');
 const formsPlugin = require('@tailwindcss/forms');
 const typographyPlugin = require('@tailwindcss/typography');
+const flowbite = require('flowbite/plugin');
 
 module.exports = {
-	content: ['./src/**/*.{astro,html,js,jsx,md,ts,tsx}'],
+	content: [
+		'./src/**/*.{astro,html,js,jsx,md,ts,tsx}',
+		'./node_modules/flowbite/**/*.js'
+	],
 	theme: {
 		extend: {
 			colors: {
 				primary: '#82d36eff',
+				'primary-alpha-30': '#82d36e4d',
 				'primary-alpha-60': '#82d36e99',
 				secondary: '#0c1728ff',
 				'secondary-alpha-30': '#0c17284d',
@@ -53,7 +58,7 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [formsPlugin, typographyPlugin, daisyui],
+	plugins: [formsPlugin, typographyPlugin, daisyui, flowbite],
 	darkMode: 'class',
 };
 

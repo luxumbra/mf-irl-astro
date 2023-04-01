@@ -35,6 +35,13 @@ export const getFormattedDate = (date) =>
 		})
 		: '';
 
+
+/**
+ * Converts a CryptoJS word array to a Uint8Array for use with base64url in the browser
+ * @param wordArray - CryptoJS word array
+ * @returns byteArray - Uint8Array
+ */
+
 export function wordArrayToUint8Array(wordArray) {
 			const byteArray = new Uint8Array(wordArray.words.length * 4);
 			let i, word, offset;
@@ -48,7 +55,11 @@ export function wordArrayToUint8Array(wordArray) {
 			return byteArray.slice(0, wordArray.sigBytes);
 	}
 
-
+/**
+ * Generates a payment url with encrypted payment data for [Paycek](https://paycek.io)
+ * @param options - `PaymentUrlOptions`
+ * @returns paymentUrl - string - The payment url eg: https://paycek.io/processing/checkout/payment/Lq2tAU4WSnwrmebOVESGkDnUr_TJj8gAtI1AZJX3mH--
+ */
 export function generatePaymentUrl(options: PaymentUrlOptions) {
 	const {
 		profileID,

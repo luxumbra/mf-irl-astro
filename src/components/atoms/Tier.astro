@@ -8,7 +8,7 @@ const {count, tier, isExpansion} = Astro.props;
 
 <div class={`tier tier--${count + 1}`}>
   <div class="tier__header text-left">
-    <h4 class="mb-3 uppercase text-off-white">{tier.title}</h4>
+    <h4 class="mb-3 uppercase bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">{tier.title}</h4>
     <span class="tier__price text-2xl 3xl:text-4xl inline-flex text-off-white">
       <>
         <span class="tier__currency">$</span>
@@ -16,8 +16,8 @@ const {count, tier, isExpansion} = Astro.props;
       </>
     </span>
   </div>
-  <div class="tier__content relative text-left p-0 rounded-2xl">
-    <div class="p-5 z-10 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark">
+  <div class="tier__content relative text-left p-0 rounded-2xl flex-grow">
+    <div class="p-5 z-10 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 h-full">
       <p class="text-sm xl:text-xl text-primary">{tier.summary}</p>
       <div class="tier__perks text-left">
         <h5 class="text-off-white text-base 3xl:text-lg font-semibold uppercase mb-3">{isExpansion ? 'Examples' : 'Perks'}:</h5>
@@ -31,6 +31,6 @@ const {count, tier, isExpansion} = Astro.props;
         </ul>
       </div>
     </div>
-    <div class="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-nones" />
+    <div class="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent via-transparent to-transparent -z-10 pointer-events-none" />
   </div>
 </div>

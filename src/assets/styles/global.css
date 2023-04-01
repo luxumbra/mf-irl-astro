@@ -225,7 +225,7 @@
 	.ticket-methods {
     .tier,
     .expansion-pack {
-      @apply mx-auto xl:mx-5 transform transition-all duration-300 ease-in-out h-full flex flex-col flex-1 w-full xl:w-1/2 2xl:w-1/3 mb-8 xl:mb-0;
+      @apply mx-auto transform transition-all duration-300 ease-in-out min-h-full h-full flex flex-col flex-1 mb-8 xl:mb-0;
 
       &__header {
         @apply flex flex-row justify-between;
@@ -243,13 +243,11 @@
     }
 
 		.ticket-method {
+      @apply transform transition-all duration-300 ease-in-out flex flex-col mb-8 xl:mb-0;
 
-			&__content {
-				background-image: url('../images/hammered-bg.png');
-
-        @apply bg-top bg-cover;
+			button {
+				@apply mx-auto;
 			}
-
 		}
   }
 
@@ -373,56 +371,78 @@
     }
   }
 
-  @layer utilities {
-    .bg-gradient-primary {
-      @apply bg-gradient-to-r from-accent-alpha-60 to-primary-alpha-60;
+	.mf-modal {
+		background-image: url('../images/hero/image-34.jpg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: fit;
 
-      &-solid {
-        @apply bg-gradient-to-r from-accent to-primary;
-      }
-    }
+		& > div {
+			/* @apply p-8; */
 
-    .bg-gradient-dark {
-      @apply bg-gradient-to-r from-secondary to-accent;
-    }
+			& > div {
+				@apply relative dark:bg-transparent backdrop-blur-sm rounded-2xl bg-gradient-to-b dark:from-secondary dark:to-secondary-dark-alpha-30  shadow-2xl shadow-black;
 
-    .bg-gradient-secondary {
-      @apply bg-gradient-to-tr from-accent-alpha-60 to-primary-alpha-60;
+			}
+			&::after {
+				content: '';
+				@apply absolute -inset-[0px] rounded-2xl bg-gradient-to-b from-accent via-transparent to-transparent -z-10 pointer-events-none;
+			}
+		}
 
-      &-solid {
-        @apply bg-gradient-to-tr from-accent to-primary;
-      }
-    }
+	}
 
-    .bg-gradient-tertiary {
-      @apply bg-gradient-to-t from-tertiary to-primary;
-    }
+}
 
-    .bg-gradient-quarternary {
-      @apply bg-gradient-to-r from-[#f4f49299] to-[#89c97c99];
-    }
+@layer utilities {
+	.bg-gradient-primary {
+		@apply bg-gradient-to-r from-accent-alpha-60 to-primary-alpha-60;
 
-    .bg-gradient-alt {
-      @apply bg-gradient-to-br from-secondary-alpha-30 to-accent-light-alpha-30;
-    }
+		&-solid {
+			@apply bg-gradient-to-r from-accent to-primary;
+		}
+	}
 
-    .text-gradient-primary {
-      @apply bg-clip-text text-transparent;
-      @apply bg-gradient-to-r from-accent-alpha-60 to-primary-alpha-60;
-    }
-    .gradient-text {
-      @apply text-transparent bg-clip-text;
-      @apply bg-gradient-to-br from-pink-300 via-teal-300 to-violet-700;
-    }
+	.bg-gradient-dark {
+		@apply bg-gradient-to-r from-secondary to-accent;
+	}
 
-    #gradient-horizontal {
-      --color-stop-1: #a770ef;
-      --color-stop-2: #cf8bf3;
-      --color-stop-3: #fdb99b;
-    }
+	.bg-gradient-secondary {
+		@apply bg-gradient-to-tr from-accent-alpha-60 to-primary-alpha-60;
 
-    .icon-gradient {
-      @apply stroke-current;
-    }
-  }
+		&-solid {
+			@apply bg-gradient-to-tr from-accent to-primary;
+		}
+	}
+
+	.bg-gradient-tertiary {
+		@apply bg-gradient-to-t from-tertiary to-primary;
+	}
+
+	.bg-gradient-quarternary {
+		@apply bg-gradient-to-r from-[#f4f49299] to-[#89c97c99];
+	}
+
+	.bg-gradient-alt {
+		@apply bg-gradient-to-br from-secondary-alpha-30 to-accent-light-alpha-30;
+	}
+
+	.text-gradient-primary {
+		@apply bg-clip-text text-transparent;
+		@apply bg-gradient-to-r from-accent-alpha-60 to-primary-alpha-60;
+	}
+	.gradient-text {
+		@apply text-transparent bg-clip-text;
+		@apply bg-gradient-to-br from-pink-300 via-teal-300 to-violet-700;
+	}
+
+	#gradient-horizontal {
+		--color-stop-1: #a770ef;
+		--color-stop-2: #cf8bf3;
+		--color-stop-3: #fdb99b;
+	}
+
+	.icon-gradient {
+		@apply stroke-current;
+	}
 }

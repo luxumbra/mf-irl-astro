@@ -85,13 +85,13 @@ export const ticketMethods: TicketMethodType[] = [
     precis="No freeloaders at MetaFest! Luckily, there's plenty of ways to get in."
     full
   >
-    <div class="ticket-methods grid grid-cols-3 flex-wrap mx-auto mt-14 gap-8">
-      {ticketMethods && ticketMethods.map((method) => <TicketMethod {...method} client:load />)}
+    <div class="ticket-methods grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 items-stretch mx-auto mt-14 gap-8">
+      {ticketMethods && ticketMethods.map((method) => <TicketMethod {...method} client:only />)}
     </div>
   </SponsorsSection>
 
-  <div class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto">
-    <div class="relative w-full h-full" x-data="{shown: false}" x-intersect:once="shown = true">
+  <div class="absolute h-[50vh] w-full z-[9] inset-0 top-auto overflow-y-hidden">
+    <div class="relative w-full h-full translate-y-1/2" x-data="{shown: false}" x-intersect:once="shown = true">
       <Plants />
     </div>
   </div>
