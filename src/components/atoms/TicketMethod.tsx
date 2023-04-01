@@ -10,8 +10,8 @@ import { Button, Modal } from 'flowbite-react';
 export interface TicketMethodProps {
 	title: string;
 	price: {
-		standard: number | string;
-		patron: number | string;
+		standard: number | string | null;
+		patron: number | string | null;
 	};
 	discount: number | null;
 	summary: string;
@@ -22,8 +22,8 @@ export interface TicketMethodProps {
 export type TicketMethodType = {
 	title: string;
 	price: {
-		standard: number | string;
-		patron: number | string;
+		standard: number | string | null;
+		patron: number | string | null;
 	};
 	discount: number | null;
 	summary: string;
@@ -406,9 +406,11 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount 
 						<span>Standard tickets</span>
 						<span className="text-3xl font-extrabold">${applyDiscount(price.standard, discount)}</span>
 					</p>
+
 					<p className="text-xl text-off-white flex items-center justify-between w-full">
 						<span className="relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">Patron tickets <i className="-translate-x-5 -translate-y-8">✨</i></span>
-						<span className="text-3xl font-extrabold">${applyDiscount(price.patron, discount)}</span></p>
+						<span className="text-3xl font-extrabold">${applyDiscount(price.patron, discount)}</span>
+					</p>
 					<div className="text-center w-full self-end">{handleMethod(method, ctaText)}</div>
 				</div>
 				<div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-none" />
