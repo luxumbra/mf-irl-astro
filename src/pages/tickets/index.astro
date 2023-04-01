@@ -22,42 +22,66 @@ const meta = {
 export const ticketMethods: TicketMethodType[] = [
   {
     title: 'Dump Fiat',
-    price: 2,
+    price: {
+			standard: 150,
+			patron: 420
+		},
+		discount: 0,
     summary: 'Want to dump some fiat for a MetaFest ticket? This is the place for you.',
 		method: 'fiat',
 		ctaText: 'Buy a ticket'
   },
   {
     title: 'Buy with Crypto',
-    price: 5,
+    price: {
+			standard: 150,
+			patron: 420
+		},
+		discount: 0,
     summary: 'Of course, we accept crypto.',
     method: 'crypto',
 		ctaText: 'Buy a ticket'
   },
   {
     title: 'Buy with Seeds',
-    price: 5,
+    price: {
+			standard: 150,
+			patron: 420
+		},
+		discount: 10,
     summary: 'We also give a discount for those paying with Seeds.',
     method: 'seeds',
 		ctaText: 'Buy a ticket'
   },
 	{
 		title: 'Be useful',
-		price: 5,
+		price: {
+			standard: 0,
+			patron: 270
+		},
+		discount: 100,
 		summary: "Don't want to pay? Apply to speak, help with promoting the event, cleaning etc.",
 		method: 'crew',
 		ctaText: 'Apply'
 	},
 	{
 		title: 'Be a MetaGamer',
-		price: 0,
+		price: {
+			standard: 0,
+			patron: 270
+		},
+		discount: 100,
 		summary: 'Silver league & above in MetaGame? You get to join for free.',
 		method: 'metagamer',
 		ctaText: 'Claim'
 	},
 	{
 		title: 'Sponsor or Partner',
-		price: 5,
+		price: {
+			standard: 'POA',
+			patron: 'POA'
+		},
+		discount: 0,
 		summary: 'Want to have your project sponsor or help MetaFest? sponsors & partners get a few tix',
 		method: 'sponsor',
 		ctaText: 'Check it out'
@@ -73,7 +97,7 @@ export const ticketMethods: TicketMethodType[] = [
     src={mgLogo}
     alt="3D"
     loading="lazy"
-    quality={100}
+    quality={150}
     width={512}
     height={512}
     layout="responsive"
@@ -85,6 +109,7 @@ export const ticketMethods: TicketMethodType[] = [
     precis="No freeloaders at MetaFest! Luckily, there's plenty of ways to get in."
     full
   >
+
     <div class="ticket-methods grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 items-stretch mx-auto mt-14 gap-8">
       {ticketMethods && ticketMethods.map((method) => <TicketMethod {...method} client:only />)}
     </div>

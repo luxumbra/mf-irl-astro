@@ -388,6 +388,10 @@
 				content: '';
 				@apply absolute -inset-[0px] rounded-2xl bg-gradient-to-b from-accent via-transparent to-transparent -z-10 pointer-events-none;
 			}
+
+			h3 {
+				@apply mb-0;
+			}
 		}
 
 	}
