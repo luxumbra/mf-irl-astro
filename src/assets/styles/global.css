@@ -395,6 +395,10 @@
 				@apply mb-0;
 			}
 
+			a {
+				@apply text-primary;
+			}
+
 			table {
 				th {
 					@apply text-sm;

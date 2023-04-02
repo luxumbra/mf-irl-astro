@@ -258,7 +258,7 @@ export const CryptoModalButton = ({ text, prices }: BuyButtonProps): JSX.Element
 						<p className="text-xl text-off-white flex items-center justify-between w-full"><span className="relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">Patron Tickets <b className="-translate-x-5 -translate-y-8">✨</b></span> <span className="text-3xl font-bold">{currencySymbol}{prices.patron}</span></p>
 
 						<p className="text-sm">
-							Just select the number of each ticket you want to buy, add to your crypto cart then hit &apos;Buy&apos; when you&apos;re done. You&apos;ll be re-directed to the payment page on the <a href="https://paycek.io">Paycek website</a> where you can complete your purchase using your choice of crypto.
+							Just select the number of each ticket you want to buy, add to your crypto cart then hit &apos;Buy&apos; when you&apos;re done. You&apos;ll be re-directed to the payment page on the <a href="https://paycek.io" target="_blank" rel="noreferrer">Paycek website</a> where you can complete your purchase using your choice of crypto.
 						</p>
 						<div className="flex flex-row items-center justify-center space-y-3 w-full">
 							<input type="hidden" name="amount" value={prices.standard} />
@@ -307,7 +307,7 @@ export const CryptoModalButton = ({ text, prices }: BuyButtonProps): JSX.Element
 										className="btn btn-ghost bg-gradient-tertiary text-secondary ticket-method w-auto focus:outline-dashed focus:outline-primary"
 										onClick={() => addToBasket('patron')}
 									>
-										<bcon icon="mdi:cart-plus" className="w-5 h-5" />
+										<Icon icon="mdi:cart-plus" className="w-5 h-5" />
 										Add to cart
 									</button>
 								</label>
@@ -357,12 +357,15 @@ export const CryptoModalButton = ({ text, prices }: BuyButtonProps): JSX.Element
 											</tr>
 										</tbody>
 									</motion.table>
+									<div className="flex items-center justify-between w-full">
+									<a href="https://paycek.io" target="_blank" rel="noreferrer"><img src="/assets/images/paycek.svg" alt="Paycek logo" className="w-24" /></a>
 								<button
 									className="btn btn-ghost bg-gradient-tertiary text-secondary w-1/3 focus:outline-dashed focus:outline-primary self-end"
 									onClick={() => handlePurchase(basket)}
 								>
 									Buy
-								</button>
+										</button>
+									</div>
 							</motion.div>
 							)}
 							</AnimatePresence>
