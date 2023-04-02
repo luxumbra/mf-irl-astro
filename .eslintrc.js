@@ -38,6 +38,7 @@ module.exports = {
           { argsIgnorePattern: '^_', destructuredArrayIgnorePattern: '^_' },
         ],
         '@typescript-eslint/no-non-null-assertion': 'off',
+        'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
       },
     },
     {
