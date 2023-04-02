@@ -358,7 +358,9 @@ export const CryptoModalButton = ({ text, prices }: BuyButtonProps): JSX.Element
 										</tbody>
 									</motion.table>
 									<div className="flex items-center justify-between w-full">
-									<a href="https://paycek.io" target="_blank" rel="noreferrer"><img src="/assets/images/paycek.svg" alt="Paycek logo" className="w-24" /></a>
+										<div className="tooltip tooltip-accent" data-tip="Powered by Paycek">
+											<a href="https://paycek.io" target="_blank" rel="noreferrer"><img src="/assets/images/paycek.svg" alt="Paycek logo" className="w-24" /></a>
+										</div>
 								<button
 									className="btn btn-ghost bg-gradient-tertiary text-secondary w-1/3 focus:outline-dashed focus:outline-primary self-end"
 									onClick={() => handlePurchase(basket)}
