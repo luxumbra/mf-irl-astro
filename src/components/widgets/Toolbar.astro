@@ -1,6 +1,8 @@
 ---
 import { Icon } from 'astro-icon';
 import NavItem from '../atoms/NavItem.astro';
+import Plants from './Plants.astro';
+import ThreeD from './ThreeD';
 ---
 
 <div
@@ -10,7 +12,7 @@ import NavItem from '../atoms/NavItem.astro';
   x-intersect:leave="shown = false"
 >
 <div
-  class="flex items-center justify-end w-full h-full border-t-[1px] bg-secondary-alpha-60 border-accent-light backdrop-blur-2xl invisible"
+  class="flex items-center justify-end w-full h-full border-t-[1px] bg-secondary-alpha-30 border-accent-light backdrop-blur-lg invisible"
   x-show="shown"
   x-bind:class="{ 'invisible': !shown }"
   x-transition:enter="transition ease-out duration-300 delay-100"
@@ -40,21 +42,22 @@ import NavItem from '../atoms/NavItem.astro';
     />
   </button>
   <template x-teleport="body">
-    <menu
-      x-show="menuOpen"
-      x-ref="mobileMenu"
-      x-trap.noscroll="menuOpen"
-      x-bind:class="{'visible': menuOpen, 'invisible': !menuOpen}"
-      class="mobile-menu flex flex-col space-y-5 py-32 justify-end items-center content-center fixed md:hidden h-screen w-screen inset-0 z-40 backdrop-blur-0"
-      x-transition:enter="transition ease-out duration-300 transform"
-      x-transition:enter-start="opacity-0 transform translate-y-full"
-      x-transition:enter-end="opacity-100 transform translate-y-0"
-      x-transition:leave="transition ease-in duration-200 transform"
-      x-transition:leave-start="opacity-100 transform translate-y-0"
-      x-transition:leave-end="opacity-0 transform translate-y-full"
-    >
+		<div
+		x-show="menuOpen"
+		x-ref="mobileMenu"
+		x-trap.noscroll="menuOpen"
+		x-bind:class="{'visible': menuOpen, 'invisible': !menuOpen}"
+		class="mobile-menu fixed md:hidden h-screen w-screen inset-0 z-40"
+		x-transition:enter="transition ease-out duration-300 transform"
+		x-transition:enter-start="opacity-0 transform translate-y-full"
+		x-transition:enter-end="opacity-100 transform translate-y-0"
+		x-transition:leave="transition ease-in duration-200 transform"
+		x-transition:leave-start="opacity-100 transform translate-y-0"
+		x-transition:leave-end="opacity-0 transform translate-y-full"
+		>
+    <menu class="relative flex flex-col py-32 justify-end items-center content-center space-y-5  h-screen w-screen inset-0 z-10">
       <NavItem to="/#start" delay="300">
-        <Icon name="logo" className="logo group min-w-fit w-32 h-auto" />
+        <Icon name="logo" className="logo group min-w-fit w-32 h-auto fill-primary" />
       </NavItem>
       <NavItem to="/#about">About</NavItem>
       <NavItem to="/#location" >Location</NavItem>
@@ -62,7 +65,12 @@ import NavItem from '../atoms/NavItem.astro';
       <NavItem to="/#speakers">Speakers</NavItem>
       <NavItem to="/#sponsors">Sponsors</NavItem>
       <NavItem to="/#join">Join</NavItem>
+			<a href="/tickets" class="px-5 py-3 font-bold btn bg-gradient-tertiary text-secondary-dark hover:text-secondary-dark hover:bg-gradient-alt transition-all duration-200 ease-in-out">Tickets</a>
     </menu>
+		<div class="absolute z-0">
+		<ThreeD client:load />
+	</div>
+</div>
   </template>
   </div>
 </div>

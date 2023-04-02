@@ -247,25 +247,29 @@ export const CryptoModalButton = ({ text, prices }: BuyButtonProps): JSX.Element
 				onClose={toggleModal}
 				className="mf-modal backdrop-blur-md bg-gradient-to-b from-primary-alpha-30 to-accent-alpha-30 min-h-full transition-all duration-500 ease-in-out"
 			>
-				<Modal.Header>
-					<span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent text-5xl">
+				<Modal.Header className="modal-header">
+					<span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent text-2xl md:text-5xl">
 						Buy with Crypto
 					</span>
 				</Modal.Header>
-				<Modal.Body>
-					<div className="flex flex-col items-start justify-center space-y-3">
-						<p className="text-xl text-off-white flex items-center justify-between w-full"><span>Standard Tickets</span> <span className="text-3xl font-bold">{currencySymbol}{prices.standard}</span></p>
-						<p className="text-xl text-off-white flex items-center justify-between w-full"><span className="relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">Patron Tickets <b className="-translate-x-5 -translate-y-8">✨</b></span> <span className="text-3xl font-bold">{currencySymbol}{prices.patron}</span></p>
+				<Modal.Body className='modal-body'>
+					<div className="flex flex-col items-start justify-center space-y-2 md:space-y-3">
+						<p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full mb-0"><span>Standard Tickets</span> <span className="text-2xl md:text-3xl font-bold">{currencySymbol}{prices.standard}</span></p>
+						<p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full mb-0">
+							<span className="relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">Patron Tickets <b className="-translate-x-5 -translate-y-8">✨</b></span>
+							<span className="text-2xl md:text-3xl font-bold">{currencySymbol}{prices.patron}</span>
+						</p>
 
-						<p className="text-sm">
+						<p className="text-xs md:text-sm">
 							Just select the number of each ticket you want to buy, add to your crypto cart then hit &apos;Buy&apos; when you&apos;re done. You&apos;ll be re-directed to the payment page on the <a href="https://paycek.io" target="_blank" rel="noreferrer">Paycek website</a> where you can complete your purchase using your choice of crypto.
 						</p>
-						<div className="flex flex-row items-center justify-center space-y-3 w-full">
+
+						<div className="flex flex-row items-center justify-center space-y-2 md:space-y-3 w-full">
 							<input type="hidden" name="amount" value={prices.standard} />
 							<input type="hidden" name="name" value="Standard Ticket" />
 							<div className="form-control">
 								<label className="input-group input-group-sm justify-center" htmlFor="quantity">
-									<span className="w-1/4 bg-off-white font-bold text-secondary-dark uppercase">Standard</span>
+									<span className="w-1/2 md:w-1/4 bg-off-white font-bold text-secondary-dark uppercase">Standard</span>
 									<input
 										type="number"
 										name="quantity"
@@ -273,26 +277,26 @@ export const CryptoModalButton = ({ text, prices }: BuyButtonProps): JSX.Element
 										min="1"
 										value={quantity}
 										onChange={(e) => setQuantity(+e.target.value)}
-										className="input font-bold text-center text-2xl w-3/12"
+										className="input font-bold text-center text-xl md:text-2xl w-3/12"
 									/>
 									<button
 										data-buy-method="crypto"
 										className="btn btn-ghost bg-gradient-tertiary text-secondary ticket-method w-auto focus:outline-dashed focus:outline-primary"
 										onClick={() => addToBasket('standard')}
 									>
-										<Icon icon="mdi:cart-plus" className="w-5 h-5" />
-										Add to cart
+										<Icon icon="mdi:cart-plus" className="w-7 h-7 md:w-5 md:h-5" />
+										<span className="hidden md:block bg-transparent">Add to cart</span>
 									</button>
 								</label>
 							</div>
 						</div>
 
-						<div className="flex flex-row items-center justify-center space-y-3 w-full">
+						<div className="flex flex-row items-center justify-center space-y-2 md:space-y-3 w-full">
 							<input type="hidden" name="patronAmount" value={prices.patron} />
 							<input type="hidden" name="patronName" value="Patron Ticket" />
-							<div className="form-control">
-								<label className="input-group input-group-sm  justify-center" htmlFor="quantityB">
-									<span className="w-1/4 bg-gradient-to-r from-tertiary to-accent font-bold text-secondary-dark uppercase">Patron</span>
+							<div className="form-control w-full">
+								<label className="input-group input-group-sm  justify-center w-full" htmlFor="quantityB">
+									<span className="w-1/2 md:w-1/4 bg-gradient-to-r from-tertiary to-accent font-bold text-secondary-dark uppercase">Patron</span>
 									<input
 										type="number"
 										name="quantityB"
@@ -300,15 +304,15 @@ export const CryptoModalButton = ({ text, prices }: BuyButtonProps): JSX.Element
 										value={quantityB}
 										min="1"
 										onChange={(e) => setQuantityB(+e.target.value)}
-										className="input font-bold text-center text-2xl w-3/12"
+										className="input font-bold text-center  text-xl md:text-2xl w-3/12"
 									/>
 									<button
 										data-buy-method="crypto"
 										className="btn btn-ghost bg-gradient-tertiary text-secondary ticket-method w-auto focus:outline-dashed focus:outline-primary"
 										onClick={() => addToBasket('patron')}
 									>
-										<Icon icon="mdi:cart-plus" className="w-5 h-5" />
-										Add to cart
+										<Icon icon="mdi:cart-plus" className="w-7 h-7 md:w-5 md:h-5" />
+										<span className="hidden md:block bg-transparent">Add to cart</span>
 									</button>
 								</label>
 							</div>
@@ -320,7 +324,7 @@ export const CryptoModalButton = ({ text, prices }: BuyButtonProps): JSX.Element
 								whileInView={{ opacity: 1 }}
 								viewport={{ once: false }}
 								transition={{ duration: 0.3, delay: 0 }}>
-								<p className='mb-0 flex w-full items-center font-bold justify-between'><span>Your cart</span> <Icon icon="mdi:cart-variant" className="w-8 h-8" /></p>
+								<p className='mb-0 flex w-full items-center font-bold justify-between'><span>Your cart</span> <Icon icon="mdi:cart-variant" className="w-6 h-6 md:w-8 md:h-8" /></p>
 								<motion.table className="table table-compact w-full table-zebra"
 								initial={{ opacity: 0 }}
 								whileInView={{ opacity: 1 }}
@@ -491,36 +495,36 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount 
 				</h4>
 			</div>
 			<div className="ticket-method__content relative text-left p-0 rounded-2xl flex-grow">
-				<div className="p-5 z-10 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 flex flex-col items-stretch h-full">
-					<p className="text-sm xl:text-xl text-primary flex-grow">{summary}</p>
+				<div className="p-3 md:p-5 z-10 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 flex flex-col items-stretch h-full space-y-2 md:space-y-6">
+					<p className="mb-0 text-sm md:text-xl text-primary flex-grow">{summary}</p>
 					{price.standard && (
-						<p className="text-xl text-off-white flex items-center justify-between w-full">
+						<p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
 							<span>Standard tickets</span>
-							<span className="text-3xl font-bold uppercase">{currencySymbol}{applyDiscount(price.standard, discount)}</span>
+							<span className="text-2xl md:text-3xl font-bold uppercase">{currencySymbol}{applyDiscount(price.standard, discount)}</span>
 						</p>
 					)}
 					{price.patron && (
-						<p className="text-xl text-off-white flex items-center justify-between w-full">
+						<p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
 							<span className="relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">Patron tickets <b className="-translate-x-5 -translate-y-8">✨</b></span>
-							<span className="text-3xl font-bold uppercase">{currencySymbol}{applyDiscount(price.patron, discount)}</span>
+							<span className="text-2xl md:text-3xl font-bold uppercase">{currencySymbol}{applyDiscount(price.patron, discount)}</span>
 						</p>
 					)}
 					{price.sponsor && (
-						<p className="text-xl text-off-white flex items-center justify-between w-full">
+						<p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
 							<span className="relative bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-fuchsia-500">Sponsor tickets <b className="-translate-x-5 -translate-y-8">💰</b></span>
-							<span className="text-3xl font-bold uppercase">{currencySymbol}{applyDiscount(price.sponsor, discount)}</span>
+							<span className="text-2xl md:text-3xl font-bold uppercase">{currencySymbol}{applyDiscount(price.sponsor, discount)}</span>
 						</p>
 					)}
 										{price.crew && (
-						<p className="text-xl text-off-white flex items-center justify-between w-full">
+						<p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
 							<span className="relative bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-cyan-400">Crew tickets <b className="-translate-x-5 -translate-y-8">👷</b></span>
-							<span className="text-3xl font-bold uppercase">{currencySymbol}{applyDiscount(price.crew, discount)}</span>
+							<span className="text-2xl md:text-3xl font-bold uppercase">{currencySymbol}{applyDiscount(price.crew, discount)}</span>
 						</p>
 					)}
 					{price.metagamer && (
-						<p className="text-xl text-off-white flex items-center justify-between w-full">
+						<p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
 							<span className="relative bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-fuchsia-400">MetaGamer tickets <b className="-translate-x-5 -translate-y-8">🐙</b></span>
-							<span className="text-3xl font-bold uppercase">{currencySymbol}{applyDiscount(price.metagamer, discount)}</span>
+							<span className="text-2xl md:text-3xl font-bold uppercase">{currencySymbol}{applyDiscount(price.metagamer, discount)}</span>
 						</p>
 					)}
 					<div className="text-center w-full self-end">{handleMethod(method, ctaText)}</div>

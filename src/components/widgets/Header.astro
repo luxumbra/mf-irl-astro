@@ -23,7 +23,7 @@ import { Icon } from 'astro-icon';
 			<a href="/tickets" class="absolute right-10 top-1/4 px-5 py-3 font-normal btn bg-gradient-tertiary hover:text-secondary-dark hover:bg-gradient-alt transition-all duration-200 ease-in-out">Tickets</a>
     </menu>
 
-    <a href="/#start" class="block xl:hidden transition-all duration-200 invisible"
+    <a href="/#start" class="flex xl:hidden transition-all duration-200"
       x-show="shown"
       x-bind:class="{ 'invisible': !shown, 'visible': shown }"
       x-transition:enter="transition ease-out duration-200 "

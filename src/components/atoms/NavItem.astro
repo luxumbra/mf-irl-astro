@@ -6,7 +6,7 @@ const { to, delay } = Astro.props;
 <a
   href={to}
   x-show="menuOpen"
-  class="invisible"
+  class="invisible scale-100 hover:scale-125 transition-transform duration-200 ease-in-out bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent text-2xl"
   x-bind:class="{ 'invisible': !menuOpen, 'visible': menuOpen }"
   x-transition:enter={`transition ease-out duration-500 delay-${delay ? delay : '300'}`}
   x-transition:enter-start="opacity-0 transform translate-y-3"
