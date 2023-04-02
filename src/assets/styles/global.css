@@ -394,6 +394,15 @@
 			h3 {
 				@apply mb-0;
 			}
+
+			table {
+				th {
+					@apply text-sm;
+				}
+				td {
+					@apply text-sm;
+				}
+			}
 		}
 
 	}
