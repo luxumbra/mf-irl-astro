@@ -1,8 +1,8 @@
 ---
 import { Icon } from 'astro-icon';
-import NavItem from '../atoms/NavItem.astro';
-import Plants from './Plants.astro';
-import ThreeD from './ThreeD';
+import NavItem from '~/components/atoms/NavItem.astro';
+import Plants from '~/components/widgets/Plants.astro';
+import ThreeD from '~/components/widgets/ThreeD';
 ---
 
 <div
@@ -68,7 +68,7 @@ import ThreeD from './ThreeD';
 			<a href="/tickets" class="px-5 py-3 font-bold btn bg-gradient-tertiary text-secondary-dark hover:text-secondary-dark hover:bg-gradient-alt transition-all duration-200 ease-in-out">Tickets</a>
     </menu>
 		<div class="absolute z-0">
-		<ThreeD client:load />
+			<ThreeD client:load />
 	</div>
 </div>
   </template>
