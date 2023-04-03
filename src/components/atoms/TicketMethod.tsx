@@ -49,8 +49,12 @@ export interface PayloadOptions {
   items: CryptoItemType[];
 }
 
+const activeBtnClasses = 'btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto';
+const disabledBtnClasses = 'btn btn-ghost btn-disabled bg-gradient-tertiary text-secondary focus:outline-dashed focus:outline-primary w-auto opacity-50 hover:cursor-not-allowed'
+
 export const FiatButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
-	const classes = disabled ? 'btn btn-ghost btn-disabled bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto opacity-50 cursor-not-allowed' : 'btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto';
+	const classes = disabled ? disabledBtnClasses : activeBtnClasses;
+
   return (
     <button
       data-buy-method="fiat"
@@ -209,7 +213,8 @@ export const CryptoModalButton = ({ text, prices, disabled }: BuyButtonProps): J
   const patronUnitsRounded = useTransform(patronUnitsCount, (latest) => Math.round(latest));
   const standardUnitsRounded = useTransform(standardUnitsCount, (latest) => Math.round(latest));
 
-	const classes = disabled ? 'btn btn-ghost btn-disabled bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto opacity-50 cursor-not-allowed' : 'btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto';
+		const classes = disabled ? disabledBtnClasses : activeBtnClasses;
+
 
   useEffect(() => {
     const basketStandard = basket.find((item) => item.name === 'Standard Ticket');
@@ -429,7 +434,8 @@ export const CryptoModalButton = ({ text, prices, disabled }: BuyButtonProps): J
 };
 
 export const SeedButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
-	const classes = disabled ? 'btn btn-ghost btn-disabled bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto opacity-50 cursor-not-allowed' : 'btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto';
+	const classes = disabled ? disabledBtnClasses : activeBtnClasses;
+
   return (
     <button
       data-buy-method="seed"
@@ -449,7 +455,7 @@ export const SeedButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
 };
 
 export const SponsorButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
-	const classes = disabled ? 'btn btn-ghost btn-disabled bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto opacity-50 cursor-not-allowed' : 'btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto';
+	const classes = disabled ? disabledBtnClasses : activeBtnClasses;
 
   return (
     <button
@@ -470,7 +476,8 @@ export const SponsorButton = ({ text, disabled }: BuyButtonProps): JSX.Element =
 };
 
 export const CrewButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
-	const classes = disabled ? 'btn btn-ghost btn-disabled bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto opacity-50 cursor-not-allowed' : 'btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto';
+	const classes = disabled ? disabledBtnClasses : activeBtnClasses;
+
   return (
     <button
       data-buy-method="crew"
@@ -490,7 +497,7 @@ export const CrewButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
 };
 
 export const MetagamerButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
-	const classes = disabled ? 'btn btn-ghost btn-disabled bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto opacity-50 cursor-not-allowed' : 'btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto';
+	const classes = disabled ? disabledBtnClasses : activeBtnClasses;
 
   return (
     <button

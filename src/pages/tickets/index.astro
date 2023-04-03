@@ -97,14 +97,19 @@ export const ticketMethods: TicketMethodType[] = [
 		full
 		alt
   >
+	<div class="w-full text-center mt-5">
+		<p class="text-xl md:text-3xl text-off-white text-center">We're crossing the <span class="inline-flex -rotate-12 font-bold">'t'</span>s &amp; dotting the <span class="inline-flex rotate-12 font-bold">'i'</span>s before the event announcement.</p>
+		<p class="text-xl md:text-3xl text-off-white text-center">The buy buttons will be enabled v soon!! Check back tomorrow.</p>
+	</div>
 
-    <div class="ticket-methods grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 items-stretch mx-auto mt-14 gap-8">
+    <div class="ticket-methods grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 items-stretch mx-auto mt-14 mb-20 md:mb-0 gap-5 md:gap-8">
       {ticketMethods && ticketMethods.map((method) => <TicketMethod {...method} client:only />)}
     </div>
+
   </SponsorsSection>
 
   <div class="absolute h-[50vh] w-full z-[9] inset-0 top-auto overflow-y-hidden">
-    <div class="relative w-full h-full translate-y-1/2" x-data="{shown: false}" x-intersect:once="shown = true">
+    <div class="relative w-full h-full md:translate-y-1/2" x-data="{shown: false}" x-intersect:once="shown = true">
       <Plants />
     </div>
   </div>
