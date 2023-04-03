@@ -202,7 +202,7 @@
           @apply text-left mb-6;
 
           li {
-            @apply flex justify-start items-center space-x-3 mb-3 text-accent;
+            @apply flex justify-start items-center space-x-3 mb-3;
 
             & > svg {
               @apply flex-shrink-0 w-8 mr-3;
@@ -431,6 +431,12 @@
       }
     }
   }
+
+	.about-card {
+		ul {
+			@apply mb-0;
+		}
+	}
 }
 
 @layer utilities {
@@ -484,4 +490,8 @@
   .icon-gradient {
     @apply stroke-current;
   }
+
+	.inner-shadow {
+		box-shadow: inset 0 0 100px 20px rgba(0 0 0 / 0.8);
+	}
 }

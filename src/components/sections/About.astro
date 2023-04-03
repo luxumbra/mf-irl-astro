@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon';
-import Section from '../core/Section.astro';
+// import Section from '../core/Section.astro';
+import SponsorsSection from '~/components/core/SponsorsSection.astro';
 
 export interface ChatMessage {
   user: string;
@@ -8,108 +9,81 @@ export interface ChatMessage {
   status: 'sent' | 'delivered' | 'read';
 }
 
-export const metafestConvo = [
+export const aboutSections = [
   {
-    user: 'nova',
-    message: 'Yooo, going to MetaFest?',
-    status: 'sent',
+    title: 'A Merge of Cultures & Minds',
+    items: [
+      'Join a mix of DAOists, regens, pre-DAO DOers & pre-ReFi regens',
+      'Soak in a fusion of revolutionary thinking, decentralized organizing & personal growth',
+    ],
+    img: '/assets/images/mj/circle-thinkers-bg.png',
   },
   {
-    user: 'anon',
-    message: 'WTF is MetaFest?',
-    status: 'sent',
+    title: 'Empowering Topics & Workshops',
+    items: [
+      'Dive deep into metacrisis, coordination &  regeneration - or the deep blue sea',
+      'Learn best DAOing practices or get your work-life balance w/ tightrope & meditation',
+    ],
+    img: '/assets/images/mj/arch-thinkers.png',
   },
   {
-    user: 'nova',
-    message: 'A conference that’s not a conference!',
-    status: 'sent',
+    title: 'Networking & Adventures',
+    items: [
+      'Forge lasting connections while exploring the national park or battling in paintball',
+      'Consider a week-long bus adventure down the coast of Croatia to Dubrovnik',
+    ],
+    img: '/assets/images/mj/aztec-bus.png',
   },
-  {
-    user: 'anon',
-    message: 'Lolwut?',
-    status: 'sent',
-  },
-  {
-    user: 'nova',
-    message:
-      'Ya, you go to conferences to meet people, hang out with frens & have fun - not just listen to talks, aye?',
-    status: 'sent',
-  },
-  {
-    user: 'anon',
-    message: 'So whats it about?',
-    status: 'sent',
-  },
-  {
-    user: 'nova',
-    message:
-      'Having fun & coping with trying to build a better future amidst global economical, ecological & meaning crises lol',
-    status: 'sent',
-  },
-  {
-    user: 'nova',
-    message:
-      'Topics & workshops on anything from decentralized organizing & regeneration to walking the tightrope, juggling & guided meditation.',
-    status: 'sent',
-  },
-  // {
-  //   user: 'nova',
-  //   message: 'Plus a shitload of random optional activities like going to the national park, water park, adrenaline park, paintball ...... AND a week-long bus trip down the coast to Dubrovnik 👀',
-  //   status: 'sent',
-  // },
 ];
 ---
 
-<Section sectionId="about">
-  <div class="section__content flex justify-center">
-    <div
-      x-show="shown"
-      class="invisible"
-      x-bind:class="{ 'invisible': !shown }"
-      x-transition:enter="transition ease-out duration-500"
-      x-transition:enter-start="opacity-0 transform translate-y-8"
-      x-transition:enter-end="opacity-100 transform translate-y-0"
-      x-transition:leave="transition ease-in duration-500"
-      x-transition:leave-start="opacity-100 transform translate-y-0"
-      x-transition:leave-end="opacity-0 transform translate-y-8"
-    >
-      <h2>About the festival</h2>
-      <p>Talks, workshops, games & music; a festival for DAOists and Regens.</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-				<div class="relative">
-        <div class="relative p-3 md:p-8 z-10 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 flex-col items-stretch h-full space-y-2 md:space-y-6">
-          <h3 class="text-xl font-semibold mb-4">An Unmissable Web3 Event</h3>
-          <ul class="">
-            <li>Ignite your passion for building a better future amidst global challenges</li>
-            <li>Join a vibrant community of DAO enthusiasts and Web3 pioneers</li>
-            <li>Experience a unique fusion of personal growth and revolutionary thinking</li>
-          </ul>
-        </div>
-				<div class="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-none" />
-			</div>
-			<div class="relative">
-        <div class="relative p-3 md:p-8 z-10 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 flex-col items-stretch h-full space-y-2 md:space-y-6">
-          <h3 class="text-xl font-semibold mb-4">Empowering Topics & Workshops</h3>
-          <ul class="">
-            <li>Delve into cutting-edge decentralized organizing and DAO management</li>
-            <li>Learn the latest Web3 and regeneration strategies from industry experts</li>
-            <li>Enhance your work-life balance with creative workshops and meditation sessions</li>
-          </ul>
-        </div>
-				<div class="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-none" />
-				</div>
-				<div class="relative">
-        <div class="relative p-3 md:p-8 z-10 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 flex-col items-stretch h-full space-y-2 md:space-y-6">
-          <h3 class="text-xl font-semibold mb-4">Unforgettable Networking & Adventures</h3>
-          <ul class="">
-            <li>Forge lasting connections while exploring national parks and water parks</li>
-            <li>Fuel your competitive side with adrenaline-pumping paintball battles</li>
-            <li>Relish a spectacular week-long bus trip along the breathtaking Dubrovnik coast</li>
-          </ul>
-        </div>
-				<div class="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-none" />
-				</div>
-      </div>
+<SponsorsSection
+  sectionId="about"
+  title="About the festival"
+  precision="Talks, workshops, games & music; a festival for DAOists and Regens."
+  full
+  alt
+>
+  <div
+    x-show="shown"
+    class="invisible"
+    x-bind:class="{ 'invisible': !shown }"
+    x-transition:enter="transition ease-out duration-500"
+    x-transition:enter-start="opacity-0 transform translate-y-8"
+    x-transition:enter-end="opacity-100 transform translate-y-0"
+    x-transition:leave="transition ease-in duration-500"
+    x-transition:leave-start="opacity-100 transform translate-y-0"
+    x-transition:leave-end="opacity-0 transform translate-y-8"
+  >
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 items-stretch">
+      {
+        aboutSections &&
+          aboutSections.map((section) => {
+            return (
+              <div class="about-card relative text-center rounded-2xl overflow-hidden p-[1px]">
+                <div class="relative p-3 md:p-8 z-10 rounded-2xl flex-col h-full overflow-hidden">
+									<div class="relative z-[2]">
+                  <h3 class="text-xl font-semibold mb-4 flex-shrink font-sans">{section.title}</h3>
+                  <ul class="text-primary mt-48 mb-0 w-full p-4 rounded-2xl backdrop-blur-sm bg-gradient-to-t from-secondary-dark-alpha-60 to-secondary-dark-alpha-30">
+                    {section.items &&
+                      section.items.map((item) => {
+                        return <li class="text-primary">{item}</li>;
+                      })}
+                  </ul>
+								</div>
+									<div class="inner-shadow absolute -inset-5 z-[1] rounded-3xl" />
+                </div>
+                <img
+                  src={section.img}
+                  alt=""
+                  class="rounded-2xl absolute inset-1 bottom-0 top-auto  w-full h-auto z-0  bg-blend-overlay"
+                />
+                <div class="absolute inset-[1px] rounded-2xl bg-gradient-to-b from-secondary-dark to-secondary-dark-alpha-60  -z-[5] pointer-events-none" />
+                <div class="absolute inset-0 rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-none" />
+              </div>
+            );
+          })
+      }
     </div>
   </div>
-</Section>
+</SponsorsSection>
