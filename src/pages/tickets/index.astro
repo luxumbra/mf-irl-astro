@@ -48,8 +48,8 @@ export const ticketMethods: TicketMethodType[] = [
 			standard: 150,
 			patron: 420
 		},
-		discount: 10,
-    summary: 'We also give a discount for those paying with Seeds.',
+		discount: 0,
+    summary: 'Been hodling Seeds? Use them to buy a ticket.',
     method: 'seeds',
 		ctaText: 'Buy a ticket'
   },
@@ -89,17 +89,7 @@ export const ticketMethods: TicketMethodType[] = [
 ---
 
 <Layout {meta}>
-  <div class="pt-24"></div>
-  <!-- <Image
-    src={mgLogo}
-    alt="3D"
-    loading="lazy"
-    quality={100}
-    width={512}
-    height={512}
-    layout="responsive"
-    class="fixed top-20 w-full left-0 xl:left-1/4 xl:right-1/4 xl:w-1/2 z-[9] opacity-5 motion-reduce"
-  /> -->
+  <div class="pt-8"></div>
 
   <SponsorsSection
     title="Enter MetaFest"
