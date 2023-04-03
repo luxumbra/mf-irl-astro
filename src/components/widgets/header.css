@@ -33,17 +33,20 @@
         a {
           @apply text-secondary-dark text-base  3xl:text-xl 4xl:text-2xl font-sans uppercase inline-flex items-center px-4 transition-colors duration-200;
           @apply hover:text-primary;
+
+          &:last-child {
+            @apply hover:text-secondary-dark hover:scale-125 hover:rotate-6 transition-all duration-200 ease-in-out;
+          }
+        }
+      }
+
+      &--scrolled {
+        @apply backdrop-blur-lg bg-accent-light-alpha-60 h-12 md:h-16 3xl:h-20;
+
+        .logo {
+          @apply w-14 md:w-20;
         }
       }
     }
-
-    &--scrolled {
-      @apply backdrop-blur-lg bg-accent-light-alpha-60 h-12 md:h-16 3xl:h-20;
-
-      .logo {
-        @apply w-14 md:w-20
-      }
-    }
   }
-
 }

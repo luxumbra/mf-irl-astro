@@ -1,48 +1,48 @@
 export const SITE = {
-	name: 'MetaFest:IRL',
-	origin: 'https://metafest.wtf',
-	basePathname: '/',
-	trailingSlash: false,
+  name: 'MetaFest:IRL',
+  origin: 'https://metafest.wtf',
+  basePathname: '/',
+  trailingSlash: false,
 
-	title: 'MetaFest Croatia',
-	description: 'A bit of a conference, a bit of a festival + a shitload of fun; Talks, workshops, games & music; a festival for DAOists & Regens',
+  title: 'MetaFest Croatia',
+  description:
+    'A bit of a conference, a bit of a festival + a shitload of fun; Talks, workshops, games & music; a festival for DAOists & Regens',
 
-	googleAnalyticsId: 'G-4436889R1F',
-	googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
+  googleAnalyticsId: 'G-4436889R1F',
+  googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
 };
 
+export const paycekProfileCode = import.meta.env.PUBLIC_PAYCEK_PROFILE_CODE;
+export const paycekSecret = import.meta.env.PUBLIC_PAYCEK_SECRET_KEY;
 
-export const paycekProfileCode = import.meta.env.PUBLIC_PAYCEK_PROFILE_CODE
-export const paycekSecret = import.meta.env.PUBLIC_PAYCEK_SECRET_KEY
+export const isDev = import.meta.env.DEV;
+export const isProd = import.meta.env.PROD;
 
-export const isDev = import.meta.env.DEV
-export const isProd = import.meta.env.PROD
-
-export const uri = isDev ? 'https://0017-146-70-48-3.eu.ngrok.io' : 'https://test.metafest.wtf'
-export const currencySymbol = '€'
-export const currencyTicker = 'EUR'
+export const uri = isDev ? 'https://0017-146-70-48-3.eu.ngrok.io' : 'https://test.metafest.wtf';
+export const currencySymbol = '€';
+export const currencyTicker = 'EUR';
 
 export const BLOG = {
-	disabled: false,
-	postsPerPage: 4,
+  disabled: false,
+  postsPerPage: 4,
 
-	blog: {
-		disabled: false,
-		pathname: 'blog', // blog main path, you can change this to "articles" (/articles)
-	},
+  blog: {
+    disabled: false,
+    pathname: 'blog', // blog main path, you can change this to "articles" (/articles)
+  },
 
-	post: {
-		disabled: false,
-		pathname: '', // empty for /some-post, value for /pathname/some-post
-	},
+  post: {
+    disabled: false,
+    pathname: '', // empty for /some-post, value for /pathname/some-post
+  },
 
-	category: {
-		disabled: false,
-		pathname: 'category', // set empty to change from /category/some-category to /some-category
-	},
+  category: {
+    disabled: false,
+    pathname: 'category', // set empty to change from /category/some-category to /some-category
+  },
 
-	tag: {
-		disabled: false,
-		pathname: 'tag', // set empty to change from /tag/some-tag to /some-tag
-	},
+  tag: {
+    disabled: false,
+    pathname: 'tag', // set empty to change from /tag/some-tag to /some-tag
+  },
 };

@@ -89,8 +89,8 @@ export const ticketMethods: TicketMethodType[] = [
 ---
 
 <Layout {meta}>
-  <div class="pt-32"></div>
-  <Image
+  <div class="pt-24"></div>
+  <!-- <Image
     src={mgLogo}
     alt="3D"
     loading="lazy"
@@ -99,7 +99,7 @@ export const ticketMethods: TicketMethodType[] = [
     height={512}
     layout="responsive"
     class="fixed top-20 w-full left-0 xl:left-1/4 xl:right-1/4 xl:w-1/2 z-[9] opacity-5 motion-reduce"
-  />
+  /> -->
 
   <SponsorsSection
     title="Enter MetaFest"
@@ -107,24 +107,6 @@ export const ticketMethods: TicketMethodType[] = [
 		full
 		alt
   >
-		<!-- <div class="ticket-info mx-auto">
-			<h3>Ticket types</h3>
-
-			<ul>
-				<li><strong>Standard ticket:</strong> Standard ticket for MetaFest. Includes access to all sessions, workshops, and events.</li>
-				<li><strong>Patron ticket:</strong> Patron ticket for MetaFest. Includes access to all sessions, workshops, and events, plus merch & perks.</li>
-				<li><strong>Sponsor & Partners tickets:</strong> Sponsor / Partner ticket for MetaFest. Includes access to all sessions, workshops, and events, plus multiple tickets, perks, etc. See the <a href="/event-sponsors">Sponsors page</a> for further details.</li>
-			</ul>
-
-		</div>
-		</SponsorsSection>
-
-		<SponsorsSection
-		title="Buy a ticket"
-		precis="There are a few ways to get a ticket to MetaFest. Choose the one that suits you best."
-		full
-		alt
-	> -->
 
     <div class="ticket-methods grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 items-stretch mx-auto mt-14 gap-8">
       {ticketMethods && ticketMethods.map((method) => <TicketMethod {...method} client:only />)}

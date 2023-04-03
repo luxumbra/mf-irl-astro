@@ -1,0 +1,15 @@
+---
+import Particles from "astro-particles"
+
+const { options } = Astro.props
+---
+<script>
+	import { tsParticles } from "tsparticles-engine";
+	import { loadFull } from "tsparticles";
+
+	(async () => {
+		await loadFull(tsParticles);
+	})
+</script>
+
+<Particles id="tsparticles" class="absolute inset-0 z-10" options={options} />

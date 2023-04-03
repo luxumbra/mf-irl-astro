@@ -9,10 +9,11 @@ import partytown from '@astrojs/partytown';
 import glsl from 'vite-plugin-glsl';
 import { remarkReadingTime } from './src/utils/frontmatter.mjs';
 import { SITE } from './src/config.mjs';
-import alpinejs from "@astrojs/alpinejs";
-import react from "@astrojs/react";
+import alpinejs from '@astrojs/alpinejs';
+import react from '@astrojs/react';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const whenExternalScripts = (items = []) => SITE.googleAnalyticsId ? Array.isArray(items) ? items.map(item => item()) : [items()] : [];
+const whenExternalScripts = (items = []) =>
+  SITE.googleAnalyticsId ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 // https://astro.build/config
 
@@ -25,42 +26,60 @@ export default defineConfig({
   server: {
     port: 1144,
   },
-  integrations: [tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }), sitemap(), image({
-    serviceEntryPoint: '@astrojs/image/sharp'
-  }), mdx(), ...whenExternalScripts(() => partytown({
-    config: {
-      forward: ['dataLayer.push']
-    }
-  })), alpinejs(), react()],
+  integrations: [
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+    sitemap(),
+    image({
+      serviceEntryPoint: '@astrojs/image/sharp',
+    }),
+    mdx(),
+    ...whenExternalScripts(() =>
+      partytown({
+        config: {
+          forward: ['dataLayer.push'],
+        },
+      })
+    ),
+    alpinejs(),
+    react(),
+  ],
   experimental: {
-    integrations: true
+    integrations: true,
   },
   markdown: {
     remarkPlugins: [remarkReadingTime],
-    extendDefaultPlugins: true
+    extendDefaultPlugins: true,
   },
   define: {
-		global: "globalThis",
-		Buffer: () => null,
+    global: 'globalThis',
+    Buffer: () => null,
     process: {
-      env: "development"
-    }
+      env: 'development',
+    },
   },
   vite: {
     resolve: {
       alias: {
-        '~': path.resolve(__dirname, './src')
-      }
+        '~': path.resolve(__dirname, './src'),
+      },
     },
-    plugins: [glsl({
-      include: [
-      // Glob pattern, or array of glob patterns to import
-      '**/*.glsl', '**/*.wgsl', '**/*.vert', '**/*.frag', '**/*.vs', '**/*.fs'],
-      defaultExtension: 'glsl'
-    })]
-  }
+    plugins: [
+      glsl({
+        include: [
+          // Glob pattern, or array of glob patterns to import
+          '**/*.glsl',
+          '**/*.wgsl',
+          '**/*.vert',
+          '**/*.frag',
+          '**/*.vs',
+          '**/*.fs',
+        ],
+        defaultExtension: 'glsl',
+      }),
+    ],
+  },
 });

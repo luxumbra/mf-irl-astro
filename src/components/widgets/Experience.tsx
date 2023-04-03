@@ -1,11 +1,10 @@
 /* eslint-disable react/no-unknown-property */
-import React, { Suspense, useEffect, useRef } from "react";
-import { useThree, extend, useFrame } from '@react-three/fiber'
-import { Float, Sparkles, Center, OrbitControls, PerspectiveCamera, TransformControls } from '@react-three/drei'
-import { Mesh } from "three";
+import React, { Suspense, useEffect, useRef } from 'react';
+import { useThree, extend, useFrame } from '@react-three/fiber';
+import { Float, Sparkles, Center, OrbitControls, PerspectiveCamera, TransformControls } from '@react-three/drei';
+import { Mesh } from 'three';
 import * as THREE from 'three';
-import gsap from "gsap";
-
+import gsap from 'gsap';
 
 export const experienceConfig = {
   objectsDistance: 4,
@@ -15,8 +14,8 @@ export const experienceConfig = {
     scale: new THREE.Vector3(30, 40, 40),
     positionY: 1,
     speed: 0.2,
-  }
-}
+  },
+};
 
 export interface SceneSectionProps {
   name: string;
@@ -36,31 +35,32 @@ export function R3FSceneSection({ name, count, children, ...props }: SceneSectio
   //   console.log('section grp cur: ', group.current);
   // }
   return (
-    <group ref={group} name={name} position={[0, -objectsDistance * count, 0]} {...props}>{children}</group>
-  )
+    <group ref={group} name={name} position={[0, -objectsDistance * count, 0]} {...props}>
+      {children}
+    </group>
+  );
 }
 
 function Experience() {
-  const mesh = useRef<Mesh>(null)
-  const sphereRef = useRef<Mesh>(null)
-  const sparkleColor = new THREE.Color(0x1f8975)
+  const mesh = useRef<Mesh>(null);
+  const sphereRef = useRef<Mesh>(null);
+  const sparkleColor = new THREE.Color(0x1f8975);
   const { size, viewport } = useThree();
   const aspect = size.width / viewport.width;
-  const scrollY = useRef(0)
-  const sizes = useRef({ width: 0, height: 0 })
-  const cursor = useRef({ x: 0, y: 0 })
-  const mousePos = useRef(new THREE.Vector2())
+  const scrollY = useRef(0);
+  const sizes = useRef({ width: 0, height: 0 });
+  const cursor = useRef({ x: 0, y: 0 });
+  const mousePos = useRef(new THREE.Vector2());
   const mouse = new THREE.Vector2();
-  const plant1 = useRef<Mesh>(null)
+  const plant1 = useRef<Mesh>(null);
   const camera = useRef();
   const cameraGroup = useRef();
   const { objectsDistance, sparkles } = experienceConfig;
   const clock = new THREE.Clock();
   let previousTime = 0;
 
-
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       sizes.current = {
         width: window.innerWidth,
         height: window.innerHeight,
@@ -70,14 +70,13 @@ function Experience() {
       // Scroll
       scrollY.current = window.scrollY;
       let currentSection = 0;
-      window.addEventListener("resize", () => {
+      window.addEventListener('resize', () => {
         // Update sizes
         sizes.current.width = window.innerWidth;
         sizes.current.height = window.innerHeight;
       });
 
-
-      window.addEventListener("scroll", () => {
+      window.addEventListener('scroll', () => {
         scrollY.current = window.scrollY;
 
         // console.log(scrollY);
@@ -127,8 +126,8 @@ function Experience() {
       });
 
       // Mouse move
-      window.addEventListener("mousemove", (event) => {
-        cursor.current.x = (event.clientX / sizes.current.width) - 0.3;
+      window.addEventListener('mousemove', (event) => {
+        cursor.current.x = event.clientX / sizes.current.width - 0.3;
         cursor.current.y = -(event.clientY / sizes.current.height) - 0.3;
         // console.log('curCursor', cursor.current);
 
@@ -140,8 +139,7 @@ function Experience() {
         // console.log('mouse pos', mouse);
       });
     }
-  }, [])
-
+  }, []);
 
   useFrame(() => {
     const elapsedTime = clock.getElapsedTime();
@@ -153,19 +151,23 @@ function Experience() {
 
     if (camera.current && cameraGroup.current) {
       camera.current.position.y = (-scrollY.current / sizes.current.height) * objectsDistance;
-      cameraGroup.current.position.x +=
-        (parallaxX - cameraGroup.current.position.x) * 5 * deltaTime;
-      cameraGroup.current.position.y +=
-        (parallaxY - cameraGroup.current.position.y) * 5 * deltaTime;
+      cameraGroup.current.position.x += (parallaxX - cameraGroup.current.position.x) * 5 * deltaTime;
+      cameraGroup.current.position.y += (parallaxY - cameraGroup.current.position.y) * 5 * deltaTime;
     }
-
   });
 
   return (
     <>
       <Suspense fallback={null}>
         <group ref={cameraGroup}>
-          <PerspectiveCamera ref={camera} makeDefault aspect={sizes.width / sizes.height} position={[0, 0, 0]} far={400} filmGauge={53} />
+          <PerspectiveCamera
+            ref={camera}
+            makeDefault
+            aspect={sizes.width / sizes.height}
+            position={[0, 0, 0]}
+            far={400}
+            filmGauge={53}
+          />
         </group>
 
         <R3FSceneSection name="SectionOne" count={0}>
@@ -202,7 +204,7 @@ function Experience() {
         </R3FSceneSection> */}
       </Suspense>
     </>
-  )
+  );
 }
 
 export default Experience;

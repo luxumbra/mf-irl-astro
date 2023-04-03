@@ -3,9 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-
   .tier {
-
     /* &__content {
       & > div:first-of-type {
         background-image: url('../../assets/images/hammered-bg.png');
@@ -14,7 +12,5 @@
 
       }
     } */
-
   }
-
 }

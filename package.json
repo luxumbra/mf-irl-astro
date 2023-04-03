@@ -10,7 +10,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier -w .",
-    "lint:eslint": "eslint . --ext .js,.ts,.astro",
+    "lint:eslint": "eslint . --ext .js,.ts,.tsx,.astro",
     "subfont": "subfont -ir --no-fallbacks --silent --root dist",
     "preinstall": "npx only-allow pnpm"
   },
@@ -81,6 +81,7 @@
     "@types/react-dom": "^18.0.9",
     "@types/three": "^0.146.0",
     "alpinejs": "^3.10.5",
+    "astro-particles": "^2.9.3",
     "astro-sanity": "^1.0.0",
     "astro-seo": "^0.6.0",
     "base64url": "^3.0.1",

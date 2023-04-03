@@ -3,37 +3,33 @@ import type { ReactNode } from 'react';
 import { useAnimationFrame } from 'framer-motion';
 
 export const PlantsAnimated = (children: ReactNode) => {
-	const plantsWrapper = useRef<HTMLDivElement>(null);
-	const animatedWrapper = plantsWrapper.current;
-	const plants = animatedWrapper.querySelector('.plant svg');
-	const particles = plants.querySelectorAll('g > circle');
-	// useEffect(() => {
-	// 	if (typeof window !== 'undefined') {
-	// 		if (plantsWrapper.current) {
-	// 			const animatedWrapper = plantsWrapper.current;
-	// 			const plants = animatedWrapper.querySelector('.plant svg');
-	// 			const particles = plants.querySelectorAll('g > circle');
-	// 		}
-	// 	}
+  const plantsWrapper = useRef<HTMLDivElement>(null);
+  const animatedWrapper = plantsWrapper.current;
+  const plants = animatedWrapper.querySelector('.plant svg');
+  const particles = plants.querySelectorAll('g > circle');
+  // useEffect(() => {
+  // 	if (typeof window !== 'undefined') {
+  // 		if (plantsWrapper.current) {
+  // 			const animatedWrapper = plantsWrapper.current;
+  // 			const plants = animatedWrapper.querySelector('.plant svg');
+  // 			const particles = plants.querySelectorAll('g > circle');
+  // 		}
+  // 	}
 
-	// 	return () => {
-	// 		// second
-	// 	}
-	// }, [])
+  // 	return () => {
+  // 		// second
+  // 	}
+  // }, [])
 
-	useAnimationFrame((time, delta) => {
-		// console.log(time, delta);
-		// console.log(particles);
-		particles.forEach((particle, index) => {
-			const x = Math.sin((time + index * 10) / 1000) * 20;
-			const y = Math.cos((time + index * 10) / 1000) * 20;
-			particle.setAttribute('transform', `translate(${x}, ${y})`);
-		})
-	})
+  useAnimationFrame((time, delta) => {
+    // console.log(time, delta);
+    // console.log(particles);
+    particles.forEach((particle, index) => {
+      const x = Math.sin((time + index * 10) / 1000) * 20;
+      const y = Math.cos((time + index * 10) / 1000) * 20;
+      particle.setAttribute('transform', `translate(${x}, ${y})`);
+    });
+  });
 
-	return (
-		<div ref={plantsWrapper}>
-			{children}
-		</div>
-	);
-}
+  return <div ref={plantsWrapper}>{children}</div>;
+};

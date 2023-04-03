@@ -30,7 +30,8 @@
       @apply font-sans text-primary text-2xl 3xl:text-4xl;
     }
 
-    p, li {
+    p,
+    li {
       @apply font-sans text-accent text-sm md:text-base 4xl:text-2xl text-left leading-relaxed mb-6;
     }
   }

@@ -1,7 +1,7 @@
 @font-face {
-    font-family: 'relicregular';
-    src: url('../fonts/relic-regular-webfont.woff2') format('woff2'),
-         url('../fonts/relic-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'relicregular';
+  src: url('../fonts/relic-regular-webfont.woff2') format('woff2'),
+    url('../fonts/relic-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }

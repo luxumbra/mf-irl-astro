@@ -8,7 +8,7 @@ import { Image } from '@astrojs/image/components';
 // import { v4 as uuidv4 } from 'uuid';
 import mgLogo from '~/assets/images/mg-logo.gif';
 import Plants from '~/components/widgets/Plants.astro';
-import Confetti from '~/components/widgets/Confetti';
+import Confetti from '~/components/widgets/Confetti.astro';
 import { bubbles, confettiA } from '~/config/particles.config';
 
 const meta = {
@@ -41,16 +41,6 @@ const meta = {
 </script>
 <Layout {meta}>
   <div class="pt-32"></div>
-  <Image
-    src={mgLogo}
-    alt="3D"
-    loading="lazy"
-    quality={100}
-    width={512}
-    height={512}
-    layout="responsive"
-    class="absolute top-20 w-full left-0 xl:left-1/4 xl:right-1/4 xl:w-1/2 z-[9] opacity-5"
-  />
 
   <SponsorsSection
     title="Awesome!!"
@@ -64,12 +54,12 @@ const meta = {
 	 </SponsorsSection>
 
 
+	 <Confetti options={confettiA} />
   <div class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto">
     <div class="relative w-full h-full" x-data="{shown: false}" x-intersect:once="shown = true">
       <Plants />
     </div>
   </div>
-	<!-- <Confetti config={bubbles} client:load /> -->
 
 	<ThreeD client:load />
 </Layout>
