@@ -4,19 +4,22 @@ import { Icon } from 'astro-icon';
 import Section from '../core/Section.astro';
 import Markdown from '@astrojs/markdown-component';
 
+import { v4 as uuid } from 'uuid';
+
 export interface SponsorsSectionProps {
   title: string;
   precis?: string;
   full?: boolean;
 	alt?: boolean;
+	sectionId?: string;
 }
 
-const { alt, full, title, precis } = Astro.props as SponsorsSectionProps;
-
+const { alt, full, title, precis, sectionId } = Astro.props as SponsorsSectionProps;
+const id = uuid();
 const contentStyles = alt ? 'section__content--alt flex justify-center' : 'section__content flex justify-center';
 ---
 
-<Section sectionId="event-sponsors">
+<Section sectionId={sectionId ?? id}>
   <div class={contentStyles}>
     <div
       x-show="shown"

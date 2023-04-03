@@ -40,7 +40,8 @@ export type TicketMethodType = {
 
 export interface BuyButtonProps {
   text: string;
-  prices?: TicketMethodType['price'];
+	prices?: TicketMethodType['price'];
+	disabled?: boolean;
 }
 
 export interface PayloadOptions {
@@ -48,25 +49,27 @@ export interface PayloadOptions {
   items: CryptoItemType[];
 }
 
-export const FiatButton = ({ text }: BuyButtonProps): JSX.Element => {
+export const FiatButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
+	const classes = disabled ? 'btn btn-ghost btn-disabled bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto opacity-50 cursor-not-allowed' : 'btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto';
   return (
     <button
       data-buy-method="fiat"
-      className="btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto"
+      className={classes}
       data-tally-open="mRx81K"
       data-tally-layout="modal"
       data-tally-width="800"
       data-tally-align-left="1"
       data-tally-emoji-text="👋"
       data-tally-emoji-animation="wave"
-      data-tally-auto-close="10000"
+			data-tally-auto-close="10000"
+			aria-disabled={disabled}
     >
       {text}
     </button>
   );
 };
 
-export const CryptoModalButton = ({ text, prices }: BuyButtonProps): JSX.Element => {
+export const CryptoModalButton = ({ text, prices, disabled }: BuyButtonProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [quantityB, setQuantityB] = useState(1);
@@ -206,6 +209,8 @@ export const CryptoModalButton = ({ text, prices }: BuyButtonProps): JSX.Element
   const patronUnitsRounded = useTransform(patronUnitsCount, (latest) => Math.round(latest));
   const standardUnitsRounded = useTransform(standardUnitsCount, (latest) => Math.round(latest));
 
+	const classes = disabled ? 'btn btn-ghost btn-disabled bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto opacity-50 cursor-not-allowed' : 'btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto';
+
   useEffect(() => {
     const basketStandard = basket.find((item) => item.name === 'Standard Ticket');
     const basketPatron = basket.find((item) => item.name === 'Patron Ticket');
@@ -229,8 +234,9 @@ export const CryptoModalButton = ({ text, prices }: BuyButtonProps): JSX.Element
   return (
     <>
       <button
-        className="btn btn-ghost bg-gradient-tertiary text-secondary focus:outline-dashed focus:outline-primary w-auto"
-        onClick={toggleModal}
+        className={classes}
+				onClick={toggleModal}
+				aria-disabled={disabled}
       >
         {text}
       </button>
@@ -422,72 +428,82 @@ export const CryptoModalButton = ({ text, prices }: BuyButtonProps): JSX.Element
   );
 };
 
-export const SeedButton = ({ text }: BuyButtonProps): JSX.Element => {
+export const SeedButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
+	const classes = disabled ? 'btn btn-ghost btn-disabled bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto opacity-50 cursor-not-allowed' : 'btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto';
   return (
     <button
       data-buy-method="seed"
-      className="btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto"
+      className={classes}
       data-tally-open="wL9okp"
       data-tally-layout="modal"
       data-tally-width="800"
       data-tally-align-left="1"
       data-tally-emoji-text="👋"
       data-tally-emoji-animation="wave"
-      data-tally-auto-close="5000"
+			data-tally-auto-close="5000"
+			aria-disabled={disabled}
     >
       {text}
     </button>
   );
 };
 
-export const SponsorButton = ({ text }: BuyButtonProps): JSX.Element => {
+export const SponsorButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
+	const classes = disabled ? 'btn btn-ghost btn-disabled bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto opacity-50 cursor-not-allowed' : 'btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto';
+
   return (
     <button
       data-buy-method="sponsor"
-      className="btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto"
+      className={classes}
       data-tally-open="w2XEaj"
       data-tally-layout="modal"
       data-tally-width="800"
       data-tally-align-left="1"
       data-tally-emoji-text="👋"
       data-tally-emoji-animation="wave"
-      data-tally-auto-close="5000"
+			data-tally-auto-close="5000"
+			aria-disabled={disabled}
     >
       {text}
     </button>
   );
 };
 
-export const CrewButton = ({ text }: BuyButtonProps): JSX.Element => {
+export const CrewButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
+	const classes = disabled ? 'btn btn-ghost btn-disabled bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto opacity-50 cursor-not-allowed' : 'btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto';
   return (
     <button
       data-buy-method="crew"
-      className="btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto"
+      className={classes}
       data-tally-open="nG675k"
       data-tally-layout="modal"
       data-tally-width="800"
       data-tally-align-left="1"
       data-tally-emoji-text="👋"
       data-tally-emoji-animation="wave"
-      data-tally-auto-close="5000"
+			data-tally-auto-close="5000"
+			aria-disabled={disabled}
     >
       {text}
     </button>
   );
 };
 
-export const MetagamerButton = ({ text }: BuyButtonProps): JSX.Element => {
+export const MetagamerButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
+	const classes = disabled ? 'btn btn-ghost btn-disabled bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto opacity-50 cursor-not-allowed' : 'btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto';
+
   return (
     <button
       data-buy-method="metagamer"
-      className="btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto"
+      className={classes}
       data-tally-open="mRxrkj"
       data-tally-layout="modal"
       data-tally-width="800"
       data-tally-align-left="1"
       data-tally-emoji-text="👋"
       data-tally-emoji-animation="wave"
-      data-tally-auto-close="5000"
+			data-tally-auto-close="5000"
+			aria-disabled={disabled}
     >
       {text}
     </button>
@@ -498,17 +514,17 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount 
   const handleMethod = (method: string, cta: string) => {
     switch (method) {
       case 'fiat':
-        return <FiatButton text={cta} />;
+        return <FiatButton text={cta} disabled />;
       case 'crypto':
-        return <CryptoModalButton text={cta} prices={price} />;
+        return <CryptoModalButton text={cta} prices={price} disabled />;
       case 'seeds':
-        return <SeedButton text={cta} />;
+        return <SeedButton text={cta} disabled />;
       case 'sponsor':
-        return <SponsorButton text={cta} />;
+        return <SponsorButton text={cta} disabled />;
       case 'crew':
-        return <CrewButton text={cta} />;
+        return <CrewButton text={cta} disabled />;
       case 'metagamer':
-        return <MetagamerButton text={cta} />;
+        return <MetagamerButton text={cta} disabled />;
       default:
         return null;
     }

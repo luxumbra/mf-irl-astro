@@ -248,6 +248,10 @@
 
       button {
         @apply mx-auto;
+
+				&[aria-disabled='true'] {
+					@apply bg-secondary-dark-alpha-60 text-secondary-dark hover:cursor-not-allowed;
+				}
       }
     }
   }
