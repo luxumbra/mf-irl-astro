@@ -35,7 +35,7 @@
           @apply hover:text-primary;
 
           &:last-child {
-            @apply hover:text-secondary-dark hover:scale-125 hover:rotate-6 transition-all duration-200 ease-in-out;
+            @apply hover:text-secondary-dark hover:scale-125 hover:rotate-6 shadow-black shadow-sm hover:shadow-xl transition-all duration-200 ease-in-out;
           }
         }
       }
