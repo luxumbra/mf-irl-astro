@@ -1,6 +1,6 @@
 export const SITE = {
   name: 'MetaFest:IRL',
-  origin: 'https://metafest.wtf',
+  origin: import.meta.env.PUBLIC_HOSTNAME ?? 'https://metafest.wtf',
   basePathname: '/',
   trailingSlash: false,
 
@@ -17,6 +17,7 @@ export const paycekSecret = import.meta.env.PUBLIC_PAYCEK_SECRET_KEY;
 
 export const isDev = import.meta.env.DEV;
 export const isProd = import.meta.env.PROD;
+export const isTest = !(isDev || isProd) ?? false;
 
 export const uri = isDev ? 'https://0017-146-70-48-3.eu.ngrok.io' : 'https://test.metafest.wtf';
 export const currencySymbol = '€';

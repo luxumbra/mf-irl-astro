@@ -1,5 +1,5 @@
 ---
-import { SITE } from '~/config.mjs';
+import { SITE, isDev, isTest } from '~/config.mjs';
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/PageLayout.astro';
 import ThreeD from '~/components/widgets/ThreeD';
@@ -17,8 +17,6 @@ const meta = {
   canonical: getCanonical(getHomePermalink()),
 };
 
-
-
 export const ticketMethods: TicketMethodType[] = [
   {
     title: 'Dump Fiat',
@@ -28,7 +26,7 @@ export const ticketMethods: TicketMethodType[] = [
 		},
 		discount: 25,
 		isEarlyBird: true,
-    summary: 'Want to dump some fiat for a MetaFest ticket? This is the place for you.',
+    summary: 'Want to dump some fiat for a MetaFest ticket? This is the place for you. FIAT payments are processed by ![Alt](https://logos-world.net/wp-content/uploads/2021/03/Stripe-Logo.png "Stripe").',
 		method: 'fiat',
 		ctaText: 'Buy a ticket'
   },
@@ -103,7 +101,8 @@ export const ticketMethods: TicketMethodType[] = [
   >
 	<div class="w-full text-center mt-5">
 		<p class="text-xl md:text-3xl text-off-white text-center">We're crossing the <span class="inline-flex -rotate-12 font-bold">'t'</span>s &amp; dotting the <span class="inline-flex rotate-12 font-bold">'i'</span>s before the event announcement.</p>
-		<p class="text-xl md:text-3xl text-off-white text-center">The buy buttons will be enabled v soon!! Check back tomorrow.</p>
+		{isTest && <p class="text-xl md:text-3xl text-off-white text-center text-warning">This is the test site. Only test purchases should be made here.</p>}
+		{isDev && <p class="text-xl md:text-3xl text-off-white text-center text-warning">This is the dev site. Only test purchases should be made here.</p>}
 	</div>
 
     <div class="ticket-methods grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 items-stretch mx-auto mt-14 mb-20 md:mb-0 gap-5 md:gap-8">

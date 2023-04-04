@@ -7,6 +7,7 @@ import Toolbar from '~/components/widgets/Toolbar.astro';
 
 import MetaTags from '~/components/core/MetaTags.astro';
 import BasicScripts from '~/components/core/BasicScripts.astro';
+import { isDev, isTest } from '~/config.mjs';
 
 const { meta = {} } = Astro.props;
 ---
@@ -17,10 +18,17 @@ const { meta = {} } = Astro.props;
 		<MetaTags {...meta} />
 	</head>
 
-	<body class="antialiased text-accent tracking-normal">
+	<body class="antialiased text-off-white tracking-normal">
 		<Header />
 		<Toolbar />
 		<slot />
+
+		{(isDev || isTest) && (
+			<div class="fixed bottom-0 h-8 py-3 w-full left-0 text-white z-50 flex items-center backdrop-blur-lg">
+				<p class="relative text-xs md:text-sm text-center mx-auto text-white font-bold mb-0 z-10">This is the {isDev ? 'dev' : isTest && 'test'} site. Only test purchases should be made here.</p>
+				<div class="w-full h-full inset-0 bg-orange-400 opacity-80 absolute z-0" />
+			</div>
+		)}
 		<Footer />
 		<div id="root" class="fixed top-0 left-0 w-screen h-full overflow-hidden" />
 		<BasicScripts />
