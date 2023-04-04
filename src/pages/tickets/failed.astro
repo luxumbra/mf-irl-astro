@@ -25,7 +25,7 @@ const meta = {
       const countdownEl = document.querySelector('.countdown');
       const mins = Math.floor(seconds / 60);
       let secs: string | number = seconds % 60;
-      secs = secs < 10 ? '0' + secs : secs;
+      secs = secs < 10 ? secs : secs;
       countdownEl.innerHTML = mins > 0 ? `${mins}:${secs}` : `${secs}`;
       seconds--;
       if (seconds >= 0) {
@@ -41,19 +41,13 @@ const meta = {
 
 <Layout {meta}>
   <div class="pt-32"></div>
-  <Image
-    src={mgLogo}
-    alt="3D"
-    loading="lazy"
-    quality={100}
-    width={512}
-    height={512}
-    layout="responsive"
-    class="absolute top-20 w-full left-0 xl:left-1/4 xl:right-1/4 xl:w-1/2 z-[9] opacity-5"
-  />
 
-  <SponsorsSection title="Ru roh!!" precis="There was an error processing your payment. Please try again." full>
-    <p>Please wait <span class="countdown"></span> and you'll be redirected to the <a href="/tickets">tickets page</a>.</p>
+  <SponsorsSection
+	title="Uh oh!!"
+	precis="There was an error processing your payment."
+	full
+	>
+    <p class="text-center text-base md:text-2xl">You'll be redirected back to the <a href="/tickets">tickets page</a> in <span class="countdown">0</span> seconds. Please try your order again.</p>
   </SponsorsSection>
 
   <div class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto">

@@ -2,6 +2,7 @@
 // import { Icon } from 'astro-icon';
 import { Picture } from '@astrojs/image/components';
 import { Icon } from 'astro-icon';
+import { motion } from 'framer-motion';
 
 import heroImageLg from '~/assets/images/hero/hero-castle-full.jpg';
 import heroImageSm from '~/assets/images/hero/hero-castle-sm.jpg';
@@ -43,7 +44,7 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl } = Astro.props as HeroProps
       <p class="hero__subtitle text-this-color">{subtitle}</p>
 
       <!-- <div class="max-w-7xl"> -->
-      <div class="event-info">
+      <div class="event-info w-full">
         <div class="event-info__item w-auto text-center"
         x-show="shown"
         x-bind:class="{ 'invisible': !shown }"
@@ -104,16 +105,13 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl } = Astro.props as HeroProps
       <!-- <span class="hero__dates"><Icon name="ic:baseline-calendar-today" className="icon-gradient" /> <span class="rounded-lg bg-gradient-primary z-10">{dates}</span></span> -->
     </div>
     <div class="hero__content__secondary flex justify-end md:justify-start mt-3 md:mt-0">
-      <div
-        class="cta invisible"
-        x-show="shown"
-        x-bind:class="{ 'invisible': !shown }"
-        x-transition:enter="transition ease-out duration-500 delay-300"
-        x-transition:enter-start="opacity-0 transform translate-y-8"
-        x-transition:enter-end="opacity-100 transform translate-y-0"
-        x-transition:leave="transition ease-in duration-500"
-        x-transition:leave-start="opacity-100 transform translate-y-0"
-        x-transition:leave-end="opacity-0 transform translate-y-8"
+      <motion.div
+        className="cta"
+				initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            client:load
       >
         <a
           href={ctaUrl}
@@ -124,7 +122,7 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl } = Astro.props as HeroProps
             class="group-hover:animate-ping inset-0 absolute w-full h-full rounded-full bg-gradient-primary opacity-25"
           ></span>
         </a>
-      </div>
+      </motion.div>
     </div>
   </div>
   <div
