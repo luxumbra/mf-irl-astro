@@ -3,18 +3,26 @@ import { Image } from '@astrojs/image/components';
 import './tabs.css';
 
 import speakers from '~/data/speakers.json';
+import { motion } from 'framer-motion';
 ---
 
 
 <!-- Slider main container -->
 <div class="speakers-list partners-list max-w-7xl">
   <ul class="">
-    {speakers && speakers.length > 0 && speakers.map((speaker) => {
+    {speakers && speakers.length > 0 && speakers.map((speaker, i) => {
       const image = `/assets/images/speakers/${speaker.image}`
       const isExternal = speaker.url.startsWith('https')
-
+			const delay = parseFloat(((i+1) * 0.1).toFixed(1));
       return (
-        <li class="partner rounded-2xl bg-gradient-to-br from-secondary-alt via-secondary-alt to-transparent">
+        <motion.li
+					className="partner rounded-2xl bg-gradient-to-br from-secondary-alt via-secondary-alt to-transparent"
+					initial={{ opacity: 0, y: 20, scale: 0.8 }}
+					animate={{ opacity: 1, y: 0, scale: 1 }}
+					transition={{ duration: 0.2, delay: delay }}
+					viewport={{ once: true }}
+					client:load
+				>
           <a href={speaker.url} class="flex flex-col p-3 lg:p-5 text-center" title={speaker.name} target={isExternal &&"_blank"} rel={isExternal && "nofollow"}>
             <Image
               class="rounded-full border-2 border-primary mx-auto"
@@ -25,7 +33,7 @@ import speakers from '~/data/speakers.json';
               height="100" />
             <span>{speaker.name}</span>
           </a>
-        </li>
+        </motion.li>
       )
     })}
   </ul>

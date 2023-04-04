@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon';
+import { motion } from 'framer-motion';
 // import Section from '../core/Section.astro';
 import SponsorsSection from '~/components/core/SponsorsSection.astro';
 
@@ -44,23 +45,27 @@ export const aboutSections = [
   full
   alt
 >
-  <div
-    x-show="shown"
-    class="invisible"
-    x-bind:class="{ 'invisible': !shown }"
-    x-transition:enter="transition ease-out duration-500"
-    x-transition:enter-start="opacity-0 transform translate-y-8"
-    x-transition:enter-end="opacity-100 transform translate-y-0"
-    x-transition:leave="transition ease-in duration-500"
-    x-transition:leave-start="opacity-100 transform translate-y-0"
-    x-transition:leave-end="opacity-0 transform translate-y-8"
+  <motion.div
+		initial={{ opacity: 0, y: 20 }}
+		whileInView={{ opacity: 1, y: 0 }}
+		viewport={{ once: false }}
+		transition={{ duration: 0.5, delay: 0.1 }}
+		client:load
   >
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 items-stretch">
       {
         aboutSections &&
-          aboutSections.map((section) => {
+          aboutSections.map((section, i) => {
+						const delay = parseFloat(((i+1) * 0.1).toFixed(1));
+
             return (
-              <div class="about-card relative text-center rounded-2xl overflow-hidden p-[1px]">
+              <motion.div className="about-card relative text-center rounded-2xl overflow-hidden p-[1px]"
+								initial={{ opacity: 0, y: 10 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.3, delay: delay * 2 }}
+								client:load
+							>
                 <div class="relative p-3 md:p-8 z-10 rounded-2xl flex-col h-full overflow-hidden">
 									<div class="relative z-[2]">
                   <h3 class="text-xl font-semibold mb-4 flex-shrink font-sans">{section.title}</h3>
@@ -80,10 +85,10 @@ export const aboutSections = [
                 />
                 <div class="absolute inset-[1px] rounded-2xl bg-gradient-to-b from-secondary-dark to-secondary-alpha-90  -z-[5] pointer-events-none" />
                 <div class="absolute inset-0 rounded-2xl bg-gradient-to-b from-accent to-accent -z-10 pointer-events-none" />
-              </div>
+              </motion.div>
             );
           })
       }
     </div>
-  </div>
+  </motion.div>
 </SponsorsSection>
