@@ -23,10 +23,11 @@ export const ticketMethods: TicketMethodType[] = [
   {
     title: 'Dump Fiat',
     price: {
-			standard: 150,
-			patron: 420
+			standard: 200,
+			patron: 560
 		},
-		discount: 0,
+		discount: 25,
+		isEarlyBird: true,
     summary: 'Want to dump some fiat for a MetaFest ticket? This is the place for you.',
 		method: 'fiat',
 		ctaText: 'Buy a ticket'
@@ -34,10 +35,11 @@ export const ticketMethods: TicketMethodType[] = [
   {
     title: 'Buy with Crypto',
     price: {
-			standard: 150,
-			patron: 420
+			standard: 200,
+			patron: 560
 		},
-		discount: 0,
+		discount: 25,
+		isEarlyBird: true,
     summary: 'Of course, we accept crypto.',
     method: 'crypto',
 		ctaText: 'Buy a ticket'
@@ -45,10 +47,11 @@ export const ticketMethods: TicketMethodType[] = [
   {
     title: 'Buy with Seeds',
     price: {
-			standard: 150,
-			patron: 420
+			standard: 200,
+			patron: 560
 		},
-		discount: 0,
+		discount: 25,
+		isEarlyBird: true,
     summary: 'Been hodling Seeds? Use them to buy a ticket.',
     method: 'seeds',
 		ctaText: 'Buy a ticket'
@@ -79,6 +82,7 @@ export const ticketMethods: TicketMethodType[] = [
 			sponsor: 'POA'
 		},
 		discount: 0,
+		isEarlyBird: true,
 		summary: 'Want to have your project sponsor or help MetaFest? sponsors & partners get a few tix',
 		method: 'sponsor',
 		ctaText: 'Apply'

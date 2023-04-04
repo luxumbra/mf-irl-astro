@@ -17,7 +17,8 @@ export interface TicketMethodProps {
     crew?: number | string | null;
     metagamer?: number | string | null;
   };
-  discount: number | null;
+	discount: number | null;
+	isEarlyBird?: boolean;
   summary: string;
   method: string;
   ctaText: string;
@@ -32,7 +33,8 @@ export type TicketMethodType = {
     crew?: number | string | null;
     metagamer?: number | string | null;
   };
-  discount: number | null;
+	discount: number | null;
+	isEarlyBird?: boolean;
   summary: string;
   method: string;
   ctaText: string;
@@ -136,7 +138,6 @@ export const CryptoModalButton = ({ text, prices, disabled }: BuyButtonProps): J
   /**
    * add an item to the basket
    * @param tier - the tier of the item to be added to the basket
-   * @param quantity - TODO: the quantity of the item to be added to the basket
    */
   const addToBasket = (tier: string) => {
     const amountInput = document.querySelector('input[name="amount"]');
@@ -517,7 +518,7 @@ export const MetagamerButton = ({ text, disabled }: BuyButtonProps): JSX.Element
   );
 };
 
-export const TicketMethod = ({ title, summary, method, ctaText, price, discount }: TicketMethodProps): JSX.Element => {
+export const TicketMethod = ({ title, summary, method, ctaText, price, discount, isEarlyBird }: TicketMethodProps): JSX.Element => {
   const handleMethod = (method: string, cta: string) => {
     switch (method) {
       case 'fiat':
@@ -556,13 +557,16 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount 
       </div>
       <div className="ticket-method__content relative text-left p-0 rounded-2xl flex-grow">
         <div className="p-3 md:p-5 z-10 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 flex flex-col items-stretch h-full space-y-2 md:space-y-6">
-          <p className="mb-0 text-sm md:text-xl text-primary flex-grow">{summary}</p>
+					<p className="mb-0 text-sm md:text-xl text-primary flex-grow">{summary}</p>
+					{isEarlyBird && (<p className="text-primary text-xs md:text-base">*Earlybird prices until May 1st</p>)}
           {price.standard && (
-            <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
-              <span>Standard tickets</span>
+						<p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
+							<span>Standard tickets</span>
+							{isEarlyBird && <span className="text-sm md:text-base line-through inline-flex -translate-y-4 translate-x-[100%] md:translate-x-[150%] -rotate-12">{price.standard > 0 && currencySymbol}{price.standard}</span>}
               <span className="text-2xl md:text-3xl font-bold uppercase">
-                {currencySymbol}
-                {applyDiscount(price.standard, discount)}
+								{price.standard > 0 && currencySymbol}
+								{applyDiscount(price.standard, discount)}
+								{isEarlyBird && `*`}
               </span>
             </p>
           )}
@@ -571,9 +575,11 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount 
               <span className="relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">
                 Patron tickets <b className="-translate-x-5 -translate-y-8">✨</b>
               </span>
-              <span className="text-2xl md:text-3xl font-bold uppercase">
-                {currencySymbol}
-                {applyDiscount(price.patron, discount)}
+								{isEarlyBird && <span className="text-sm md:text-base line-through inline-flex -translate-y-4 translate-x-[100%] md:translate-x-[150%] -rotate-12">{price.patron > 0 && currencySymbol}{price.patron}</span>}
+							<span className="text-2xl md:text-3xl font-bold uppercase">
+								{price.patron > 0 && currencySymbol}
+								{applyDiscount(price.patron, discount)}
+								{isEarlyBird && `*`}
               </span>
             </p>
           )}
@@ -582,7 +588,12 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount 
               <span className="relative bg-clip-text text-transparent bg-gradient-to-l from-cyan-400 to-fuchsia-500">
                 Sponsor tickets <b className="-translate-x-5 -translate-y-8">💰</b>
               </span>
-              <span className="text-2xl md:text-3xl font-bold uppercase">{applyDiscount(price.sponsor, discount)}</span>
+							{isEarlyBird && price.sponsor > 0 && <span className="text-base">{price.sponsor > 0 && currencySymbol}{price.sponsor}</span>}
+							<span className="text-2xl md:text-3xl font-bold uppercase">
+								{price.sponsor > 0 && currencySymbol}
+								{applyDiscount(price.sponsor, discount)}
+								{isEarlyBird && `*`}
+							</span>
             </p>
           )}
           {price.crew && (
@@ -590,7 +601,12 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount 
               <span className="relative bg-clip-text text-transparent bg-gradient-to-l from-purple-500 to-cyan-400">
                 Crew tickets <b className="-translate-x-5 -translate-y-8">👷</b>
               </span>
-              <span className="text-2xl md:text-3xl font-bold uppercase">{applyDiscount(price.crew, discount)}</span>
+							{isEarlyBird && <span className="text-base">{price.crew > 0 && currencySymbol}{price.crew}</span>}
+							<span className="text-2xl md:text-3xl font-bold uppercase">
+								{price.crew > 0 && currencySymbol}
+								{applyDiscount(price.crew, discount)}
+								{isEarlyBird && `*`}
+							</span>
             </p>
           )}
           {price.metagamer && (
@@ -598,11 +614,15 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount 
               <span className="relative bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-fuchsia-400">
                 MetaGamer tickets <b className="-translate-x-5 -translate-y-8">🐙</b>
               </span>
-              <span className="text-2xl md:text-3xl font-bold uppercase">
-                {applyDiscount(price.metagamer, discount)}
+							{isEarlyBird && <span className="text-base line-through">{price.metagamer > 0 && currencySymbol}{price.metagamer}</span>}
+							<span className="text-2xl md:text-3xl font-bold uppercase">
+								{price.metagamer > 0 && currencySymbol}
+								{applyDiscount(price.metagamer, discount)}
+								{isEarlyBird && `*`}
               </span>
             </p>
-          )}
+					)}
+
           <div className="text-center w-full self-end">{handleMethod(method, ctaText)}</div>
         </div>
         <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-none" />
