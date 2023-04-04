@@ -298,7 +298,7 @@ export const CryptoModalButton = ({ text, prices, discount, isEarlyBird, disable
               </a>{' '}
               to complete your purchase using your choice of crypto.
             </p>
-						{isEarlyBird && (<p className="text-primary text-xs md:text-sm italic">*Earlybird prices (25% discount) until May 1st</p>)}
+						{isEarlyBird && (<p className="text-primary text-xs md:text-sm italic">*Earlybird prices ({discount}% discount) until May 1st</p>)}
             <div className="flex flex-row items-center justify-center space-y-2 md:space-y-3 w-full">
               <input type="hidden" name="amount" value={applyDiscount(prices.standard, discount)} />
               <input type="hidden" name="name" value="Standard Ticket" />
@@ -575,7 +575,7 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount,
 							{summary}
 						</ReactMarkdown>
 					</div>
-					{isEarlyBird && (<p className="text-primary text-xs md:text-sm italic">*Earlybird prices (25% discount) until May 1st</p>)}
+					{isEarlyBird && (<p className="text-primary text-xs md:text-sm italic">*Earlybird prices ({discount}% discount) until May 1st</p>)}
           {price.standard && (
 						<p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
 							<span className="flex-grow">Standard tickets</span>
