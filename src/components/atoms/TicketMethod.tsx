@@ -7,6 +7,7 @@ import './tier.css';
 import { useEffect, useState } from 'react';
 import { Modal } from 'flowbite-react';
 import { Icon } from '@iconify/react';
+import ReactMarkdown from 'react-markdown'
 
 export interface TicketMethodProps {
   title: string;
@@ -547,6 +548,7 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount,
     }
     return price - (price * discount) / 100;
   };
+	const isExternal = summary.includes('http');
 
   return (
     <div className="ticket-method">
@@ -557,7 +559,11 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount,
       </div>
       <div className="ticket-method__content relative text-left p-0 rounded-2xl flex-grow">
         <div className="p-3 md:p-5 z-10 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 flex flex-col items-stretch h-full space-y-2 md:space-y-6">
-					<p className="mb-0 text-sm md:text-xl text-primary flex-grow">{summary}</p>
+					<div className="mb-0 text-sm md:text-xl text-primary flex-grow">
+						<ReactMarkdown linkTarget={isExternal ? '_blank' : ''}>
+							{summary}
+						</ReactMarkdown>
+					</div>
 					{isEarlyBird && (<p className="text-primary text-xs md:text-base">*Earlybird prices until May 1st</p>)}
           {price.standard && (
 						<p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
@@ -575,11 +581,9 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount,
               <span className="relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">
                 Patron tickets <b className="-translate-x-5 -translate-y-8">✨</b>
               </span>
-								{isEarlyBird && <span className="text-sm md:text-base line-through inline-flex -translate-y-4 translate-x-[100%] md:translate-x-[150%] -rotate-12">{price.patron > 0 && currencySymbol}{price.patron}</span>}
 							<span className="text-2xl md:text-3xl font-bold uppercase">
 								{price.patron > 0 && currencySymbol}
-								{applyDiscount(price.patron, discount)}
-								{isEarlyBird && `*`}
+								{price.patron}
               </span>
             </p>
           )}
@@ -599,7 +603,7 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount,
           {price.crew && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
               <span className="relative bg-clip-text text-transparent bg-gradient-to-l from-purple-500 to-cyan-400">
-                Crew tickets <b className="-translate-x-5 -translate-y-8">👷</b>
+                Contributor tickets <b className="-translate-x-5 -translate-y-8">👷</b>
               </span>
 							{isEarlyBird && <span className="text-base">{price.crew > 0 && currencySymbol}{price.crew}</span>}
 							<span className="text-2xl md:text-3xl font-bold uppercase">

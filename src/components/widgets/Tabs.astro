@@ -5,39 +5,42 @@ import './tabs.css';
 <!-- Slider main container -->
 <div class="tabs">
   <ul role="tablist">
+		<li role="presentation">
+			<a href="#tab-section-1" id="tab2" role="tab">
+				<span>i.</span>
+				<span>Main Quest</span>
+			</a>
+		</li>
     <li role="presentation">
-      <a href="#tab-section-1" id="tab1" role="tab" aria-selected="true">
-        <span>i. Side Quests</span>
-      </a>
-    </li>
-    <li role="presentation">
-      <a href="#tab-section-2" id="tab2" role="tab">
-        <span>ii. Main Quest</span>
+      <a href="#tab-section-2" id="tab1" role="tab" aria-selected="true">
+        <span>ii.</span>
+				<span>Side Quests</span>
       </a>
     </li>
     <li role="presentation">
       <a href="#tab-section-3" id="tab3" role="tab">
-        <span>iii. After MetaFest</span>
+        <span>iii.</span>
+				<span>After MetaFest</span>
       </a>
     </li>
   </ul>
 
-  <div class="tab-section active" id="tab-section-1" role="tabpanel" aria-labelledby="tab1" aria-hidden="false" tabindex="-1">
+	<div class="tab-section" id="tab-section-1" role="tabpanel" aria-labelledby="tab2" aria-hidden="true" tabindex="-1" hidden>
+		<h3>i. Main quest</h3>
+		<div class="tab-section__content p-3 md:p-5 2xl:p-8 bg-gradient-to-r from-secondary-alt via-secondary-alt to-transparent">
+		<p>Around the venue...</p>
+		<p>3 days of talks, workshops, panels, games & the unconference over afternoons & into the evenings with parties in the evenings & into the night.</p>
+		</div>
+	</div>
 
-    <h3>I. Side Quests</h3>
+  <div class="tab-section active" id="tab-section-2" role="tabpanel" aria-labelledby="tab1" aria-hidden="false" tabindex="-1">
+    <h3>ii. Side Quests</h3>
     <div class="tab-section__content p-3 md:p-5 2xl:p-8 bg-gradient-to-r from-secondary-alt via-secondary-alt to-transparent">
     <p>Self-organized with info & space provided</p>
     <p>Adventure parks, water parks, quad-biking, water-skiing, scuba diving, DAO vs DAO paintballin’, rock climbing, panoramic flights, sightseeing, boat trips & parties, tasty lunches & dinners, ???...</p>
     </div>
   </div>
 
-  <div class="tab-section" id="tab-section-2" role="tabpanel" aria-labelledby="tab2" aria-hidden="true" tabindex="-1" hidden>
-    <h3>ii. Main quest</h3>
-    <div class="tab-section__content p-3 md:p-5 2xl:p-8 bg-gradient-to-r from-secondary-alt via-secondary-alt to-transparent">
-    <p>Around the venue...</p>
-    <p>3 days of talks, workshops, panels, games & the unconference over afternoons & into the evenings with parties in the evenings & into the night.</p>
-    </div>
-  </div>
 
   <div class="tab-section" id="tab-section-3" role="tabpanel" aria-labelledby="tab3" aria-hidden="true" tabindex="-1" hidden>
     <h3>iii. After MetaFest</h3>

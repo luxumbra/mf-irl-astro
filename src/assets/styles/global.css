@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply relative bg-secondary-dark text-center font-sans font-normal text-base w-full min-h-screen max-w-full p-0 m-0 overflow-x-hidden;
+    @apply relative bg-secondary-dark text-center text-off-white md:text-accent font-sans font-normal text-base w-full min-h-screen max-w-full p-0 m-0 overflow-x-hidden;
 
     /* background-image: url('../images/page-bg.png');
     background-position: top left;
@@ -19,6 +19,10 @@
 
   [x-cloak] {
     display: none;
+  }
+
+  a {
+    @apply transition-colors duration-200 ease-in-out hover:text-off-white;
   }
 
   main {
@@ -43,7 +47,7 @@
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary transition-colors duration-300 ease-in-out opacity-70;
+    @apply bg-primary transition-colors duration-200 ease-in-out opacity-70;
 
     border-radius: 2px;
     box-shadow: 0 0 5px rgb(0 0 0 / 70%);
@@ -60,6 +64,9 @@
     @apply mx-auto px-4;
   }
 
+	/**
+	 * Hero
+	 */
   .hero {
     @apply flex items-center justify-center text-white text-4xl font-bold py-8 z-10;
 
@@ -162,6 +169,9 @@
     }
   }
 
+	/**
+	 * Section
+	 */
   .section {
     @apply bg-transparent py-20 xl:py-32 z-10 overflow-hidden flex items-center;
 
@@ -185,7 +195,7 @@
         @apply text-primary;
 
         &:hover {
-          @apply underline;
+          @apply underline text-off-white;
         }
       }
 
@@ -221,12 +231,15 @@
     }
   }
 
+	/**
+	 * Tiers, Expansion Packs, and Ticket Methods
+	 */
   .tiers,
   .expansion-packs,
   .ticket-methods {
     .tier,
     .expansion-pack {
-      @apply mx-auto transform transition-all duration-300 ease-in-out min-h-full h-full flex flex-col flex-1 mb-8 xl:mb-0;
+      @apply mx-auto transform transition-all duration-200 ease-in-out min-h-full h-full flex flex-col flex-1 mb-8 xl:mb-0;
 
       &__header {
         @apply flex flex-row justify-between;
@@ -234,7 +247,7 @@
 
       ul {
         li {
-          @apply flex justify-start items-center space-x-0 mb-3 text-accent w-11/12;
+          @apply flex justify-start items-center space-x-0 mb-3 text-off-white md:text-accent w-11/12;
 
           & > svg {
             @apply flex-shrink-0 w-8;
@@ -244,18 +257,62 @@
     }
 
     .ticket-method {
-      @apply transform transition-all duration-300 ease-in-out flex flex-col mb-8 xl:mb-0;
+      @apply transform transition-all duration-200 ease-in-out flex flex-col mb-8 xl:mb-0;
 
       button {
         @apply mx-auto;
 
-				&[aria-disabled='true'] {
-					@apply bg-secondary-dark-alpha-60 text-secondary-dark hover:cursor-not-allowed;
-				}
+        &[aria-disabled='true'] {
+          @apply bg-secondary-dark-alpha-60 text-secondary-dark hover:cursor-not-allowed;
+        }
+      }
+
+      a {
+        @apply text-primary hover:underline hover:text-off-white transition-all duration-200 ease-in-out;
+
+        &[href^='https://']
+        {
+          &::after {
+            @apply inline-flex ml-1 bg-primary w-4 h-4;
+
+            mask-image: url('https://api.iconify.design/mdi/open-in-new.svg');
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            content: '';
+          }
+        }
+
+        &[href^='http://']
+        {
+          @apply text-red-500;
+          &::before {
+            @apply inline-flex mr-1 bg-red-500 w-4 h-4;
+
+            mask-image: url('https://api.iconify.design/mdi/lock-off-outline.svg');
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            content: '';
+          }
+          &::after {
+            @apply inline-flex ml-1 bg-red-500 w-4 h-4;
+
+            mask-image: url('https://api.iconify.design/mdi/open-in-new.svg');
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            content: '';
+          }
+        }
+      }
+
+      img {
+        @apply inline-flex w-auto h-5 mx-1;
       }
     }
   }
 
+	/**
+	 * Carousel
+	 */
   .carousel {
     @apply relative w-full min-h-[66vh] md:min-h-[50vh] mt-16 md:mt-32 xl:mt-48;
 
@@ -263,18 +320,18 @@
 
     .swiper-slide {
       @apply h-full;
-      @apply transition-all duration-300 ease-in-out;
+      @apply transition-all duration-200 ease-in-out;
 
       &__content {
-        @apply text-left py-10 flex items-center content-center bg-gradient-to-t from-secondary-dark via-secondary-dark-alpha-60 to-transparent w-full;
+        @apply text-left py-10 flex items-center content-center bg-gradient-to-b md:bg-gradient-to-t from-secondary-dark via-secondary-dark-alpha-60 to-transparent w-full z-20;
 
         svg {
-          @apply translate-y-10 opacity-0 transition-all duration-300 delay-200 ease-in-out;
+          @apply translate-y-10 opacity-0 transition-all duration-200 delay-200 ease-in-out;
         }
 
         h4,
         p {
-          @apply text-sm lg:text-lg text-primary translate-y-10 opacity-0 transition-all duration-300 delay-200 ease-in-out;
+          @apply text-sm lg:text-lg text-primary translate-y-10 opacity-0 transition-all duration-200 delay-200 ease-in-out;
         }
       }
 
@@ -291,17 +348,24 @@
 
     .swiper-button-next,
     .swiper-button-prev {
-      @apply absolute top-1/2 transform -translate-y-1/2 z-20;
+      @apply absolute bottom-0 md:top-1/2 transform md:-translate-y-1/2 z-20;
       @apply text-primary;
 
       svg {
         @apply scale-150;
+
+				path {
+					@apply stroke-current fill-current;
+				}
       }
 
       &::after {
         content: '';
       }
     }
+		.swiper-pagination {
+			@apply absolute !top-0 bottom-auto md:!bottom-0 md:!top-3 left-0 w-full z-20;
+		}
 
     .swiper-pagination-bullet {
       @apply w-4 h-4 bg-transparent opacity-100 border-[1px] border-primary rounded-full;
@@ -436,66 +500,66 @@
     }
   }
 
-	.about-card {
-		ul {
-			@apply mb-0;
-		}
-	}
-}
-
-@layer utilities {
-  .bg-gradient-primary {
-    @apply bg-gradient-to-r from-accent-alpha-60 to-primary-alpha-60;
-
-    &-solid {
-      @apply bg-gradient-to-r from-accent to-primary;
+  .about-card {
+    ul {
+      @apply mb-0;
     }
   }
 
-  .bg-gradient-dark {
-    @apply bg-gradient-to-r from-secondary to-accent;
-  }
+  @layer utilities {
+    .bg-gradient-primary {
+      @apply bg-gradient-to-r from-accent-alpha-60 to-primary-alpha-60;
 
-  .bg-gradient-secondary {
-    @apply bg-gradient-to-tr from-accent-alpha-60 to-primary-alpha-60;
+      &-solid {
+        @apply bg-gradient-to-r from-accent to-primary;
+      }
+    }
 
-    &-solid {
-      @apply bg-gradient-to-tr from-accent to-primary;
+    .bg-gradient-dark {
+      @apply bg-gradient-to-r from-secondary to-accent;
+    }
+
+    .bg-gradient-secondary {
+      @apply bg-gradient-to-tr from-accent-alpha-60 to-primary-alpha-60;
+
+      &-solid {
+        @apply bg-gradient-to-tr from-accent to-primary;
+      }
+    }
+
+    .bg-gradient-tertiary {
+      @apply bg-gradient-to-t from-tertiary to-primary;
+    }
+
+    .bg-gradient-quarternary {
+      @apply bg-gradient-to-r from-[#f4f49299] to-[#89c97c99];
+    }
+
+    .bg-gradient-alt {
+      @apply bg-gradient-to-br from-secondary-alpha-30 to-accent-light-alpha-30;
+    }
+
+    .text-gradient-primary {
+      @apply bg-clip-text text-transparent;
+      @apply bg-gradient-to-r from-accent-alpha-60 to-primary-alpha-60;
+    }
+    .gradient-text {
+      @apply text-transparent bg-clip-text;
+      @apply bg-gradient-to-br from-pink-300 via-teal-300 to-violet-700;
+    }
+
+    #gradient-horizontal {
+      --color-stop-1: #a770ef;
+      --color-stop-2: #cf8bf3;
+      --color-stop-3: #fdb99b;
+    }
+
+    .icon-gradient {
+      @apply stroke-current;
+    }
+
+    .inner-shadow {
+      box-shadow: inset 0 0 100px 20px rgba(0 0 0 / 0.8);
     }
   }
-
-  .bg-gradient-tertiary {
-    @apply bg-gradient-to-t from-tertiary to-primary;
-  }
-
-  .bg-gradient-quarternary {
-    @apply bg-gradient-to-r from-[#f4f49299] to-[#89c97c99];
-  }
-
-  .bg-gradient-alt {
-    @apply bg-gradient-to-br from-secondary-alpha-30 to-accent-light-alpha-30;
-  }
-
-  .text-gradient-primary {
-    @apply bg-clip-text text-transparent;
-    @apply bg-gradient-to-r from-accent-alpha-60 to-primary-alpha-60;
-  }
-  .gradient-text {
-    @apply text-transparent bg-clip-text;
-    @apply bg-gradient-to-br from-pink-300 via-teal-300 to-violet-700;
-  }
-
-  #gradient-horizontal {
-    --color-stop-1: #a770ef;
-    --color-stop-2: #cf8bf3;
-    --color-stop-3: #fdb99b;
-  }
-
-  .icon-gradient {
-    @apply stroke-current;
-  }
-
-	.inner-shadow {
-		box-shadow: inset 0 0 100px 20px rgba(0 0 0 / 0.8);
-	}
 }

@@ -24,7 +24,7 @@ export const ticketMethods: TicketMethodType[] = [
     title: 'Dump Fiat',
     price: {
 			standard: 200,
-			patron: 560
+			patron: 420
 		},
 		discount: 25,
 		isEarlyBird: true,
@@ -36,11 +36,11 @@ export const ticketMethods: TicketMethodType[] = [
     title: 'Buy with Crypto',
     price: {
 			standard: 200,
-			patron: 560
+			patron: 420
 		},
 		discount: 25,
 		isEarlyBird: true,
-    summary: 'Of course, we accept crypto.',
+    summary: 'Of course, we accept all mainstream crypto. Our crypto payment provider is ![Alt](https://paycek.io/static/img/logo.svg "Paycek") and they list all of the accepted coins in [their FAQ](https://paycek.io/faq).',
     method: 'crypto',
 		ctaText: 'Buy a ticket'
   },
@@ -48,7 +48,7 @@ export const ticketMethods: TicketMethodType[] = [
     title: 'Buy with Seeds',
     price: {
 			standard: 200,
-			patron: 560
+			patron: 420
 		},
 		discount: 25,
 		isEarlyBird: true,
@@ -82,8 +82,8 @@ export const ticketMethods: TicketMethodType[] = [
 			sponsor: 'POA'
 		},
 		discount: 0,
-		isEarlyBird: true,
-		summary: 'Want to have your project sponsor or help MetaFest? sponsors & partners get a few tix',
+		isEarlyBird: false,
+		summary: 'Want to have your project sponsor or help MetaFest? Sponsors & partners get a few tix. For more info on the festival and details on pricing and benefits, check out the [sponsors page](/event-sponsors).',
 		method: 'sponsor',
 		ctaText: 'Apply'
 	}

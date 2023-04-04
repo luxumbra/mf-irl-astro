@@ -13,7 +13,7 @@ import { motion } from 'framer-motion';
     {speakers && speakers.length > 0 && speakers.map((speaker, i) => {
       const image = `/assets/images/speakers/${speaker.image}`
       const isExternal = speaker.url.startsWith('https')
-			const delay = parseFloat(((i+1) * 0.1).toFixed(1));
+			const delay = parseFloat(((i+1) * 0.05).toFixed(2));
       return (
         <motion.li
 					className="partner rounded-2xl bg-gradient-to-br from-secondary-alt via-secondary-alt to-transparent"

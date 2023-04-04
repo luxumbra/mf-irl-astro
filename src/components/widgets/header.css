@@ -4,17 +4,17 @@
 
 @layer components {
   .header {
-    @apply fixed bg-accent-light-alpha-30 text-secondary text-center w-full z-20 transition-all duration-300 h-16 md:h-20 3xl:h-28;
+    @apply fixed bg-accent-light-alpha-30 text-secondary text-center w-full z-20 transition-all duration-200 h-16 md:h-20 3xl:h-28;
 
     &__primary {
-      @apply flex justify-around items-center max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl mx-auto py-1 3xl:py-4 transition-all duration-300;
+      @apply flex justify-around items-center max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl mx-auto py-1 3xl:py-4 transition-all duration-200;
     }
 
     .logo {
-      @apply transition-all duration-300;
+      @apply transition-all duration-200;
 
       path {
-        @apply !fill-current !text-secondary-dark transition-colors duration-300;
+        @apply !fill-current !text-secondary-dark transition-colors duration-200;
       }
 
       &:hover {
