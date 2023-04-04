@@ -101,8 +101,7 @@ export const ticketMethods: TicketMethodType[] = [
   >
 	<div class="w-full text-center mt-5">
 		<p class="text-xl md:text-3xl text-off-white text-center">We're crossing the <span class="inline-flex -rotate-12 font-bold">'t'</span>s &amp; dotting the <span class="inline-flex rotate-12 font-bold">'i'</span>s before the event announcement.</p>
-		{isTest && <p class="text-xl md:text-3xl text-off-white text-center text-warning">This is the test site. Only test purchases should be made here.</p>}
-		{isDev && <p class="text-xl md:text-3xl text-off-white text-center text-warning">This is the dev site. Only test purchases should be made here.</p>}
+		{(isDev || isTest) && <p class="text-xl md:text-3xl text-center text-warning">This is the {isDev ? 'dev' : isTest && 'test'} site. Only test purchases should be made here.</p>}
 	</div>
 
     <div class="ticket-methods grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 items-stretch mx-auto mt-14 mb-20 md:mb-0 gap-5 md:gap-8">
