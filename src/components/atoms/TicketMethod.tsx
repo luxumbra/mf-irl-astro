@@ -54,7 +54,7 @@ export interface PayloadOptions {
   items: CryptoItemType[];
 }
 
-const activeBtnClasses = 'btn btn-ghost bg-gradient-tertiary  text-secondary focus:outline-dashed focus:outline-primary w-auto';
+const activeBtnClasses = 'btn btn-ghost bg-gradient-tertiary  text-secondary hover:scale-95 focus:outline-dashed focus:outline-primary w-auto';
 const disabledBtnClasses = 'btn btn-ghost btn-disabled bg-gradient-tertiary text-secondary focus:outline-dashed focus:outline-primary w-auto opacity-50 hover:cursor-not-allowed'
 
 export const FiatButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
