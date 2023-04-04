@@ -278,7 +278,7 @@ export const CryptoModalButton = ({ text, prices, discount, isEarlyBird, disable
             </p>
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full mb-0">
               <span className="flex-grow relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">
-                Patron Tickets <b className="-translate-x-5 -translate-y-8">✨</b>
+                Patron Tickets<b role="img">✨</b>
 							</span>
 							{isEarlyBird && <span className="text-sm md:text-base self-end line-through inline-flex -translate-y-6 translate-x-3 -rotate-12" aria-label={`Normal price ${currencySymbol}${prices.patron}`}>
 								{currencySymbol}{prices.patron}
@@ -592,7 +592,7 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount,
           {price.patron && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
               <span className="flex-grow relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">
-                Patron tickets <b className="-translate-x-5 -translate-y-8">✨</b>
+                Patron tickets<b role="img">✨</b>
 							</span>
 							{isEarlyBird && <span className="text-sm md:text-base line-through inline-flex -translate-y-5 translate-x-3 -rotate-12" aria-label={`Normal price ${currencySymbol}${price.patron}`}>
 								{price.patron > 0 && currencySymbol}{price.patron}
@@ -607,7 +607,7 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount,
           {price.sponsor && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
               <span className="relative bg-clip-text text-transparent bg-gradient-to-l from-cyan-400 to-fuchsia-500">
-                Sponsor tickets <b className="-translate-x-5 -translate-y-8">💰</b>
+                Sponsor tickets<b role="img">💰</b>
               </span>
 							<span className="text-2xl md:text-3xl font-bold uppercase">
 								{price.sponsor > 0 && currencySymbol}
@@ -618,7 +618,7 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount,
           {price.crew && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
               <span className="relative bg-clip-text text-transparent bg-gradient-to-l from-purple-500 to-cyan-400">
-                Contributor tickets <b className="-translate-x-5 -translate-y-8">👷</b>
+                Contributor tickets<b role="img">🐙</b>
               </span>
 							<span className="text-2xl md:text-3xl font-bold uppercase">
 								{price.crew > 0 && currencySymbol}
@@ -629,7 +629,7 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount,
           {price.metagamer && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
               <span className="relative bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-fuchsia-400">
-                MetaGamer tickets <b className="-translate-x-5 -translate-y-8">🐙</b>
+                MetaGamer tickets <img src="https://metagame.wtf/favicon.png" alt="MetaGame" className="inline-flex items-center h-5 w-auto -translate-x-2 -translate-y-1" />
               </span>
 							<span className="text-2xl md:text-3xl font-bold uppercase">
 								{price.metagamer > 0 && currencySymbol}
