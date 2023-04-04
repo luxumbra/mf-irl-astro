@@ -277,12 +277,16 @@ export const CryptoModalButton = ({ text, prices, discount, isEarlyBird, disable
               </span>
             </p>
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full mb-0">
-              <span className="relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">
+              <span className="flex-grow relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">
                 Patron Tickets <b className="-translate-x-5 -translate-y-8">✨</b>
-              </span>
-              <span className="text-2xl md:text-3xl font-bold">
+							</span>
+							{isEarlyBird && <span className="text-sm md:text-base self-end line-through inline-flex -translate-y-6 translate-x-3 -rotate-12" aria-label={`Normal price ${currencySymbol}${prices.patron}`}>
+								{currencySymbol}{prices.patron}
+							</span>}
+              <span className="text-2xl md:text-3xl font-bold" aria-label={`Discounted early bird price ${currencySymbol}${applyDiscount(prices.patron, discount)}`}>
                 {currencySymbol}
-                {prices.patron}
+								{applyDiscount(prices.patron, discount)}
+								{isEarlyBird && `*`}
               </span>
             </p>
 
@@ -323,7 +327,7 @@ export const CryptoModalButton = ({ text, prices, discount, isEarlyBird, disable
             </div>
 
             <div className="flex flex-row items-center justify-center space-y-2 md:space-y-3 w-full">
-              <input type="hidden" name="patronAmount" value={prices.patron} />
+              <input type="hidden" name="patronAmount" value={applyDiscount(prices.patron, discount)} />
               <input type="hidden" name="patronName" value="Patron Ticket" />
               <div className="form-control w-full">
                 <label className="input-group input-group-sm  justify-center w-full" htmlFor="quantityB">
@@ -587,12 +591,16 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount,
           )}
           {price.patron && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
-              <span className="relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">
+              <span className="flex-grow relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">
                 Patron tickets <b className="-translate-x-5 -translate-y-8">✨</b>
-              </span>
-							<span className="text-2xl md:text-3xl font-bold uppercase">
+							</span>
+							{isEarlyBird && <span className="text-sm md:text-base line-through inline-flex -translate-y-5 translate-x-3 -rotate-12" aria-label={`Normal price ${currencySymbol}${price.patron}`}>
+								{price.patron > 0 && currencySymbol}{price.patron}
+							</span>}
+							<span className="text-2xl md:text-3xl font-bold uppercase" aria-label={`Discounted early bird price ${currencySymbol}${applyDiscount(price.patron, discount)}`}>
 								{price.patron > 0 && currencySymbol}
-								{price.patron}
+								{applyDiscount(price.patron, discount)}
+								{isEarlyBird && `*`}
               </span>
             </p>
           )}
