@@ -24,8 +24,8 @@
   a {
     @apply transition-colors duration-200 ease-in-out hover:text-off-white;
 
-		&[role="button"] {
-			@apply cursor-pointer outline-none focus:outline-dashed focus:outline-primary-alpha-30;
+		&[role="button"], &.btn {
+			@apply cursor-pointer outline-none focus:outline-dashed focus:outline-primary-alpha-60 focus:text-secondary-dark;
 		}
   }
 
