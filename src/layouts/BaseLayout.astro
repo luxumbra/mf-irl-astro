@@ -8,6 +8,7 @@ import Toolbar from '~/components/widgets/Toolbar.astro';
 import MetaTags from '~/components/core/MetaTags.astro';
 import BasicScripts from '~/components/core/BasicScripts.astro';
 import { isDev, isTest } from '~/config.mjs';
+import { ScrollUpButton } from '~/components/atoms/ScrollUpButton';
 
 const { meta = {} } = Astro.props;
 ---
@@ -29,10 +30,14 @@ const { meta = {} } = Astro.props;
 				<div class="w-full h-full inset-0 bg-orange-400 opacity-80 absolute z-0" />
 			</div>
 		)}
+		<ScrollUpButton accent={'projectAccent'} client:load />
 		<Footer />
 		<div id="root" class="fixed top-0 left-0 w-screen h-full overflow-hidden" />
 		<BasicScripts />
 		<style is:global>
+			:root {
+        --projectAccent: #348e7b;
+			}
 			img {
 				content-visibility: auto;
 			}

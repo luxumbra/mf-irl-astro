@@ -22,7 +22,7 @@
   }
 
   a {
-    @apply transition-colors duration-200 ease-in-out hover:text-off-white;
+    @apply transition-colors duration-200 ease-in-out hover:text-off-white outline-none focus:outline-dashed focus:outline-primary;
   }
 
   main {
@@ -263,7 +263,7 @@
         @apply mx-auto;
 
         &[aria-disabled='true'] {
-          @apply bg-secondary-dark-alpha-60 text-secondary-dark hover:cursor-not-allowed;
+          @apply bg-secondary-dark-alpha-60 text-secondary-dark cursor-not-allowed;
         }
       }
 
