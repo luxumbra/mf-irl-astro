@@ -31,7 +31,7 @@
         @apply w-full justify-between;
 
         a {
-          @apply text-secondary-dark text-base outline-none 3xl:text-xl 4xl:text-2xl font-sans uppercase inline-flex items-center px-4 transition-colors duration-200;
+          @apply text-secondary-dark text-base outline-none 2xl:text-xl 4xl:text-2xl font-sans uppercase inline-flex items-center px-4 transition-colors duration-200;
           @apply hover:text-primary focus:text-primary;
 
           &:last-child {
@@ -46,6 +46,10 @@
 
 			.logo {
 				@apply w-14 md:w-20;
+			}
+
+			.btn {
+						@apply scale-90 3xl:scale-95;
 			}
 		}
   }
