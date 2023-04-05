@@ -22,7 +22,11 @@
   }
 
   a {
-    @apply transition-colors duration-200 ease-in-out hover:text-off-white outline-none focus:outline-dashed focus:outline-primary;
+    @apply transition-colors duration-200 ease-in-out hover:text-off-white;
+
+		&[role="button"] {
+			@apply cursor-pointer outline-none focus:outline-dashed focus:outline-primary-alpha-30;
+		}
   }
 
   main {
@@ -57,7 +61,6 @@
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-accent;
   }
-}
 
 @layer components {
   .container {
@@ -383,7 +386,7 @@
       @apply grid grid-cols-2  lg:grid-cols-6 gap-3 lg:gap-4 3xl:gap-6;
 
       li {
-        @apply relative items-center overflow-hidden hover:scale-105 transition-all duration-200 ease-in-out;
+        @apply relative items-center overflow-hidden;
 
         background-image: url('../images/hammered-bg.png');
 
@@ -399,7 +402,7 @@
       }
 
       a {
-        @apply space-y-3 capitalize;
+        @apply space-y-3 capitalize focus:outline-dashed 	hover:scale-105 focus:outline-primary-alpha-60 focus:scale-105 transition-all duration-200 ease-in-out;
 
         span {
           @apply text-xs lg:text-sm 3xl:text-base whitespace-nowrap;
@@ -562,4 +565,5 @@
       box-shadow: inset 0 0 100px 20px rgba(0 0 0 / 0.8);
     }
   }
+}
 }

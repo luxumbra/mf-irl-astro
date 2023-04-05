@@ -32,10 +32,10 @@
 
         a {
           @apply text-secondary-dark text-base outline-none 3xl:text-xl 4xl:text-2xl font-sans uppercase inline-flex items-center px-4 transition-colors duration-200;
-          @apply hover:text-primary focus:outline-primary focus:outline-dashed outline-dashed;
+          @apply hover:text-primary focus:text-primary;
 
           &:last-child {
-            @apply hover:text-secondary-dark hover:scale-125 hover:rotate-6 shadow-black shadow-sm hover:shadow-xl transition-all duration-200 ease-in-out;
+            @apply hover:text-secondary-dark hover:scale-125 hover:rotate-6 shadow-black shadow-md	 hover:shadow-xl transition-all duration-200 ease-in-out;
           }
         }
       }
