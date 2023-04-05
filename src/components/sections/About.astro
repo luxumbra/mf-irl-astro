@@ -1,4 +1,5 @@
 ---
+import { Image } from '@astrojs/image/components';
 import { Icon } from 'astro-icon';
 import { motion } from 'framer-motion';
 // import Section from '../core/Section.astro';
@@ -78,11 +79,16 @@ export const aboutSections = [
 								</div>
 									<div class="inner-shadow absolute -inset-3 z-[1] rounded-3xl" />
                 </div>
-                <img
-                  src={section.img}
-                  alt=""
-                  class="rounded-2xl absolute inset-1 bottom-auto md:bottom-0 top-0 md:top-auto  w-full h-auto z-0"
-                />
+								<Image
+                        class="rounded-2xl absolute inset-1 bottom-auto md:bottom-0 top-0 md:top-auto  w-full h-auto z-0"
+                        src={section.img}
+                        aspectRatio={1}
+                        alt={section.title}
+                        width="400"
+                        height="400"
+												loading={'lazy'}
+                      />
+
                 <div class="absolute inset-[1px] rounded-2xl bg-gradient-to-b from-secondary-dark to-secondary-alpha-90  -z-[5] pointer-events-none" />
                 <div class="absolute inset-0 rounded-2xl bg-gradient-to-b from-accent to-accent -z-10 pointer-events-none" />
               </motion.div>

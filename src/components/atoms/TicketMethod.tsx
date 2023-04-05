@@ -425,7 +425,7 @@ export const CryptoModalButton = ({ text, prices, discount, isEarlyBird, disable
                   <div className="flex items-center justify-between w-full">
                     <div className="tooltip tooltip-accent" data-tip="Powered by Paycek">
                       <a href="https://paycek.io" target="_blank" rel="noreferrer">
-                        <img src="/assets/images/paycek.svg" alt="Paycek logo" className="w-24" />
+                        <img src="/assets/images/paycek.svg" alt="Paycek logo" className="w-24 h-auto" />
                       </a>
                     </div>
                     <button
