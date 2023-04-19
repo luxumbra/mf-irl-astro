@@ -537,7 +537,7 @@
 				@apply flex flex-col items-center space-y-0;
 
 				.countdown {
-					@apply relative text-3xl md:text-4xl lg:text-9xl font-bold text-primary font-heading tracking-wide;
+					@apply relative text-3xl md:text-4xl lg:text-7xl font-bold text-primary font-heading tracking-wide;
 
 					&::after {
 						content: '';
@@ -549,7 +549,7 @@
 					}
 
 					& + span {
-						@apply text-xs md:text-sm lg:text-base text-off-white uppercase -translate-y-3 pointer-events-none;
+						@apply text-xs md:text-sm text-off-white uppercase -translate-y-3;
 					}
 
 				}

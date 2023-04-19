@@ -75,7 +75,7 @@ export const CountdownTimer = ({ to = '2023-08-11' }: DateTime): ReactNode => {
 
   return (
 		<div className="countdown-timer flex flex-col items-center justify-center text-6xl font-bold mb-16">
-			<h4 className="text-lg font-normal leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">The countdown has begun!<br /> <span className="inline-flex uppercase text-off-white font-bold text-2xl -translate-y-2">{displayTo}</span></h4>
+			{/* <h4 className="text-lg font-normal leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">The countdown has begun!<br /> <span className="inline-flex uppercase text-off-white font-bold text-2xl -translate-y-2">{displayTo}</span></h4> */}
       {expired ? (
         <div>Game on!!</div>
       ) : (
