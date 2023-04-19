@@ -24,7 +24,7 @@ export default defineConfig({
   trailingSlash: SITE.trailingSlash ? 'always' : 'never',
   output: 'static',
   server: {
-    port: 1144,
+    port: 1145,
   },
   integrations: [
     tailwind({
@@ -40,7 +40,7 @@ export default defineConfig({
     ...whenExternalScripts(() =>
       partytown({
         config: {
-          forward: ['dataLayer.push'],
+					forward: ['dataLayer.push'],
         },
       })
     ),

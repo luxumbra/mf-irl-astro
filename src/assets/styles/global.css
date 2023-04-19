@@ -511,9 +511,35 @@
   }
 
 	.countdown-timer {
-		span {
-			@apply inline-flex p-2 w-24 justify-center text-center border-2 border-primary-alpha-60 rounded-full text-primary-alpha-60;
+
+		&__counter {
+			@apply flex items-center space-x-2 mx-auto;
+
+			&__item {
+				@apply flex flex-col items-center space-y-1;
+
+				.countdown {
+					@apply relative text-3xl md:text-4xl lg:text-9xl font-bold text-primary-alpha-60 font-heading tracking-wide;
+
+					&::after {
+						content: '';
+						@apply absolute inset-0 w-full h-full bg-gradient-to-b from-secondary-dark-alpha-90 via-transparent to-secondary-dark-alpha-90;
+					}
+
+					[data-countdown] {
+
+					}
+
+					& + span {
+						@apply text-xs md:text-sm lg:text-base text-off-white uppercase;
+					}
+
+				}
+
+
+			}
 		}
+
 	}
 }
 

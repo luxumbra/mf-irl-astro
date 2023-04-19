@@ -1,6 +1,7 @@
 ---
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Plants from '../widgets/Plants.astro';
+import { CountdownTimer } from '../widgets/CountdownTimer';
 ---
 
 <section
@@ -10,6 +11,8 @@ import Plants from '../widgets/Plants.astro';
   x-intersect:once="shown = true"
 >
   <div class="section__content relative z-20">
+		<CountdownTimer  client:load />
+
     <h4
       class="text-4xl 3xl:text-6xl font-heading invisible mb-10 xl:mb-14"
       x-show="shown"
