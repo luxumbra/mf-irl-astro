@@ -65,7 +65,6 @@ function Experience() {
         width: window.innerWidth,
         height: window.innerHeight,
       };
-      console.log('sizes', sizes.current);
 
       // Scroll
       scrollY.current = window.scrollY;
@@ -84,7 +83,6 @@ function Experience() {
         const newSection = Math.round(scrollY.current / sizes.current.height);
         if (newSection !== currentSection) {
           currentSection = newSection;
-          console.log('current section', currentSection, newSection);
 
           // if (cameraGroup.current) {
           //   switch (currentSection) {

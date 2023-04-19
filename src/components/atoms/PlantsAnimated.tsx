@@ -7,19 +7,6 @@ export const PlantsAnimated = (children: ReactNode) => {
   const animatedWrapper = plantsWrapper.current;
   const plants = animatedWrapper.querySelector('.plant svg');
   const particles = plants.querySelectorAll('g > circle');
-  // useEffect(() => {
-  // 	if (typeof window !== 'undefined') {
-  // 		if (plantsWrapper.current) {
-  // 			const animatedWrapper = plantsWrapper.current;
-  // 			const plants = animatedWrapper.querySelector('.plant svg');
-  // 			const particles = plants.querySelectorAll('g > circle');
-  // 		}
-  // 	}
-
-  // 	return () => {
-  // 		// second
-  // 	}
-  // }, [])
 
   useAnimationFrame((time, delta) => {
     // console.log(time, delta);

@@ -15,7 +15,7 @@ export const SITE = {
 export const paycekProfileCode = import.meta.env.PUBLIC_PAYCEK_PROFILE_CODE;
 export const paycekSecret = import.meta.env.PUBLIC_PAYCEK_SECRET_KEY;
 
-export const isDev = import.meta.env.PUBLIC_HOSTNAME === 'http://localhost:1144';
+export const isDev = import.meta.env.PUBLIC_HOSTNAME === 'http://localhost:1145';
 export const isProd = import.meta.env.PUBLIC_HOSTNAME === 'https://metafest.wtf';
 export const isTest = !(isDev || isProd) ?? false;
 

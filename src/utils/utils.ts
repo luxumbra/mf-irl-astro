@@ -84,7 +84,6 @@ export function generatePaymentUrl(options: PaymentUrlOptions) {
   if (typeof window !== 'undefined') {
     window.global = window;
     window.Buffer = Buffer;
-    console.log({ Buffer });
     const formattedItems = [];
 
     for (let i = 0; i < items.length; i++) {

@@ -63,7 +63,6 @@ import './tabs.css';
 
 
   const switchTab = (oldTab: HTMLElement, newTab: HTMLElement) => {
-    console.log('switching tabs', oldTab, newTab);
     newTab.focus();
     newTab.removeAttribute('tabindex');
     newTab.setAttribute('aria-selected', 'true');
@@ -91,7 +90,6 @@ import './tabs.css';
 
       tab.addEventListener('keydown', (e) => {
         const index = tabs.indexOf(e.currentTarget as HTMLElement);
-        console.log('key pressed', e.key);
         if (e.key === DOWN_ARROW) {
           e.preventDefault();
           panels[i].focus();
@@ -110,7 +108,9 @@ import './tabs.css';
             switchTab(e.currentTarget as HTMLElement, tabs[index + 1]);
           }
         }
-      });
+      },
+			{ passive: true}
+			);
     });
-  });
+  }, { passive: true});
 </script>
