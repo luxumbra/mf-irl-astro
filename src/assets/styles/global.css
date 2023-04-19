@@ -387,7 +387,7 @@
       @apply grid grid-cols-2  lg:grid-cols-6 gap-3 lg:gap-4 3xl:gap-6;
 
       li {
-        @apply relative items-center overflow-hidden;
+        @apply relative items-center overflow-hidden mb-0;
 
         background-image: url('../images/hammered-bg.png');
 
@@ -403,8 +403,13 @@
       }
 
       a {
-        @apply space-y-3 capitalize focus:outline-dashed 	hover:scale-105 focus:outline-primary-alpha-60 focus:scale-105 transition-all duration-200 ease-in-out;
+        @apply space-y-3 capitalize focus:outline-dashed hover:no-underline	hover:scale-105 focus:outline-primary-alpha-60 focus:scale-105 transition-all duration-200 ease-in-out;
 
+				&:not(.btn) {
+					&:hover {
+						@apply no-underline;
+					}
+				}
         span {
           @apply text-xs lg:text-sm 3xl:text-base whitespace-nowrap;
         }

@@ -9,7 +9,8 @@ export const CountdownTimer = ({ to = '2023-08-11' }: DateTime): ReactNode => {
   }
 
   const { years, months, days, hours, minutes, seconds, isLoading } = useCountdown(to);
-  const expired = days + hours + minutes + seconds === 0;
+	const expired = days + hours + minutes + seconds === 0;
+	const displayTo = DateTime.fromISO(to).toLocaleString(DateTime.DATE_MED);
   // const motionValues = {
   // 	years: useMotionValue(0),
   // 	months: useMotionValue(0),
@@ -73,7 +74,8 @@ export const CountdownTimer = ({ to = '2023-08-11' }: DateTime): ReactNode => {
   }, [expired, years, months, days, hours, minutes, seconds]);
 
   return (
-    <div className="countdown-timer flex justify-center text-6xl font-bold mb-16">
+		<div className="countdown-timer flex flex-col items-center justify-center text-6xl font-bold mb-16">
+			<h4 className="text-lg font-normal leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">The countdown has begun!<br /> <span className="inline-flex uppercase text-off-white font-bold text-2xl -translate-y-2">{displayTo}</span></h4>
       {expired ? (
         <div>Game on!!</div>
       ) : (
