@@ -19,23 +19,6 @@ export const CountdownTimer = ({ to = '2023-08-11', headline, expiredHeadline, e
   const { years, months, days, hours, minutes, seconds, isLoading } = useCountdown(to);
 	const expired = DateTime.fromISO(to) < DateTime.now();
 	const displayTo = DateTime.fromISO(to).toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
-  // const motionValues = {
-  // 	years: useMotionValue(0),
-  // 	months: useMotionValue(0),
-  // 	days: useMotionValue(0),
-  // 	hours: useMotionValue(0),
-  // 	minutes: useMotionValue(0),
-  // 	seconds: useMotionValue(0),
-  // }
-
-  // const transformedValues = {
-  // 	years: useTransform(motionValues.years, (value) => Math.round(value)),
-  // 	months: useTransform(motionValues.months, (value) => Math.round(value)),
-  // 	days: useTransform(motionValues.days, (value) => Math.round(value)),
-  // 	hours: useTransform(motionValues.hours, (value) => Math.round(value)),
-  // 	minutes: useTransform(motionValues.minutes, (value) => Math.round(value)),
-  // 	seconds: useTransform(motionValues.seconds, (value) => Math.round(value)),
-  // }
 
   useEffect(() => {
     if (expired) {
@@ -58,32 +41,12 @@ export const CountdownTimer = ({ to = '2023-08-11', headline, expiredHeadline, e
 		if (daysEl !== null) daysEl.style.setProperty('--value', days.toString());
 		if (monthsEl !== null) monthsEl.style.setProperty('--value', months.toString());
 
-    // console.log({isLoading, expired, years, months, days, hours, minutes, seconds});
-
-    // const yearsControls = animate(motionValues.years, years)
-    // const monthsControls = animate(motionValues.months, months)
-    // const daysControls = animate(motionValues.days, days)
-    // const hoursControls = animate(motionValues.hours, hours)
-    // const minutesControls = animate(motionValues.minutes, minutes)
-    // const secondsControls = animate(motionValues.seconds, seconds, {
-    // 	duration: 1,
-    // 	type: 'spring',
-    // })
-
-    // return () => {
-    // 	yearsControls.stop()
-    // 	monthsControls.stop()
-    // 	daysControls.stop()
-    // 	hoursControls.stop()
-    // 	minutesControls.stop()
-    // 	secondsControls.stop()
-    // }
-  }, [expired, years, months, days, hours, minutes, seconds]);
+	}, [expired, years, months, days, hours, minutes, seconds]);
 
   return (
 		<div className="countdown-timer flex flex-col items-center justify-center text-6xl font-bold">
-			{headline && !expired && (<h4 className="text-lg font-normal leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">{headline}<br /> <span className="inline-flex uppercase text-off-white font-bold text-2xl -translate-y-2">{displayTo}</span></h4>)}
-			{expiredHeadline && expired && (<h4 className="text-lg font-normal leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">{expiredHeadline}<br /> <span className="inline-flex uppercase text-off-white font-bold text-2xl -translate-y-2">{displayTo}</span></h4>)}
+			{headline && !expired && (<h4 className="text-lg font-normal leading-tight bg-clip-text text-transparent bg-gradient-to-br from-primary to-accent">{headline}<br /> <span className="inline-flex uppercase text-off-white font-bold text-2xl -translate-y-2">{displayTo}</span></h4>)}
+			{expiredHeadline && expired && (<h4 className="text-lg font-normal leading-tight bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent">{expiredHeadline}<br /> <span className="inline-flex uppercase text-off-white font-bold text-2xl -translate-y-2">{displayTo}</span></h4>)}
       {expired ? (
 					<ReactMarkdown className="expired-copy">{expiredMessage ?? 'Game on!!'}</ReactMarkdown>
       ) : (
