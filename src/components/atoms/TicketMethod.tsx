@@ -568,13 +568,25 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount,
 	const earlyBirdDateFormated = DateTime.fromISO(earlyBirdExpires).toLocaleString(DateTime.DATE_SHORT);
 
   return (
-    <div className="ticket-method">
-      <div className="ticket-method__header text-left">
+		<div
+			className="ticket-method"
+		>
+			<motion.div className="ticket-method__header text-left"
+			initial={{ opacity: 0, y: 20 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			viewport={{ once: true }}
+			transition={{ duration: 0.3 }}
+			>
         <h4 className="mb-3 uppercase bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
           {title}
         </h4>
-      </div>
-      <div className="ticket-method__content relative text-left p-0 rounded-2xl flex-grow">
+      </motion.div>
+			<motion.div className="ticket-method__content relative text-left p-0 rounded-2xl flex-grow"
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.3 }}
+			>
         <div className="p-3 md:p-5 z-10 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 flex flex-col items-stretch h-full space-y-2 md:space-y-6">
 					<div className="mb-0 text-sm md:text-xl text-primary flex-grow">
 						<ReactMarkdown linkTarget={isExternal ? '_blank' : ''}>
@@ -647,7 +659,7 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount,
           <div className="text-center w-full self-end">{handleMethod(method, ctaText)}</div>
         </div>
         <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-none" />
-      </div>
+      </motion.div>
     </div>
   );
 };
