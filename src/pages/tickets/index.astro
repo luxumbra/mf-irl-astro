@@ -101,10 +101,9 @@ export const ticketMethods: TicketMethodType[] = [
 	}
 ];
 
-console.log('isEarlyBirdValid', isEarlyBirdValid);
+export const expiredMessage = `Don't miss out!!
 
-// const earlyBirdMessage = `Accomodation & flights are limited, don't miss out.`;
-
+Flights, and Accommodation in and around Pula are limited.`
 ---
 
 <Layout {meta}>
@@ -123,7 +122,7 @@ console.log('isEarlyBirdValid', isEarlyBirdValid);
 		headline="Earlybird discount ends:"
 		message="Accomodation & flights are limited, don't miss out."
 		expiredHeadline="Earlybird prices expired on:"
-		expiredMessage="Hurry up and book as accommodation & flights are limited."
+		expiredMessage={expiredMessage}
 		client:load />
 	</div>
     <div class="ticket-methods grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 items-stretch mx-auto mt-14 mb-20 lg:mb-16 gap-5 md:gap-8">

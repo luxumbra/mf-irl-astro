@@ -555,10 +555,10 @@
 		}
 
 		&__message {
-			@apply text-center text-xl lg:text-base font-normal  bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent;
+			@apply text-center text-xl lg:text-base font-normal max-w-5xl bg-clip-text text-transparent bg-gradient-to-br from-primary to-accent;
 
 			p {
-				@apply text-center text-xl lg:text-base font-normal  bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent;
+				@apply text-center text-xl lg:text-base font-normal  bg-clip-text text-transparent bg-gradient-to-br from-primary to-accent;
 
 				&:first-of-type {
 					@apply text-center text-xl lg:text-xl font-bold  bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent;
@@ -568,10 +568,9 @@
 		}
 
 		.expired-copy {
-			@apply mb-32;
-
+			@apply  max-w-3xl;
 			p {
-				@apply text-center text-xl lg:text-2xl font-normal  bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent;
+				@apply text-center text-xl lg:text-2xl font-normal text-accent;
 
 				&:first-of-type {
 					@apply text-center text-xl lg:text-4xl font-bold  bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent;

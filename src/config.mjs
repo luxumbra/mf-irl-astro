@@ -12,7 +12,7 @@ export const uri = isDev ? 'https://0017-146-70-48-3.eu.ngrok.io' : 'https://tes
 export const currencySymbol = '€';
 export const currencyTicker = 'EUR';
 
-export const earlyBirdEnds = '2023-05-01';
+export const earlyBirdEnds = '2023-04-01';
 export const earlyBirdEndsFormatted = DateTime.fromISO(earlyBirdEnds).toLocaleString(DateTime.DATE_SHORT);
 export const eventStartDate = '2023-08-11';
 

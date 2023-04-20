@@ -23,13 +23,10 @@ export const CountdownTimer = ({
     throw new Error('`to` prop is required');
   }
 
-  const { years, months, days, hours, minutes, seconds, isLoading } = useCountdown(to);
+  const { years, months, days, hours, minutes, seconds } = useCountdown(to);
   const expired = DateTime.fromISO(to) < DateTime.now();
   const displayTo = DateTime.fromISO(to).toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
-  const defaultExpiredMessage = `We're live!
 
-We hope you made it! [View the schedule](/schedule)
-`;
   useEffect(() => {
     if (expired) {
       return;
@@ -71,7 +68,7 @@ We hope you made it! [View the schedule](/schedule)
       )}
       {expired ? (
         <ReactMarkdown className="expired-copy">
-          {expiredMessage ?? defaultExpiredMessage}
+					{expiredMessage ?? ''}
         </ReactMarkdown>
       ) : (
         <motion.div
