@@ -554,6 +554,11 @@
 			}
 		}
 
+		.expired-copy {
+			p {
+				@apply text-center text-xl lg:text-2xl text-accent;
+			}
+		}
 	}
 }
 

@@ -8,6 +8,8 @@ import { useEffect, useState } from 'react';
 import { Modal } from 'flowbite-react';
 import { Icon } from '@iconify/react';
 import ReactMarkdown from 'react-markdown'
+import { DateTime } from 'luxon';
+import type { DateTime as LuxonDateTime } from 'luxon';
 
 export interface TicketMethodProps {
   title: string;
@@ -20,6 +22,7 @@ export interface TicketMethodProps {
   };
 	discount: number | null;
 	isEarlyBird?: boolean;
+	earlyBirdExpires?: LuxonDateTime | string;
   summary: string;
   method: string;
   ctaText: string;
@@ -36,6 +39,7 @@ export type TicketMethodType = {
   };
 	discount: number | null;
 	isEarlyBird?: boolean;
+	earlyBirdExpires?: LuxonDateTime | string;
   summary: string;
   method: string;
   ctaText: string;
@@ -47,6 +51,7 @@ export interface BuyButtonProps {
 	discount?: number | null;
 	disabled?: boolean;
 	isEarlyBird?: TicketMethodType['isEarlyBird'];
+	earlyBirdExpires?: TicketMethodType['earlyBirdExpires'];
 }
 
 export interface PayloadOptions {
@@ -78,12 +83,13 @@ export const FiatButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
   );
 };
 
-export const CryptoModalButton = ({ text, prices, discount, isEarlyBird, disabled }: BuyButtonProps): JSX.Element => {
+export const CryptoModalButton = ({ text, prices, discount, isEarlyBird, earlyBirdExpires, disabled }: BuyButtonProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [quantityB, setQuantityB] = useState(1);
   const [basket, setBasket] = useState<CryptoItemType[]>([]);
   const [basketTotal, setBasketTotal] = useState(0);
+	const earlyBirdDateFormated = DateTime.fromISO(earlyBirdExpires).toLocaleString(DateTime.DATE_SHORT);
 
   const toggleModal = () => {
     if (typeof window !== 'undefined') {
@@ -298,7 +304,7 @@ export const CryptoModalButton = ({ text, prices, discount, isEarlyBird, disable
               </a>{' '}
               to complete your purchase using your choice of crypto.
             </p>
-						{isEarlyBird && (<p className="text-primary text-xs md:text-sm italic">*Earlybird prices ({discount}% discount) until May 1st</p>)}
+						{isEarlyBird && (<p className="text-primary text-xs md:text-sm italic">*Earlybird prices ({discount}% discount) until {earlyBirdDateFormated}</p>)}
             <div className="flex flex-row items-center justify-center space-y-2 md:space-y-3 w-full">
               <input type="hidden" name="amount" value={applyDiscount(prices.standard, discount)} />
               <input type="hidden" name="name" value="Standard Ticket" />
@@ -538,13 +544,13 @@ export const applyDiscount = (price: number | string, discount: number) => {
 	return price - (price * discount) / 100;
 };
 
-export const TicketMethod = ({ title, summary, method, ctaText, price, discount, isEarlyBird }: TicketMethodProps): JSX.Element => {
+export const TicketMethod = ({ title, summary, method, ctaText, price, discount, isEarlyBird, earlyBirdExpires }: TicketMethodProps): JSX.Element => {
   const handleMethod = (method: string, cta: string) => {
     switch (method) {
       case 'fiat':
         return <FiatButton text={cta} />;
       case 'crypto':
-        return <CryptoModalButton text={cta} prices={price} isEarlyBird discount={discount} />;
+        return <CryptoModalButton text={cta} prices={price} isEarlyBird={isEarlyBird} earlyBirdExpires={earlyBirdExpires} discount={discount} />;
       case 'seeds':
         return <SeedButton text={cta} />;
       case 'sponsor':
@@ -560,6 +566,7 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount,
 
 
 	const isExternal = summary.includes('http');
+	const earlyBirdDateFormated = DateTime.fromISO(earlyBirdExpires).toLocaleString(DateTime.DATE_MED);
 
   return (
     <div className="ticket-method">
@@ -575,7 +582,7 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount,
 							{summary}
 						</ReactMarkdown>
 					</div>
-					{isEarlyBird && (<p className="text-primary text-xs md:text-sm italic">*Earlybird prices ({discount}% discount) until May 1st</p>)}
+					{isEarlyBird && (<p className="text-primary text-xs md:text-sm italic">*Earlybird prices ({discount}% discount) until {earlyBirdDateFormated}</p>)}
           {price.standard && (
 						<p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
 							<span className="flex-grow">Standard tickets</span>

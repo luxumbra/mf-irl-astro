@@ -11,12 +11,18 @@ import { Image } from '@astrojs/image/components';
 import mgLogo from '~/assets/images/mg-logo.gif';
 import Plants from '~/components/widgets/Plants.astro';
 import { Icon } from 'astro-icon';
-
+import { CountdownTimer } from '~/components/widgets/CountdownTimer';
+import {DateTime } from 'luxon';
 const meta = {
   title: `${SITE.title}: Event tickets`,
   description: 'Immerse yourself in MetaFest Croatia at the historic Fort Punta Christo, where the revolutionary spirit of Ethereum unites diverse minds. Delve into empowering workshops, uncover Pula&apos;s rich past, and forge connections with Web3 innovators. Get your earlybird tickets now!',
   canonical: getCanonical(getHomePermalink()),
 };
+
+export const earlyBirdExpiry = '2023-05-01';
+export const earlyBirdShortFormat = DateTime.fromISO(earlyBirdExpiry).toFormat(DateTime.DATE_SHORT);
+export const isEarlyBirdValid = DateTime.fromISO(earlyBirdExpiry) > DateTime.now();
+
 
 export const ticketMethods: TicketMethodType[] = [
   {
@@ -25,8 +31,9 @@ export const ticketMethods: TicketMethodType[] = [
 			standard: 200,
 			patron: 420
 		},
-		discount: 25,
-		isEarlyBird: true,
+		discount: isEarlyBirdValid ? 25 : 0,
+		isEarlyBird: isEarlyBirdValid,
+		earlyBirdExpires: earlyBirdExpiry,
     summary: 'Want to dump some fiat for a MetaFest ticket? This is the place for you. FIAT payments are processed by ![Alt](https://logos-world.net/wp-content/uploads/2021/03/Stripe-Logo.png "Stripe").',
 		method: 'fiat',
 		ctaText: 'Buy a ticket'
@@ -37,8 +44,9 @@ export const ticketMethods: TicketMethodType[] = [
 			standard: 200,
 			patron: 420
 		},
-		discount: 25,
-		isEarlyBird: true,
+		discount: isEarlyBirdValid ? 25 : 0,
+		isEarlyBird: isEarlyBirdValid,
+		earlyBirdExpires: earlyBirdExpiry,
     summary: 'Of course, we accept all mainstream crypto. Our crypto payment provider is ![Alt](https://paycek.io/static/img/logo.svg "Paycek"). They list all accepted tokens in [their FAQ](https://paycek.io/faq).',
     method: 'crypto',
 		ctaText: 'Buy a ticket'
@@ -49,8 +57,9 @@ export const ticketMethods: TicketMethodType[] = [
 			standard: 200,
 			patron: 420
 		},
-		discount: 25,
-		isEarlyBird: true,
+		discount: isEarlyBirdValid ? 25 : 0,
+		isEarlyBird: isEarlyBirdValid,
+		earlyBirdExpires: earlyBirdExpiry,
     summary: 'Been hodling Seeds? Use them to buy a ticket. ![Alt](https://assets.coingecko.com/coins/images/13099/small/V8phEz8V.png?1612854078 "Seeds")',
     method: 'seeds',
 		ctaText: 'Buy a ticket'
@@ -88,6 +97,8 @@ export const ticketMethods: TicketMethodType[] = [
 	}
 ];
 
+console.log('isEarlyBirdValid', isEarlyBirdValid);
+
 
 ---
 
@@ -100,11 +111,18 @@ export const ticketMethods: TicketMethodType[] = [
 		full
 		alt
   >
-	{(isDev || isTest) && <div class="w-full text-center mt-5">
+	{(isTest) && <div class="w-full text-center mt-5">
 		<p class="text-xl md:text-3xl text-center text-warning">This is the {isDev ? 'dev' : isTest && 'test'} site. Only test purchases should be made here.</p>
 	</div>}
 
-    <div class="ticket-methods grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 items-stretch mx-auto mt-14 mb-20 md:mb-0 gap-5 md:gap-8">
+	<div class="w-full text-center mt-5">
+		<CountdownTimer
+		to={earlyBirdExpiry}
+		headline="Earlybird prices won't last forever! Prices increase on:"
+		expiredHeadline="Earlybird prices expired on:"
+		expiredMessage="Hurry up and book as accommodation & flights are limited." client:load />
+	</div>
+    <div class="ticket-methods grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 items-stretch mx-auto mt-14 mb-20 lg:mb-16 gap-5 md:gap-8">
       {ticketMethods && ticketMethods.map((method) => <TicketMethod {...method} client:only />)}
     </div>
 		<p class="text-center text-off-white text-3xl font-bold">Not ready? Got questions? Come and join the <a href="https://t.me/+qIDukhuLnwg5ZTI0" target="_blank" rel="noreferrer" class="group text-primary hover:underline">Telegram group <Icon name="mdi:telegram" class="w-16 h-16 inline-flex text-cyan-500" /></a></p>

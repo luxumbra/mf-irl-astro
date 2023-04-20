@@ -1,16 +1,24 @@
 import { animate, motion, useMotionValue, useTransform, ValueAnimationTransition } from 'framer-motion';
 import { DateTime } from 'luxon';
 import { CSSProperties, ReactNode, useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { useCountdown } from '~/hooks/useCountdown';
 
-export const CountdownTimer = ({ to = '2023-08-11' }: DateTime): ReactNode => {
+export interface CountdownTimerProps {
+	to: DateTime;
+	expiredMessage?: string;
+	headline?: string;
+	expiredHeadline?: string;
+}
+
+export const CountdownTimer = ({ to = '2023-08-11', headline, expiredHeadline, expiredMessage }: CountdownTimerProps): ReactNode => {
   if (to === undefined) {
     throw new Error('`to` prop is required');
   }
 
   const { years, months, days, hours, minutes, seconds, isLoading } = useCountdown(to);
-	const expired = days + hours + minutes + seconds === 0;
-	const displayTo = DateTime.fromISO(to).toLocaleString(DateTime.DATE_MED);
+	const expired = DateTime.fromISO(to) < DateTime.now();
+	const displayTo = DateTime.fromISO(to).toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
   // const motionValues = {
   // 	years: useMotionValue(0),
   // 	months: useMotionValue(0),
@@ -44,13 +52,12 @@ export const CountdownTimer = ({ to = '2023-08-11' }: DateTime): ReactNode => {
     const daysEl = document.querySelector('[data-countdown="days"]') as HTMLElement;
     const monthsEl = document.querySelector('[data-countdown="months"]') as HTMLElement;
 
-    if (secondsEl !== null && minutesEl !== null && hoursEl !== null && daysEl !== null && monthsEl !== null) {
-      secondsEl.style.setProperty('--value', seconds.toString());
-      minutesEl.style.setProperty('--value', minutes.toString());
-      hoursEl.style.setProperty('--value', hours.toString());
-      daysEl.style.setProperty('--value', days.toString());
-      monthsEl.style.setProperty('--value', months.toString());
-    }
+		if (secondsEl !== null) secondsEl.style.setProperty('--value', seconds.toString());
+		if (minutesEl !== null) minutesEl.style.setProperty('--value', minutes.toString());
+		if (hoursEl !== null) hoursEl.style.setProperty('--value', hours.toString());
+		if (daysEl !== null) daysEl.style.setProperty('--value', days.toString());
+		if (monthsEl !== null) monthsEl.style.setProperty('--value', months.toString());
+
     // console.log({isLoading, expired, years, months, days, hours, minutes, seconds});
 
     // const yearsControls = animate(motionValues.years, years)
@@ -75,9 +82,10 @@ export const CountdownTimer = ({ to = '2023-08-11' }: DateTime): ReactNode => {
 
   return (
 		<div className="countdown-timer flex flex-col items-center justify-center text-6xl font-bold">
-			{/* <h4 className="text-lg font-normal leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">The countdown has begun!<br /> <span className="inline-flex uppercase text-off-white font-bold text-2xl -translate-y-2">{displayTo}</span></h4> */}
+			{headline && !expired && (<h4 className="text-lg font-normal leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">{headline}<br /> <span className="inline-flex uppercase text-off-white font-bold text-2xl -translate-y-2">{displayTo}</span></h4>)}
+			{expiredHeadline && expired && (<h4 className="text-lg font-normal leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">{expiredHeadline}<br /> <span className="inline-flex uppercase text-off-white font-bold text-2xl -translate-y-2">{displayTo}</span></h4>)}
       {expired ? (
-        <div>Game on!!</div>
+					<ReactMarkdown className="expired-copy">{expiredMessage ?? 'Game on!!'}</ReactMarkdown>
       ) : (
         <>
           <motion.div
@@ -86,19 +94,23 @@ export const CountdownTimer = ({ to = '2023-08-11' }: DateTime): ReactNode => {
 							whileInView={{ opacity: 1, y: 0 }}
 						viewport={{once: false}}
             transition={{ duration: 1 }}
-          >
+						>
+							{months > 0 && (
             <div className="countdown-timer__counter__item">
               <span className="countdown counter__item__months">
                 <span style={{ '--value': 0 } as CSSProperties} data-countdown="months" />
               </span>
               <span>Months</span>
             </div>
+							)}
+							{days > 0 && (
             <div className="countdown-timer__counter__item">
               <span className="countdown counter__item__days">
                 <span style={{ '--value': 0 } as CSSProperties} data-countdown="days" />
               </span>
               <span>Days</span>
             </div>
+							)}
             <div className="countdown-timer__counter__item">
               <span className="countdown counter__item__hours">
                 <span style={{ '--value': 0 } as CSSProperties} data-countdown="hours" />
