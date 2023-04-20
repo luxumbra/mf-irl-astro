@@ -34,7 +34,7 @@ export const ScrollUpButton = ({ accent }: ScrollUpButtonProps): JSX.Element => 
       <AnimatePresence>
         {isVisible && (
           <motion.div
-            className="w-12 h-12 fixed bottom-14 right-1 lg:bottom-6 lg:right-6 border border-accent-alpha-60 hover:border-accent rounded-xl backdrop-blur-md bg-secondary-dark-30  hover:bg-secondary-dark-60 shadow-sm shadow-black cursor-pointer flex justify-center items-center transition z-50"
+            className="w-12 h-12 fixed bottom-14 right-1 lg:bottom-6 lg:right-6 border border-accent-alpha-60 hover:border-accent rounded-xl backdrop-blur-md bg-secondary-dark-30  hover:bg-secondary-dark-60 shadow-sm shadow-black cursor-pointer flex justify-center items-center transition z-40"
             onClick={scrollToTop}
             onKeyDown={scrollToTop}
             role="button"

@@ -5,6 +5,21 @@ import Plants from '~/components/widgets/Plants.astro';
 import ThreeD from '~/components/widgets/ThreeD';
 ---
 
+<script>
+	if (typeof window !== 'undefined') {
+		const menuItems = document.querySelectorAll('.mobile-menu a');
+
+		menuItems.forEach((item) => {
+			item.addEventListener('click', () => {
+				document.querySelector('.mobile-menu').classList.remove('visible');
+				document.querySelector('.mobile-menu').classList.add('invisible');
+				document.querySelector('.btn-ghost').classList.remove('active');
+			});
+		});
+	}
+
+</script>
+
 <div
   class="toolbar fixed overflow-y-visible flex items-center justify-end w-ful0 h-10 left-0 bottom-0 right-0 md:hidden z-50"
   x-data="{ menuOpen: false, shown: false, toggleMenu() { this.menuOpen = !this.menuOpen; } }"
@@ -46,6 +61,7 @@ import ThreeD from '~/components/widgets/ThreeD';
         x-show="menuOpen"
         x-ref="mobileMenu"
         x-trap.noscroll="menuOpen"
+				@keydown.escape="isOpen = false"
         x-bind:class="{'visible': menuOpen, 'invisible': !menuOpen}"
         class="mobile-menu fixed md:hidden h-screen w-screen inset-0 z-40"
         x-transition:enter="transition ease-out duration-300 transform"
