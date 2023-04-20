@@ -60,7 +60,7 @@ export const CountdownTimer = ({
         </h4>
       )}
       {expiredHeadline && expired && (
-        <h4 className="text-lg font-normal leading-tight bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent">
+        <h4 className="text-lg font-normal leading-tight bg-clip-text text-transparent bg-gradient-to-br from-primary to-accent">
           {expiredHeadline}
           <br />{' '}
           <span className="inline-flex uppercase text-off-white font-bold text-2xl -translate-y-2">{displayTo}</span>
