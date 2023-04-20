@@ -10,6 +10,7 @@ import { Image } from '@astrojs/image/components';
 // import { v4 as uuidv4 } from 'uuid';
 import mgLogo from '~/assets/images/mg-logo.gif';
 import Plants from '~/components/widgets/Plants.astro';
+import { Icon } from 'astro-icon';
 
 const meta = {
   title: `${SITE.title}: Event tickets`,
@@ -106,7 +107,7 @@ export const ticketMethods: TicketMethodType[] = [
     <div class="ticket-methods grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 items-stretch mx-auto mt-14 mb-20 md:mb-0 gap-5 md:gap-8">
       {ticketMethods && ticketMethods.map((method) => <TicketMethod {...method} client:only />)}
     </div>
-
+		<p class="text-center text-off-white text-3xl font-bold">Not ready? Got questions? Come and join the <a href="https://t.me/+qIDukhuLnwg5ZTI0" target="_blank" rel="noreferrer" class="group text-primary hover:underline">Telegram group <Icon name="mdi:telegram" class="w-16 h-16 inline-flex text-cyan-500" /></a></p>
   </SponsorsSection>
 
   <div class="absolute h-[50vh] w-full z-[9] inset-0 top-auto overflow-y-hidden">

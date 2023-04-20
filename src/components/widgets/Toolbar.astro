@@ -6,7 +6,7 @@ import ThreeD from '~/components/widgets/ThreeD';
 ---
 
 <div
-  class="toolbar fixed overflow-y-visible flex items-center justify-end w-full h-12 left-0 bottom-0 right-0 md:hidden z-50"
+  class="toolbar fixed overflow-y-visible flex items-center justify-end w-ful0 h-10 left-0 bottom-0 right-0 md:hidden z-50"
   x-data="{ menuOpen: false, shown: false, toggleMenu() { this.menuOpen = !this.menuOpen; } }"
   x-intersect="shown = true"
   x-intersect:leave="shown = false"
@@ -56,7 +56,7 @@ import ThreeD from '~/components/widgets/ThreeD';
         x-transition:leave-end="opacity-0 transform translate-y-full"
       >
         <menu
-          class="relative flex flex-col py-32 justify-end items-center content-center space-y-5 h-screen w-screen inset-0 z-10"
+          class="relative flex flex-col pb-36 justify-end items-center content-center space-y-5 h-screen w-screen inset-0 z-10"
         >
           <NavItem to="/#start" delay="300">
             <Icon name="logo" className="logo group min-w-fit w-32 h-auto fill-primary" />
@@ -73,6 +73,31 @@ import ThreeD from '~/components/widgets/ThreeD';
             >Tickets</a
           >
         </menu>
+				<div class="absolute bottom-8 z-20 w-full flex items-center justify-between py-6 md:py-8 px-5">
+					<div class="text-sm py-2  bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent">
+						🐙 <a class="hover:underline hover:text-off-white transition-all duration-200" href="https://metagame.wtf/" target="_blank" rel="noopener" >MetaFam</a> 🐙
+					</div>
+					<div class="flex items-center justify-end space-x-3">
+						<!-- <a
+						class="inline-block items-center justify-center w-10 h-10 p-1 bg-customDarkBg2 custom-border-gray  hover:bg-accent-alpha-60 rounded-xl"
+						href="https://twitter.com/MetaFam" target="_blank" rel="noreferrer"
+					>
+						<Icon name="metagame" class="fill-primary w-full"/>
+					</a> -->
+						<a
+							class="inline-block w-10 h-10 p-1 bg-customDarkBg2 custom-border-gray  hover:bg-accent-alpha-60 rounded-xl"
+							href="https://twitter.com/MetaFam" target="_blank" rel="noreferrer"
+						>
+							<Icon name="mdi:twitter" class="fill-primary"/>
+						</a>
+						<a
+						class="inline-block w-10 h-10 p-1 bg-customDarkBg2 custom-border-gray  hover:bg-accent-alpha-60 rounded-xl"
+						href="https://t.me/+qIDukhuLnwg5ZTI0" target="_blank" rel="noreferrer"
+					>
+						<Icon name="mdi:telegram" class="fill-primary" />
+					</a>
+					</div>
+				</div>
         <div class="absolute z-0">
           <ThreeD client:load />
         </div>
