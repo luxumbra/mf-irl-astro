@@ -15,16 +15,18 @@ import { CountdownTimer } from '~/components/widgets/CountdownTimer';
 import {DateTime } from 'luxon';
 
 
-const meta = {
-  title: `${SITE.title}: Event tickets`,
-  description: 'Immerse yourself in MetaFest Croatia at the historic Fort Punta Christo, where the revolutionary spirit of Ethereum unites diverse minds. Delve into empowering workshops, uncover Pula&apos;s rich past, and forge connections with Web3 innovators. Get your earlybird tickets now!',
-  canonical: getCanonical(getHomePermalink()),
-};
 
 export const earlyBirdExpiry = earlyBirdEnds;
-export const earlyBirdShortFormat = DateTime.fromISO(earlyBirdExpiry).toFormat(DateTime.DATE_SHORT);
+export const earlyBirdShortFormat = DateTime.fromISO(earlyBirdExpiry).toLocaleString(DateTime.DATE_SHORT);
+export const earlyBirdExpiresDays = Math.round(DateTime.fromISO(earlyBirdExpiry).diffNow('days').toObject().days);
 export const isEarlyBirdValid = DateTime.fromISO(earlyBirdExpiry) > DateTime.now();
+console.log('isEarlyBirdValid', isEarlyBirdValid, earlyBirdShortFormat);
 
+const meta = {
+  title: `${SITE.title}: Event tickets`,
+  description: `Immerse yourself in MetaFest Croatia at the historic Fort Punta Christo, where the revolutionary spirit of Ethereum unites diverse minds. Delve into empowering workshops, uncover Pula&apos;s rich past, and forge connections with Web3 innovators. Get your earlybird tickets now! Discount ends on ${earlyBirdShortFormat}.`,
+  canonical: getCanonical(getHomePermalink()),
+};
 
 export const ticketMethods: TicketMethodType[] = [
   {
