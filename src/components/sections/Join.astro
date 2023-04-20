@@ -2,8 +2,10 @@
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Plants from '../widgets/Plants.astro';
 import { CountdownTimer } from '~/components/widgets/CountdownTimer';
-
+import {DateTime} from 'luxon';
 import { eventStartDate } from '~/config.mjs';
+
+export const isLive = DateTime.now() > DateTime.fromISO(eventStartDate);
 ---
 
 <section
@@ -50,7 +52,7 @@ import { eventStartDate } from '~/config.mjs';
 
 		<CountdownTimer to={eventStartDate} client:load />
 
-    <CallToAction />
+    {!isLive && <CallToAction /> }
   </div>
 
   <Plants />
