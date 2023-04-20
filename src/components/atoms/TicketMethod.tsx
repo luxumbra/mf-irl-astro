@@ -565,7 +565,7 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount,
 
 
 	const isExternal = summary.includes('http');
-	const earlyBirdDateFormated = DateTime.fromISO(earlyBirdExpires).toLocaleString(DateTime.DATE_MED);
+	const earlyBirdDateFormated = DateTime.fromISO(earlyBirdExpires).toLocaleString(DateTime.DATE_SHORT);
 
   return (
     <div className="ticket-method">
