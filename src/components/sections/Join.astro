@@ -1,7 +1,9 @@
 ---
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Plants from '../widgets/Plants.astro';
-import { CountdownTimer } from '../widgets/CountdownTimer';
+import { CountdownTimer } from '~/components/widgets/CountdownTimer';
+
+import { eventStartDate } from '~/config.mjs';
 ---
 
 <section
@@ -46,7 +48,7 @@ import { CountdownTimer } from '../widgets/CountdownTimer';
       </div>
     </div>
 
-		<CountdownTimer client:load />
+		<CountdownTimer to={eventStartDate} client:load />
 
     <CallToAction />
   </div>

@@ -23,6 +23,9 @@ export const uri = isDev ? 'https://0017-146-70-48-3.eu.ngrok.io' : 'https://tes
 export const currencySymbol = '€';
 export const currencyTicker = 'EUR';
 
+export const earlyBirdEnds = '2023-05-01';
+export const eventStartDate = '2023-08-11';
+
 export const BLOG = {
   disabled: false,
   postsPerPage: 4,

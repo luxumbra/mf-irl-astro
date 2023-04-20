@@ -1,5 +1,5 @@
 ---
-import { SITE, isDev, isTest } from '~/config.mjs';
+import { SITE, isDev, isTest, earlyBirdEnds } from '~/config.mjs';
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/PageLayout.astro';
 import ThreeD from '~/components/widgets/ThreeD';
@@ -13,13 +13,15 @@ import Plants from '~/components/widgets/Plants.astro';
 import { Icon } from 'astro-icon';
 import { CountdownTimer } from '~/components/widgets/CountdownTimer';
 import {DateTime } from 'luxon';
+
+
 const meta = {
   title: `${SITE.title}: Event tickets`,
   description: 'Immerse yourself in MetaFest Croatia at the historic Fort Punta Christo, where the revolutionary spirit of Ethereum unites diverse minds. Delve into empowering workshops, uncover Pula&apos;s rich past, and forge connections with Web3 innovators. Get your earlybird tickets now!',
   canonical: getCanonical(getHomePermalink()),
 };
 
-export const earlyBirdExpiry = '2023-05-01';
+export const earlyBirdExpiry = earlyBirdEnds;
 export const earlyBirdShortFormat = DateTime.fromISO(earlyBirdExpiry).toFormat(DateTime.DATE_SHORT);
 export const isEarlyBirdValid = DateTime.fromISO(earlyBirdExpiry) > DateTime.now();
 
@@ -120,7 +122,8 @@ console.log('isEarlyBirdValid', isEarlyBirdValid);
 		to={earlyBirdExpiry}
 		headline="Earlybird prices won't last forever! Prices increase on:"
 		expiredHeadline="Earlybird prices expired on:"
-		expiredMessage="Hurry up and book as accommodation & flights are limited." client:load />
+		expiredMessage="Hurry up and book as accommodation & flights are limited."
+		client:load />
 	</div>
     <div class="ticket-methods grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 items-stretch mx-auto mt-14 mb-20 lg:mb-16 gap-5 md:gap-8">
       {ticketMethods && ticketMethods.map((method) => <TicketMethod {...method} client:only />)}

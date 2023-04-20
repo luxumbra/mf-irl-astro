@@ -14,7 +14,7 @@ export type CountdownReturnType = CountdownType & {
 	isLoading: boolean;
 };
 
-export const useCountdown = (targetDate: DateTime): CountdownReturnType => {
+export const useCountdown = (targetDate: string): CountdownReturnType => {
 	const countdownDate = DateTime.fromISO(targetDate);
 	const now = DateTime.local();
 	const [isLoading, setIsLoading] = useState(true);

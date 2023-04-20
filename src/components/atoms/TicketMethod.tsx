@@ -9,7 +9,6 @@ import { Modal } from 'flowbite-react';
 import { Icon } from '@iconify/react';
 import ReactMarkdown from 'react-markdown'
 import { DateTime } from 'luxon';
-import type { DateTime as LuxonDateTime } from 'luxon';
 
 export interface TicketMethodProps {
   title: string;
@@ -22,7 +21,7 @@ export interface TicketMethodProps {
   };
 	discount: number | null;
 	isEarlyBird?: boolean;
-	earlyBirdExpires?: LuxonDateTime | string;
+	earlyBirdExpires?: string;
   summary: string;
   method: string;
   ctaText: string;
@@ -39,7 +38,7 @@ export type TicketMethodType = {
   };
 	discount: number | null;
 	isEarlyBird?: boolean;
-	earlyBirdExpires?: LuxonDateTime | string;
+	earlyBirdExpires?: string;
   summary: string;
   method: string;
   ctaText: string;

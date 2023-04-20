@@ -1,14 +1,14 @@
-import { animate, motion, useMotionValue, useTransform, ValueAnimationTransition } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { DateTime } from 'luxon';
-import { CSSProperties, ReactNode, useEffect, useState } from 'react';
+import { CSSProperties, ReactNode, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { useCountdown } from '~/hooks/useCountdown';
 
 export interface CountdownTimerProps {
-	to: DateTime;
-	expiredMessage?: string;
-	headline?: string;
-	expiredHeadline?: string;
+	to: string;
+	expiredMessage?: string | null;
+	headline?: string | null;
+	expiredHeadline?: string | null;
 }
 
 export const CountdownTimer = ({ to = '2023-08-11', headline, expiredHeadline, expiredMessage }: CountdownTimerProps): ReactNode => {
@@ -87,7 +87,6 @@ export const CountdownTimer = ({ to = '2023-08-11', headline, expiredHeadline, e
       {expired ? (
 					<ReactMarkdown className="expired-copy">{expiredMessage ?? 'Game on!!'}</ReactMarkdown>
       ) : (
-        <>
           <motion.div
             className="countdown-timer__counter pointer-events-none"
             initial={{ opacity: 0, y: 10 }}
@@ -132,39 +131,6 @@ export const CountdownTimer = ({ to = '2023-08-11', headline, expiredHeadline, e
               <span>Seconds</span>
             </div>
           </motion.div>
-          {/* <p className="countdown-timer__counter--a11y sr-only">
-            <span className="countdown-timer__counter__item">
-              <span className="countdown counter__item__months">
-                <span>{months}</span>
-              </span>
-              <span>Months</span>
-            </span>
-            <span className="countdown-timer__counter__item">
-              <span className="countdown counter__item__days">
-                <span>{days}</span>
-              </span>
-              <span>Days</span>
-            </span>
-            <span className="countdown-timer__counter__item">
-              <span className="countdown counter__item__hours">
-                <span>{hours}</span>
-              </span>
-              <span>Hours</span>
-            </span>
-            <span className="countdown-timer__counter__item">
-              <span className="countdown counter__item__minutes">
-                <span>{minutes}</span>
-              </span>
-              <span>Minutes</span>
-            </span>
-            <span className="countdown-timer__counter__item">
-              <span className="countdown counter__item__seconds">
-                <span>{seconds}</span>
-              </span>
-              <span>Seconds</span>
-            </span>
-          </p> */}
-        </>
       )}
     </div>
   );
