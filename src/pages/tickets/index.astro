@@ -20,7 +20,6 @@ export const earlyBirdExpiry = earlyBirdEnds;
 export const earlyBirdShortFormat = DateTime.fromISO(earlyBirdExpiry).toLocaleString(DateTime.DATE_SHORT);
 export const earlyBirdExpiresDays = Math.round(DateTime.fromISO(earlyBirdExpiry).diffNow('days').toObject().days);
 export const isEarlyBirdValid = DateTime.fromISO(earlyBirdExpiry) > DateTime.now();
-console.log('isEarlyBirdValid', isEarlyBirdValid, earlyBirdShortFormat);
 
 const meta = {
   title: `${SITE.title}: Event tickets`,
