@@ -1,16 +1,5 @@
-export const SITE = {
-  name: 'MetaFest:IRL',
-  origin: import.meta.env.PUBLIC_HOSTNAME ?? 'https://metafest.wtf',
-  basePathname: '/',
-  trailingSlash: false,
+import { DateTime } from "luxon";
 
-  title: 'MetaFest Croatia',
-  description:
-    'A bit of a conference, a bit of a festival + a shitload of fun; Talks, workshops, games & music; a festival for DAOists & Regens',
-
-  googleAnalyticsId: 'G-4436889R1F',
-  googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
-};
 
 export const paycekProfileCode = import.meta.env.PUBLIC_PAYCEK_PROFILE_CODE;
 export const paycekSecret = import.meta.env.PUBLIC_PAYCEK_SECRET_KEY;
@@ -24,7 +13,22 @@ export const currencySymbol = '€';
 export const currencyTicker = 'EUR';
 
 export const earlyBirdEnds = '2023-05-01';
+export const earlyBirdEndsFormatted = DateTime.fromISO(earlyBirdEnds).toLocaleString(DateTime.DATE_SHORT);
 export const eventStartDate = '2023-08-11';
+
+export const SITE = {
+  name: 'MetaFest: Croatia',
+  origin: import.meta.env.PUBLIC_HOSTNAME ?? 'https://metafest.wtf',
+  basePathname: '/',
+  trailingSlash: false,
+
+  title: 'MetaFest Croatia',
+  description:
+    `A bit of a conference, a bit of a festival + a shitload of fun; Talks, workshops, games & music; a festival for DAOists & Regens. Earlybird discounts available until ${earlyBirdEndsFormatted}.`,
+
+  googleAnalyticsId: 'G-4436889R1F',
+  googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
+};
 
 export const BLOG = {
   disabled: false,
