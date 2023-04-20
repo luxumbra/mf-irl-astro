@@ -537,19 +537,15 @@
 				@apply flex flex-col items-center space-y-0;
 
 				.countdown {
-					@apply relative text-3xl md:text-4xl lg:text-7xl font-bold text-primary font-heading tracking-wide;
+					@apply relative text-4xl lg:text-7xl font-normal text-primary font-heading tracking-wide;
 
 					&::after {
 						content: '';
 						@apply absolute inset-0 w-full h-full bg-gradient-secondary-dark;
 					}
 
-					[data-countdown] {
-
-					}
-
 					& + span {
-						@apply text-xs md:text-sm text-off-white uppercase -translate-y-3;
+						@apply text-xs lg:text-sm font-normal lg:font-bold text-off-white uppercase -translate-y-2 lg:-translate-y-3;
 					}
 
 				}

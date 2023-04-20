@@ -74,7 +74,7 @@ export const CountdownTimer = ({ to = '2023-08-11' }: DateTime): ReactNode => {
   }, [expired, years, months, days, hours, minutes, seconds]);
 
   return (
-		<div className="countdown-timer flex flex-col items-center justify-center text-6xl font-bold mb-16">
+		<div className="countdown-timer flex flex-col items-center justify-center text-6xl font-bold">
 			{/* <h4 className="text-lg font-normal leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">The countdown has begun!<br /> <span className="inline-flex uppercase text-off-white font-bold text-2xl -translate-y-2">{displayTo}</span></h4> */}
       {expired ? (
         <div>Game on!!</div>
@@ -82,8 +82,9 @@ export const CountdownTimer = ({ to = '2023-08-11' }: DateTime): ReactNode => {
         <>
           <motion.div
             className="countdown-timer__counter pointer-events-none"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+							whileInView={{ opacity: 1, y: 0 }}
+						viewport={{once: false}}
             transition={{ duration: 1 }}
           >
             <div className="countdown-timer__counter__item">
@@ -119,7 +120,7 @@ export const CountdownTimer = ({ to = '2023-08-11' }: DateTime): ReactNode => {
               <span>Seconds</span>
             </div>
           </motion.div>
-          <p className="countdown-timer__counter--a11y sr-only">
+          {/* <p className="countdown-timer__counter--a11y sr-only">
             <span className="countdown-timer__counter__item">
               <span className="countdown counter__item__months">
                 <span>{months}</span>
@@ -150,7 +151,7 @@ export const CountdownTimer = ({ to = '2023-08-11' }: DateTime): ReactNode => {
               </span>
               <span>Seconds</span>
             </span>
-          </p>
+          </p> */}
         </>
       )}
     </div>
