@@ -10,6 +10,7 @@ export interface CountdownTimerProps {
   message?: string | null;
   expiredHeadline?: string | null;
   expiredMessage?: string | null;
+  color?: string;
 }
 
 export const CountdownTimer = ({
@@ -18,6 +19,7 @@ export const CountdownTimer = ({
   expiredHeadline,
   expiredMessage,
   message,
+  color,
 }: CountdownTimerProps): ReactNode => {
   if (to === undefined) {
     throw new Error('`to` prop is required');
@@ -49,6 +51,13 @@ export const CountdownTimer = ({
     if (monthsEl !== null) monthsEl.style.setProperty('--value', months.toString());
   }, [expired, years, months, days, hours, minutes, seconds]);
 
+  useEffect(() => {
+    if (color !== undefined && typeof window !== 'undefined') {
+      const root = document.documentElement;
+      root.style.setProperty('--timerColor', color);
+    }
+  }, [color]);
+
   return (
     <div className="countdown-timer flex flex-col items-center justify-center text-6xl font-bold">
       {message && !expired && <ReactMarkdown className="countdown-timer__message">{message}</ReactMarkdown>}
@@ -67,9 +76,7 @@ export const CountdownTimer = ({
         </h4>
       )}
       {expired ? (
-        <ReactMarkdown className="expired-copy">
-					{expiredMessage ?? ''}
-        </ReactMarkdown>
+        <ReactMarkdown className="expired-copy">{expiredMessage ?? ''}</ReactMarkdown>
       ) : (
         <motion.div
           className="countdown-timer__counter pointer-events-none"

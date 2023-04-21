@@ -64,6 +64,10 @@
   }
 }
 @layer components {
+  :root {
+    --timerColor: #82d36eff;
+  }
+
   .container {
     @apply mx-auto px-4;
   }
@@ -405,11 +409,11 @@
       a {
         @apply space-y-3 capitalize focus:outline-dashed hover:no-underline	hover:scale-105 focus:outline-primary-alpha-60 focus:scale-105 transition-all duration-200 ease-in-out;
 
-				&:not(.btn) {
-					&:hover {
-						@apply no-underline;
-					}
-				}
+        &:not(.btn) {
+          &:hover {
+            @apply no-underline;
+          }
+        }
         span {
           @apply text-xs lg:text-sm 3xl:text-base whitespace-nowrap;
         }
@@ -515,69 +519,65 @@
     }
   }
 
-	.countdown-timer {
-		@apply relative;
+  .countdown-timer {
+    @apply relative;
 
-		&__counter {
-			@apply flex items-center space-x-2 mx-auto z-0;
+    &__counter {
+      @apply flex items-center space-x-2 mx-auto z-0;
 
-			&--a11y {
-				@apply absolute flex items-center space-x-2 mx-auto pointer-events-auto z-20 cursor-text border border-primary-alpha-30 rounded-2xl overflow-hidden select-text;
+      &--a11y {
+        @apply absolute flex items-center space-x-2 mx-auto pointer-events-auto z-20 cursor-text border border-primary-alpha-30 rounded-2xl overflow-hidden select-text;
 
-				* {
-					@apply text-accent;
+        * {
+          @apply text-accent;
 
-					&:hover {
-						@apply text-primary;
-					}
-				}
-			}
+          &:hover {
+            @apply text-primary;
+          }
+        }
+      }
 
-			&__item {
-				@apply flex flex-col items-center space-y-0;
+      &__item {
+        @apply flex flex-col items-center space-y-0;
 
-				.countdown {
-					@apply relative text-4xl lg:text-7xl font-normal text-primary font-heading tracking-wide;
+        .countdown {
+          @apply relative text-4xl lg:text-7xl font-normal  text-[var(--timerColor)] font-heading tracking-wide;
 
-					&::after {
-						content: '';
-						@apply absolute inset-0 w-full h-full bg-gradient-secondary-dark;
-					}
+          &::after {
+            content: '';
+            @apply absolute inset-0 w-full h-full bg-gradient-secondary-dark;
+          }
 
-					& + span {
-						@apply text-xs lg:text-sm font-normal lg:font-bold text-off-white uppercase -translate-y-2 lg:-translate-y-3;
-					}
+          & + span {
+            @apply text-xs lg:text-sm font-normal lg:font-bold text-off-white uppercase -translate-y-2 lg:-translate-y-3;
+          }
+        }
+      }
+    }
 
-				}
+    &__message {
+      @apply text-center text-xl lg:text-base font-normal max-w-5xl bg-clip-text text-transparent bg-gradient-to-br from-primary to-accent;
 
+      p {
+        @apply text-center text-xl lg:text-base font-normal  bg-clip-text text-transparent bg-gradient-to-br from-primary to-accent;
 
-			}
-		}
+        &:first-of-type {
+          @apply text-center text-xl lg:text-xl font-bold  bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent;
+        }
+      }
+    }
 
-		&__message {
-			@apply text-center text-xl lg:text-base font-normal max-w-5xl bg-clip-text text-transparent bg-gradient-to-br from-primary to-accent;
+    .expired-copy {
+      @apply max-w-3xl;
+      p {
+        @apply text-center text-xl lg:text-2xl font-normal text-accent;
 
-			p {
-				@apply text-center text-xl lg:text-base font-normal  bg-clip-text text-transparent bg-gradient-to-br from-primary to-accent;
-
-				&:first-of-type {
-					@apply text-center text-xl lg:text-xl font-bold  bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent;
-				}
-			}
-
-		}
-
-		.expired-copy {
-			@apply  max-w-3xl;
-			p {
-				@apply text-center text-xl lg:text-2xl font-normal text-accent;
-
-				&:first-of-type {
-					@apply text-center text-xl lg:text-4xl font-bold  bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent;
-				}
-			}
-		}
-	}
+        &:first-of-type {
+          @apply text-center text-xl lg:text-4xl font-bold  bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent;
+        }
+      }
+    }
+  }
 }
 
 @layer utilities {
@@ -622,9 +622,15 @@
     @apply bg-gradient-to-br from-pink-300 via-teal-300 to-violet-700;
   }
 
-	.bg-gradient-secondary-dark {
-		background-image: linear-gradient(180deg, rgba(6 12 20 / 1) 0%, rgba(6 12 20 / 0) 33%, rgba(6 12 20 / 0) 66%, rgba(6 12 20 / 1) 100%);
-	}
+  .bg-gradient-secondary-dark {
+    background-image: linear-gradient(
+      180deg,
+      rgba(6 12 20 / 1) 0%,
+      rgba(6 12 20 / 0) 33%,
+      rgba(6 12 20 / 0) 66%,
+      rgba(6 12 20 / 1) 100%
+    );
+  }
 
   #gradient-horizontal {
     --color-stop-1: #a770ef;

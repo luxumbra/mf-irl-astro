@@ -18,7 +18,7 @@ export interface HeroProps {
   ctaUrl: string;
 }
 
-const { titleLn1, titleLn2, subtitle, dates, ctaUrl } = Astro.props as HeroProps;
+const { titleLn1, titleLn2, subtitle, ctaUrl } = Astro.props as HeroProps;
 ---
 
 <div
@@ -45,15 +45,16 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl } = Astro.props as HeroProps
 
       <!-- <div class="max-w-7xl"> -->
       <div class="event-info w-full">
-        <div class="event-info__item w-auto text-center"
-        x-show="shown"
-        x-bind:class="{ 'invisible': !shown }"
-        x-transition:enter="transition ease-out duration-500 delay-[250ms]"
-        x-transition:enter-start="opacity-0 transform translate-y-8"
-        x-transition:enter-end="opacity-100 transform translate-y-0"
-        x-transition:leave="transition ease-in duration-500"
-        x-transition:leave-start="opacity-100 transform translate-y-0"
-        x-transition:leave-end="opacity-0 transform translate-y-8"
+        <div
+          class="event-info__item w-auto text-center"
+          x-show="shown"
+          x-bind:class="{ 'invisible': !shown }"
+          x-transition:enter="transition ease-out duration-500 delay-[250ms]"
+          x-transition:enter-start="opacity-0 transform translate-y-8"
+          x-transition:enter-end="opacity-100 transform translate-y-0"
+          x-transition:leave="transition ease-in duration-500"
+          x-transition:leave-start="opacity-100 transform translate-y-0"
+          x-transition:leave-end="opacity-0 transform translate-y-8"
         >
           <h5 class="text-off-white uppercase font-normal">WarmUp</h5>
           <div class="bg-gradient-primary-solid rounded-lg">
@@ -63,15 +64,16 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl } = Astro.props as HeroProps
             </p>
           </div>
         </div>
-        <div class="event-info__item event-info__item--highlight w-auto text-center scale-125 origin-center"
-        x-show="shown"
-        x-bind:class="{ 'invisible': !shown }"
-        x-transition:enter="transition ease-out duration-500 delay-[350ms]"
-        x-transition:enter-start="opacity-0 transform translate-y-8"
-        x-transition:enter-end="opacity-100 transform translate-y-0"
-        x-transition:leave="transition ease-in duration-500"
-        x-transition:leave-start="opacity-100 transform translate-y-0"
-        x-transition:leave-end="opacity-0 transform translate-y-8"
+        <div
+          class="event-info__item event-info__item--highlight w-auto text-center scale-125 origin-center"
+          x-show="shown"
+          x-bind:class="{ 'invisible': !shown }"
+          x-transition:enter="transition ease-out duration-500 delay-[350ms]"
+          x-transition:enter-start="opacity-0 transform translate-y-8"
+          x-transition:enter-end="opacity-100 transform translate-y-0"
+          x-transition:leave="transition ease-in duration-500"
+          x-transition:leave-start="opacity-100 transform translate-y-0"
+          x-transition:leave-end="opacity-0 transform translate-y-8"
         >
           <h5 class="text-off-white uppercase font-extrabold">Main Event</h5>
           <div class="bg-gradient-primary-solid rounded-lg shadow-2xl shadow-black">
@@ -81,37 +83,35 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl } = Astro.props as HeroProps
             </p>
           </div>
         </div>
-        <div class="event-info__item w-auto text-center"
-        x-show="shown"
-        x-bind:class="{ 'invisible': !shown }"
-        x-transition:enter="transition ease-out duration-500 delay-[400ms]"
-        x-transition:enter-start="opacity-0 transform translate-y-8"
-        x-transition:enter-end="opacity-100 transform translate-y-0"
-        x-transition:leave="transition ease-in duration-500"
-        x-transition:leave-start="opacity-100 transform translate-y-0"
-        x-transition:leave-end="opacity-0 transform translate-y-8"
+        <div
+          class="event-info__item w-auto text-center"
+          x-show="shown"
+          x-bind:class="{ 'invisible': !shown }"
+          x-transition:enter="transition ease-out duration-500 delay-[400ms]"
+          x-transition:enter-start="opacity-0 transform translate-y-8"
+          x-transition:enter-end="opacity-100 transform translate-y-0"
+          x-transition:leave="transition ease-in duration-500"
+          x-transition:leave-start="opacity-100 transform translate-y-0"
+          x-transition:leave-end="opacity-0 transform translate-y-8"
         >
           <h5 class="text-off-white uppercase font-normal">Bus Trip</h5>
           <div class="bg-gradient-primary-solid rounded-lg">
             <p class="mb-0 text-off-white flex flex-col justify-center text-center">
-              <span>19 - 25</span>
+              <span>19 - 24</span>
               <span>August</span>
             </p>
           </div>
         </div>
       </div>
-      <!-- <div class="location text-accent-light my-14 text-4xl font-normal uppercase">Fort Punta Christo, Pula, Croatia</div> -->
-      <!-- </div> -->
-      <!-- <span class="hero__dates"><Icon name="ic:baseline-calendar-today" className="icon-gradient" /> <span class="rounded-lg bg-gradient-primary z-10">{dates}</span></span> -->
     </div>
     <div class="hero__content__secondary flex justify-end md:justify-start mt-3 md:mt-0">
       <motion.div
         className="cta"
-				initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            client:load
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        client:load
       >
         <a
           href={ctaUrl}
