@@ -9,13 +9,16 @@ import Tier from '~/components/atoms/Tier.astro';
 import Markdown from '@astrojs/markdown-component';
 import { Image } from '@astrojs/image/components';
 
+import socialImage from '~/assets/images/socials/metafest-shared.jpg';
 import mgLogo from '~/assets/images/mg-logo.gif';
 import Plants from '~/components/widgets/Plants.astro';
 
 const meta = {
   title: `${SITE.title}: Event sponsors`,
-  description: 'Sponsor MetaFest Croatia - Bronze, Gold, Diamond tiers with perks including logo placement, NFT tickets, and speaking opportunities. Optional Expansion Packs available. Join one of the best events of 2023. Apply now.',
+  description:
+    'Sponsor MetaFest Croatia - Bronze, Gold, Diamond tiers with perks including logo placement, NFT tickets, and speaking opportunities. Optional Expansion Packs available. Join one of the best events of 2023. Apply now.',
   canonical: getCanonical(getHomePermalink()),
+  image: socialImage,
 };
 
 export const sponsorshipTiers = [
@@ -133,7 +136,6 @@ export const expansionPacks = [
       },
     ],
   },
-
 ];
 ---
 
@@ -142,7 +144,7 @@ export const expansionPacks = [
   <SponsorsSection
     title="Who’s behind it?"
     precis="MetaFest Croatia is organized by [MetaFam](https://metagame.wtf)."
-		alt
+    alt
   >
     <Markdown>
       After doing [a conference](https://metagame.substack.com/p/intercon-what-how-even), [a
@@ -182,7 +184,7 @@ export const expansionPacks = [
   <SponsorsSection
     title="Why the Balkans, why Croatia?"
     precis="Despite proclivity towards self-organization due to a distrust of the state system & privatizing profiteers, DAO presence in the Balkans is weak."
-		alt
+    alt
   >
     <p>About Croatia:</p>
     <ul>
@@ -201,15 +203,16 @@ export const expansionPacks = [
       the Balkans a great place to hire from.
     </p>
 
-    <div class="section__decoration absolute w-10/12 md:w-2/12 xl:w-3/12 2xl:w-3/12 -right-32 top-16 z-0 opacity-60 2xl:opacity-100 invisible"
-    x-show="shown"
-    x-bind:class="{ 'invisible': !shown }"
-    x-transition:enter="transition ease-out duration-500"
-    x-transition:enter-start="opacity-08"
-    x-transition:enter-end="opacity-100"
-    x-transition:leave="transition ease-in duration-500"
-    x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0"
+    <div
+      class="section__decoration absolute w-10/12 md:w-2/12 xl:w-3/12 2xl:w-3/12 -right-32 top-16 z-0 opacity-60 2xl:opacity-100 invisible"
+      x-show="shown"
+      x-bind:class="{ 'invisible': !shown }"
+      x-transition:enter="transition ease-out duration-500"
+      x-transition:enter-start="opacity-08"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="transition ease-in duration-500"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
     >
       <Icon name="island" className="w-full" />
     </div>
@@ -222,7 +225,7 @@ export const expansionPacks = [
   <SponsorsSection
     title="Who is it for?"
     precis="Attendees will mostly be people from the EVM DAO & ReFi ecosystems but mixed in with the wider regenerative, self-organization & Game B/Metamodern space."
-		alt
+    alt
   >
     <p>Overall, we are aiming for:</p>
     <ul>
@@ -250,7 +253,7 @@ export const expansionPacks = [
     title="Sponsorship"
     precis="It’s in all of our best interest these technologies get adopted IRL."
     full
-		alt
+    alt
   >
     <p class="w-full max-w-3xl 2xl:max-w-4xl mx-auto">
       You may benefit directly or indirectly through increased demand or through being affiliated with projects that
@@ -292,7 +295,7 @@ export const expansionPacks = [
     >
       Apply now!
     </button>
-    <div class="pb-[10vh] xl:pb-32 2xl:pb-64 4xl:pb-[35vh]" />
+    <div class="pb-[10vh] xl:pb-32 2xl:pb-64 4xl:pb-[35vh]"></div>
   </SponsorsSection>
 
   <div class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto">

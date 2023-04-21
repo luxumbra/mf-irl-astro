@@ -8,6 +8,8 @@ export const isDev = import.meta.env.PUBLIC_HOSTNAME === 'http://localhost:1145'
 export const isProd = import.meta.env.PUBLIC_HOSTNAME === 'https://metafest.wtf';
 export const isTest = !(isDev || isProd) ?? false;
 
+export const HOSTNAME = import.meta.env.PUBLIC_HOSTNAME;
+
 export const uri = isDev ? 'https://0017-146-70-48-3.eu.ngrok.io' : 'https://test.metafest.wtf';
 export const currencySymbol = '€';
 export const currencyTicker = 'EUR';
@@ -18,7 +20,7 @@ export const eventStartDate = '2023-08-11';
 
 export const SITE = {
   name: 'MetaFest: Croatia',
-  origin: import.meta.env.PUBLIC_HOSTNAME ?? 'https://metafest.wtf',
+  origin: HOSTNAME ?? 'https://metafest.wtf',
   basePathname: '/',
   trailingSlash: false,
 

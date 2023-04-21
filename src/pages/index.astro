@@ -13,27 +13,33 @@ import Join from '~/components/sections/Join.astro';
 import ThreeD from '~/components/widgets/ThreeD';
 
 const meta = {
-	title: SITE.title,
-	description: SITE.description,
-	canonical: getCanonical(getHomePermalink()),
+  title: SITE.title,
+  description: SITE.description,
+  canonical: getCanonical(getHomePermalink()),
 };
 
 const heroCopy: HeroProps = {
-	titleLn1: 'A bit of a conference,',
-	titleLn2: 'a bit of a festival',
-	subtitle: '+ a shitload of fun',
-	ctaUrl: '/#join',
-	dates: '16 - 18 August'
-}
+  titleLn1: 'A bit of a conference,',
+  titleLn2: 'a bit of a festival',
+  subtitle: '+ a shitload of fun',
+  ctaUrl: '/#join',
+  dates: '16 - 18 August',
+};
 ---
 
 <Layout {meta}>
-	<Hero titleLn1={heroCopy.titleLn1} titleLn2={heroCopy.titleLn2} subtitle={heroCopy.subtitle} ctaUrl={heroCopy.ctaUrl} dates={heroCopy.dates} />
-	<About />
-	<Location />
-	<Program />
-	<Speakers />
-	<Sponsors />
-	<Join />
-	<ThreeD client:load />
+  <Hero
+    titleLn1={heroCopy.titleLn1}
+    titleLn2={heroCopy.titleLn2}
+    subtitle={heroCopy.subtitle}
+    ctaUrl={heroCopy.ctaUrl}
+    dates={heroCopy.dates}
+  />
+  <About />
+  <Location />
+  <Program />
+  <Speakers />
+  <Sponsors />
+  <Join />
+  <ThreeD client:load />
 </Layout>
