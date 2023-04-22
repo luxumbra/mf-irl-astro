@@ -267,8 +267,9 @@
     .ticket-method {
       @apply transform transition-all duration-200 ease-in-out flex flex-col mb-8 xl:mb-0;
 
-      button {
-        @apply mx-auto;
+      button,
+      .btn {
+        @apply mx-auto text-secondary-dark hover:no-underline hover:text-secondary-dark;
 
         &[aria-disabled='true'] {
           @apply bg-secondary-dark-alpha-60 text-secondary-dark cursor-not-allowed;

@@ -7,7 +7,7 @@ import './tier.css';
 import { useEffect, useState } from 'react';
 import { Modal } from 'flowbite-react';
 import { Icon } from '@iconify/react';
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown';
 import { DateTime } from 'luxon';
 
 export interface TicketMethodProps {
@@ -19,9 +19,9 @@ export interface TicketMethodProps {
     crew?: number | string | null;
     metagamer?: number | string | null;
   };
-	discount: number | null;
-	isEarlyBird?: boolean;
-	earlyBirdExpires?: string;
+  discount: number | null;
+  isEarlyBird?: boolean;
+  earlyBirdExpires?: string;
   summary: string;
   method: string;
   ctaText: string;
@@ -36,9 +36,9 @@ export type TicketMethodType = {
     crew?: number | string | null;
     metagamer?: number | string | null;
   };
-	discount: number | null;
-	isEarlyBird?: boolean;
-	earlyBirdExpires?: string;
+  discount: number | null;
+  isEarlyBird?: boolean;
+  earlyBirdExpires?: string;
   summary: string;
   method: string;
   ctaText: string;
@@ -46,11 +46,11 @@ export type TicketMethodType = {
 
 export interface BuyButtonProps {
   text: string;
-	prices?: TicketMethodType['price'];
-	discount?: number | null;
-	disabled?: boolean;
-	isEarlyBird?: TicketMethodType['isEarlyBird'];
-	earlyBirdExpires?: TicketMethodType['earlyBirdExpires'];
+  prices?: TicketMethodType['price'];
+  discount?: number | null;
+  disabled?: boolean;
+  isEarlyBird?: TicketMethodType['isEarlyBird'];
+  earlyBirdExpires?: TicketMethodType['earlyBirdExpires'];
 }
 
 export interface PayloadOptions {
@@ -58,11 +58,13 @@ export interface PayloadOptions {
   items: CryptoItemType[];
 }
 
-const activeBtnClasses = 'btn btn-ghost bg-gradient-tertiary  text-secondary hover:scale-95 focus:outline-dashed focus:outline-primary w-auto';
-const disabledBtnClasses = 'btn btn-ghost btn-disabled bg-gradient-tertiary text-secondary focus:outline-dashed focus:outline-primary w-auto opacity-50 cursor-not-allowed'
+const activeBtnClasses =
+  'btn btn-ghost bg-gradient-tertiary  text-secondary hover:scale-95 focus:outline-dashed focus:outline-primary w-auto';
+const disabledBtnClasses =
+  'btn btn-ghost btn-disabled bg-gradient-tertiary text-secondary focus:outline-dashed focus:outline-primary w-auto opacity-50 cursor-not-allowed';
 
 export const FiatButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
-	const classes = disabled ? disabledBtnClasses : activeBtnClasses;
+  const classes = disabled ? disabledBtnClasses : activeBtnClasses;
 
   return (
     <button
@@ -74,21 +76,28 @@ export const FiatButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
       data-tally-align-left="1"
       data-tally-emoji-text="👋"
       data-tally-emoji-animation="wave"
-			data-tally-auto-close="10000"
-			aria-disabled={disabled}
+      data-tally-auto-close="10000"
+      aria-disabled={disabled}
     >
       {text}
     </button>
   );
 };
 
-export const CryptoModalButton = ({ text, prices, discount, isEarlyBird, earlyBirdExpires, disabled }: BuyButtonProps): JSX.Element => {
+export const CryptoModalButton = ({
+  text,
+  prices,
+  discount,
+  isEarlyBird,
+  earlyBirdExpires,
+  disabled,
+}: BuyButtonProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [quantityB, setQuantityB] = useState(1);
   const [basket, setBasket] = useState<CryptoItemType[]>([]);
   const [basketTotal, setBasketTotal] = useState(0);
-	const earlyBirdDateFormated = DateTime.fromISO(earlyBirdExpires).toLocaleString(DateTime.DATE_SHORT);
+  const earlyBirdDateFormated = DateTime.fromISO(earlyBirdExpires).toLocaleString(DateTime.DATE_SHORT);
 
   const toggleModal = () => {
     if (typeof window !== 'undefined') {
@@ -222,8 +231,7 @@ export const CryptoModalButton = ({ text, prices, discount, isEarlyBird, earlyBi
   const patronUnitsRounded = useTransform(patronUnitsCount, (latest) => Math.round(latest));
   const standardUnitsRounded = useTransform(standardUnitsCount, (latest) => Math.round(latest));
 
-		const classes = disabled ? disabledBtnClasses : activeBtnClasses;
-
+  const classes = disabled ? disabledBtnClasses : activeBtnClasses;
 
   useEffect(() => {
     const basketStandard = basket.find((item) => item.name === 'Standard Ticket');
@@ -247,11 +255,7 @@ export const CryptoModalButton = ({ text, prices, discount, isEarlyBird, earlyBi
 
   return (
     <>
-      <button
-        className={classes}
-				onClick={toggleModal}
-				aria-disabled={disabled}
-      >
+      <button className={classes} onClick={toggleModal} aria-disabled={disabled}>
         {text}
       </button>
       <Modal
@@ -271,27 +275,48 @@ export const CryptoModalButton = ({ text, prices, discount, isEarlyBird, earlyBi
         <Modal.Body className="modal-body">
           <div className="flex flex-col items-start justify-center space-y-2 md:space-y-3">
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full mb-0">
-							<span className="flex-grow">Standard Tickets</span>{' '}
-							{isEarlyBird && <span className="text-sm md:text-base self-end line-through inline-flex -translate-y-6 translate-x-3 -rotate-12" aria-label={`Normal price ${currencySymbol}${prices.standard}`}>
-								{currencySymbol}{prices.standard}
-							</span>}
-              <span className="text-2xl md:text-3xl font-bold" aria-label={`Discounted early bird price ${currencySymbol}${applyDiscount(prices.standard, discount)}`}>
+              <span className="flex-grow">Standard Tickets</span>{' '}
+              {isEarlyBird && (
+                <span
+                  className="text-sm md:text-base self-end line-through inline-flex -translate-y-6 translate-x-3 -rotate-12"
+                  aria-label={`Normal price ${currencySymbol}${prices.standard}`}
+                >
+                  {currencySymbol}
+                  {prices.standard}
+                </span>
+              )}
+              <span
+                className="text-2xl md:text-3xl font-bold"
+                aria-label={`Discounted early bird price ${currencySymbol}${applyDiscount(prices.standard, discount)}`}
+              >
                 {currencySymbol}
                 {applyDiscount(prices.standard, discount)}
-								{isEarlyBird && `*`}
+                {isEarlyBird && `*`}
               </span>
             </p>
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full mb-0">
               <span className="flex-grow relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">
-                Patron Tickets<b role="img" aria-label='sparkles emoji'>✨</b>
-							</span>
-							{isEarlyBird && <span className="text-sm md:text-base self-end line-through inline-flex -translate-y-6 translate-x-3 -rotate-12" aria-label={`Normal price ${currencySymbol}${prices.patron}`}>
-								{currencySymbol}{prices.patron}
-							</span>}
-              <span className="text-2xl md:text-3xl font-bold" aria-label={`Discounted early bird price ${currencySymbol}${applyDiscount(prices.patron, discount)}`}>
+                Patron Tickets
+                <b role="img" aria-label="sparkles emoji">
+                  ✨
+                </b>
+              </span>
+              {isEarlyBird && (
+                <span
+                  className="text-sm md:text-base self-end line-through inline-flex -translate-y-6 translate-x-3 -rotate-12"
+                  aria-label={`Normal price ${currencySymbol}${prices.patron}`}
+                >
+                  {currencySymbol}
+                  {prices.patron}
+                </span>
+              )}
+              <span
+                className="text-2xl md:text-3xl font-bold"
+                aria-label={`Discounted early bird price ${currencySymbol}${applyDiscount(prices.patron, discount)}`}
+              >
                 {currencySymbol}
-								{applyDiscount(prices.patron, discount)}
-								{isEarlyBird && `*`}
+                {applyDiscount(prices.patron, discount)}
+                {isEarlyBird && `*`}
               </span>
             </p>
 
@@ -303,7 +328,11 @@ export const CryptoModalButton = ({ text, prices, discount, isEarlyBird, earlyBi
               </a>{' '}
               to complete your purchase using your choice of crypto.
             </p>
-						{isEarlyBird && (<p className="text-primary text-xs md:text-sm italic">*Earlybird prices ({discount}% discount) until {earlyBirdDateFormated}</p>)}
+            {isEarlyBird && (
+              <p className="text-primary text-xs md:text-sm italic">
+                *Earlybird prices ({discount}% discount) until {earlyBirdDateFormated}
+              </p>
+            )}
             <div className="flex flex-row items-center justify-center space-y-2 md:space-y-3 w-full">
               <input type="hidden" name="amount" value={applyDiscount(prices.standard, discount)} />
               <input type="hidden" name="name" value="Standard Ticket" />
@@ -451,7 +480,7 @@ export const CryptoModalButton = ({ text, prices, discount, isEarlyBird, earlyBi
 };
 
 export const SeedButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
-	const classes = disabled ? disabledBtnClasses : activeBtnClasses;
+  const classes = disabled ? disabledBtnClasses : activeBtnClasses;
 
   return (
     <button
@@ -463,8 +492,8 @@ export const SeedButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
       data-tally-align-left="1"
       data-tally-emoji-text="👋"
       data-tally-emoji-animation="wave"
-			data-tally-auto-close="5000"
-			aria-disabled={disabled}
+      data-tally-auto-close="5000"
+      aria-disabled={disabled}
     >
       {text}
     </button>
@@ -472,28 +501,17 @@ export const SeedButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
 };
 
 export const SponsorButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
-	const classes = disabled ? disabledBtnClasses : activeBtnClasses;
+  const classes = disabled ? disabledBtnClasses : activeBtnClasses;
 
   return (
-    <button
-      data-buy-method="sponsor"
-      className={classes}
-      data-tally-open="w2XEaj"
-      data-tally-layout="modal"
-      data-tally-width="800"
-      data-tally-align-left="1"
-      data-tally-emoji-text="👋"
-      data-tally-emoji-animation="wave"
-			data-tally-auto-close="5000"
-			aria-disabled={disabled}
-    >
+    <a href="/event-sponsors" data-buy-method="sponsor" className={classes}>
       {text}
-    </button>
+    </a>
   );
 };
 
 export const CrewButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
-	const classes = disabled ? disabledBtnClasses : activeBtnClasses;
+  const classes = disabled ? disabledBtnClasses : activeBtnClasses;
 
   return (
     <button
@@ -505,8 +523,8 @@ export const CrewButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
       data-tally-align-left="1"
       data-tally-emoji-text="👋"
       data-tally-emoji-animation="wave"
-			data-tally-auto-close="5000"
-			aria-disabled={disabled}
+      data-tally-auto-close="5000"
+      aria-disabled={disabled}
     >
       {text}
     </button>
@@ -514,7 +532,7 @@ export const CrewButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
 };
 
 export const MetagamerButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
-	const classes = disabled ? disabledBtnClasses : activeBtnClasses;
+  const classes = disabled ? disabledBtnClasses : activeBtnClasses;
 
   return (
     <button
@@ -526,30 +544,47 @@ export const MetagamerButton = ({ text, disabled }: BuyButtonProps): JSX.Element
       data-tally-align-left="1"
       data-tally-emoji-text="👋"
       data-tally-emoji-animation="wave"
-			data-tally-auto-close="5000"
-			aria-disabled={disabled}
+      data-tally-auto-close="5000"
+      aria-disabled={disabled}
     >
       {text}
     </button>
   );
 };
 export const applyDiscount = (price: number | string, discount: number) => {
-	if (!discount || discount === 0) {
-		return price;
-	}
-	if (typeof price === 'string') {
-		return price;
-	}
-	return price - (price * discount) / 100;
+  if (!discount || discount === 0) {
+    return price;
+  }
+  if (typeof price === 'string') {
+    return price;
+  }
+  return price - (price * discount) / 100;
 };
 
-export const TicketMethod = ({ title, summary, method, ctaText, price, discount, isEarlyBird, earlyBirdExpires }: TicketMethodProps): JSX.Element => {
+export const TicketMethod = ({
+  title,
+  summary,
+  method,
+  ctaText,
+  price,
+  discount,
+  isEarlyBird,
+  earlyBirdExpires,
+}: TicketMethodProps): JSX.Element => {
   const handleMethod = (method: string, cta: string) => {
     switch (method) {
       case 'fiat':
         return <FiatButton text={cta} />;
       case 'crypto':
-        return <CryptoModalButton text={cta} prices={price} isEarlyBird={isEarlyBird} earlyBirdExpires={earlyBirdExpires} discount={discount} />;
+        return (
+          <CryptoModalButton
+            text={cta}
+            prices={price}
+            isEarlyBird={isEarlyBird}
+            earlyBirdExpires={earlyBirdExpires}
+            discount={discount}
+          />
+        );
       case 'seeds':
         return <SeedButton text={cta} />;
       case 'sponsor':
@@ -563,96 +598,126 @@ export const TicketMethod = ({ title, summary, method, ctaText, price, discount,
     }
   };
 
-
-	const isExternal = summary.includes('http');
-	const earlyBirdDateFormated = DateTime.fromISO(earlyBirdExpires).toLocaleString(DateTime.DATE_SHORT);
+  const isExternal = summary.includes('http');
+  const earlyBirdDateFormated = DateTime.fromISO(earlyBirdExpires).toLocaleString(DateTime.DATE_SHORT);
 
   return (
-		<div
-			className="ticket-method"
-		>
-			<motion.div className="ticket-method__header text-left"
-			initial={{ opacity: 0, y: 10 }}
-			animate={{ opacity: 1, y: 0 }}
-			transition={{ duration: 0.3 }}
-			>
+    <div className="ticket-method">
+      <motion.div
+        className="ticket-method__header text-left"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
         <h4 className="mb-3 uppercase bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
           {title}
         </h4>
       </motion.div>
-			<motion.div className="ticket-method__content relative text-left p-0 rounded-2xl flex-grow"
-						initial={{ opacity: 0, y: 10 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.3 }}
-			>
+      <motion.div
+        className="ticket-method__content relative text-left p-0 rounded-2xl flex-grow"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
         <div className="p-3 md:p-5 z-10 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 flex flex-col items-stretch h-full space-y-2 md:space-y-6">
-					<div className="mb-0 text-sm md:text-xl text-primary flex-grow">
-						<ReactMarkdown linkTarget={isExternal ? '_blank' : ''}>
-							{summary}
-						</ReactMarkdown>
-					</div>
-					{isEarlyBird && (<p className="text-primary text-xs md:text-sm italic">*Earlybird prices ({discount}% discount) until {earlyBirdDateFormated}</p>)}
+          <div className="mb-0 text-sm md:text-xl text-primary flex-grow">
+            <ReactMarkdown linkTarget={isExternal ? '_blank' : ''}>{summary}</ReactMarkdown>
+          </div>
+          {isEarlyBird && (
+            <p className="text-primary text-xs md:text-sm italic">
+              *Earlybird prices ({discount}% discount) until {earlyBirdDateFormated}
+            </p>
+          )}
           {price.standard && (
-						<p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
-							<span className="flex-grow">Standard tickets</span>
-							{isEarlyBird && <span className="text-sm md:text-base line-through inline-flex -translate-y-5 translate-x-3 -rotate-12" aria-label={`Normal price ${currencySymbol}${price.standard}`}>
-								{price.standard > 0 && currencySymbol}{price.standard}
-							</span>}
-              <span className="text-2xl md:text-3xl font-bold uppercase" aria-label={`Discounted early bird price ${currencySymbol}${applyDiscount(price.standard, discount)}`}>
-								{price.standard > 0 && currencySymbol}
-								{applyDiscount(price.standard, discount)}
-								{isEarlyBird && `*`}
+            <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
+              <span className="flex-grow">Standard tickets</span>
+              {isEarlyBird && (
+                <span
+                  className="text-sm md:text-base line-through inline-flex -translate-y-5 translate-x-3 -rotate-12"
+                  aria-label={`Normal price ${currencySymbol}${price.standard}`}
+                >
+                  {price.standard > 0 && currencySymbol}
+                  {price.standard}
+                </span>
+              )}
+              <span
+                className="text-2xl md:text-3xl font-bold uppercase"
+                aria-label={`Discounted early bird price ${currencySymbol}${applyDiscount(price.standard, discount)}`}
+              >
+                {price.standard > 0 && currencySymbol}
+                {applyDiscount(price.standard, discount)}
+                {isEarlyBird && `*`}
               </span>
             </p>
           )}
           {price.patron && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
               <span className="flex-grow relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">
-                Patron tickets<b role="img" aria-label="sparkles emoji">✨</b>
-							</span>
-							{isEarlyBird && <span className="text-sm md:text-base line-through inline-flex -translate-y-5 translate-x-3 -rotate-12" aria-label={`Normal price ${currencySymbol}${price.patron}`}>
-								{price.patron > 0 && currencySymbol}{price.patron}
-							</span>}
-							<span className="text-2xl md:text-3xl font-bold uppercase" aria-label={`Discounted early bird price ${currencySymbol}${applyDiscount(price.patron, discount)}`}>
-								{price.patron > 0 && currencySymbol}
-								{applyDiscount(price.patron, discount)}
-								{isEarlyBird && `*`}
+                Patron tickets
+                <b role="img" aria-label="sparkles emoji">
+                  ✨
+                </b>
+              </span>
+              {isEarlyBird && (
+                <span
+                  className="text-sm md:text-base line-through inline-flex -translate-y-5 translate-x-3 -rotate-12"
+                  aria-label={`Normal price ${currencySymbol}${price.patron}`}
+                >
+                  {price.patron > 0 && currencySymbol}
+                  {price.patron}
+                </span>
+              )}
+              <span
+                className="text-2xl md:text-3xl font-bold uppercase"
+                aria-label={`Discounted early bird price ${currencySymbol}${applyDiscount(price.patron, discount)}`}
+              >
+                {price.patron > 0 && currencySymbol}
+                {applyDiscount(price.patron, discount)}
+                {isEarlyBird && `*`}
               </span>
             </p>
           )}
           {price.sponsor && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
               <span className="relative bg-clip-text text-transparent bg-gradient-to-l from-cyan-400 to-fuchsia-500">
-                Sponsor tickets<span  aria-label="money bag emoji">💰</span>
+                Sponsor tickets<span aria-label="money bag emoji">💰</span>
               </span>
-							<span className="text-2xl md:text-3xl font-bold uppercase">
-								{price.sponsor > 0 && currencySymbol}
-								{applyDiscount(price.sponsor, discount)}
-							</span>
+              <span className="text-2xl md:text-3xl font-bold uppercase">
+                {price.sponsor > 0 && currencySymbol}
+                {applyDiscount(price.sponsor, discount)}
+              </span>
             </p>
           )}
           {price.crew && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
               <span className="relative bg-clip-text text-transparent bg-gradient-to-l from-purple-500 to-cyan-400">
-                Contributor tickets <b role="img" aria-label='octopus emoji'>🐙</b>
+                Contributor tickets{' '}
+                <b role="img" aria-label="octopus emoji">
+                  🐙
+                </b>
               </span>
-							<span className="text-2xl md:text-3xl font-bold uppercase">
-								{price.crew > 0 && currencySymbol}
-								{applyDiscount(price.crew, discount)}
-							</span>
+              <span className="text-2xl md:text-3xl font-bold uppercase">
+                {price.crew > 0 && currencySymbol}
+                {applyDiscount(price.crew, discount)}
+              </span>
             </p>
           )}
           {price.metagamer && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
               <span className="relative bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-fuchsia-400">
-                MetaGamer tickets <img src="https://metagame.wtf/favicon.png" alt="MetaGame" className="inline-flex items-center h-5 w-auto -translate-x-2 -translate-y-1" />
+                MetaGamer tickets{' '}
+                <img
+                  src="https://metagame.wtf/favicon.png"
+                  alt="MetaGame"
+                  className="inline-flex items-center h-5 w-auto -translate-x-2 -translate-y-1"
+                />
               </span>
-							<span className="text-2xl md:text-3xl font-bold uppercase">
-								{price.metagamer > 0 && currencySymbol}
-								{applyDiscount(price.metagamer, discount)}
+              <span className="text-2xl md:text-3xl font-bold uppercase">
+                {price.metagamer > 0 && currencySymbol}
+                {applyDiscount(price.metagamer, discount)}
               </span>
             </p>
-					)}
+          )}
 
           <div className="text-center w-full self-end">{handleMethod(method, ctaText)}</div>
         </div>
