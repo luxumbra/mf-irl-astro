@@ -13,73 +13,74 @@ import alpinejs from '@astrojs/alpinejs';
 import react from '@astrojs/react';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const whenExternalScripts = (items = []) =>
-  SITE.googleAnalyticsId ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
+	SITE.googleAnalyticsId ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 // https://astro.build/config
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE.origin,
-  base: SITE.basePathname,
-  trailingSlash: SITE.trailingSlash ? 'always' : 'never',
-  output: 'static',
-  server: {
-    port: 1145,
-  },
-  integrations: [
-    tailwind({
-      config: {
-        applyBaseStyles: false,
-      },
-    }),
-    sitemap(),
-    image({
-      serviceEntryPoint: '@astrojs/image/sharp',
-    }),
-    mdx(),
-    ...whenExternalScripts(() =>
-      partytown({
-        config: {
+	site: SITE.origin,
+	base: SITE.basePathname,
+	trailingSlash: SITE.trailingSlash ? 'always' : 'never',
+	output: 'static',
+	server: {
+		host: 'metafest.local',
+		port: 1188,
+	},
+	integrations: [
+		tailwind({
+			config: {
+				applyBaseStyles: false,
+			},
+		}),
+		sitemap(),
+		image({
+			serviceEntryPoint: '@astrojs/image/sharp',
+		}),
+		mdx(),
+		...whenExternalScripts(() =>
+			partytown({
+				config: {
 					forward: ['dataLayer.push'],
-        },
-      })
-    ),
-    alpinejs(),
-    react(),
-  ],
-  experimental: {
-    integrations: true,
-  },
-  markdown: {
-    remarkPlugins: [remarkReadingTime],
-    extendDefaultPlugins: true,
-  },
-  define: {
-    global: 'globalThis',
-    Buffer: () => null,
-    process: {
-      env: 'development',
-    },
-  },
-  vite: {
-    resolve: {
-      alias: {
-        '~': path.resolve(__dirname, './src'),
-      },
-    },
-    plugins: [
-      glsl({
-        include: [
-          // Glob pattern, or array of glob patterns to import
-          '**/*.glsl',
-          '**/*.wgsl',
-          '**/*.vert',
-          '**/*.frag',
-          '**/*.vs',
-          '**/*.fs',
-        ],
-        defaultExtension: 'glsl',
-      }),
-    ],
-  },
+				},
+			})
+		),
+		alpinejs(),
+		react(),
+	],
+	experimental: {
+		integrations: true,
+	},
+	markdown: {
+		remarkPlugins: [remarkReadingTime],
+		extendDefaultPlugins: true,
+	},
+	define: {
+		global: 'globalThis',
+		Buffer: () => null,
+		process: {
+			env: 'development',
+		},
+	},
+	vite: {
+		resolve: {
+			alias: {
+				'~': path.resolve(__dirname, './src'),
+			},
+		},
+		plugins: [
+			glsl({
+				include: [
+					// Glob pattern, or array of glob patterns to import
+					'**/*.glsl',
+					'**/*.wgsl',
+					'**/*.vert',
+					'**/*.frag',
+					'**/*.vs',
+					'**/*.fs',
+				],
+				defaultExtension: 'glsl',
+			}),
+		],
+	},
 });
