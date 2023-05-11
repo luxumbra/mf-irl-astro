@@ -98,6 +98,7 @@ export const CryptoModalButton = ({
   const [basket, setBasket] = useState<CryptoItemType[]>([]);
   const [basketTotal, setBasketTotal] = useState(0);
   const earlyBirdDateFormated = DateTime.fromISO(earlyBirdExpires).toLocaleString(DateTime.DATE_SHORT);
+  console.log({ uri });
 
   const toggleModal = () => {
     if (typeof window !== 'undefined') {
@@ -126,7 +127,7 @@ export const CryptoModalButton = ({
         language: 'en',
       } as PaymentUrlOptions;
     };
-
+    console.log({ uri });
     // get the total amount of the basket
     const total = basketData.reduce((acc, item) => {
       return acc + parseFloat(item.amount);

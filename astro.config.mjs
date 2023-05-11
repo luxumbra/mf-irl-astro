@@ -13,7 +13,11 @@ import alpinejs from '@astrojs/alpinejs';
 import react from '@astrojs/react';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const whenExternalScripts = (items = []) =>
-	SITE.googleAnalyticsId ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
+	SITE.googleAnalyticsId ?
+		(Array.isArray(items) ?
+			items.map((item) => item()) :
+			[items()]) :
+		[];
 
 // https://astro.build/config
 

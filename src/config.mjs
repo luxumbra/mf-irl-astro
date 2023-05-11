@@ -3,13 +3,13 @@ import { DateTime } from "luxon";
 export const paycekProfileCode = import.meta.env.PUBLIC_PAYCEK_PROFILE_CODE;
 export const paycekSecret = import.meta.env.PUBLIC_PAYCEK_SECRET_KEY;
 
-export const isDev = import.meta.env.PUBLIC_HOSTNAME === 'http://metafest.local';
+export const isDev = import.meta.env.PUBLIC_HOSTNAME === 'http://metafest.local:1188';
 export const isProd = import.meta.env.PUBLIC_HOSTNAME === 'https://metafest.wtf';
 export const isTest = !(isDev || isProd) ?? false;
 
 export const HOSTNAME = import.meta.env.PUBLIC_HOSTNAME ?? 'https://metafest.wtf';
 
-export const uri = isDev ? 'https://0017-146-70-48-3.eu.ngrok.io' : 'https://test.metafest.wtf';
+export const uri = isProd ? 'https://metafest.wtf' : isTest ? 'https://test.metafest.wtf' : 'http://metafest.local:1188';
 export const currencySymbol = '€';
 export const currencyTicker = 'EUR';
 
@@ -27,8 +27,8 @@ export const SITE = {
 	description:
 		`A bit of a conference, a bit of a festival + a shitload of fun; Talks, workshops, games & music; a festival for DAOists & Regens. Earlybird discounts available until ${earlyBirdEndsFormatted}.`,
 
-	googleAnalyticsId: 'G-4436889R1F',
-	googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
+	// googleAnalyticsId: 'G-4436889R1F',
+	// googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
 };
 
 export const BLOG = {
