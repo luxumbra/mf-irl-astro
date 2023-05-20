@@ -4,5 +4,12 @@
     url('../fonts/relic-regular-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-	font-display: swap;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TrashHand';
+  font-style: normal;
+  font-weight: normal;
+  src: local('TrashHand'), url('../fonts/TrashHand.woff') format('woff');
 }
