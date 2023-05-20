@@ -25,7 +25,7 @@ export const SITE = {
 
 	title: 'MetaFest Croatia',
 	description:
-		`A bit of a conference, a bit of a festival + a shitload of fun; Talks, workshops, games & music; a festival for DAOists & Regens. Earlybird discounts available until ${earlyBirdEndsFormatted}.`,
+		`A bit of a conference, a bit of a festival + a shitload of fun; Talks, workshops, games & music; a festival for DAOists & Regens.`,
 
 	// googleAnalyticsId: 'G-4436889R1F',
 	// googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
