@@ -94,7 +94,7 @@
       @apply text-3xl lg:text-7xl text-primary text-right tracking-wide;
 
       & + p {
-        @apply text-3xl lg:text-4xl text-this-color text-right mt-0 mb-3 font-normal font-handwritten transform -rotate-3 translate-y-2;
+        @apply text-3xl lg:text-4xl text-this-color text-right mt-0 mb-3 font-bold font-handwritten transform -rotate-3 translate-y-2 uppercase;
       }
     }
 

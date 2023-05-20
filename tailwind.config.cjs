@@ -41,7 +41,7 @@ module.exports = {
 			fontFamily: {
 				sans: ['Montserrat', 'sans-serif'],
 				heading: ['"relicregular"', 'sans-serif'],
-				handwritten: ['"Give You Glory"', 'sans-serif'],
+				handwritten: ['"Sue Ellen Francisco"', 'sans-serif'],
 				alt: ['"Exo 2"', 'sans-serif'],
 			},
 			screens: {

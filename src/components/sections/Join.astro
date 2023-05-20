@@ -5,6 +5,7 @@ import { CountdownTimer } from '~/components/widgets/CountdownTimer';
 import { DateTime } from 'luxon';
 import { eventStartDate } from '~/config.mjs';
 import Section from '~/components/core/Section.astro';
+import { Icon } from 'astro-icon';
 
 export const isLive = DateTime.now() > DateTime.fromISO(eventStartDate);
 export const expiredMessage = `MetaFest is live!
@@ -59,7 +60,20 @@ We hope you made it! If you didn't, you can join us on Discord and watch the tal
         </div>
       </div>
     </div>
-
+    <p class="text-center text-off-white font-handwritten text-3xl font-bold -translate-y-4 uppercase">
+      Not ready? Got questions? <a
+        href="https://www.notion.so/MetaFest-FAQ-3437dd50c6164011bf01d07d81f18d30"
+        target="_blank"
+        rel="nofollow"
+        class="group text-primary hover:underline">Read the FAQ</a
+      > then come & <a
+        href="https://t.me/+qIDukhuLnwg5ZTI0"
+        target="_blank"
+        rel="nofollow"
+        class="group text-primary hover:underline"
+        >join the conversation <Icon name="mdi:telegram" className="w-16 h-16 inline-flex text-cyan-500" />
+      </a>
+    </p>
     <CountdownTimer to={eventStartDate} expiredMessage={expiredMessage} client:load />
     {isLive && <CallToAction isLive />}
     {!isLive && <CallToAction />}
