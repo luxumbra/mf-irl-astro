@@ -2,7 +2,7 @@ import { v4 as uuid } from 'uuid';
 import { generatePaymentUrl } from '~/utils/utils';
 import { animate, AnimatePresence, motion, useMotionValue, useTransform } from 'framer-motion';
 import type { CryptoItemType, PaymentUrlOptions } from '~/utils/utils';
-import { currencySymbol, paycekProfileCode, paycekSecret, uri } from '~/config.mjs';
+import { currencySymbol, paycekProfileCode, paycekSecret, uri, STRIPE_DISCOUNT_KEY } from '~/config.mjs';
 import './tier.css';
 import { useEffect, useState } from 'react';
 import { Modal } from 'flowbite-react';
@@ -18,10 +18,12 @@ export interface TicketMethodProps {
     sponsor?: number | string | null;
     crew?: number | string | null;
     metagamer?: number | string | null;
+    iykyk?: number | string | null;
   };
   discount: number | null;
   isEarlyBird?: boolean;
   earlyBirdExpires?: string;
+  isDiscounted?: boolean;
   summary: string;
   method: string;
   ctaText: string;
@@ -35,10 +37,12 @@ export type TicketMethodType = {
     sponsor?: number | string | null;
     crew?: number | string | null;
     metagamer?: number | string | null;
+    iykyk?: number | string | null;
   };
   discount: number | null;
   isEarlyBird?: boolean;
   earlyBirdExpires?: string;
+  isDiscounted?: boolean;
   summary: string;
   method: string;
   ctaText: string;
@@ -51,6 +55,7 @@ export interface BuyButtonProps {
   disabled?: boolean;
   isEarlyBird?: TicketMethodType['isEarlyBird'];
   earlyBirdExpires?: TicketMethodType['earlyBirdExpires'];
+  isDiscounted?: TicketMethodType['isDiscounted'];
 }
 
 export interface PayloadOptions {
@@ -550,6 +555,21 @@ export const MetagamerButton = ({ text, disabled }: BuyButtonProps): JSX.Element
     </button>
   );
 };
+
+export const DiscountsButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
+  const classes = disabled ? disabledBtnClasses : activeBtnClasses;
+
+  const onHandleClick = () => {
+    window.open(`https://buy.stripe.com/${STRIPE_DISCOUNT_KEY}`, '_blank');
+  };
+
+  return (
+    <button data-buy-method="discounts" className={classes} onClick={() => onHandleClick()} aria-disabled={disabled}>
+      {text}
+    </button>
+  );
+};
+
 export const applyDiscount = (price: number | string, discount: number) => {
   if (!discount || discount === 0) {
     return price;
@@ -592,6 +612,8 @@ export const TicketMethod = ({
         return <CrewButton text={cta} />;
       case 'metagamer':
         return <MetagamerButton text={cta} />;
+      case 'discounts':
+        return <DiscountsButton text={cta} />;
       default:
         return null;
     }
@@ -714,6 +736,23 @@ export const TicketMethod = ({
               <span className="text-2xl md:text-3xl font-bold uppercase">
                 {price.metagamer > 0 && currencySymbol}
                 {applyDiscount(price.metagamer, discount)}
+              </span>
+            </p>
+          )}
+
+          {method === 'discounts' && (
+            <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
+              <span className="relative bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-fuchsia-400">
+                IYKYK tickets{' '}
+                <img
+                  src="https://metagame.wtf/favicon.png"
+                  alt="MetaGame"
+                  className="inline-flex items-center h-5 w-auto -translate-x-2 -translate-y-1"
+                />
+              </span>
+              <span className="text-2xl md:text-3xl font-bold uppercase">
+                {price.standard > 0 && currencySymbol}
+                {applyDiscount(price.standard, discount)}
               </span>
             </p>
           )}

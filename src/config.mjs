@@ -17,6 +17,8 @@ export const earlyBirdEnds = '2023-05-01';
 export const eventStartDate = '2023-08-11';
 export const earlyBirdEndsFormatted = DateTime.fromISO(earlyBirdEnds).toLocaleString(DateTime.DATE_SHORT);
 
+export const STRIPE_DISCOUNT_KEY = import.meta.env.PUBLIC_STRIPE_DISCOUNT_KEY ?? '';
+
 export const SITE = {
 	name: 'MetaFest: Croatia',
 	origin: HOSTNAME ?? 'https://metafest.wtf',

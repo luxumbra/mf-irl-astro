@@ -17,7 +17,7 @@ import { DateTime } from 'luxon';
 export const earlyBirdExpiry = earlyBirdEnds;
 export const earlyBirdShortFormat = DateTime.fromISO(earlyBirdExpiry).toLocaleString(DateTime.DATE_SHORT);
 export const earlyBirdExpiresDays = Math.round(DateTime.fromISO(earlyBirdExpiry).diffNow('days').toObject().days);
-export const isEarlyBirdValid = DateTime.fromISO(earlyBirdExpiry) > DateTime.now();
+export const isEarlyBirdValid = DateTime.fromISO(earlyBirdExpiry) < DateTime.now();
 
 const meta = {
   title: `${SITE.title}: Event tickets`,
@@ -28,81 +28,9 @@ const meta = {
 
 export const ticketMethods: TicketMethodType[] = [
   {
-    title: 'Dump Fiat',
+    title: 'Discount ticket',
     price: {
-      standard: 200,
-      patron: 420,
-    },
-    discount: isEarlyBirdValid ? 25 : 0,
-    isEarlyBird: isEarlyBirdValid,
-    earlyBirdExpires: earlyBirdExpiry,
-    summary: 'Want to dump some fiat for a MetaFest ticket?',
-    method: 'fiat',
-    ctaText: 'Buy a ticket',
-  },
-  {
-    title: 'Buy with Crypto',
-    price: {
-      standard: 200,
-      patron: 420,
-    },
-    discount: isEarlyBirdValid ? 25 : 0,
-    isEarlyBird: isEarlyBirdValid,
-    earlyBirdExpires: earlyBirdExpiry,
-    summary: 'Of course, we accept all mainstream crypto.',
-    method: 'crypto',
-    ctaText: 'Buy a ticket',
-  },
-  {
-    title: 'Buy with Seeds',
-    price: {
-      standard: 200,
-      patron: 420,
-    },
-    discount: isEarlyBirdValid ? 25 : 0,
-    isEarlyBird: isEarlyBirdValid,
-    earlyBirdExpires: earlyBirdExpiry,
-    summary:
-      'Been hodling Seeds? Use them to buy a ticket. ![Alt](https://assets.coingecko.com/coins/images/13099/small/V8phEz8V.png?1612854078 "Seeds")',
-    method: 'seeds',
-    ctaText: 'Buy a ticket',
-  },
-  {
-    title: 'Be useful',
-    price: {
-      crew: 'Free',
-    },
-    discount: 100,
-    summary: 'Apply to speak, help with promoting the event, cleaning etc.',
-    method: 'crew',
-    ctaText: 'Apply',
-  },
-  {
-    title: 'Be a MetaGamer',
-    price: {
-      metagamer: 'Free',
-    },
-    discount: 100,
-    summary: 'Silver league & above in MetaGame? You get to join for free.',
-    method: 'metagamer',
-    ctaText: 'Claim',
-  },
-  {
-    title: 'Sponsor or Partner',
-    price: {
-      sponsor: 'POA',
-    },
-    discount: 0,
-    isEarlyBird: false,
-    summary: 'Want to have your project sponsor or partner with MetaFest?',
-    method: 'sponsor',
-    ctaText: 'More info',
-  },
-  {
-    title: 'Discounted ticket',
-    price: {
-      standard: 200,
-      patron: 420,
+      iykyk: 200,
     },
     discount: 0,
     isEarlyBird: false,
@@ -120,30 +48,9 @@ Flights, and Accommodation in and around Pula are limited.`;
 <Layout {meta}>
   <div class="pt-8"></div>
 
-  <SponsorsSection
-    title="Enter MetaFest"
-    precis="No freeloaders at MetaFest! Luckily, there's plenty of ways to get in."
-    full
-    alt
-  >
-    <div class="w-full text-center mt-5">
-      <CountdownTimer
-        to={earlyBirdExpiry}
-        headline="Earlybird discount ends:"
-        message="Accomodation & flights get booked up fast, don't miss out!"
-        color="#D4DB48"
-        client:load
-      />
-    </div>
-    <div
-      class="ticket-methods grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 items-stretch mx-auto mt-14 mb-20 lg:mb-16 gap-5 md:gap-8"
-    >
-      {
-        ticketMethods &&
-          ticketMethods.map((method) => {
-            if (method.method !== 'discounts') return <TicketMethod {...method} client:only />;
-          })
-      }
+  <SponsorsSection title="You know..." precis="Buy your MetaFest ticket at a discounted rate..." full alt>
+    <div class="ticket-methods flex justify-center items-stretch mx-auto mt-14 mb-20 lg:mb-16 gap-5 md:gap-8">
+      {ticketMethods && ticketMethods.map((method) => <TicketMethod {...method} client:only />)}
     </div>
     <p class="text-center text-off-white text-3xl">
       Not ready? Got questions? <a
