@@ -1,10 +1,11 @@
 /* eslint-disable react/no-unknown-property */
 import React, { Suspense, useEffect, useRef } from 'react';
-import { useThree, extend, useFrame } from '@react-three/fiber';
-import { Float, Sparkles, Center, OrbitControls, PerspectiveCamera, TransformControls } from '@react-three/drei';
-import { Mesh } from 'three';
+import { useThree, useFrame } from '@react-three/fiber';
+import { Sparkles, Center, PerspectiveCamera } from '@react-three/drei';
+import { Camera, Mesh } from 'three';
 import * as THREE from 'three';
-import gsap from 'gsap';
+// import gsap from 'gsap';
+import LoadingOrError from './LoadingOrError';
 
 export const experienceConfig = {
   objectsDistance: 4,
@@ -27,13 +28,7 @@ export interface SceneSectionProps {
 export function R3FSceneSection({ name, count, children, ...props }: SceneSectionProps) {
   const group = useRef(null);
   const { objectsDistance } = experienceConfig;
-  // const { layers } = props;
-  // useLayoutEffect(() => {
-  //   group.current.layers.enable(layers);
-  // }, [layers])
-  // if (group.current) {
-  //   console.log('section grp cur: ', group.current);
-  // }
+
   return (
     <group ref={group} name={name} position={[0, -objectsDistance * count, 0]} {...props}>
       {children}
@@ -53,7 +48,7 @@ function Experience() {
   const mousePos = useRef(new THREE.Vector2());
   const mouse = new THREE.Vector2();
   const plant1 = useRef<Mesh>(null);
-  const camera = useRef();
+  const camera = useRef(Camera);
   const cameraGroup = useRef();
   const { objectsDistance, sparkles } = experienceConfig;
   const clock = new THREE.Clock();
@@ -156,7 +151,7 @@ function Experience() {
 
   return (
     <>
-      <Suspense fallback={null}>
+      <Suspense fallback={<LoadingOrError message="Loading atmosphere..." />}>
         <group ref={cameraGroup}>
           <PerspectiveCamera
             ref={camera}
@@ -183,23 +178,6 @@ function Experience() {
             />
           </Center>
         </R3FSceneSection>
-
-        {/* <R3FSceneSection name="SectionTwo" count={1}>
-          <Float
-            position={[0, 0, 0]}
-            floatingRange={[0.1, 1]}
-            rotation={[Math.PI / 3.5, 0, 0]}
-            rotationIntensity={4}
-            floatIntensity={0.5}
-            speed={0.5}
-          >
-            <mesh ref={plant1}>
-              <boxGeometry args={[28, 28, 28]} />
-              <meshBasicMaterial color="orange" />
-            </mesh>
-
-          </Float>
-        </R3FSceneSection> */}
       </Suspense>
     </>
   );
