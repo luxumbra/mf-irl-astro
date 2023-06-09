@@ -1,6 +1,11 @@
 [
   {
-    "title": "Teaser video",
+    "title": "Fort flyover",
+    "description": "A little teaser video of the stunning venue for MetaFest.",
+    "image": "https://www.youtube.com/embed/Caemy1c1dLM"
+  },
+  {
+    "title": "Event Teaser video",
     "description": "A little teaser video of the stunning venue for MetaFest.",
     "image": "https://www.youtube.com/embed/0V-QzheLKiw"
   },

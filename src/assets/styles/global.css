@@ -397,14 +397,6 @@
         background-image: url('../images/hammered-bg.png');
 
         @apply bg-top bg-cover;
-
-        /* &::after {
-          content: '';
-          @apply absolute bottom-0 left-0 w-full h-[1px] z-20;
-
-          background-image: url('../images/section-divider.png');
-          @apply bg-bottom bg-cover;
-        } */
       }
 
       a {
@@ -428,13 +420,32 @@
     }
   }
 
-  /* .partners-list {
-    .partner {
-      background-image: url('../images/hammered-bg.png');
-
-      @apply bg-top bg-cover;
+  .partners-list {
+    ul {
+      @apply grid grid-cols-2 lg:grid-cols-6  3xl:grid-cols-6 gap-3 lg:gap-4 3xl:gap-6;
     }
-  	} */
+    .partner {
+      background-image: none;
+
+      @apply bg-top bg-cover overflow-visible;
+
+      a {
+        img {
+          @apply transition-all duration-200 ease-in-out;
+        }
+        &:hover {
+          @apply overflow-visible;
+          img {
+            @apply scale-105;
+          }
+        }
+      }
+    }
+  }
+
+  lite-youtube {
+    @apply relative w-full h-full !max-w-full max-h-full;
+  }
 
   .mobile-menu {
     menu {
