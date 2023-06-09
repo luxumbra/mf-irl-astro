@@ -35,31 +35,30 @@ import sponsors from '~/data/sponsors.json';
 
                 return (
                   <motion.li
-                    className="partner rounded-2xl bg-gradient-to-br from-secondary-alt via-secondary-alt to-transparent"
+                    className="partner"
                     initial={{ opacity: 0, y: 20, scale: 0.8 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{ duration: 0.2, delay: delay }}
                     viewport={{ once: true }}
-                    client:load
+                    client:visible
                   >
                     <a
                       href={sponsor.url ?? '#'}
-                      class="flex flex-col p-3 lg:p-5 text-center"
+                      class="p-3 lg:p-0 text-center"
                       title={sponsor.name}
                       target={isExternal && '_blank'}
                       rel={isExternal && 'nofollow'}
                     >
                       <Image
-                        class="rounded-full border-2 border-primary mx-auto"
+                        class="mx-auto object-fill rounded-2xl"
                         src={image}
                         aspectRatio={1}
                         alt={sponsor.name}
-                        width="100"
-                        height="100"
+                        width="200"
                         loading={'lazy'}
                         format={'webp'}
+                        placeholder={'blur'}
                       />
-                      <span>{sponsor.name}</span>
                     </a>
                   </motion.li>
                 );
