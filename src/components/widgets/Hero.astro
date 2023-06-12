@@ -11,160 +11,160 @@ import heroImageSm from '~/assets/images/hero/hero-castle-sm.jpg';
 // import heroImageSm from '~/assets/images/hero/metafest.png';
 
 export interface HeroProps {
-  titleLn1: string;
-  titleLn2: string;
-  subtitle: string;
-  dates: string;
-  ctaUrl: string;
+	titleLn1: string;
+	titleLn2: string;
+	subtitle: string;
+	dates: string;
+	ctaUrl: string;
 }
 
 const { titleLn1, titleLn2, subtitle, ctaUrl } = Astro.props as HeroProps;
 ---
 
 <div
-  id="start"
-  class="hero relative flex w-full h-screen p-0 overflow-hidden"
-  x-data="{ shown: false }"
-  x-intersect="shown = true"
-  x-intersect:leave="shown = false"
+	id="start"
+	class="hero relative flex w-full h-screen p-0 overflow-hidden"
+	x-data="{ shown: false }"
+	x-intersect="shown = true"
+	x-intersect:leave="shown = false"
 >
-  <div class="hero__content h-full w-full lg:w-10/12 px-3 py-32 2xl:px-16 2xl:py-32 justify-end">
-    <div
-      class="hero__content__primary invisible"
-      x-show="shown"
-      x-bind:class="{ 'invisible': !shown }"
-      x-transition:enter="transition ease-out duration-500"
-      x-transition:enter-start="opacity-0 transform translate-y-8"
-      x-transition:enter-end="opacity-100 transform translate-y-0"
-      x-transition:leave="transition ease-in duration-500"
-      x-transition:leave-start="opacity-100 transform translate-y-0"
-      x-transition:leave-end="opacity-0 transform translate-y-8"
-    >
-      <h1 class="hero__title">{titleLn1}<br /> {titleLn2}</h1>
-      <p class="hero__subtitle">{subtitle}</p>
+	<div class="hero__content h-full w-full lg:w-10/12 px-3 py-32 2xl:px-16 2xl:py-32 justify-end">
+		<div
+			class="hero__content__primary invisible"
+			x-show="shown"
+			x-bind:class="{ 'invisible': !shown }"
+			x-transition:enter="transition ease-out duration-500"
+			x-transition:enter-start="opacity-0 transform translate-y-8"
+			x-transition:enter-end="opacity-100 transform translate-y-0"
+			x-transition:leave="transition ease-in duration-500"
+			x-transition:leave-start="opacity-100 transform translate-y-0"
+			x-transition:leave-end="opacity-0 transform translate-y-8"
+		>
+			<h1 class="hero__title">{titleLn1}<br /> {titleLn2}</h1>
+			<p class="hero__subtitle">{subtitle}</p>
 
-      <!-- <div class="max-w-7xl"> -->
-      <div class="event-info w-full">
-        <div
-          class="event-info__item w-auto text-center"
-          x-show="shown"
-          x-bind:class="{ 'invisible': !shown }"
-          x-transition:enter="transition ease-out duration-500 delay-[250ms]"
-          x-transition:enter-start="opacity-0 transform translate-y-8"
-          x-transition:enter-end="opacity-100 transform translate-y-0"
-          x-transition:leave="transition ease-in duration-500"
-          x-transition:leave-start="opacity-100 transform translate-y-0"
-          x-transition:leave-end="opacity-0 transform translate-y-8"
-        >
-          <h5 class="text-off-white uppercase font-normal">WarmUp</h5>
-          <div class="bg-gradient-primary-solid rounded-lg">
-            <p class="mb-0 text-off-white flex flex-col justify-center text-center">
-              <span>11 - 15</span>
-              <span>August</span>
-            </p>
-          </div>
-        </div>
-        <div
-          class="event-info__item event-info__item--highlight w-auto text-center scale-125 origin-center"
-          x-show="shown"
-          x-bind:class="{ 'invisible': !shown }"
-          x-transition:enter="transition ease-out duration-500 delay-[350ms]"
-          x-transition:enter-start="opacity-0 transform translate-y-8"
-          x-transition:enter-end="opacity-100 transform translate-y-0"
-          x-transition:leave="transition ease-in duration-500"
-          x-transition:leave-start="opacity-100 transform translate-y-0"
-          x-transition:leave-end="opacity-0 transform translate-y-8"
-        >
-          <h5 class="text-off-white uppercase font-extrabold">Main Event</h5>
-          <div class="bg-gradient-primary-solid rounded-lg shadow-2xl shadow-black">
-            <p class="mb-0 text-off-white flex flex-col justify-center text-center">
-              <span>16 - 18</span>
-              <span>August</span>
-            </p>
-          </div>
-        </div>
-        <div
-          class="event-info__item w-auto text-center"
-          x-show="shown"
-          x-bind:class="{ 'invisible': !shown }"
-          x-transition:enter="transition ease-out duration-500 delay-[400ms]"
-          x-transition:enter-start="opacity-0 transform translate-y-8"
-          x-transition:enter-end="opacity-100 transform translate-y-0"
-          x-transition:leave="transition ease-in duration-500"
-          x-transition:leave-start="opacity-100 transform translate-y-0"
-          x-transition:leave-end="opacity-0 transform translate-y-8"
-        >
-          <h5 class="text-off-white uppercase font-normal">Bus Trip</h5>
-          <div class="bg-gradient-primary-solid rounded-lg">
-            <p class="mb-0 text-off-white flex flex-col justify-center text-center">
-              <span>19 - 24</span>
-              <span>August</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="hero__content__secondary flex justify-end md:justify-start mt-3 md:mt-0">
-      <motion.div
-        className="cta"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        client:load
-      >
-        <a
-          href={ctaUrl}
-          class="cta__button relative group flex items-center justify-center flex-row md:flex-col border-2 border-black font-sans text-secondary rounded-lg md:rounded-full bg-gradient-secondary md:aspect-square py-2 px-5 text-xl 2xl:text-5xl space-y-0 leading-tight"
-        >
-          <span class="font-black font-sans text-secondary">LFG!</span>
-          <span
-            class="group-hover:animate-ping inset-0 absolute w-full h-full rounded-full bg-gradient-primary opacity-25"
-          ></span>
-        </a>
-      </motion.div>
-    </div>
-  </div>
-  <div
-    class="hero__image absolute w-full h-full inset-0 overflow-hidden invisible"
-    x-show="shown"
-    x-bind:class="{ 'invisible': !shown }"
-    x-transition:enter="transition ease-out duration-500 delay-300"
-    x-transition:enter-start="opacity-0"
-    x-transition:enter-end="opacity-100"
-    x-transition:leave="transition ease-in duration-500"
-    x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0"
-  >
-    <Picture
-      src={heroImageSm}
-      class="w-full h-full block xl:hidden"
-      alt="Hero Image"
-      sizes="(max-width: 400px) 400px, (max-width: 767px) 768px, 1280px"
-      widths={[400, 768, 1280]}
-      aspectRatio={833 / 1480}
-      loading="eager"
-      width={768}
-      formats={['webp', 'jpeg']}
-      fit="cover"
-    />
+			<!-- <div class="max-w-7xl"> -->
+			<div class="event-info w-full">
+				<div
+					class="event-info__item w-auto text-center"
+					x-show="shown"
+					x-bind:class="{ 'invisible': !shown }"
+					x-transition:enter="transition ease-out duration-500 delay-[250ms]"
+					x-transition:enter-start="opacity-0 transform translate-y-8"
+					x-transition:enter-end="opacity-100 transform translate-y-0"
+					x-transition:leave="transition ease-in duration-500"
+					x-transition:leave-start="opacity-100 transform translate-y-0"
+					x-transition:leave-end="opacity-0 transform translate-y-8"
+				>
+					<div class="date-title text-off-white uppercase font-normal">WarmUp</div>
+					<div class="bg-gradient-primary-solid rounded-lg">
+						<p class="mb-0 text-off-white flex flex-col justify-center text-center">
+							<span>11 - 15</span>
+							<span>August</span>
+						</p>
+					</div>
+				</div>
+				<div
+					class="event-info__item event-info__item--highlight w-auto text-center scale-125 origin-center"
+					x-show="shown"
+					x-bind:class="{ 'invisible': !shown }"
+					x-transition:enter="transition ease-out duration-500 delay-[350ms]"
+					x-transition:enter-start="opacity-0 transform translate-y-8"
+					x-transition:enter-end="opacity-100 transform translate-y-0"
+					x-transition:leave="transition ease-in duration-500"
+					x-transition:leave-start="opacity-100 transform translate-y-0"
+					x-transition:leave-end="opacity-0 transform translate-y-8"
+				>
+					<div class="date-title text-off-white uppercase font-extrabold">Main Event</div>
+					<div class="bg-gradient-primary-solid rounded-lg shadow-2xl shadow-black">
+						<p class="mb-0 text-off-white flex flex-col justify-center text-center">
+							<span>16 - 18</span>
+							<span>August</span>
+						</p>
+					</div>
+				</div>
+				<div
+					class="event-info__item w-auto text-center"
+					x-show="shown"
+					x-bind:class="{ 'invisible': !shown }"
+					x-transition:enter="transition ease-out duration-500 delay-[400ms]"
+					x-transition:enter-start="opacity-0 transform translate-y-8"
+					x-transition:enter-end="opacity-100 transform translate-y-0"
+					x-transition:leave="transition ease-in duration-500"
+					x-transition:leave-start="opacity-100 transform translate-y-0"
+					x-transition:leave-end="opacity-0 transform translate-y-8"
+				>
+					<div class="date-title text-off-white uppercase font-normal">Bus Trip</div>
+					<div class="bg-gradient-primary-solid rounded-lg">
+						<p class="mb-0 text-off-white flex flex-col justify-center text-center">
+							<span>19 - 24</span>
+							<span>August</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hero__content__secondary flex justify-end md:justify-start mt-3 md:mt-0">
+			<motion.div
+				className="cta"
+				initial={{ opacity: 0, y: 20 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: false }}
+				transition={{ duration: 0.5, delay: 0.3 }}
+				client:load
+			>
+				<a
+					href={ctaUrl}
+					class="cta__button relative group flex items-center justify-center flex-row md:flex-col border-2 border-black font-sans text-secondary rounded-lg md:rounded-full bg-gradient-secondary md:aspect-square py-2 px-5 text-xl 2xl:text-5xl space-y-0 leading-tight"
+				>
+					<span class="font-black font-sans text-secondary">LFG!</span>
+					<span
+						class="group-hover:animate-ping inset-0 absolute w-full h-full rounded-full bg-gradient-primary opacity-25"
+					></span>
+				</a>
+			</motion.div>
+		</div>
+	</div>
+	<div
+		class="hero__image absolute w-full h-full inset-0 overflow-hidden invisible"
+		x-show="shown"
+		x-bind:class="{ 'invisible': !shown }"
+		x-transition:enter="transition ease-out duration-500 delay-300"
+		x-transition:enter-start="opacity-0"
+		x-transition:enter-end="opacity-100"
+		x-transition:leave="transition ease-in duration-500"
+		x-transition:leave-start="opacity-100"
+		x-transition:leave-end="opacity-0"
+	>
+		<Picture
+			src={heroImageSm}
+			class="w-full h-full block xl:hidden"
+			alt="Hero Image"
+			sizes="(max-width: 400px) 400px, (max-width: 767px) 768px, 1280px"
+			widths={[400, 768, 1280]}
+			aspectRatio={833 / 1480}
+			loading="eager"
+			width={768}
+			formats={['webp', 'jpeg']}
+			fit="cover"
+		/>
 
-    <Picture
-      src={heroImageLg}
-      class="w-full h-full hidden xl:block"
-      alt="Hero Image"
-      sizes="(max-width: 400px) 400px, (max-width: 767px) 768px, (max-width: 1479px) 1480px, 1920px"
-      widths={[400, 768, 1366, 1440, 1920]}
-      aspectRatio={1.77}
-      loading="eager"
-      width={1480}
-      formats={['webp', 'jpeg']}
-      fit="cover"
-    />
+		<Picture
+			src={heroImageLg}
+			class="w-full h-full hidden xl:block"
+			alt="Hero Image"
+			sizes="(max-width: 400px) 400px, (max-width: 767px) 768px, (max-width: 1479px) 1480px, 1920px"
+			widths={[400, 768, 1366, 1440, 1920]}
+			aspectRatio={1.77}
+			loading="eager"
+			width={1480}
+			formats={['webp', 'jpeg']}
+			fit="cover"
+		/>
 
-    <div
-      class="hero__image__overlay absolute inset-x-0 -bottom-1 h-16 bg-gradient-to-t from-secondary-dark via-secondary-dark to-transparent z-10"
-    >
-    </div>
-  </div>
+		<div
+			class="hero__image__overlay absolute inset-x-0 -bottom-1 h-16 bg-gradient-to-t from-secondary-dark via-secondary-dark to-transparent z-10"
+		>
+		</div>
+	</div>
 </div>
