@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import React, { Suspense, useEffect, useRef } from 'react';
+import React, { Suspense, useCallback, useEffect, useMemo, useRef } from 'react';
 import { useThree, useFrame } from '@react-three/fiber';
 import { Sparkles, Center, PerspectiveCamera } from '@react-three/drei';
 import { Camera, Mesh } from 'three';
@@ -50,89 +50,74 @@ function Experience() {
   const plant1 = useRef<Mesh>(null);
   const camera = useRef(Camera);
   const cameraGroup = useRef();
-  const { objectsDistance, sparkles } = experienceConfig;
   const clock = new THREE.Clock();
   let previousTime = 0;
+  const currentSection = useRef(0);
+
+  const experienceConfig = useMemo(
+    () => ({
+      objectsDistance: 4,
+      sparkles: {
+        size: 10,
+        count: 300,
+        scale: new THREE.Vector3(30, 40, 40),
+        positionY: 1,
+        speed: 0.2,
+      },
+    }),
+    []
+  );
+  const { objectsDistance, sparkles } = experienceConfig;
+
+  const resizeHandler = useCallback(() => {
+    sizes.current.width = window.innerWidth;
+    sizes.current.height = window.innerHeight;
+  }, []);
+
+  const scrollHandler = useCallback(() => {
+    scrollY.current = window.scrollY;
+
+    const newSection = Math.round(scrollY.current / sizes.current.height);
+    if (newSection !== currentSection.current) {
+      currentSection.current = newSection;
+    }
+  }, []);
+
+  const mousemoveHandler = useCallback((event) => {
+    cursor.current.x = event.clientX / sizes.current.width - 0.3;
+    cursor.current.y = -(event.clientY / sizes.current.height) - 0.3;
+    // console.log('curCursor', cursor.current);
+
+    mousePos.current.x = (event.clientX / sizes.current.width) * 2 - 1;
+    mousePos.current.y = -(event.clientY / sizes.current.height) * 2 - 1;
+
+    // mouse.position.x = event.clientX / sizes.current.width
+    // mouse.position.y = event.clientY / sizes.current.height
+    // console.log('mouse pos', mouse);
+  }, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      // Set initial sizes based on the display
       sizes.current = {
         width: window.innerWidth,
         height: window.innerHeight,
       };
 
-      // Scroll
+      // Set initial scroll position
       scrollY.current = window.scrollY;
-      let currentSection = 0;
-      window.addEventListener('resize', () => {
-        // Update sizes
-        sizes.current.width = window.innerWidth;
-        sizes.current.height = window.innerHeight;
-      });
 
-      window.addEventListener('scroll', () => {
-        scrollY.current = window.scrollY;
-
-        // console.log(scrollY);
-
-        const newSection = Math.round(scrollY.current / sizes.current.height);
-        if (newSection !== currentSection) {
-          currentSection = newSection;
-
-          // if (cameraGroup.current) {
-          //   switch (currentSection) {
-          //     case 0:
-          //       gsap.to(cameraGroup.current.position, {
-          //         delay: 0.5,
-          //         duration: 1,
-          //         y: 0,
-          //         ease: "power2.out",
-          //       });
-          //       break;
-          //     case 1:
-          //       gsap.to(cameraGroup.current.position, {
-          //         duration: 1,
-          //         y: experienceConfig.objectsDistance * 1,
-          //         delay: 0.5,
-          //         ease: "power2.out",
-          //       });
-          //       break;
-          //     case 2:
-          //       gsap.to(cameraGroup.current.position, {
-          //         duration: 1,
-          //         y: experienceConfig.objectsDistance * 2,
-          //         delay: 0.5,
-          //         ease: "power2.out",
-          //       });
-          //       break;
-          //     default:
-          //       gsap.to(cameraGroup.current.position, {
-          //         duration: 1,
-          //         y: 0,
-          //         delay: 0.5,
-          //         ease: "power2.out",
-          //       });
-          //       break;
-          //   }
-          // }
-        }
-      });
-
-      // Mouse move
-      window.addEventListener('mousemove', (event) => {
-        cursor.current.x = event.clientX / sizes.current.width - 0.3;
-        cursor.current.y = -(event.clientY / sizes.current.height) - 0.3;
-        // console.log('curCursor', cursor.current);
-
-        mousePos.current.x = (event.clientX / sizes.current.width) * 2 - 1;
-        mousePos.current.y = -(event.clientY / sizes.current.height) * 2 - 1;
-
-        // mouse.position.x = event.clientX / sizes.current.width
-        // mouse.position.y = event.clientY / sizes.current.height
-        // console.log('mouse pos', mouse);
-      });
+      window.addEventListener('scroll', scrollHandler);
+      window.addEventListener('resize', resizeHandler);
+      window.addEventListener('mousemove', mousemoveHandler);
     }
-  }, []);
+
+    return () => {
+      window.removeEventListener('scroll', scrollHandler);
+      window.removeEventListener('resize', resizeHandler);
+      window.removeEventListener('mousemove', mousemoveHandler);
+    };
+  }, [scrollHandler, resizeHandler, mousemoveHandler]);
 
   useFrame(() => {
     const elapsedTime = clock.getElapsedTime();
@@ -156,7 +141,7 @@ function Experience() {
           <PerspectiveCamera
             ref={camera}
             makeDefault
-            aspect={sizes.width / sizes.height}
+            aspect={sizes.current.width / sizes.current.height}
             position={[0, 0, 0]}
             far={400}
             filmGauge={53}
@@ -166,17 +151,14 @@ function Experience() {
         <R3FSceneSection name="SectionOne" count={0}>
           <directionalLight position={[1, 2, 3]} intensity={1.5} />
           <ambientLight intensity={0.5} />
-
-          <Center>
-            <Sparkles
-              size={sparkles.size}
-              count={sparkles.count}
-              scale={sparkles.scale}
-              position-y={sparkles.positionY}
-              speed={sparkles.speed}
-              color={sparkleColor}
-            />
-          </Center>
+          <Sparkles
+            size={sparkles.size}
+            count={sparkles.count}
+            scale={sparkles.scale}
+            position-y={sparkles.positionY}
+            speed={sparkles.speed}
+            color={sparkleColor}
+          />
         </R3FSceneSection>
       </Suspense>
     </>
