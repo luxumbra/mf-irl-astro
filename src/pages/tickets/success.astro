@@ -12,56 +12,52 @@ import Confetti from '~/components/widgets/Confetti.astro';
 import { bubbles, confettiA } from '~/config/particles.config';
 
 const meta = {
-  title: `${SITE.title}: Ticket purchase success`,
-  description: 'You&apos;re going to MetaFest Croatia! See you there!',
-  canonical: getCanonical(getHomePermalink()),
+	title: `${SITE.title}: Ticket purchase success`,
+	description: 'You&apos;re going to MetaFest Croatia! See you there!',
+	canonical: getCanonical(getHomePermalink()),
 };
-
-
 ---
+
 <script>
-  if (typeof window !== 'undefined') {
-    const timer = 15;
-    const countdown = (seconds: number) => {
-      const countdownEl = document.querySelector('.countdown');
-      const mins = Math.floor(seconds / 60);
-      let secs: string | number = seconds % 60;
-      secs = secs < 10 ? secs : secs;
-      countdownEl.innerHTML = mins > 0 ? `${mins}:${secs}` : `${secs}`;
-      seconds--;
-      if (seconds >= 0) {
-        setTimeout(() => countdown(seconds), 1000);
-      }
-    };
-    setTimeout(() => {
-      window.location.assign('/');
-    }, timer * 1000);
-    countdown(timer);
-  }
+	if (typeof window !== 'undefined') {
+		const timer = 15;
+		const countdown = (seconds: number) => {
+			const countdownEl = document.querySelector('.countdown');
+			const mins = Math.floor(seconds / 60);
+			let secs: string | number = seconds % 60;
+			secs = secs < 10 ? secs : secs;
+			countdownEl.innerHTML = mins > 0 ? `${mins}:${secs}` : `${secs}`;
+			seconds--;
+			if (seconds >= 0) {
+				setTimeout(() => countdown(seconds), 1000);
+			}
+		};
+		setTimeout(() => {
+			window.location.assign('/');
+		}, timer * 1000);
+		countdown(timer);
+	}
 </script>
 <Layout {meta}>
-  <div class="pt-32"></div>
+	<div class="pt-32"></div>
 
-  <SponsorsSection
-    title="Awesome!!"
-    precis="🎉 You're coming to MetaFest 2023!! 🎉"
-    full
-   >
-	 <div class="text-center w-full flex flex-col justify-center">
-		<p class="text-base md:text-2xl text-center">Thanks for buying a ticket! Check your email for confirmation.</p>
-		<p class="text-base md:text-2xl text-center">See you there!!</p>
+	<SponsorsSection title="Awesome!!" precis="🎉 You're coming to MetaFest 2023!! 🎉" full>
+		<div class="text-center w-full flex flex-col justify-center">
+			<p class="text-base md:text-2xl text-center">Thanks for buying a ticket! Check your email for confirmation.</p>
+			<p class="text-base md:text-2xl text-center">See you there!!</p>
 
-		<p class="text-base md:text-2xl text-center mt-4">You will be redirected to the <a href="/">homepage</a> in <span class="countdown">0</span> seconds.</p>
+			<p class="text-base md:text-2xl text-center mt-4">
+				You will be redirected to the <a href="/">homepage</a> in <span class="countdown">0</span> seconds.
+			</p>
 		</div>
-	 </SponsorsSection>
+	</SponsorsSection>
 
+	<!-- <Confetti options={confettiA} /> -->
+	<div class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto">
+		<div class="relative w-full h-full" x-data="{shown: false}" x-intersect:once="shown = true">
+			<Plants />
+		</div>
+	</div>
 
-	 <!-- <Confetti options={confettiA} /> -->
-  <div class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto">
-    <div class="relative w-full h-full" x-data="{shown: false}" x-intersect:once="shown = true">
-      <Plants />
-    </div>
-  </div>
-
-	<ThreeD client:load />
+	<ThreeD client:visible />
 </Layout>

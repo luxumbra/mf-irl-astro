@@ -14,153 +14,153 @@ import mgLogo from '~/assets/images/mg-logo.gif';
 import Plants from '~/components/widgets/Plants.astro';
 
 const meta = {
-  title: `${SITE.title}: Event sponsors`,
-  description:
-    'Sponsor MetaFest Croatia - Bronze, Gold, Diamond tiers with perks including logo placement, NFT tickets, and speaking opportunities. Optional Expansion Packs available. Join one of the best events of 2023. Apply now.',
-  canonical: getCanonical(getHomePermalink()),
-  image: socialImage,
+	title: `${SITE.title}: Event sponsors`,
+	description:
+		'Sponsor MetaFest Croatia - Bronze, Gold, Diamond tiers with perks including logo placement, NFT tickets, and speaking opportunities. Optional Expansion Packs available. Join one of the best events of 2023. Apply now.',
+	canonical: getCanonical(getHomePermalink()),
+	image: socialImage,
 };
 
 export const sponsorshipTiers = [
-  {
-    title: 'Bronze',
-    price: 2,
-    summary: 'A minimum viable sponsorship of MetaFest by fellow DAOs or regen projects.',
-    perks: [
-      {
-        summary: 'Your logo on the website, most promo materials, media & aftermovie',
-      },
-      {
-        summary: 'Your logo in swag bags & at the venue',
-      },
-      {
-        summary: '3 ticket NFTs (worth $600)',
-      },
-      {
-        summary: 'Sponsor swag bags & bracelets',
-      },
-    ],
-  },
-  {
-    title: 'Gold',
-    price: 5,
-    summary: 'A much better way to support - give us $5k & our hat goes off.',
-    perks: [
-      {
-        summary: 'Your logo on the website, most promo materials, media & aftermovie',
-      },
-      {
-        summary: 'Your logo in swag bags & at the venue',
-      },
-      {
-        summary: 'Talk or workshop',
-      },
-      {
-        summary: '8 ticket NFTs (worth $1200)',
-      },
-      {
-        summary: 'Rare swag bags & bracelets',
-      },
-    ],
-  },
-  {
-    title: 'Diamond',
-    price: 10,
-    summary: 'Reserved for the best to signal their support of the movement.',
-    perks: [
-      {
-        summary: 'Your logo on the website, all promo materials, media & aftermovie',
-      },
-      {
-        summary: 'Your logo in swag bags & at the venue',
-      },
-      {
-        summary: 'Your logo on the livestreams',
-      },
-      {
-        summary: 'Talk and workshop',
-      },
-      {
-        summary: 'Private chamber & a table in the dungeon (coworking) for your org',
-      },
-      {
-        summary: 'A promo booth for your project (first 5, first come, first served)',
-      },
-      {
-        summary: '16 ticket NFTs (worth $2400)',
-      },
-      {
-        summary: 'Epic swag bags & project-specific bracelets',
-      },
-    ],
-  },
+	{
+		title: 'Bronze',
+		price: 2,
+		summary: 'A minimum viable sponsorship of MetaFest by fellow DAOs or regen projects.',
+		perks: [
+			{
+				summary: 'Your logo on the website, most promo materials, media & aftermovie',
+			},
+			{
+				summary: 'Your logo in swag bags & at the venue',
+			},
+			{
+				summary: '3 ticket NFTs (worth $600)',
+			},
+			{
+				summary: 'Sponsor swag bags & bracelets',
+			},
+		],
+	},
+	{
+		title: 'Gold',
+		price: 5,
+		summary: 'A much better way to support - give us $5k & our hat goes off.',
+		perks: [
+			{
+				summary: 'Your logo on the website, most promo materials, media & aftermovie',
+			},
+			{
+				summary: 'Your logo in swag bags & at the venue',
+			},
+			{
+				summary: 'Talk or workshop',
+			},
+			{
+				summary: '8 ticket NFTs (worth $1200)',
+			},
+			{
+				summary: 'Rare swag bags & bracelets',
+			},
+		],
+	},
+	{
+		title: 'Diamond',
+		price: 10,
+		summary: 'Reserved for the best to signal their support of the movement.',
+		perks: [
+			{
+				summary: 'Your logo on the website, all promo materials, media & aftermovie',
+			},
+			{
+				summary: 'Your logo in swag bags & at the venue',
+			},
+			{
+				summary: 'Your logo on the livestreams',
+			},
+			{
+				summary: 'Talk and workshop',
+			},
+			{
+				summary: 'Private chamber & a table in the dungeon (coworking) for your org',
+			},
+			{
+				summary: 'A promo booth for your project (first 5, first come, first served)',
+			},
+			{
+				summary: '16 ticket NFTs (worth $2400)',
+			},
+			{
+				summary: 'Epic swag bags & project-specific bracelets',
+			},
+		],
+	},
 ];
 
 export const expansionPacks = [
-  {
-    title: 'Activity',
-    price: 1,
-    summary: 'Have an activity powered by your organization, why don’t you?',
-    perks: [
-      {
-        summary: 'Jetskiing by XYZ DAO',
-      },
-      {
-        summary: 'Paintball by XYZ DAO',
-      },
-      {
-        summary: 'Panoramic flight by XYZ DAO',
-      },
-    ],
-  },
-  {
-    title: 'Drinks & Food',
-    price: 5,
-    summary: 'Want to be known as the ones that feed the people & quench the thirst?',
-    perks: [
-      {
-        summary: 'Would be announced that all the drinks are “courtesy of DAO X”',
-      },
-      {
-        summary: 'Would be announced that all the food is “courtesy of DAO X”',
-      },
-    ],
-  },
-  {
-    title: 'Hosted By',
-    price: 10,
-    summary: 'Want to be known as a host? Pay for 10+ person accommodation!',
-    perks: [
-      {
-        summary: 'Villa with a pool hosted by Your DAO',
-      },
-    ],
-  },
+	{
+		title: 'Activity',
+		price: 1,
+		summary: 'Have an activity powered by your organization, why don’t you?',
+		perks: [
+			{
+				summary: 'Jetskiing by XYZ DAO',
+			},
+			{
+				summary: 'Paintball by XYZ DAO',
+			},
+			{
+				summary: 'Panoramic flight by XYZ DAO',
+			},
+		],
+	},
+	{
+		title: 'Drinks & Food',
+		price: 5,
+		summary: 'Want to be known as the ones that feed the people & quench the thirst?',
+		perks: [
+			{
+				summary: 'Would be announced that all the drinks are “courtesy of DAO X”',
+			},
+			{
+				summary: 'Would be announced that all the food is “courtesy of DAO X”',
+			},
+		],
+	},
+	{
+		title: 'Hosted By',
+		price: 10,
+		summary: 'Want to be known as a host? Pay for 10+ person accommodation!',
+		perks: [
+			{
+				summary: 'Villa with a pool hosted by Your DAO',
+			},
+		],
+	},
 ];
 ---
 
 <Layout {meta}>
-  <div class="pt-32"></div>
-  <SponsorsSection
-    title="Who’s behind it?"
-    precis="MetaFest Croatia is organized by [MetaFam](https://metagame.wtf)."
-    alt
-  >
-    <Markdown>
-      After doing [a conference](https://metagame.substack.com/p/intercon-what-how-even), [a
-      hackathon](https://metagame.substack.com/p/fork-the-world-opening-), two MetaFests
-      ([1](https://metagame.substack.com/p/metaspecial-metafest-is-alive) &
-      [2](https://metagame.substack.com/p/metafest2-is-happening-now)) & countless meetups all in the metaverse, we’ve
-      decided to level up & organize IRL!
-    </Markdown>
+	<div class="pt-32"></div>
+	<SponsorsSection
+		title="Who’s behind it?"
+		precis="MetaFest Croatia is organized by [MetaFam](https://metagame.wtf)."
+		alt
+	>
+		<Markdown>
+			After doing [a conference](https://metagame.substack.com/p/intercon-what-how-even), [a
+			hackathon](https://metagame.substack.com/p/fork-the-world-opening-), two MetaFests
+			([1](https://metagame.substack.com/p/metaspecial-metafest-is-alive) &
+			[2](https://metagame.substack.com/p/metafest2-is-happening-now)) & countless meetups all in the metaverse, we’ve
+			decided to level up & organize IRL!
+		</Markdown>
 
-    <Markdown>
-      [MetaGame](https://metagame.wtf) is an EVM based coordination game kickstarted by MetaCartel. A decentralized
-      factory & a [network of projects](https://metagame.wtf/guilds) currently concerned with onboarding people into the
-      DAO space.
-    </Markdown>
+		<Markdown>
+			[MetaGame](https://metagame.wtf) is an EVM based coordination game kickstarted by MetaCartel. A decentralized
+			factory & a [network of projects](https://metagame.wtf/guilds) currently concerned with onboarding people into the
+			DAO space.
+		</Markdown>
 
-    <!-- <Image
+		<!-- <Image
 		src={mgLogo}
 		alt="3D"
 		loading="lazy"
@@ -170,138 +170,138 @@ export const expansionPacks = [
 		layout="responsive"
 		class="absolute -top-14 -left-32 z-0 opacity-25"
 		/> -->
-  </SponsorsSection>
-  <Image
-    src={mgLogo}
-    alt="3D"
-    loading="lazy"
-    quality={100}
-    width={512}
-    height={512}
-    layout="responsive"
-    class="absolute top-20 w-full left-0 xl:left-1/4 xl:right-1/4 xl:w-1/2 z-[9] opacity-5"
-  />
-  <SponsorsSection
-    title="Why the Balkans, why Croatia?"
-    precis="Despite proclivity towards self-organization due to a distrust of the state system & privatizing profiteers, DAO presence in the Balkans is weak."
-    alt
-  >
-    <p>About Croatia:</p>
-    <ul>
-      <li><Icon name="ic:round-check-circle-outline" />Beautiful & Fairly cheap</li>
-      <li><Icon name="ic:round-check-circle-outline" />Good tax laws & ease of doing business</li>
-      <li><Icon name="ic:round-check-circle-outline" />Digital nomad friendly visas</li>
-      <li><Icon name="ic:round-check-circle-outline" />Solid infrastructure & high safety</li>
-      <li><Icon name="ic:round-check-circle-outline" />Functional but corrupt states, small enough to influence</li>
-    </ul>
-    <p>
-      With a need for financial transparency & better governance tech, there is high potential for Web3 adoption at the
-      local as well as the state level.
-    </p>
-    <p>
-      Great time-zone compatibility & good educational system combined with relatively low standards of living also make
-      the Balkans a great place to hire from.
-    </p>
+	</SponsorsSection>
+	<Image
+		src={mgLogo}
+		alt="3D"
+		loading="lazy"
+		quality={100}
+		width={512}
+		height={512}
+		layout="responsive"
+		class="absolute top-20 w-full left-0 xl:left-1/4 xl:right-1/4 xl:w-1/2 z-[9] opacity-5"
+	/>
+	<SponsorsSection
+		title="Why the Balkans, why Croatia?"
+		precis="Despite proclivity towards self-organization due to a distrust of the state system & privatizing profiteers, DAO presence in the Balkans is weak."
+		alt
+	>
+		<p>About Croatia:</p>
+		<ul>
+			<li><Icon name="ic:round-check-circle-outline" />Beautiful & Fairly cheap</li>
+			<li><Icon name="ic:round-check-circle-outline" />Good tax laws & ease of doing business</li>
+			<li><Icon name="ic:round-check-circle-outline" />Digital nomad friendly visas</li>
+			<li><Icon name="ic:round-check-circle-outline" />Solid infrastructure & high safety</li>
+			<li><Icon name="ic:round-check-circle-outline" />Functional but corrupt states, small enough to influence</li>
+		</ul>
+		<p>
+			With a need for financial transparency & better governance tech, there is high potential for Web3 adoption at the
+			local as well as the state level.
+		</p>
+		<p>
+			Great time-zone compatibility & good educational system combined with relatively low standards of living also make
+			the Balkans a great place to hire from.
+		</p>
 
-    <div
-      class="section__decoration absolute w-10/12 md:w-2/12 xl:w-3/12 2xl:w-3/12 -right-32 top-16 z-0 opacity-60 2xl:opacity-100 invisible"
-      x-show="shown"
-      x-bind:class="{ 'invisible': !shown }"
-      x-transition:enter="transition ease-out duration-500"
-      x-transition:enter-start="opacity-08"
-      x-transition:enter-end="opacity-100"
-      x-transition:leave="transition ease-in duration-500"
-      x-transition:leave-start="opacity-100"
-      x-transition:leave-end="opacity-0"
-    >
-      <Icon name="island" className="w-full" />
-    </div>
-    <!-- <div class="section__decoration absolute opacity-30 xl:opacity-100 right-0 top-0 z-0">
+		<div
+			class="section__decoration absolute w-10/12 md:w-2/12 xl:w-3/12 2xl:w-3/12 -right-32 top-16 z-0 opacity-60 2xl:opacity-100 invisible"
+			x-show="shown"
+			x-bind:class="{ 'invisible': !shown }"
+			x-transition:enter="transition ease-out duration-500"
+			x-transition:enter-start="opacity-08"
+			x-transition:enter-end="opacity-100"
+			x-transition:leave="transition ease-in duration-500"
+			x-transition:leave-start="opacity-100"
+			x-transition:leave-end="opacity-0"
+		>
+			<Icon name="island" className="w-full" />
+		</div>
+		<!-- <div class="section__decoration absolute opacity-30 xl:opacity-100 right-0 top-0 z-0">
     <Icon name="fortgate-main" className="w-64 md:w-72 hidden xl:block" />
     <Icon name="fortgate-alt" className="w-64 md:w-72 block xl:hidden" />
   </div> -->
-  </SponsorsSection>
+	</SponsorsSection>
 
-  <SponsorsSection
-    title="Who is it for?"
-    precis="Attendees will mostly be people from the EVM DAO & ReFi ecosystems but mixed in with the wider regenerative, self-organization & Game B/Metamodern space."
-    alt
-  >
-    <p>Overall, we are aiming for:</p>
-    <ul>
-      <li>
-        <Icon name="ic:round-check-circle-outline" /> ~70% EVM DAOists & Regens.
-      </li>
-      <li>
-        <Icon name="ic:round-check-circle-outline" /> ~15% wider non-crypto-but-adjacent spaces.
-      </li>
-      <li>
-        <Icon name="ic:round-check-circle-outline" /> ~15% select locals, from the tech uni, a youth DAO etc.
-      </li>
-      <li>
-        <Icon name="ic:round-check-circle-outline" /> Having an epic time while exchanging cutting edge DAO/regen/meta knowledge
-        & usecases.
-      </li>
-      <li>
-        <Icon name="ic:round-check-circle-outline" /> Inspiring more people to join the space, start local DAOs &/or implement
-        Web3 tech at the local, municipal or state level.
-      </li>
-    </ul>
-  </SponsorsSection>
+	<SponsorsSection
+		title="Who is it for?"
+		precis="Attendees will mostly be people from the EVM DAO & ReFi ecosystems but mixed in with the wider regenerative, self-organization & Game B/Metamodern space."
+		alt
+	>
+		<p>Overall, we are aiming for:</p>
+		<ul>
+			<li>
+				<Icon name="ic:round-check-circle-outline" /> ~70% EVM DAOists & Regens.
+			</li>
+			<li>
+				<Icon name="ic:round-check-circle-outline" /> ~15% wider non-crypto-but-adjacent spaces.
+			</li>
+			<li>
+				<Icon name="ic:round-check-circle-outline" /> ~15% select locals, from the tech uni, a youth DAO etc.
+			</li>
+			<li>
+				<Icon name="ic:round-check-circle-outline" /> Having an epic time while exchanging cutting edge DAO/regen/meta knowledge
+				& usecases.
+			</li>
+			<li>
+				<Icon name="ic:round-check-circle-outline" /> Inspiring more people to join the space, start local DAOs &/or implement
+				Web3 tech at the local, municipal or state level.
+			</li>
+		</ul>
+	</SponsorsSection>
 
-  <SponsorsSection
-    title="Sponsorship"
-    precis="It’s in all of our best interest these technologies get adopted IRL."
-    full
-    alt
-  >
-    <p class="w-full max-w-3xl 2xl:max-w-4xl mx-auto">
-      You may benefit directly or indirectly through increased demand or through being affiliated with projects that
-      drive adoption.
-    </p>
+	<SponsorsSection
+		title="Sponsorship"
+		precis="It’s in all of our best interest these technologies get adopted IRL."
+		full
+		alt
+	>
+		<p class="w-full max-w-3xl 2xl:max-w-4xl mx-auto">
+			You may benefit directly or indirectly through increased demand or through being affiliated with projects that
+			drive adoption.
+		</p>
 
-    <p class="w-full max-w-3xl 2xl:max-w-4xl mx-auto">
-      Being affiliated means your logo being distributed through our YT channel (1.5k subscribers), our twitter account
-      (5k followers), our newsletter (12k subscribers) & our promo partners (with a combined total of ???k followers) as
-      well as local & regional media (Diamond tier).
-    </p>
+		<p class="w-full max-w-3xl 2xl:max-w-4xl mx-auto">
+			Being affiliated means your logo being distributed through our YT channel (1.5k subscribers), our twitter account
+			(5k followers), our newsletter (12k subscribers) & our promo partners (with a combined total of ???k followers) as
+			well as local & regional media (Diamond tier).
+		</p>
 
-    <div class="tiers grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 mx-auto gap-8 mt-14">
-      {sponsorshipTiers && sponsorshipTiers.map((tier, i) => <Tier tier={tier} count={i} />)}
-    </div>
+		<div class="tiers grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 mx-auto gap-8 mt-14">
+			{sponsorshipTiers && sponsorshipTiers.map((tier, i) => <Tier tier={tier} count={i} />)}
+		</div>
 
-    <div class="expansion-packs my-8 mx-auto">
-      <h2 class="mb-3">Expansion Packs</h2>
-      <p class="text-lg xl:text-xl w-full max-w-3xl 2xl:max-w-4xl mx-auto text-center">
-        We have a few expansion packs that you can add to your sponsorship tier. These are not required, but they will
-        help us make the event even better.
-      </p>
-      <div class="expansion-packs__list grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 mx-auto gap-8 mt-14">
-        {expansionPacks && expansionPacks.map((pack, i) => <Tier tier={pack} count={i} isExpansion />)}
-      </div>
-    </div>
-  </SponsorsSection>
+		<div class="expansion-packs my-8 mx-auto">
+			<h2 class="mb-3">Expansion Packs</h2>
+			<p class="text-lg xl:text-xl w-full max-w-3xl 2xl:max-w-4xl mx-auto text-center">
+				We have a few expansion packs that you can add to your sponsorship tier. These are not required, but they will
+				help us make the event even better.
+			</p>
+			<div class="expansion-packs__list grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 mx-auto gap-8 mt-14">
+				{expansionPacks && expansionPacks.map((pack, i) => <Tier tier={pack} count={i} isExpansion />)}
+			</div>
+		</div>
+	</SponsorsSection>
 
-  <SponsorsSection title="Interested?" precis="Apply to join as a partner organization, a sponsor or both!" alt>
-    <button
-      class="cta__join-button btn btn-ghost text-secondary mb-4 sm:mb-0 bg-gradient-tertiary text-base xs:text-2xl md:text-2xl px-5 py-6 md:px-8 md:py-8 leading-[0] inline-flex content-center rounded-xl hover:scale-95 hover:text-off-white transition-all delay-100 duration-200 ease-in-out border-2"
-      data-tally-open="w2XEaj"
-      data-tally-layout="modal"
-      data-tally-width="800"
-      data-tally-align-left="1"
-      data-tally-emoji-text="👋"
-      data-tally-emoji-animation="wave"
-      data-tally-auto-close="5000"
-    >
-      Apply now!
-    </button>
-    <div class="pb-[10vh] xl:pb-32 2xl:pb-64 4xl:pb-[35vh]"></div>
-  </SponsorsSection>
+	<SponsorsSection title="Interested?" precis="Apply to join as a partner organization, a sponsor or both!" alt>
+		<button
+			class="cta__join-button btn btn-ghost text-secondary mb-4 sm:mb-0 bg-gradient-tertiary text-base xs:text-2xl md:text-2xl px-5 py-6 md:px-8 md:py-8 leading-[0] inline-flex content-center rounded-xl hover:scale-95 hover:text-off-white transition-all delay-100 duration-200 ease-in-out border-2"
+			data-tally-open="w2XEaj"
+			data-tally-layout="modal"
+			data-tally-width="800"
+			data-tally-align-left="1"
+			data-tally-emoji-text="👋"
+			data-tally-emoji-animation="wave"
+			data-tally-auto-close="5000"
+		>
+			Apply now!
+		</button>
+		<div class="pb-[10vh] xl:pb-32 2xl:pb-64 4xl:pb-[35vh]"></div>
+	</SponsorsSection>
 
-  <div class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto">
-    <div class="relative w-full h-full" x-data="{shown: false}" x-intersect:once="shown = true">
-      <Plants />
-    </div>
-  </div>
-  <ThreeD client:load />
+	<div class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto">
+		<div class="relative w-full h-full" x-data="{shown: false}" x-intersect:once="shown = true">
+			<Plants />
+		</div>
+	</div>
+	<ThreeD client:visible />
 </Layout>
