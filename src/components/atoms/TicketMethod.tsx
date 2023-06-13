@@ -18,7 +18,8 @@ export interface TicketMethodProps {
     sponsor?: number | string | null;
     crew?: number | string | null;
     metagamer?: number | string | null;
-    iykyk?: number | string | null;
+    squadStandard?: number | string | null;
+    squadPatron?: number | string | null;
   };
   discount: number | null;
   isEarlyBird?: boolean;
@@ -37,7 +38,8 @@ export type TicketMethodType = {
     sponsor?: number | string | null;
     crew?: number | string | null;
     metagamer?: number | string | null;
-    iykyk?: number | string | null;
+    squadStandard?: number | string | null;
+    squadPatron?: number | string | null;
   };
   discount: number | null;
   isEarlyBird?: boolean;
@@ -504,6 +506,27 @@ export const SeedButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
   );
 };
 
+export const SquadButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
+  const classes = disabled ? disabledBtnClasses : activeBtnClasses;
+
+  return (
+    <button
+      data-buy-method="squad"
+      className={classes}
+      data-tally-open="mVj4La"
+      data-tally-layout="modal"
+      data-tally-width="800"
+      data-tally-align-left="1"
+      data-tally-emoji-text="👋"
+      data-tally-emoji-animation="wave"
+      data-tally-auto-close="5000"
+      aria-disabled={disabled}
+    >
+      {text}
+    </button>
+  );
+};
+
 export const SponsorButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
   const classes = disabled ? disabledBtnClasses : activeBtnClasses;
 
@@ -606,6 +629,8 @@ export const TicketMethod = ({
         );
       case 'seeds':
         return <SeedButton text={cta} />;
+      case 'squad':
+        return <SquadButton text={cta} />;
       case 'sponsor':
         return <SponsorButton text={cta} />;
       case 'crew':
@@ -698,6 +723,53 @@ export const TicketMethod = ({
               </span>
             </p>
           )}
+          {price.squadStandard && (
+            <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
+              <span className="flex-grow">4 Standard tickets</span>
+              <span
+                className="text-sm md:text-base line-through inline-flex -translate-y-5 translate-x-3 -rotate-12"
+                aria-label={`Normal price ${currencySymbol}${price.squadStandard}`}
+              >
+                {price.squadStandard > 0 && currencySymbol}
+                {price.squadStandard}
+              </span>
+              <span
+                className="text-2xl md:text-3xl font-bold uppercase"
+                aria-label={`Discounted squad price ${currencySymbol}${applyDiscount(price.squadStandard, discount)}`}
+              >
+                {price.squadStandard > 0 && currencySymbol}
+                {applyDiscount(price.squadStandard, discount)}
+                {isEarlyBird && `*`}
+              </span>
+            </p>
+          )}
+          {price.squadPatron && (
+            <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
+              <span className="flex-grow relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">
+                4 Patron tickets
+                <b role="img" aria-label="sparkles emoji">
+                  ✨
+                </b>
+              </span>
+              <span
+                className="text-sm md:text-base line-through inline-flex -translate-y-5 translate-x-3 -rotate-12"
+                aria-label={`Normal price ${currencySymbol}${price.squadPatron}`}
+              >
+                {price.squadPatron > 0 && currencySymbol}
+                {price.squadPatron}
+              </span>
+
+              <span
+                className="text-2xl md:text-3xl font-bold uppercase"
+                aria-label={`Discounted squad price ${currencySymbol}${applyDiscount(price.patron, discount)}`}
+              >
+                {price.squadPatron > 0 && currencySymbol}
+                {applyDiscount(price.squadPatron, discount)}
+                {isEarlyBird && `*`}
+              </span>
+            </p>
+          )}
+
           {price.sponsor && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
               <span className="relative bg-clip-text text-transparent bg-gradient-to-l from-cyan-400 to-fuchsia-500">
