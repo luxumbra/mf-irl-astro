@@ -98,6 +98,18 @@ export const ticketMethods: TicketMethodType[] = [
     method: 'sponsor',
     ctaText: 'More info',
   },
+  {
+    title: 'Discounted ticket',
+    price: {
+      standard: 200,
+      patron: 420,
+    },
+    discount: 0,
+    isEarlyBird: false,
+    summary: 'Discount applied at checkout.',
+    method: 'discounts',
+    ctaText: 'Buy a ticket',
+  },
 ];
 
 export const expiredMessage = `Don't miss out!!
@@ -126,7 +138,12 @@ Flights, and Accommodation in and around Pula are limited.`;
     <div
       class="ticket-methods grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 items-stretch mx-auto mt-14 mb-20 lg:mb-16 gap-5 md:gap-8"
     >
-      {ticketMethods && ticketMethods.map((method) => <TicketMethod {...method} client:only />)}
+      {
+        ticketMethods &&
+          ticketMethods.map((method) => {
+            if (method.method !== 'discounts') return <TicketMethod {...method} client:only />;
+          })
+      }
     </div>
     <p class="text-center text-off-white text-3xl">
       Not ready? Got questions? <a
