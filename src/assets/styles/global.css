@@ -133,16 +133,18 @@
         &--highlight {
           @apply opacity-100 z-10;
 
-          h5 {
+          h5,
+          .date-title {
             @apply text-sm lg:text-xl px-0 lg:px-3;
           }
         }
 
-        h5 {
+        h5,
+        .date-title {
           @apply text-xs lg:text-base px-3 lg:px-6;
         }
 
-        div {
+        div:not(.date-title) {
           @apply relative px-3 py-2 rounded-lg;
 
           & > * {
@@ -425,11 +427,12 @@
       @apply grid grid-cols-2 lg:grid-cols-6  3xl:grid-cols-6 gap-3 lg:gap-4 3xl:gap-6;
     }
     .partner {
+      @apply flex items-center justify-center overflow-hidden mb-0;
+      @apply bg-top bg-cover overflow-visible;
       background-image: none;
 
-      @apply bg-top bg-cover overflow-visible;
-
       a {
+        @apply p-0;
         img {
           @apply transition-all duration-200 ease-in-out;
         }
