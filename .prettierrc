@@ -8,7 +8,16 @@
   "overrides": [
     {
       "files": "**/*.astro",
-      "options": { "parser": "astro" }
+      "options": {
+        "parser": "astro"
+      }
+    },
+    {
+      "files": "**/*.tsx, **/*.ts",
+      "options": {
+        "parser": "typescript",
+        "useTabs": false
+      }
     },
     {
       "files": [".*", "*.json", "*.md", "*.toml", "*.yml"],
