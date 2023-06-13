@@ -7,27 +7,17 @@ import * as THREE from 'three';
 // import gsap from 'gsap';
 import LoadingOrError from './LoadingOrError';
 
-export const experienceConfig = {
-  objectsDistance: 4,
-  sparkles: {
-    size: 10,
-    count: 300,
-    scale: new THREE.Vector3(30, 40, 40),
-    positionY: 1,
-    speed: 0.2,
-  },
-};
-
 export interface SceneSectionProps {
   name: string;
   count: number;
   children: React.ReactNode;
   props?: any;
+  config: Record<string, any>;
 }
 
-export function R3FSceneSection({ name, count, children, ...props }: SceneSectionProps) {
+export function R3FSceneSection({ name, count, config, children, ...props }: SceneSectionProps) {
   const group = useRef(null);
-  const { objectsDistance } = experienceConfig;
+  const { objectsDistance } = config;
 
   return (
     <group ref={group} name={name} position={[0, -objectsDistance * count, 0]} {...props}>
@@ -86,14 +76,9 @@ function Experience() {
   const mousemoveHandler = useCallback((event) => {
     cursor.current.x = event.clientX / sizes.current.width - 0.3;
     cursor.current.y = -(event.clientY / sizes.current.height) - 0.3;
-    // console.log('curCursor', cursor.current);
 
     mousePos.current.x = (event.clientX / sizes.current.width) * 2 - 1;
     mousePos.current.y = -(event.clientY / sizes.current.height) * 2 - 1;
-
-    // mouse.position.x = event.clientX / sizes.current.width
-    // mouse.position.y = event.clientY / sizes.current.height
-    // console.log('mouse pos', mouse);
   }, []);
 
   useEffect(() => {
@@ -148,7 +133,7 @@ function Experience() {
           />
         </group>
 
-        <R3FSceneSection name="SectionOne" count={0}>
+        <R3FSceneSection name="SectionOne" config={experienceConfig} count={0}>
           <directionalLight position={[1, 2, 3]} intensity={1.5} />
           <ambientLight intensity={0.5} />
           <Sparkles
