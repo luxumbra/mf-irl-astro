@@ -340,15 +340,15 @@
           @apply translate-y-10 opacity-0 transition-all duration-200 delay-200 ease-in-out;
         }
 
-        h4,
+        h3,
         p {
-          @apply text-sm lg:text-lg text-primary translate-y-10 opacity-0 transition-all duration-200 delay-200 ease-in-out;
+          @apply font-sans text-sm lg:text-lg mb-0 text-left text-primary translate-y-10 opacity-0 transition-all duration-200 delay-200 ease-in-out;
         }
       }
 
       &-active {
         .swiper-slide__content {
-          h4,
+          h3,
           p,
           svg {
             @apply translate-y-0 opacity-100;
