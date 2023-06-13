@@ -35,7 +35,7 @@ import slides from '~/data/carousel.json';
 						) : (
 							<div class="swiper-slide group">
 								<Picture
-									class="hidden md:block"
+									class="hidden xl:block"
 									src={image}
 									sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
 									alt={slide.title}
@@ -44,10 +44,11 @@ import slides from '~/data/carousel.json';
 									loading="lazy"
 									width={1480}
 									height={833}
+									formats={['webp', 'avif', 'jpeg']}
 								/>
 
 								<Picture
-									class="block md:hidden"
+									class="block xl:hidden"
 									src={image}
 									sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
 									alt={slide.title}
@@ -56,6 +57,7 @@ import slides from '~/data/carousel.json';
 									loading="lazy"
 									width={400}
 									height={708}
+									formats={['webp', 'avif', 'jpeg']}
 								/>
 								<div class="absolute -inset-1 inner-shadow z-10 rounded-3xl pointer-events-none" />
 								<div class="swiper-slide__content translate-y-0 md:group-hover:translate-y-20 md:group-hover:opacity-0 absolute bottom-auto top-0 md:top-auto md:bottom-0 left-0 px-3 md:px-8 transition-all duration-300 ease-in-out">
