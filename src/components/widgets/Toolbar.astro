@@ -30,11 +30,11 @@ import ThreeD from '~/components/widgets/ThreeD';
 		<button
 			x-on:click="menuOpen = !menuOpen"
 			type="button"
-			class="btn btn-ghost ml-1.5 text-primary hover:bg-transparent focus:outline-none focus:ring-2 focus:ring-primary-alpha-60 focus:bg-transparent p-0 items-center transition z-50"
+			class="btn btn-ghost ml-1.5 text-primary hover:bg-transparent focus:outline-none focus:ring-0 focus:ring-primary-alpha-60 focus:bg-transparent p-0 items-center transition z-50"
 			aria-label="Menu toggle"
 		>
 			<Icon
-				name="majesticons:menu"
+				name="mdi:menu"
 				class="w-10 h-10"
 				x-bind:class="{'hidden': menuOpen, 'block': !menuOpen}"
 				optimize={false}
@@ -53,7 +53,7 @@ import ThreeD from '~/components/widgets/ThreeD';
 				x-trap.noscroll="menuOpen"
 				@keydown.escape="isOpen = false"
 				x-bind:class="{'visible': menuOpen, 'invisible': !menuOpen}"
-				class="mobile-menu fixed md:hidden h-screen w-screen inset-0 z-40"
+				class="mobile-menu fixed xl:hidden h-screen w-screen inset-0 z-40"
 				x-transition:enter="transition ease-out duration-300 transform"
 				x-transition:enter-start="opacity-0 transform translate-y-full"
 				x-transition:enter-end="opacity-100 transform translate-y-0"
@@ -62,7 +62,7 @@ import ThreeD from '~/components/widgets/ThreeD';
 				x-transition:leave-end="opacity-0 transform translate-y-full"
 			>
 				<menu
-					class="relative flex flex-col pb-36 justify-end items-center content-center space-y-5 h-screen w-screen inset-0 z-10"
+					class="relative flex flex-col pb-36 justify-center items-center content-center space-y-5 h-screen w-screen inset-0 z-10"
 				>
 					<NavItem to="/#start" delay="300ms">
 						<Icon name="logo" class="logo group w-32 max-w-[150px] h-auto fill-primary" />
@@ -75,7 +75,7 @@ import ThreeD from '~/components/widgets/ThreeD';
 					<NavItem to="/#sponsors" delay="425ms">Sponsors</NavItem>
 					<NavItem to="/#join" delay="450ms">Join</NavItem>
 				</menu>
-				<div class="absolute bottom-8 z-20 w-full flex items-center justify-between py-6 md:py-8 px-5">
+				<div class="absolute bottom-20 z-20 w-full flex items-center justify-between py-6 md:py-8 px-2">
 					<div class="text-sm py-2 bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent">
 						🐙 <a
 							class="hover:underline hover:text-off-white transition-all duration-200"
@@ -86,20 +86,20 @@ import ThreeD from '~/components/widgets/ThreeD';
 					</div>
 					<div class="flex items-center justify-end space-x-3">
 						<a
-							class="inline-block w-10 h-10 p-1 bg-customDarkBg2 custom-border-gray hover:bg-accent-alpha-60 rounded-xl"
+							class="inline-block w-8 h-8 p-1 text-primary bg-customDarkBg2 custom-border-gray hover:bg-accent-alpha-60 rounded-xl"
 							href="https://twitter.com/MetaFam"
 							target="_blank"
 							rel="noreferrer"
 						>
-							<Icon name="mdi:twitter" class="fill-primary" />
+							<Icon name="mdi:twitter" class="fill-current" />
 						</a>
 						<a
-							class="inline-block w-10 h-10 p-1 bg-customDarkBg2 custom-border-gray hover:bg-accent-alpha-60 rounded-xl"
+							class="inline-block w-8 h-8 p-1 text-primary bg-customDarkBg2 custom-border-gray hover:bg-accent-alpha-60 rounded-xl"
 							href="https://t.me/+qIDukhuLnwg5ZTI0"
 							target="_blank"
 							rel="noreferrer"
 						>
-							<Icon name="mdi:telegram" class="fill-primary" />
+							<Icon name="mdi:telegram" class="fill-current" />
 						</a>
 					</div>
 				</div>
