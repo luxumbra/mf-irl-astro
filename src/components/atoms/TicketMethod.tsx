@@ -2,7 +2,14 @@ import { v4 as uuid } from 'uuid';
 import { generatePaymentUrl } from '~/utils/utils';
 import { animate, AnimatePresence, motion, useMotionValue, useTransform } from 'framer-motion';
 import type { CryptoItemType, PaymentUrlOptions } from '~/utils/utils';
-import { currencySymbol, paycekProfileCode, paycekSecret, uri, STRIPE_DISCOUNT_KEY } from '~/config.mjs';
+import {
+  currencySymbol,
+  paycekProfileCode,
+  paycekSecret,
+  uri,
+  STRIPE_DISCOUNT_KEY_STANDARD,
+  STRIPE_DISCOUNT_KEY_PATRON,
+} from '~/config.mjs';
 import './tier.css';
 import { useEffect, useState } from 'react';
 import { Modal } from 'flowbite-react';
@@ -20,7 +27,6 @@ export interface TicketMethodProps {
     metagamer?: number | string | null;
     squadStandard?: number | string | null;
     squadPatron?: number | string | null;
-    iykyk?: number | string | null;
   };
   discount: number | null;
   isEarlyBird?: boolean;
@@ -41,7 +47,6 @@ export type TicketMethodType = {
     metagamer?: number | string | null;
     squadStandard?: number | string | null;
     squadPatron?: number | string | null;
-    iykyk?: number | string | null;
   };
   discount: number | null;
   isEarlyBird?: boolean;
@@ -60,6 +65,7 @@ export interface BuyButtonProps {
   isEarlyBird?: TicketMethodType['isEarlyBird'];
   earlyBirdExpires?: TicketMethodType['earlyBirdExpires'];
   isDiscounted?: TicketMethodType['isDiscounted'];
+  ticketType?: string;
 }
 
 export interface PayloadOptions {
@@ -581,11 +587,14 @@ export const MetagamerButton = ({ text, disabled }: BuyButtonProps): JSX.Element
   );
 };
 
-export const DiscountsButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
+export const DiscountsButton = ({ text, disabled, ticketType }: BuyButtonProps): JSX.Element => {
   const classes = disabled ? disabledBtnClasses : activeBtnClasses;
+  const stripeProductCode: string = ticketType.includes('Standard')
+    ? STRIPE_DISCOUNT_KEY_STANDARD
+    : STRIPE_DISCOUNT_KEY_PATRON;
 
   const onHandleClick = () => {
-    window.open(`https://buy.stripe.com/${STRIPE_DISCOUNT_KEY}`, '_blank');
+    window.open(`https://buy.stripe.com/${stripeProductCode}`, '_blank');
   };
 
   return (
@@ -640,7 +649,7 @@ export const TicketMethod = ({
       case 'metagamer':
         return <MetagamerButton text={cta} />;
       case 'discounts':
-        return <DiscountsButton text={cta} />;
+        return <DiscountsButton text={cta} ticketType={title} />;
       default:
         return null;
     }
@@ -676,7 +685,7 @@ export const TicketMethod = ({
               *Earlybird prices ({discount}% discount) until {earlyBirdDateFormated}
             </p>
           )}
-          {price.standard && (
+          {price.standard && method !== 'discounts' && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
               <span className="flex-grow">Standard tickets</span>
               {isEarlyBird && (
@@ -698,7 +707,7 @@ export const TicketMethod = ({
               </span>
             </p>
           )}
-          {price.patron && (
+          {price.patron && method !== 'discounts' && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
               <span className="flex-grow relative bg-clip-text text-transparent bg-gradient-to-r from-tertiary to-accent">
                 Patron tickets
@@ -817,16 +826,11 @@ export const TicketMethod = ({
           {method === 'discounts' && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
               <span className="relative bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-fuchsia-400">
-                IYKYK tickets{' '}
-                <img
-                  src="https://metagame.wtf/favicon.png"
-                  alt="MetaGame"
-                  className="inline-flex items-center h-5 w-auto -translate-x-2 -translate-y-1"
-                />
+                IYKYK {price.standard ? 'Standard' : 'Patron'} tickets{' '}
               </span>
               <span className="text-2xl md:text-3xl font-bold uppercase">
-                {price.standard > 0 && currencySymbol}
-                {applyDiscount(price.standard, discount)}
+                {(price.standard || price.patron) > 0 && currencySymbol}
+                {applyDiscount(price.standard ?? price.patron, discount)}
               </span>
             </p>
           )}
