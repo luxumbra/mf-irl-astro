@@ -20,24 +20,24 @@ export const earlyBirdExpiresDays = Math.round(DateTime.fromISO(earlyBirdExpiry)
 export const isEarlyBirdValid = DateTime.fromISO(earlyBirdExpiry) < DateTime.now();
 
 const meta = {
-	title: `${SITE.title}: Event tickets`,
-	description: `Immerse yourself in MetaFest Croatia at the historic Fort Punta Christo, where the revolutionary spirit of Ethereum unites diverse minds. Delve into empowering workshops, uncover Pula&apos;s rich past, and forge connections with Web3 innovators.`,
-	canonical: getCanonical(getHomePermalink()),
-	image: socialImage,
+  title: `${SITE.title}: Event tickets`,
+  description: `Immerse yourself in MetaFest Croatia at the historic Fort Punta Christo, where the revolutionary spirit of Ethereum unites diverse minds. Delve into empowering workshops, uncover Pula&apos;s rich past, and forge connections with Web3 innovators.`,
+  canonical: getCanonical(getHomePermalink()),
+  image: socialImage,
 };
 
 export const ticketMethods: TicketMethodType[] = [
-	{
-		title: 'Discount ticket',
-		price: {
-			iykyk: 200,
-		},
-		discount: 0,
-		isEarlyBird: false,
-		summary: 'Discount applied at checkout!',
-		method: 'discounts',
-		ctaText: 'Buy a ticket',
-	},
+  {
+    title: 'Discount ticket',
+    price: {
+      iykyk: 200,
+    },
+    discount: 0,
+    isEarlyBird: false,
+    summary: 'Discount applied at checkout!',
+    method: 'discounts',
+    ctaText: 'Buy a ticket',
+  },
 ];
 
 export const expiredMessage = `Don't miss out!!
@@ -46,38 +46,38 @@ Flights, and Accommodation in and around Pula are limited.`;
 ---
 
 <Layout {meta}>
-	<div class="pt-8"></div>
+  <div class="pt-8"></div>
 
-	<SponsorsSection
-		title="If you know, You know..."
-		precis="Got a promo code? Buy your MetaFest ticket at a discounted rate!"
-		full
-		alt
-	>
-		<div class="ticket-methods flex justify-center items-stretch mx-auto mt-14 mb-20 lg:mb-16 gap-5 md:gap-8">
-			{ticketMethods && ticketMethods.map((method) => <TicketMethod {...method} client:only />)}
-		</div>
-		<p class="text-center text-off-white text-3xl">
-			Not ready? Got questions? <a
-				href="https://www.notion.so/MetaFest-FAQ-3437dd50c6164011bf01d07d81f18d30"
-				target="_blank"
-				rel="nofollow"
-				class="group text-primary hover:underline">Read the FAQ</a
-			> then come & <a
-				href="https://t.me/+qIDukhuLnwg5ZTI0"
-				target="_blank"
-				rel="nofollow"
-				class="group text-primary hover:underline"
-				>join the conversation <Icon name="mdi:telegram" class="w-16 h-16 inline-flex text-cyan-500" />
-			</a>
-		</p>
-	</SponsorsSection>
+  <SponsorsSection
+    title="If you know, You know..."
+    precis="Got a promo code? Buy your MetaFest ticket at a discounted rate!"
+    full
+    alt
+  >
+    <div class="ticket-methods flex justify-center items-stretch mx-auto mt-14 mb-20 lg:mb-16 gap-5 md:gap-8">
+      {ticketMethods && ticketMethods.map((method) => <TicketMethod {...method} client:only />)}
+    </div>
+    <p class="text-center text-off-white text-xl xl:text-3xl">
+      Not ready? Got questions? <a
+        href="https://www.notion.so/MetaFest-FAQ-3437dd50c6164011bf01d07d81f18d30"
+        target="_blank"
+        rel="nofollow"
+        class="group text-primary hover:underline">Read the FAQ</a
+      > then come & <a
+        href="https://t.me/+qIDukhuLnwg5ZTI0"
+        target="_blank"
+        rel="nofollow"
+        class="group text-primary hover:underline"
+        >join the conversation <Icon name="mdi:telegram" class="w-16 h-16 inline-flex text-cyan-500" />
+      </a>
+    </p>
+  </SponsorsSection>
 
-	<div class="absolute h-[50vh] w-full z-[9] inset-0 top-auto overflow-y-hidden">
-		<div class="relative w-full h-full md:translate-y-1/2" x-data="{shown: false}" x-intersect:once="shown = true">
-			<Plants />
-		</div>
-	</div>
+  <div class="absolute h-[50vh] w-full z-[9] inset-0 top-auto overflow-y-hidden">
+    <div class="relative w-full h-full md:translate-y-1/2" x-data="{shown: false}" x-intersect:once="shown = true">
+      <Plants />
+    </div>
+  </div>
 
-	<ThreeD client:load />
+  <ThreeD client:visible />
 </Layout>

@@ -20,6 +20,7 @@ export interface TicketMethodProps {
     metagamer?: number | string | null;
     squadStandard?: number | string | null;
     squadPatron?: number | string | null;
+    iykyk?: number | string | null;
   };
   discount: number | null;
   isEarlyBird?: boolean;
@@ -40,6 +41,7 @@ export type TicketMethodType = {
     metagamer?: number | string | null;
     squadStandard?: number | string | null;
     squadPatron?: number | string | null;
+    iykyk?: number | string | null;
   };
   discount: number | null;
   isEarlyBird?: boolean;

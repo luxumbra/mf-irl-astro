@@ -12,4 +12,5 @@
   font-style: normal;
   font-weight: normal;
   src: local('TrashHand'), url('../fonts/TrashHand.woff') format('woff');
+  font-display: swap;
 }

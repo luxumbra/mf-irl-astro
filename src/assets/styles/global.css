@@ -340,15 +340,15 @@
           @apply translate-y-10 opacity-0 transition-all duration-200 delay-200 ease-in-out;
         }
 
-        h4,
+        h3,
         p {
-          @apply text-sm lg:text-lg text-primary translate-y-10 opacity-0 transition-all duration-200 delay-200 ease-in-out;
+          @apply font-sans text-sm lg:text-lg mb-0 text-left text-primary translate-y-10 opacity-0 transition-all duration-200 delay-200 ease-in-out;
         }
       }
 
       &-active {
         .swiper-slide__content {
-          h4,
+          h3,
           p,
           svg {
             @apply translate-y-0 opacity-100;
@@ -451,12 +451,20 @@
   }
 
   .mobile-menu {
+    @apply bg-gradient-to-b from-accent-alpha-60 via-secondary-dark-alpha-60 to-transparent backdrop-blur-2xl;
+
     menu {
-      @apply bg-gradient-to-b from-accent-alpha-60 via-transparent to-transparent text-secondary-dark uppercase text-center backdrop-blur-none;
+      @apply text-secondary-dark uppercase text-center;
 
       .logo {
         path {
           @apply fill-current text-primary-alpha-60;
+        }
+      }
+
+      a {
+        &.active {
+          @apply scale-125 bg-gradient-to-b from-primary to-accent;
         }
       }
     }
