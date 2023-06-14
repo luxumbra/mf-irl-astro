@@ -5,13 +5,10 @@ import Layout from '~/layouts/PageLayout.astro';
 import ThreeD from '~/components/widgets/ThreeD';
 import SponsorsSection from '~/components/core/SponsorsSection.astro';
 import { TicketMethod, TicketMethodType } from '~/components/atoms/TicketMethod';
-import { Image } from '@astrojs/image/components';
 // import { v4 as uuidv4 } from 'uuid';
-import mgLogo from '~/assets/images/mg-logo.gif';
 import socialImage from '~/assets/images/socials/metafest-shared.jpg';
 import Plants from '~/components/widgets/Plants.astro';
 import { Icon } from 'astro-icon';
-import { CountdownTimer } from '~/components/widgets/CountdownTimer';
 import { DateTime } from 'luxon';
 
 export const earlyBirdExpiry = earlyBirdEnds;
@@ -20,8 +17,8 @@ export const earlyBirdExpiresDays = Math.round(DateTime.fromISO(earlyBirdExpiry)
 export const isEarlyBirdValid = DateTime.fromISO(earlyBirdExpiry) < DateTime.now();
 
 const meta = {
-	title: `${SITE.title}: Event tickets`,
-	description: `Immerse yourself in MetaFest Croatia at the historic Fort Punta Christo, where the revolutionary spirit of Ethereum unites diverse minds. Delve into empowering workshops, uncover Pula&apos;s rich past, and forge connections with Web3 innovators.`,
+	title: `${SITE.title}: Event tickets for those in the know!`,
+	description: `If you have a discount code, go through here to pick up your MetaFest ticket.`,
 	canonical: getCanonical(getHomePermalink()),
 	image: socialImage,
 };
@@ -66,7 +63,7 @@ Flights, and Accommodation in and around Pula are limited.`;
 		alt
 	>
 		<div
-			class="ticket-methods grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 items-stretch mx-auto mt-14 mb-20 lg:mb-16 gap-5 md:gap-8"
+			class="ticket-methods grid grid-cols-1 md:grid-cols-2 items-stretch max-w-4xl mx-auto mt-14 mb-20 lg:mb-16 gap-5 md:gap-8"
 		>
 			{ticketMethods && ticketMethods.map((method) => <TicketMethod {...method} client:only />)}
 		</div>
