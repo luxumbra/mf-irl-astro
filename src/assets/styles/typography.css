@@ -33,6 +33,10 @@
     p,
     li {
       @apply font-sans text-accent text-sm md:text-base 4xl:text-2xl text-left leading-relaxed mb-6;
+
+      a {
+        @apply bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent;
+      }
     }
   }
 }

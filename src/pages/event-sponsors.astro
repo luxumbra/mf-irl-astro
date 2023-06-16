@@ -146,31 +146,23 @@ export const expansionPacks = [
 		precis="MetaFest Croatia is organized by [MetaFam](https://metagame.wtf)."
 		alt
 	>
-		<Markdown>
-			After doing [a conference](https://metagame.substack.com/p/intercon-what-how-even), [a
-			hackathon](https://metagame.substack.com/p/fork-the-world-opening-), two MetaFests
-			([1](https://metagame.substack.com/p/metaspecial-metafest-is-alive) &
-			[2](https://metagame.substack.com/p/metafest2-is-happening-now)) & countless meetups all in the metaverse, we’ve
-			decided to level up & organize IRL!
-		</Markdown>
+		<p>
+			After doing <a href="https://metagame.substack.com/p/intercon-what-how-even" rel="" target="_blank"
+				>a conference</a
+			>, <a href="https://metagame.substack.com/p/fork-the-world-opening-" rel="" target="_blank">a hackathon</a>, two
+			MetaFests (<a href="https://metagame.substack.com/p/metaspecial-metafest-is-alive" rel="" target="_blank">[1]</a> &
+			<a href="https://metagame.substack.com/p/metafest2-is-happening-now" rel="noreferrer" target="_blank">[2]</a>) &
+			countless meetups all in the metaverse, we’ve decided to level up & organize IRL!
+		</p>
 
-		<Markdown>
-			[MetaGame](https://metagame.wtf) is an EVM based coordination game kickstarted by MetaCartel. A decentralized
-			factory & a [network of projects](https://metagame.wtf/guilds) currently concerned with onboarding people into the
-			DAO space.
-		</Markdown>
-
-		<!-- <Image
-		src={mgLogo}
-		alt="3D"
-		loading="lazy"
-		quality={100}
-		width={512}
-		height={512}
-		layout="responsive"
-		class="absolute -top-14 -left-32 z-0 opacity-25"
-		/> -->
+		<p>
+			<a href="https://metagame.wtf" rel="noreferrer" target="_blank">MetaGame</a> is an EVM based coordination game kickstarted
+			by MetaCartel. A decentralized factory & a <a href="https://metagame.wtf/guilds" rel="noreferrer" target="_blank"
+				>network of projects</a
+			> currently concerned with onboarding people into the DAO space.
+		</p>
 	</SponsorsSection>
+
 	<Image
 		src={mgLogo}
 		alt="3D"
@@ -303,5 +295,5 @@ export const expansionPacks = [
 			<Plants />
 		</div>
 	</div>
-	<ThreeD client:visible />
+	<ThreeD client:load />
 </Layout>
