@@ -28,10 +28,10 @@ export interface PaymentUrlOptions {
 export const getFormattedDate = (date) =>
   date
     ? new Date(date).toLocaleDateString('en-us', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-      })
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })
     : '';
 
 /**
@@ -143,3 +143,21 @@ export const imageExists = async (imagePath) => {
     image.onerror = () => resolve(false);
   });
 };
+
+export const logPageLoadTime = (): void => {
+  window.addEventListener('load', (): void => {
+    setTimeout((): void => {
+      const performanceEntries = performance.getEntriesByType('navigation');
+
+      if (performanceEntries.length > 0) {
+        const navigationEntry = performanceEntries[0] as PerformanceNavigationTiming;
+        const interactiveTime = navigationEntry.domInteractive;
+        const seconds = interactiveTime / 1000;
+
+        console.log(`Page became interactive in ${seconds}s (${interactiveTime} ms)`);
+      } else {
+        console.log('Navigation Timing API not supported');
+      }
+    }, 0);
+  });
+}

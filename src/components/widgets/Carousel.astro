@@ -85,28 +85,28 @@ import slides from '~/data/carousel.json';
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 
-<script type="module">
-import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js';
+<script>
+	import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js';
 
-const swiper = new Swiper('.swiper', {
-	direction: 'horizontal',
-	loop: true,
-	effect: 'fade',
-	pagination: {
-		el: '.swiper-pagination',
-	},
+	const swiper = new Swiper('.swiper', {
+		direction: 'horizontal',
+		loop: true,
+		effect: 'fade',
+		pagination: {
+			el: '.swiper-pagination',
+		},
 
-	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev',
-	},
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
 
-	scrollbar: {
-		el: '.swiper-scrollbar',
-	},
-});
+		scrollbar: {
+			el: '.swiper-scrollbar',
+		},
+	});
 
-window.addEventListener('load', () => {
-	swiper.update();
-});
+	window.addEventListener('load', () => {
+		swiper.update();
+	});
 </script>
