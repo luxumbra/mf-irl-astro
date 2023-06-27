@@ -3,7 +3,7 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import Plants from '../widgets/Plants.astro';
 import { CountdownTimer } from '~/components/widgets/CountdownTimer';
 import { DateTime } from 'luxon';
-import { eventStartDate } from '~/config.mjs';
+import { FAQ_URL, eventStartDate } from '~/config.mjs';
 import Section from '~/components/core/Section.astro';
 import { Icon } from 'astro-icon';
 
@@ -62,7 +62,7 @@ We hope you made it! If you didn't, you can join us on Discord and watch the tal
     </div>
     <p class="text-center text-off-white text-xl xl:text-3xl -translate-y-4">
       Not ready? Got questions? <a
-        href="https://www.notion.so/MetaFest-FAQ-3437dd50c6164011bf01d07d81f18d30"
+        href={FAQ_URL}
         target="_blank"
         rel="nofollow"
         class="group text-primary hover:underline">Read the FAQ</a
