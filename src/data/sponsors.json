@@ -25,11 +25,6 @@
     "url": "https://twitter.com/MIDAODS"
   },
   {
-    "name": "Unlock Protocol",
-    "logo": "unlock.jpg",
-    "url": "https://twitter.com/UnlockProtocol"
-  },
-  {
     "name": "DebtDAO",
     "logo": "debtdao.jpg",
     "url": "https://twitter.com/debtdao"
@@ -48,6 +43,16 @@
     "name": "Rob Morris",
     "logo": "robmorris.jpg",
     "url": "https://twitter.com/recipromancer"
+  },
+  {
+    "name": "Liberland",
+    "logo": "Liberland_vlajka.png",
+    "url": "https://twitter.com/Liberland_org"
+  },
+  {
+    "name": "Unlock Protocol",
+    "logo": "unlock.jpg",
+    "url": "https://twitter.com/UnlockProtocol"
   },
   {
     "name": "Your DAO?",
