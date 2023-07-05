@@ -27,32 +27,46 @@ const meta = {
 };
 
 export const ticketMethods: TicketMethodType[] = [
+  // {
+  //   title: 'Dump Fiat',
+  //   price: {
+  //     standard: 200,
+  //     patron: 420,
+  //   },
+  //   discount: isEarlyBirdValid ? 25 : 0,
+  //   isEarlyBird: isEarlyBirdValid,
+  //   earlyBirdExpires: earlyBirdExpiry,
+  //   summary: 'Want to dump some fiat for a MetaFest ticket?',
+  //   method: 'fiat',
+  //   ctaText: 'Buy a ticket',
+  // },
   {
-    title: 'Dump Fiat',
+    title: 'Crypto or FIAT',
     price: {
       standard: 200,
       patron: 420,
     },
-    discount: isEarlyBirdValid ? 25 : 0,
-    isEarlyBird: isEarlyBirdValid,
+    discount: 0,
+    isEarlyBird: false,
     earlyBirdExpires: earlyBirdExpiry,
-    summary: 'Want to dump some fiat for a MetaFest ticket?',
-    method: 'fiat',
+    summary:
+      'Pay with DAI on Optimism or make a card payment using Unlock Protocol (ticket prices will be shown in USD on Unlock)',
+    method: 'unlock',
     ctaText: 'Buy a ticket',
   },
-  {
-    title: 'Buy with Crypto',
-    price: {
-      standard: 200,
-      patron: 420,
-    },
-    discount: isEarlyBirdValid ? 25 : 0,
-    isEarlyBird: isEarlyBirdValid,
-    earlyBirdExpires: earlyBirdExpiry,
-    summary: 'Of course, we accept all mainstream crypto.',
-    method: 'crypto',
-    ctaText: 'Buy a ticket',
-  },
+  // {
+  // 	title: 'Buy with Crypto',
+  // 	price: {
+  // 		standard: 200,
+  // 		patron: 420,
+  // 	},
+  // 	discount: isEarlyBirdValid ? 25 : 0,
+  // 	isEarlyBird: isEarlyBirdValid,
+  // 	earlyBirdExpires: earlyBirdExpiry,
+  // 	summary: 'Of course, we accept all mainstream crypto.',
+  // 	method: 'crypto',
+  // 	ctaText: 'Buy a ticket',
+  // },
   {
     title: 'Squad Discount',
     price: {

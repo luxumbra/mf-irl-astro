@@ -99,6 +99,28 @@ export const FiatButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
   );
 };
 
+export const UnlockProtocolButton = ({ text, disabled }: BuyButtonProps) => {
+  const classes = disabled ? disabledBtnClasses : activeBtnClasses;
+  const handleButtonClick = () => {
+    // open new tab with the following url
+    const url =
+      'https://app.unlock-protocol.com/checkout?paywallConfig=%7B%22locks%22%3A%7B%220xcbaca4fbbf7ed460645d6257533bf50ff4246514%22%3A%7B%22network%22%3A10%2C%22skipRecipient%22%3Atrue%7D%7D%2C%22icon%22%3A%22%22%2C%22pessimistic%22%3Atrue%2C%22skipRecipient%22%3Atrue%7D';
+    const paymentWindow = window.open(url, '_blank', 'noreferrer');
+    paymentWindow.location;
+  };
+  return (
+    <button
+      data-buy-method="unlock"
+      className={classes}
+      onClick={handleButtonClick}
+      onTouchEnd={handleButtonClick}
+      aria-disabled={disabled}
+    >
+      {text}
+    </button>
+  );
+};
+
 export const CryptoModalButton = ({
   text,
   prices,
@@ -638,6 +660,8 @@ export const TicketMethod = ({
             discount={discount}
           />
         );
+      case 'unlock':
+        return <UnlockProtocolButton text={cta} />;
       case 'seeds':
         return <SeedButton text={cta} />;
       case 'squad':
