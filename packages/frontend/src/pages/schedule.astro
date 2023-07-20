@@ -1,0 +1,39 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+import ThreeD from '~/components/widgets/ThreeD';
+import SponsorsSection from '~/components/core/SponsorsSection.astro';
+import Icon from 'astro-icon';
+import Tier from '~/components/atoms/Tier.astro';
+import Markdown from '@astrojs/markdown-component';
+import { Image } from '@astrojs/image/components';
+
+import socialImage from '~/assets/images/socials/metafest-shared.jpg';
+import mgLogo from '~/assets/images/mg-logo.gif';
+import Plants from '~/components/widgets/Plants.astro';
+
+const meta = {
+  title: `${SITE.title}: Event sponsors`,
+  description:
+    'Sponsor MetaFest Croatia - Bronze, Gold, Diamond tiers with perks including logo placement, NFT tickets, and speaking opportunities. Optional Expansion Packs available. Join one of the best events of 2023. Apply now.',
+  canonical: getCanonical(getHomePermalink()),
+  image: socialImage,
+};
+---
+
+<Layout {meta}>
+  <div class="pt-32"></div>
+  <SponsorsSection
+    title="Who’s behind it?"
+    precis="MetaFest Croatia is organized by [MetaFam](https://metagame.wtf)."
+    alt
+  />
+
+  <div class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto">
+    <div class="relative w-full h-full" x-data="{shown: false}" x-intersect:once="shown = true">
+      <Plants />
+    </div>
+  </div>
+  <ThreeD client:visible />
+</Layout>
