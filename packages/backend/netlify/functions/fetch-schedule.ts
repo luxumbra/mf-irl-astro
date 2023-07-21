@@ -1,94 +1,64 @@
 import axios from 'axios';
 import { DateTime } from 'luxon';
-import { Handler, HandlerEvent, Context } from '@netlify/functions';
+import type { Handler, HandlerEvent, HandlerContext } from '@netlify/functions';
+import { google } from 'googleapis';
+require('dotenv').config();
+
+export const fnOptions = {
+  GOOGLE_PRIVATE_KEY: process.env.private_key,
+  GOOGLE_CLIENT_EMAIL: process.env.client_email,
+  GOOGLE_PROJECT_NUMBER: process.env.project_number,
+  GOOGLE_CALENDAR_ID: process.env.calendar_id,
+  SCOPES: ["https://www.googleapis.com/auth/calendar"],
+  client_email: process.env.client_email,
+  private_key: process.env.private_key,
+};
 
 async function getScheduleDataFromGoogleCalendar(): Promise<any> {
+
   const today = DateTime.now();
   const aBitEarlierThanNow = today.minus({ hours: 0.5 }).toISO();
   const next2Days = today.plus({ days: 2 }).toISO();
-  const calUrl = `https://www.googleapis.com/calendar/v3/calendars/85ftetvc3cdl0qop7a36iguacc@group.calendar.google.com/events?key=AIzaSyDo07MSotIB3Q4ETlx_7yxVUB2YKU3MySs&maxResults=10&orderBy=startTime&singleEvents=true&timeMin=${aBitEarlierThanNow}&timeMax=${next2Days}`;
-
-  try {
-    const res = await axios.get(calUrl)
-
-    const events = res.data.items.filter((item, i) => {
-      if (item.status === 'confirmed' && !item.summary.includes('FREE') && item.description !== undefined) {
-        return item
-      }
-    });
-    return events;
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log('error fetching calendar', error);
-  }
+  // const calUrl = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}@group.calendar.google.com/events?key=${key}&maxResults=10&orderBy=startTime&singleEvents=true&timeMin=${aBitEarlierThanNow}&timeMax=${next2Days}`;
 
 }
 
-const handler: Handler = async (event: HandlerEvent, context: Context) => {
+const handler: Handler = async (event, context) => {
+  const calId = process.env.calendar_id;
+  const calendarId = `${calId}@group.calendar.google.com`;
+
+  const auth = new google.auth.JWT(
+    fnOptions.client_email,
+    null,
+    fnOptions.private_key,
+    ['https://www.googleapis.com/auth/calendar.readonly']
+  );
+
+  const calendar = google.calendar({ version: 'v3', auth });
 
   try {
-    const events = await getScheduleDataFromGoogleCalendar();
+    const res = await calendar.events.list(
+      {
+        calendarId,
+        timeMin: new Date().toISOString(),
+        // maxResults: 10,
+        singleEvents: true,
+        orderBy: 'startTime',
+      }
+    );
+
+    const events = res.data.items;
+
     return {
       statusCode: 200,
       body: JSON.stringify(events),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-  } catch (error) {
+    };
+  } catch (err) {
     return {
       statusCode: 500,
-      body: JSON.stringify(error),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
+      body: JSON.stringify({ error: err.toString() }),
+    };
   }
-
-  // const speakerList = useRef([]);
-
-  // const getSpeakers = useCallback(async () => {
-  // 	try {
-  // 		const res = await axios.get(calUrl)
-
-  // 		const speakers = res.data.items.filter((item, i) => {
-  // 			// const itemDate = new Date(item.start.dateTime);
-  // 			// if (itemDate > aBitEarlierThanNow && itemDate < next2Days) {
-  // 			if (item.status === 'confirmed' && !item.summary.includes('FREE') && item.description !== undefined) {
-  // 				// if (!item.description.includes('<html-blob>')) {
-  // 				// console.log('item', item.description);
-  // 				return item
-  // 			}
-  // 			// }
-  // 			// }
-  // 		});
-  // 		setGot(true);
-  // 		if (speakerList.current) {
-  // 			speakerList.current = speakers.length ? speakers : [];
-  // 		}
-  // 	} catch (error) {
-  // 		// eslint-disable-next-line no-console
-  // 		console.log('error fetching calendar', error);
-  // 	}
-  // }, [calUrl]);
-
-  // useEffect(() => {
-  // 	const resetGot = setInterval(() => {
-  // 		setGot(false);
-  // 	}, 1000);
-  // 	if (!got) {
-  // 		getSpeakers();
-  // 	}
-
-  // 	return () => {
-  // 		clearInterval(resetGot);
-  // 	}
-  // }, [getSpeakers, got]);
-
-  // if (speakerList.current.length === 0) {
-  // 	return speakerList.current;
-  // }
-  // return []
 };
 
-export { handler }
+export { handler };

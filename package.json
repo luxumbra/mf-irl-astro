@@ -10,6 +10,17 @@
     "frontend:dev": "pnpm run --filter @metafest/frontend dev",
     "frontend:build": "pnpm run --filter @metafest/frontend build",
     "frontend:preview": "pnpm run --filter @metafest/frontend preview",
-    "frontend:deploy": "pnpm run --filter @metafest/frontend deploy"
+    "frontend:deploy": "pnpm run --filter @metafest/frontend deploy",
+    "frontend:lint": "pnpm run --filter @metafest/frontend lint",
+    "backend:dev": "pnpm run --filter @metafest/backend dev",
+    "backend:build": "pnpm run --filter @metafest/backend build",
+    "backend:serve-fn": "pnpm run --filter @metafest/backend serve-fn",
+    "backend:deploy": "pnpm run --filter @metafest/backend deploy",
+    "mf-deploy-stage": "pnpm run --filter @metafest/backend deploy-stage && pnpm run --filter @metafest/frontend deploy-stage",
+    "site:dev": "pnpm run -r dev",
+    "clean:libsndist": "CMD='rm -rf node_modules/ packages/*/node_modules/ packages/frontend/dist/ packages/backend/.netlify' && echo \"$CMD\" && eval $CMD"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.4"
   }
 }

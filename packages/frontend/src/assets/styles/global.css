@@ -230,6 +230,10 @@
           }
         }
       }
+
+      &--mega {
+        @apply relative min-w-full mx-auto z-10;
+      }
     }
 
     h2 {
@@ -599,6 +603,12 @@
           @apply text-center text-xl lg:text-4xl font-bold  bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent;
         }
       }
+    }
+  }
+
+  .schedule {
+    .badge {
+      @apply text-xs lg:text-xs font-normal rounded-xl border text-accent-light-alpha-90 border-primary-alpha-30 px-2 py-1;
     }
   }
 }

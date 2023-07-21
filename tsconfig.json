@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "rootDir": "./",
+    "strict": true
+  },
+  "files": [],
+  "exclude": ["node_modules", "dist", "packages/*"],
+  "references": [
+    { "path": "./packages/frontend" },
+    { "path": "./packages/backend" }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "allowJs": true,
+    "outDir": ".netlify/",
+    "rootDir": "./"
+  },
+  "include": ["**/*.js"]
+}

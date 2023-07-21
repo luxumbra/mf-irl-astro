@@ -15,6 +15,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const whenExternalScripts = (items = []) =>
 	SITE.googleAnalyticsId ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
+
+console.log(__dirname)
+
 export default defineConfig({
 	site: SITE.origin,
 	base: SITE.basePathname,

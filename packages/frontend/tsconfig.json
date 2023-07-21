@@ -1,13 +1,18 @@
 {
-  "extends": "astro/tsconfigs/base",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "types": ["@astrojs/image/client"],
+    "composite": true,
     "allowJs": true,
+    "rootDir": "./",
+    "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
-  }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }

@@ -4,15 +4,16 @@ import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/PageLayout.astro';
 import ThreeD from '~/components/widgets/ThreeD';
 import SponsorsSection from '~/components/core/SponsorsSection.astro';
-import Icon from 'astro-icon';
-import Tier from '~/components/atoms/Tier.astro';
 import Markdown from '@astrojs/markdown-component';
-import { Image } from '@astrojs/image/components';
-
+import { DateTime } from 'luxon';
 import socialImage from '~/assets/images/socials/metafest-shared.jpg';
-import mgLogo from '~/assets/images/mg-logo.gif';
 import Plants from '~/components/widgets/Plants.astro';
+import { fetchCalendarData } from '~/utils/fetchCalendarEvents';
+import { Icon } from '@iconify/react';
+import { AddToCalendarButton as AddToCalButton } from 'add-to-calendar-button-react';
+import clsx from 'clsx';
 
+const getCalForBuild = await fetchCalendarData();
 const meta = {
   title: `${SITE.title}: Event sponsors`,
   description:
@@ -22,14 +23,129 @@ const meta = {
 };
 ---
 
+<!--
+
+	                        <AddToCalButton
+                          name={event.summary}
+                          startDate={event.start.dateTime}
+                          endDate={event.end.dateTime}
+                          options={['google', 'apple', 'outlook', 'outlookcom', 'yahoo', 'office365']}
+                          client:load
+                        >
+                          <Icon icon="bi:calendar2-plus-fill" className="w-8" client:load />
+                        </AddToCalButton>
+ -->
+<script type="module">
+  // function to toggle list view to grid view on .schedule__list using .grid-button and .list-button
+  const gridButton = document.querySelector('.grid-button');
+  const listButton = document.querySelector('.list-button');
+  const scheduleList = document.querySelector('.schedule__list');
+  const scheduleFilters = document.querySelector('.schedule-filters');
+
+  if (!gridButton || !listButton || !scheduleList || !scheduleFilters) return;
+  listButton.addEventListener('click', () => {
+    console.log('list button clicked');
+    scheduleList.classList.remove('grid');
+    scheduleList.classList.add('flex-col');
+    scheduleFilters.classList.remove('hidden');
+  });
+
+  gridButton.addEventListener('click', () => {
+    console.log('grid button clicked');
+    scheduleList.classList.remove('flex-col');
+    scheduleList.classList.add('grid');
+    scheduleFilters.classList.add('hidden');
+  });
+</script>
+
 <Layout {meta}>
   <div class="pt-32"></div>
   <SponsorsSection
-    title="Who’s behind it?"
-    precis="MetaFest Croatia is organized by [MetaFam](https://metagame.wtf)."
-    alt
-  />
+    title="Festival Schedule"
+    precis="The festival will be held over 3 days, with a variety of events, workshops, and talks. see below..."
+    full
+    mega
+  >
+    <div class="schedule-wrapper flex items-start justify-between space-x-12 w-full relative">
+      <div class="absolute -right-20 top-0 flex items-center justify-end">
+        <button class="grid-button"><Icon icon="mdi:grid" className="w-8 h-8" client:load /></button>
+        <button class="list-button"><Icon icon="ph:list-fill" className="w-8 h-8" client:load /></button>
+      </div>
+      <div class="schedule-filters relative w-1/3 flex-shrink">
+        <div class="fixed max-w-3xl p-8 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60">
+          <h3 class="text-xl font-sans text-left m-0">Filters</h3>
+          <div class="flex flex-col space-y-2">
+            <div class="flex flex-col space-y-2">
+              <label for="filter-1" class="text-sm text-accent-light-alpha-90 mb-0 flex items-center space-x-2">
+                <input type="checkbox" id="filter-1" name="filter-1" class="mr-2" />
+                <span class="inline-flex items-center gap-2">
+                  <Icon icon="bi:calendar2-event-fill" client:load /> Meta/Degen Day
+                </span>
+              </label>
+              <label for="filter-2" class="text-sm text-accent-light-alpha-90 mb-0 flex items-center space-x-2">
+                <input type="checkbox" id="filter-2" name="filter-2" class="mr-2" />
+                <span class="inline-flex items-center gap-2">
+                  <Icon icon="bi:calendar2-event-fill" client:load /> Coordination / DAO Day
+                </span>
+              </label>
+              <label for="filter-3" class="text-sm text-accent-light-alpha-90 mb-0 flex items-center space-x-2">
+                <input type="checkbox" id="filter-3" name="filter-3" class="mr-2" />
+                <span class="inline-flex items-center gap-2">
+                  <Icon icon="bi:calendar2-event-fill" client:load /> Unconference Day
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="schedule" class="schedule flex-grow">
+        {
+          getCalForBuild && (
+            <ol class={clsx('schedule__list gap-5 items-stretch')}>
+              {getCalForBuild.data.map((event: any) => {
+                const date = DateTime.fromISO(event.start.dateTime).toLocaleString({
+                  weekday: 'short',
+                  month: 'short',
+                  day: 'numeric',
+                });
+                const startTime = DateTime.fromISO(event.start.dateTime).toLocaleString(DateTime.TIME_24_SIMPLE);
+                const endTime = DateTime.fromISO(event.end.dateTime).toLocaleString(DateTime.TIME_24_SIMPLE);
+                const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
 
+                return (
+                  <li class="relative text-left flex flex-col space-y-2 rounded-xl">
+                    <div class="p-3 md:p-5 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60  items-stretch h-full flex flex-col space-y-2">
+                      <div class="event-heading flex items-center justify-between">
+                        <h3 class="text-left font-sans text-base font-normal m-0 inline-flex flex-grow ">
+                          {event.summary}
+                        </h3>
+                        <button class="absolute btn  p-2 bg-accent-light-alpha-30 top-0 right-0 text-sm text-accent-light-alpha-90 mb-0 inline-flex rounded-2xl rounded-br-none rounded-tl-none ">
+                          <Icon icon="bi:calendar2-plus-fill" className="w-5 h-5" client:load />
+                        </button>
+                      </div>
+                      <p class="text-sm text-accent-light-alpha-90 mb-0 flex items-center  space-x-2">
+                        <span class="inline-flex items-center gap-2">
+                          <Icon icon="bi:calendar2-event-fill" client:load /> {date}
+                        </span>
+                        <span class="inline-flex items-center gap-2">
+                          <Icon icon="ph:clock-fill" client:load /> {startTime} - {endTime} {offset}
+                        </span>
+                      </p>
+                      <Markdown class="text-off-white my-3">
+                        <Fragment set:html={event.description} />
+                      </Markdown>
+                    </div>
+                    <div class="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-none" />
+                  </li>
+                );
+              })}
+            </ol>
+          )
+        }
+      </div>
+    </div>
+  </SponsorsSection>
+  <div class="pt-32"></div>
   <div class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto">
     <div class="relative w-full h-full" x-data="{shown: false}" x-intersect:once="shown = true">
       <Plants />
@@ -37,3 +153,30 @@ const meta = {
   </div>
   <ThreeD client:visible />
 </Layout>
+
+<!-- <script type="module">
+  const fetchSchedule = async () => {
+    const response = await fetch('/.netlify/functions/fetch-schedule');
+    const scheduleData = await response.json();
+
+    // update the page with the new data
+    const scheduleElement = document.getElementById('schedule');
+    if (!scheduleElement) return;
+    const listElement = scheduleElement.querySelector('ol');
+    if (!listElement) return;
+    listElement.innerHTML = scheduleData
+      .map(
+        (event) => `
+			<li>
+				<h3>${event.title}</h3>
+				<p>${event.date}</p>
+			</li>
+		`
+      )
+      .join('');
+  };
+
+  fetchSchedule();
+
+  setInterval(fetchSchedule, 0.5 * 60 * 1000);
+</script> -->

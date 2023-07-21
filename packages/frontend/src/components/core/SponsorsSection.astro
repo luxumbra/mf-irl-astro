@@ -10,11 +10,12 @@ export interface SponsorsSectionProps {
   title: string;
   precis?: string;
   full?: boolean;
-	alt?: boolean;
-	sectionId?: string;
+  alt?: boolean;
+  mega?: boolean;
+  sectionId?: string;
 }
 
-const { alt, full, title, precis, sectionId } = Astro.props as SponsorsSectionProps;
+const { alt, full, mega, title, precis, sectionId } = Astro.props as SponsorsSectionProps;
 const id = uuid();
 const contentStyles = alt ? 'section__content--alt flex justify-center' : 'section__content flex justify-center';
 ---
@@ -32,17 +33,19 @@ const contentStyles = alt ? 'section__content--alt flex justify-center' : 'secti
       x-transition:leave-start="opacity-100 transform translate-y-0"
       x-transition:leave-end="opacity-0 transform translate-y-8"
     >
-      <h2>{title}</h2>
+      <h2>{title} {mega && 'MEGA!!!'}</h2>
       {precis && <Markdown>{precis}</Markdown>}
-      {!full ? (
-        <div class="max-w-3xl 2xl:max-w-4xl">
-          <slot />
-        </div>
-      ) : (
-        <div class="w-full mx-auto">
-        <slot />
-        </div>
-      )}
+      {
+        !full ? (
+          <div class="max-w-3xl 2xl:max-w-4xl">
+            <slot />
+          </div>
+        ) : (
+          <div class="w-full mx-auto">
+            <slot />
+          </div>
+        )
+      }
     </div>
   </div>
 </Section>
