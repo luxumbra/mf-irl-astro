@@ -608,7 +608,14 @@
 
   .schedule {
     .badge {
-      @apply text-xs lg:text-xs font-normal rounded-xl border text-accent-light-alpha-90 border-primary-alpha-30 px-2 py-1;
+      @apply hidden text-xs lg:text-xs font-normal rounded-xl border text-accent-light-alpha-90 border-primary-alpha-30 px-2 py-1;
+    }
+    &__item {
+      &__description {
+        i {
+          @apply hidden;
+        }
+      }
     }
   }
 }

@@ -12,8 +12,69 @@ import { fetchCalendarData } from '~/utils/fetchCalendarEvents';
 import { Icon } from '@iconify/react';
 import { AddToCalendarButton as AddToCalButton } from 'add-to-calendar-button-react';
 import clsx from 'clsx';
+import '~/components/widgets/schedule-tabs.css';
+
+type TabType = {
+  name: string;
+  date: string;
+  data: [];
+};
 
 const getCalForBuild = await fetchCalendarData();
+const filterDataForTabs = () => {
+  if (!getCalForBuild) return;
+  const tabs: TabType[] = [
+    {
+      name: 'Meta/Regen Day',
+      date: '2023-08-16',
+      data: [],
+    },
+    {
+      name: 'Coordination/DAO Day',
+      date: '2023-08-17',
+      data: [],
+    },
+    {
+      name: 'The Unconference',
+      date: '2023-08-18',
+      data: [],
+    },
+  ];
+  // filter data for tabs *Meta/Regen Day*, *Coordination/DAO Day*, *The Unconference*
+  const metaRegenDay = getCalForBuild.data.filter((event) => {
+    const day = DateTime.fromISO(event.start.dateTime).toLocaleString(DateTime.DATE_SHORT);
+    return day.includes('16/08/2023');
+  });
+  const coordinationDAODay = getCalForBuild.data.filter((event) => {
+    const day = DateTime.fromISO(event.start.dateTime).toLocaleString(DateTime.DATE_SHORT);
+    return day.includes('17/08/2023');
+  });
+  const unconference = getCalForBuild.data.filter((event) => {
+    const day = DateTime.fromISO(event.start.dateTime).toLocaleString(DateTime.DATE_SHORT);
+    return day.includes('18/08/2023');
+  });
+
+  if (metaRegenDay.length > 0) {
+    tabs[0].data = metaRegenDay;
+  }
+  if (coordinationDAODay.length > 0) {
+    tabs[1].data = coordinationDAODay;
+  }
+  if (unconference.length > 0) {
+    tabs[2].data = unconference;
+  }
+
+  return {
+    metaRegenDay,
+    coordinationDAODay,
+    unconference,
+    tabs: tabs,
+  };
+};
+
+const tabData = filterDataForTabs();
+console.log(tabData?.tabs);
+
 const meta = {
   title: `${SITE.title}: Event sponsors`,
   description:
@@ -25,39 +86,16 @@ const meta = {
 
 <!--
 
-	                        <AddToCalButton
-                          name={event.summary}
-                          startDate={event.start.dateTime}
-                          endDate={event.end.dateTime}
-                          options={['google', 'apple', 'outlook', 'outlookcom', 'yahoo', 'office365']}
-                          client:load
-                        >
-                          <Icon icon="bi:calendar2-plus-fill" className="w-8" client:load />
-                        </AddToCalButton>
+		<AddToCalButton
+		name={event.summary}
+		startDate={event.start.dateTime}
+		endDate={event.end.dateTime}
+		options={['google', 'apple', 'outlook', 'outlookcom', 'yahoo', 'office365']}
+		client:load
+	>
+		<Icon icon="bi:calendar2-plus-fill" className="w-8" client:load />
+	</AddToCalButton>
  -->
-<script type="module">
-  // function to toggle list view to grid view on .schedule__list using .grid-button and .list-button
-  const gridButton = document.querySelector('.grid-button');
-  const listButton = document.querySelector('.list-button');
-  const scheduleList = document.querySelector('.schedule__list');
-  const scheduleFilters = document.querySelector('.schedule-filters');
-
-  if (!gridButton || !listButton || !scheduleList || !scheduleFilters) return;
-  listButton.addEventListener('click', () => {
-    console.log('list button clicked');
-    scheduleList.classList.remove('grid');
-    scheduleList.classList.add('flex-col');
-    scheduleFilters.classList.remove('hidden');
-  });
-
-  gridButton.addEventListener('click', () => {
-    console.log('grid button clicked');
-    scheduleList.classList.remove('flex-col');
-    scheduleList.classList.add('grid');
-    scheduleFilters.classList.add('hidden');
-  });
-</script>
-
 <Layout {meta}>
   <div class="pt-32"></div>
   <SponsorsSection
@@ -66,83 +104,89 @@ const meta = {
     full
     mega
   >
-    <div class="schedule-wrapper flex items-start justify-between space-x-12 w-full relative">
-      <div class="absolute -right-20 top-0 flex items-center justify-end">
-        <button class="grid-button"><Icon icon="mdi:grid" className="w-8 h-8" client:load /></button>
-        <button class="list-button"><Icon icon="ph:list-fill" className="w-8 h-8" client:load /></button>
-      </div>
-      <div class="schedule-filters relative w-1/3 flex-shrink">
-        <div class="fixed max-w-3xl p-8 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60">
-          <h3 class="text-xl font-sans text-left m-0">Filters</h3>
-          <div class="flex flex-col space-y-2">
-            <div class="flex flex-col space-y-2">
-              <label for="filter-1" class="text-sm text-accent-light-alpha-90 mb-0 flex items-center space-x-2">
-                <input type="checkbox" id="filter-1" name="filter-1" class="mr-2" />
-                <span class="inline-flex items-center gap-2">
-                  <Icon icon="bi:calendar2-event-fill" client:load /> Meta/Degen Day
-                </span>
-              </label>
-              <label for="filter-2" class="text-sm text-accent-light-alpha-90 mb-0 flex items-center space-x-2">
-                <input type="checkbox" id="filter-2" name="filter-2" class="mr-2" />
-                <span class="inline-flex items-center gap-2">
-                  <Icon icon="bi:calendar2-event-fill" client:load /> Coordination / DAO Day
-                </span>
-              </label>
-              <label for="filter-3" class="text-sm text-accent-light-alpha-90 mb-0 flex items-center space-x-2">
-                <input type="checkbox" id="filter-3" name="filter-3" class="mr-2" />
-                <span class="inline-flex items-center gap-2">
-                  <Icon icon="bi:calendar2-event-fill" client:load /> Unconference Day
-                </span>
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="schedule" class="schedule flex-grow">
+    <div class="tabs tabs--horizontal schedule-wrapper w-full relative">
+      <ol class="tablist schedule-filters flex items-end w-full" role="tablist">
         {
-          getCalForBuild && (
-            <ol class={clsx('schedule__list gap-5 items-stretch')}>
-              {getCalForBuild.data.map((event: any) => {
-                const date = DateTime.fromISO(event.start.dateTime).toLocaleString({
-                  weekday: 'short',
-                  month: 'short',
-                  day: 'numeric',
-                });
-                const startTime = DateTime.fromISO(event.start.dateTime).toLocaleString(DateTime.TIME_24_SIMPLE);
-                const endTime = DateTime.fromISO(event.end.dateTime).toLocaleString(DateTime.TIME_24_SIMPLE);
-                const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
-
-                return (
-                  <li class="relative text-left flex flex-col space-y-2 rounded-xl">
-                    <div class="p-3 md:p-5 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60  items-stretch h-full flex flex-col space-y-2">
-                      <div class="event-heading flex items-center justify-between">
-                        <h3 class="text-left font-sans text-base font-normal m-0 inline-flex flex-grow ">
-                          {event.summary}
-                        </h3>
-                        <button class="absolute btn  p-2 bg-accent-light-alpha-30 top-0 right-0 text-sm text-accent-light-alpha-90 mb-0 inline-flex rounded-2xl rounded-br-none rounded-tl-none ">
-                          <Icon icon="bi:calendar2-plus-fill" className="w-5 h-5" client:load />
-                        </button>
-                      </div>
-                      <p class="text-sm text-accent-light-alpha-90 mb-0 flex items-center  space-x-2">
-                        <span class="inline-flex items-center gap-2">
-                          <Icon icon="bi:calendar2-event-fill" client:load /> {date}
-                        </span>
-                        <span class="inline-flex items-center gap-2">
-                          <Icon icon="ph:clock-fill" client:load /> {startTime} - {endTime} {offset}
-                        </span>
-                      </p>
-                      <Markdown class="text-off-white my-3">
-                        <Fragment set:html={event.description} />
-                      </Markdown>
-                    </div>
-                    <div class="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-none" />
-                  </li>
-                );
-              })}
-            </ol>
-          )
+          tabData?.tabs &&
+            tabData.tabs.map((tab: TabType, index: number) => {
+              return (
+                <li role="presentation" class="tab">
+                  <a
+                    href={`#tab-section-${index + 1}`}
+                    id={`tab${index + 1}`}
+                    role="tab"
+                    aria-selected="true"
+                    class="text-2xl"
+                  >
+                    <span>{DateTime.fromISO(tab.date).toFormat('ccc, d')}</span> <span>{tab.name}</span>
+                  </a>
+                </li>
+              );
+            })
         }
-      </div>
+      </ol>
+
+      {
+        tabData?.tabs &&
+          tabData?.tabs.map((tab: TabType, index: number) => {
+            return (
+              <div
+                class={clsx('tab-section w-full', index === 0 ? 'active' : '')}
+                id={`tab-section-${index + 1}`}
+                tabindex="-1"
+                role="tabpanel"
+                aria-labelledby={`tab${index + 1}`}
+                aria-hidden={index === 0 ? 'false' : 'true'}
+                hidden={index === 0 ? false : true}
+              >
+                {tab.data && (
+                  <ol class={clsx('schedule__list grid grid-cols-2 gap-5 items-stretch w-full')}>
+                    {tab.data.map((event: any) => {
+                      const date = DateTime.fromISO(event.start.dateTime).toLocaleString({
+                        weekday: 'short',
+                        month: 'short',
+                        day: 'numeric',
+                      });
+                      const startTime = DateTime.fromISO(event.start.dateTime).toLocaleString(DateTime.TIME_24_SIMPLE);
+                      const endTime = DateTime.fromISO(event.end.dateTime).toLocaleString(DateTime.TIME_24_SIMPLE);
+                      const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
+
+                      return (
+                        <li class="relative text-left flex flex-col space-y-2 rounded-2xl overflow-hidden">
+                          <div class="p-3 md:p-5 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60  items-stretch h-full flex flex-col space-y-2">
+                            <div class="event-heading flex items-center justify-between">
+                              <h3 class="text-left font-sans text-base font-normal m-0 inline-flex flex-grow ">
+                                {event.summary}
+                              </h3>
+                              <button class="absolute btn  p-2 bg-accent-light-alpha-30 top-0 right-0 text-sm text-accent-light-alpha-90 mb-0 inline-flex rounded-2xl rounded-br-none rounded-tl-none ">
+                                <Icon icon="bi:calendar2-plus-fill" className="w-5 h-5" client:load />
+                              </button>
+                            </div>
+                            <p class="text-sm text-accent-light-alpha-90 mb-0 flex items-center  space-x-2">
+                              <span class="inline-flex items-center gap-2">
+                                <Icon icon="bi:calendar2-event-fill" client:load /> {date}
+                              </span>
+                              <span class="inline-flex items-center gap-2">
+                                <Icon icon="ph:clock-fill" client:load /> {startTime} - {endTime} {offset}
+                              </span>
+                              <span class="inline-flex items-center gap-2 justify-self-end">
+                                <Icon icon="octicon:location-16" client:load /> {event.location ?? 'TBC'}
+                              </span>
+                            </p>
+                            <Markdown class="schedule__item__description text-off-white my-3">
+                              <Fragment set:html={event.description} />
+                            </Markdown>
+                          </div>
+                          <div class="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-none" />
+                        </li>
+                      );
+                    })}
+                  </ol>
+                )}
+              </div>
+            );
+          })
+      }
     </div>
   </SponsorsSection>
   <div class="pt-32"></div>
@@ -153,6 +197,75 @@ const meta = {
   </div>
   <ThreeD client:visible />
 </Layout>
+
+<script>
+  const tablist = document.querySelector("[role='tablist']") as HTMLElement;
+  const tabs = Array.from(tablist.querySelectorAll('a')) as HTMLElement[];
+  // eslint-disable-next-line no-undef
+  const panels = document.querySelectorAll(".tab-section[role='tabpanel']") as NodeListOf<HTMLElement>;
+
+  const LEFT_ARROW = 'leftarrow';
+  const RIGHT_ARROW = 'rightarrow';
+  const DOWN_ARROW = 'downarrow';
+
+  const switchTab = (oldTab: HTMLElement, newTab: HTMLElement) => {
+    newTab.focus();
+    newTab.removeAttribute('tabindex');
+    newTab.setAttribute('aria-selected', 'true');
+
+    oldTab.removeAttribute('aria-selected');
+    oldTab.setAttribute('tabindex', '-1');
+
+    panels[tabs.indexOf(oldTab)].hidden = true;
+    panels[tabs.indexOf(newTab)].hidden = false;
+    panels[tabs.indexOf(oldTab)].ariaHidden = 'true';
+    panels[tabs.indexOf(newTab)].ariaHidden = 'false';
+    panels[tabs.indexOf(newTab)].classList.add('active');
+    panels[tabs.indexOf(oldTab)].classList.remove('active');
+  };
+
+  window.addEventListener(
+    'load',
+    () => {
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('click', (e) => {
+          e.preventDefault();
+          let currentTab = tablist.querySelector('[aria-selected]') as HTMLElement;
+          if (e.currentTarget !== currentTab) {
+            switchTab(currentTab, e.currentTarget as HTMLElement);
+          }
+        });
+
+        tab.addEventListener(
+          'keydown',
+          (e) => {
+            const index = tabs.indexOf(e.currentTarget as HTMLElement);
+            if (e.key === DOWN_ARROW) {
+              e.preventDefault();
+              panels[i].focus();
+            }
+
+            if (e.key === LEFT_ARROW) {
+              e.preventDefault();
+              if (tabs[index - 1]) {
+                switchTab(e.currentTarget as HTMLElement, tabs[index - 1]);
+              }
+            }
+
+            if (e.key === RIGHT_ARROW) {
+              e.preventDefault();
+              if (tabs[index + 1]) {
+                switchTab(e.currentTarget as HTMLElement, tabs[index + 1]);
+              }
+            }
+          },
+          { passive: true }
+        );
+      });
+    },
+    { passive: true }
+  );
+</script>
 
 <!-- <script type="module">
   const fetchSchedule = async () => {
