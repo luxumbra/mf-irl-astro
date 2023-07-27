@@ -295,6 +295,11 @@
             mask-repeat: no-repeat;
             content: '';
           }
+          &.cal-link {
+            &::after {
+              @apply hidden;
+            }
+          }
         }
 
         &[href^='http://']
@@ -610,6 +615,9 @@
     .badge {
       @apply hidden text-xs lg:text-xs font-normal rounded-xl border text-accent-light-alpha-90 border-primary-alpha-30 px-2 py-1;
     }
+    .hide {
+      @apply hidden;
+    }
     &__item {
       &__description {
         i {
@@ -658,6 +666,10 @@
     @apply bg-gradient-to-r from-accent-alpha-60 to-primary-alpha-60;
   }
   .gradient-text {
+    @apply text-transparent bg-clip-text;
+    @apply bg-gradient-to-br from-pink-300 via-teal-300 to-violet-700;
+  }
+  .text-gradient {
     @apply text-transparent bg-clip-text;
     @apply bg-gradient-to-br from-pink-300 via-teal-300 to-violet-700;
   }

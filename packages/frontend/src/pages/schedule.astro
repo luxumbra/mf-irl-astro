@@ -10,14 +10,22 @@ import socialImage from '~/assets/images/socials/metafest-shared.jpg';
 import Plants from '~/components/widgets/Plants.astro';
 import { fetchCalendarData } from '~/utils/fetchCalendarEvents';
 import { Icon } from '@iconify/react';
-import { AddToCalendarButton as AddToCalButton } from 'add-to-calendar-button-react';
+// import { AddToCalendarButton as AddToCalButton } from 'add-to-calendar-button-react';
 import clsx from 'clsx';
 import '~/components/widgets/schedule-tabs.css';
+import ScheduleItem from '~/components/atoms/ScheduleItem.astro';
+import { days } from '~/content/schedule';
+import type { ScheduleEventType } from '~/content/schedule';
 
 type TabType = {
   name: string;
-  date: string;
-  data: [];
+  date: TabDateType;
+  data: [] | ScheduleEventType[];
+};
+
+type TabDateType = {
+  from: string;
+  to: string;
 };
 
 const getCalForBuild = await fetchCalendarData();
@@ -25,19 +33,44 @@ const filterDataForTabs = () => {
   if (!getCalForBuild) return;
   const tabs: TabType[] = [
     {
+      name: 'Warmup Days',
+      date: {
+        from: '2023-08-11',
+        to: '2023-08-15',
+      },
+      data: [] as ScheduleEventType[],
+    },
+    {
       name: 'Meta/Regen Day',
-      date: '2023-08-16',
+      date: {
+        from: '2023-08-16',
+        to: '2023-08-16',
+      },
       data: [],
     },
     {
-      name: 'Coordination/DAO Day',
-      date: '2023-08-17',
+      name: 'Coordination/Meta Day',
+      date: {
+        from: '2023-08-17',
+        to: '2023-08-17',
+      },
       data: [],
     },
     {
-      name: 'The Unconference',
-      date: '2023-08-18',
+      name: 'Unconference Day',
+      date: {
+        from: '2023-08-18',
+        to: '2023-08-18',
+      },
       data: [],
+    },
+    {
+      name: 'Bus Trip',
+      date: {
+        from: '2023-08-19',
+        to: '2023-08-24',
+      },
+      data: [] as ScheduleEventType[],
     },
   ];
   // filter data for tabs *Meta/Regen Day*, *Coordination/DAO Day*, *The Unconference*
@@ -54,26 +87,45 @@ const filterDataForTabs = () => {
     return day.includes('18/08/2023');
   });
 
+  const warmupDays: ScheduleEventType[] = days.filter((event) => {
+    if (event.grouping === 'warmup') {
+      return event;
+    }
+  });
+
+  const bustripDays: ScheduleEventType[] = days.filter((event) => {
+    if (event.grouping === 'bustrip') {
+      return event;
+    }
+  });
+
+  if (warmupDays.length > 0) {
+    tabs[0].data = warmupDays;
+  }
   if (metaRegenDay.length > 0) {
-    tabs[0].data = metaRegenDay;
+    tabs[1].data = metaRegenDay;
   }
   if (coordinationDAODay.length > 0) {
-    tabs[1].data = coordinationDAODay;
+    tabs[2].data = coordinationDAODay;
   }
   if (unconference.length > 0) {
-    tabs[2].data = unconference;
+    tabs[3].data = unconference;
+  }
+  if (bustripDays.length > 0) {
+    tabs[4].data = bustripDays;
   }
 
   return {
     metaRegenDay,
     coordinationDAODay,
     unconference,
+    warmupDays,
+    bustripDays,
     tabs: tabs,
   };
 };
 
 const tabData = filterDataForTabs();
-console.log(tabData?.tabs);
 
 const meta = {
   title: `${SITE.title}: Event sponsors`,
@@ -109,84 +161,96 @@ const meta = {
         {
           tabData?.tabs &&
             tabData.tabs.map((tab: TabType, index: number) => {
+              const displayDate =
+                tab.date.from === tab.date.to
+                  ? `${DateTime.fromISO(tab.date.from).toFormat('d')} ${DateTime.fromISO(tab.date.from).toFormat(
+                      'LLL'
+                    )}`
+                  : `${DateTime.fromISO(tab.date.from).toFormat('d')} - ${DateTime.fromISO(tab.date.to).toFormat(
+                      'd'
+                    )} ${DateTime.fromISO(tab.date.to).toFormat('LLL')}`;
+
               return (
                 <li role="presentation" class="tab">
                   <a
                     href={`#tab-section-${index + 1}`}
                     id={`tab${index + 1}`}
                     role="tab"
-                    aria-selected="true"
-                    class="text-2xl"
+                    aria-selected={index === 0 ? 'true' : 'false'}
+                    class="text-2xl text-gradient flex flex-col px-3 py-2"
                   >
-                    <span>{DateTime.fromISO(tab.date).toFormat('ccc, d')}</span> <span>{tab.name}</span>
+                    <span class="font-bold">{tab.name}</span>
+                    <span>{displayDate}</span>
                   </a>
                 </li>
               );
             })
         }
       </ol>
-
-      {
-        tabData?.tabs &&
-          tabData?.tabs.map((tab: TabType, index: number) => {
-            return (
-              <div
-                class={clsx('tab-section w-full', index === 0 ? 'active' : '')}
-                id={`tab-section-${index + 1}`}
-                tabindex="-1"
-                role="tabpanel"
-                aria-labelledby={`tab${index + 1}`}
-                aria-hidden={index === 0 ? 'false' : 'true'}
-                hidden={index === 0 ? false : true}
-              >
-                {tab.data && (
-                  <ol class={clsx('schedule__list grid grid-cols-2 gap-5 items-stretch w-full')}>
-                    {tab.data.map((event: any) => {
-                      const date = DateTime.fromISO(event.start.dateTime).toLocaleString({
-                        weekday: 'short',
-                        month: 'short',
-                        day: 'numeric',
-                      });
-                      const startTime = DateTime.fromISO(event.start.dateTime).toLocaleString(DateTime.TIME_24_SIMPLE);
-                      const endTime = DateTime.fromISO(event.end.dateTime).toLocaleString(DateTime.TIME_24_SIMPLE);
-                      const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
-
-                      return (
-                        <li class="relative text-left flex flex-col space-y-2 rounded-2xl overflow-hidden">
-                          <div class="p-3 md:p-5 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60  items-stretch h-full flex flex-col space-y-2">
-                            <div class="event-heading flex items-center justify-between">
-                              <h3 class="text-left font-sans text-base font-normal m-0 inline-flex flex-grow ">
-                                {event.summary}
-                              </h3>
-                              <button class="absolute btn  p-2 bg-accent-light-alpha-30 top-0 right-0 text-sm text-accent-light-alpha-90 mb-0 inline-flex rounded-2xl rounded-br-none rounded-tl-none ">
-                                <Icon icon="bi:calendar2-plus-fill" className="w-5 h-5" client:load />
-                              </button>
-                            </div>
-                            <p class="text-sm text-accent-light-alpha-90 mb-0 flex items-center  space-x-2">
-                              <span class="inline-flex items-center gap-2">
-                                <Icon icon="bi:calendar2-event-fill" client:load /> {date}
-                              </span>
-                              <span class="inline-flex items-center gap-2">
-                                <Icon icon="ph:clock-fill" client:load /> {startTime} - {endTime} {offset}
-                              </span>
-                              <span class="inline-flex items-center gap-2 justify-self-end">
-                                <Icon icon="octicon:location-16" client:load /> {event.location ?? 'TBC'}
-                              </span>
-                            </p>
-                            <Markdown class="schedule__item__description text-off-white my-3">
-                              <Fragment set:html={event.description} />
-                            </Markdown>
-                          </div>
-                          <div class="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-none" />
-                        </li>
-                      );
-                    })}
-                  </ol>
-                )}
-              </div>
-            );
-          })
-      }
+      <div
+        class={clsx(
+          'tab-content grid flex-nowrap w-full relative overflow-hidden',
+          `grid-cols-${tabData?.tabs.length}`
+        )}
+      >
+        {
+          tabData?.tabs &&
+            tabData?.tabs.map((tab: TabType, index: number) => {
+              // console.log({ tab, index });
+              return (
+                <div
+                  class={clsx(
+                    'tab-section w-full overflow-y-hidden',
+                    index === 0 ? 'active' : '',
+                    typeof tab.data === 'string' && 'tab-section--md'
+                  )}
+                  id={`tab-section-${index + 1}`}
+                  tabindex="-1"
+                  role="tabpanel"
+                  aria-labelledby={`tab${index + 1}`}
+                  aria-hidden={index === 0 ? 'false' : 'true'}
+                  hidden={index === 0 ? false : true}
+                >
+                  {tab.data && tab.data.length ? (
+                    <ol class={clsx('schedule__list tiers grid grid-cols-3 gap-5 items-stretch w-full')}>
+                      {tab.data.map((event: any) => {
+                        if (event.grouping !== undefined) {
+                          return (
+                            <li class="group relative text-left flex flex-col rounded-2xl p-[1px]">
+                              <div class="group-hover:opacity-0 transition-all duration-500 p-3 md:p-5 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 items-center h-full w-full flex flex-col overflow-hidden z-10">
+                                <div class="event-heading flex items-center justify-between z-10 mb-3 group-hover:-translate-y-4 transition-all duration-200">
+                                  <h3 class="text-left font-sans text-base font-bold m-0 inline-flex ">
+                                    {event.title}
+                                  </h3>
+                                </div>
+                                <div class="prose prose-xs prose-ul:list-none prose-ul:pl-0 prose-li:mb-3 prose-li:pl-0 text-left z-10 group-hover:translate-y-4 duration-200">
+                                  <Markdown class="z-10 text-base">{event.description}</Markdown>
+                                </div>
+                              </div>
+                              <div class="mt-0 inset-[1px] absolute overflow-hidden z-0 rounded-2xl">
+                                <img
+                                  src={event.image}
+                                  alt={event.title}
+                                  class="w-full h-full object-cover object-bottom"
+                                />
+                              </div>
+                              <div class="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-none" />
+                            </li>
+                          );
+                        }
+                        return <ScheduleItem event={event} />;
+                      })}
+                    </ol>
+                  ) : (
+                    <div class="flex flex-col items-center justify-center w-full h-full">
+                      <p class="text-xl font-bold text-center">Awaiting content for this day. Check back later. </p>
+                    </div>
+                  )}
+                </div>
+              );
+            })
+        }
+      </div>
     </div>
   </SponsorsSection>
   <div class="pt-32"></div>
@@ -201,9 +265,11 @@ const meta = {
 <script>
   const tablist = document.querySelector("[role='tablist']") as HTMLElement;
   const tabs = Array.from(tablist.querySelectorAll('a')) as HTMLElement[];
+  const tabContainer = document.querySelector('.tab-content') as HTMLElement;
   // eslint-disable-next-line no-undef
   const panels = document.querySelectorAll(".tab-section[role='tabpanel']") as NodeListOf<HTMLElement>;
-
+  const heights: number[] = panels.forEach((panel) => panel.offsetHeight) as any;
+  // console.log({ heights });
   const LEFT_ARROW = 'leftarrow';
   const RIGHT_ARROW = 'rightarrow';
   const DOWN_ARROW = 'downarrow';
@@ -215,11 +281,12 @@ const meta = {
 
     oldTab.removeAttribute('aria-selected');
     oldTab.setAttribute('tabindex', '-1');
-
+    // console.log(panels[tabs.indexOf(newTab)].offsetHeight);
     panels[tabs.indexOf(oldTab)].hidden = true;
     panels[tabs.indexOf(newTab)].hidden = false;
     panels[tabs.indexOf(oldTab)].ariaHidden = 'true';
     panels[tabs.indexOf(newTab)].ariaHidden = 'false';
+    tabContainer.style.height = `${heights[tabs.indexOf(newTab)]}px`;
     panels[tabs.indexOf(newTab)].classList.add('active');
     panels[tabs.indexOf(oldTab)].classList.remove('active');
   };

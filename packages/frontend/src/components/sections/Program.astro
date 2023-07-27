@@ -16,16 +16,33 @@ import Tabs from '../widgets/Tabs.astro';
       x-transition:leave-start="opacity-100 transform translate-y-0"
       x-transition:leave-end="opacity-0 transform translate-y-8"
     > -->
-      <h2>Activities</h2>
-      <div class="flex items-start flex-col xl:flex-row flex-nowrap xl:space-x-6">
-        <div class="w-full xl:w-1/4 text-left">
-					<p class="text-left text-lg xl:text-base 4xl:text-lg">The main event goes for 3 days but it’s not the only opportunity in town!</p>
-					<p>Venture out to discover adrenaline-pumping activities like quad-biking, scuba diving, and DAO vs DAO paintball battles and more.</p>
-        </div>
-        <div class="w-full xl:w-3/4 xl:flex-shrink-0">
-          <Tabs />
-        </div>
+    <h2>Activities</h2>
+    <div class="flex items-start flex-col xl:flex-row flex-nowrap xl:space-x-6">
+      <div class="w-full xl:w-1/4 text-left">
+        <p class="text-left text-lg xl:text-base 4xl:text-lg">
+          The main event goes for 3 days but it’s not the only opportunity in town!
+        </p>
+        <p>
+          Venture out to discover adrenaline-pumping activities like quad-biking, scuba diving, and DAO vs DAO paintball
+          battles and more.
+        </p>
       </div>
+      <div class="w-full xl:w-3/4 xl:flex-shrink-0">
+        <Tabs />
+      </div>
+    </div>
+
+    <h2>Full Schedule</h2>
+    <div class="flex items-start flex-col xl:flex-row flex-nowrap xl:space-x-6">
+      <div class="w-full xl:w-1/4 text-left">
+        <p class="text-left text-lg xl:text-base 4xl:text-lg">
+          More details and dates can be found on the full schedule.
+        </p>
+      </div>
+      <div class="w-full xl:w-3/4 xl:flex-shrink-0">
+        <button class="btn btn--primary">View Schedule</button>
+      </div>
+    </div>
     <!-- </div> -->
   </div>
 </Section>
