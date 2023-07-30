@@ -1,0 +1,62 @@
+---
+import { Icon } from "@iconify/react";
+import Markdown from "@astrojs/markdown-component";
+import type { EventLinkType } from "~/content/schedule";
+
+const { event } = Astro.props;
+---
+
+<li class="group relative text-left flex flex-col rounded-2xl p-[1px]">
+  <div
+    class="group-hover:opacity-100 opacity-0 transition-all duration-500 p-3 md:p-5 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-90 items-center h-full w-full flex flex-col overflow-hidden z-10"
+  >
+    <div
+      class="event-heading flex items-center justify-between z-10 my-3 group-hover:translaye-y-0 -translate-y-4 transition-all duration-200"
+    >
+      <h3 class="text-left font-sans text-lg font-bold m-0 inline-flex">
+        {event.title}
+      </h3>
+    </div>
+    <div
+      class="prose prose-xs prose-ul:list-none prose-ul:pl-0 prose-li:mb-3 prose-li:pl-0 text-left text-accent-light-alpha-90 z-10 group-hover:translate-y-0 translate-y-4 duration-200"
+    >
+      <Markdown class="z-10 text-base">
+        {event.description}
+      </Markdown>
+    </div>
+    {
+      event.links && event.links.length > 0 && (
+        <ul class="list-none flex flex-col justify-start items-start mt-5 space-y-2 w-full ">
+          {event.links.map((link: EventLinkType) => (
+            <li class="mb-0">
+              <a
+                href={link.url}
+                rel="no-referrer"
+                target="_blank"
+                class="text-accent-light-alpha-90 hover:text-accent-light z-10 inline-flex items-center justify-start gap-1"
+              >
+                {link.title}{" "}
+                <Icon
+                  icon="mdi:external-link"
+                  class="inline-block w-4 h-4"
+                  client:load
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+  <div class="mt-0 inset-[1px] absolute overflow-hidden z-0 rounded-2xl">
+    <img
+      src={event.image}
+      alt={event.title}
+      class="w-full h-full object-cover object-bottom"
+    />
+  </div>
+  <div
+    class="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-none"
+  >
+  </div>
+</li>

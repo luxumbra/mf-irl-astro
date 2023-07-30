@@ -87,8 +87,9 @@
         }
       } */
       .badge {
-        @apply hidden text-xs lg:text-xs font-normal rounded-xl border text-accent-light-alpha-90 border-primary-alpha-30 px-2 py-1;
+        @apply text-xs lg:text-xs font-normal rounded-xl border text-accent-light-alpha-90 border-primary-alpha-30 px-2 py-1;
       }
+
       .schedule__item__description {
         p {
           @apply text-lg;
@@ -99,6 +100,10 @@
           & + p {
             @apply hidden;
           }
+        }
+
+        .badge {
+          @apply hidden;
         }
       }
     }

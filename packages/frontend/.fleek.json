@@ -1,14 +1,15 @@
 {
   "site": {
-    "id": "2d5614a0-838f-4eda-9e94-0d9043dbdc57",
+    "id": "08da62bc-b6aa-44a6-915e-eecd55f9363a",
     "team": "luxumbra-team",
     "platform": "ipfs",
     "source": "ipfs",
-    "name": "metafest-lux"
+    "name": "metafestirl"
   },
   "build": {
     "baseDir": "",
     "publicDir": "dist",
+    "command": "",
     "rootDir": ""
   }
 }
