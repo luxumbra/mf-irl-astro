@@ -1,37 +1,45 @@
 ---
-import { DateTime } from 'luxon';
-import { Icon } from '@iconify/react';
-import Markdown from '@astrojs/markdown-component';
+import { DateTime } from "luxon";
+import { Icon } from "@iconify/react";
+import Markdown from "@astrojs/markdown-component";
 const { event } = Astro.props;
 
 const date = DateTime.fromISO(event.start.dateTime).toLocaleString({
-  weekday: 'short',
-  month: 'short',
-  day: 'numeric',
+  weekday: "short",
+  month: "short",
+  day: "numeric",
 });
-const startTime = DateTime.fromISO(event.start.dateTime).toLocaleString(DateTime.TIME_24_SIMPLE);
-const endTime = DateTime.fromISO(event.end.dateTime).toLocaleString(DateTime.TIME_24_SIMPLE);
+const startTime = DateTime.fromISO(event.start.dateTime).toLocaleString(
+  DateTime.TIME_24_SIMPLE
+);
+const endTime = DateTime.fromISO(event.end.dateTime).toLocaleString(
+  DateTime.TIME_24_SIMPLE
+);
 const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
 ---
 
 <li class="ticket-method">
-  <p class="text-2xl text-accent-light-alpha-90 mb-3 flex items-center space-x-2 flex-shrink">
+  <p
+    class="text-2xl text-accent-light-alpha-90 mb-3 flex items-center space-x-2 flex-shrink"
+  >
     <span class="inline-flex items-center gap-2">
       <Icon icon="ph:clock-fill" client:load />
       {startTime} - {endTime}
       {offset}
     </span>
   </p>
-  <div class="relative text-left flex flex-col rounded-2xl p-[1px] overflow-hidden flex-grow">
+  <div
+    class="relative text-left flex flex-col rounded-2xl p-[1px] overflow-hidden flex-grow"
+  >
     <div
       class="p-3 md:p-5 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 items-center h-full w-full flex flex-col overflow-hidden z-10"
     >
       <div class="flex items-start justify-start w-full">
-        <h3 class="block text-left font-sans text-base font-normal m-0">
+        <h3 class="block text-left font-sans text-xl font-normal m-0">
           {event.summary}
         </h3>
         <a
-          href="https://calendar.google.com/calendar/u/1/r/agenda/2023/8/1?pli=1"
+          href={event.htmlLink}
           target="_blank"
           rel="noopener noreferrer"
           class="cal-link"
@@ -39,18 +47,26 @@ const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
           <button
             class="absolute btn p-2 bg-accent-light-alpha-30 hover:bg-accent-alpha-60 hover:text-white top-0 right-0 text-sm text-accent-light-alpha-90 mb-0 inline-flex rounded-2xl rounded-br-none rounded-tl-none"
           >
-            <Icon icon="bi:calendar2-plus-fill" className="w-5 h-5 text-accent" client:load />
+            <Icon
+              icon="bi:calendar2-plus-fill"
+              className="w-5 h-5 text-accent"
+              client:load
+            />
           </button>
         </a>
       </div>
 
-      <Markdown class="schedule__item__description w-full text-off-white my-3 flex-grow">
-        <Fragment set:html={event.description} />
-      </Markdown>
+      <div
+        class="schedule__item__description w-full text-off-white my-3 flex-grow"
+      >
+        <Markdown class="text-off-white">
+          <Fragment set:html={event.description} />
+        </Markdown>
+      </div>
       <div class="w-full self-end justify-self-end">
         <span class="inline-flex items-center gap-2">
           <Icon icon="octicon:location-16" client:load />
-          {event.location ?? 'TBC'}
+          {event.location ?? "TBC"}
         </span>
       </div>
     </div>
@@ -62,11 +78,13 @@ const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
 </li>
 
 <script>
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     // find all instances of string "Speaker: " in `.schedule__item__description` and remove them
-    const descriptions = document.querySelectorAll('.schedule__item__description');
+    const descriptions = document.querySelectorAll(
+      ".schedule__item__description"
+    );
     descriptions.forEach((description) => {
-      description.innerHTML = description.innerHTML.replace(/Speaker: /g, '');
+      description.innerHTML = description.innerHTML.replace(/Speaker: /g, "");
     });
   }
 </script>

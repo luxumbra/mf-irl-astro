@@ -1,21 +1,21 @@
 ---
-import { SITE } from '~/config.mjs';
-import { getCanonical, getHomePermalink } from '~/utils/permalinks';
-import Layout from '~/layouts/PageLayout.astro';
-import ThreeD from '~/components/widgets/ThreeD';
-import SponsorsSection from '~/components/core/SponsorsSection.astro';
-import Markdown from '@astrojs/markdown-component';
-import { DateTime } from 'luxon';
-import socialImage from '~/assets/images/socials/metafest-shared.jpg';
-import Plants from '~/components/widgets/Plants.astro';
-import { fetchCalendarData } from '~/utils/fetchCalendarEvents';
-import { Icon } from '@iconify/react';
+import { SITE } from "~/config.mjs";
+import { getCanonical, getHomePermalink } from "~/utils/permalinks";
+import Layout from "~/layouts/PageLayout.astro";
+import ThreeD from "~/components/widgets/ThreeD";
+import SponsorsSection from "~/components/core/SponsorsSection.astro";
+import Markdown from "@astrojs/markdown-component";
+import { DateTime } from "luxon";
+import socialImage from "~/assets/images/socials/metafest-shared.jpg";
+import Plants from "~/components/widgets/Plants.astro";
+import { fetchCalendarData } from "~/utils/fetchCalendarEvents";
+import { Icon } from "@iconify/react";
 // import { AddToCalendarButton as AddToCalButton } from 'add-to-calendar-button-react';
-import clsx from 'clsx';
-import '~/components/widgets/schedule-tabs.css';
-import ScheduleItem from '~/components/atoms/ScheduleItem.astro';
-import { days } from '~/content/schedule';
-import type { ScheduleEventType } from '~/content/schedule';
+import clsx from "clsx";
+import "~/components/widgets/schedule-tabs.css";
+import ScheduleItem from "~/components/atoms/ScheduleItem.astro";
+import { days } from "~/content/schedule";
+import type { ScheduleEventType } from "~/content/schedule";
 
 type TabType = {
   name: string;
@@ -28,73 +28,138 @@ type TabDateType = {
   to: string;
 };
 
+// type EventDayType = {
+//   location: string;
+//   events: [];
+// };
+
 const getCalForBuild = await fetchCalendarData();
 const filterDataForTabs = () => {
   if (!getCalForBuild) return;
   const tabs: TabType[] = [
     {
-      name: 'Warmup Days',
+      name: "Warmup Days",
       date: {
-        from: '2023-08-11',
-        to: '2023-08-15',
+        from: "2023-08-11",
+        to: "2023-08-15",
       },
       data: [] as ScheduleEventType[],
     },
     {
-      name: 'Meta/Regen Day',
+      name: "Meta/Regen Day",
       date: {
-        from: '2023-08-16',
-        to: '2023-08-16',
+        from: "2023-08-16",
+        to: "2023-08-16",
       },
       data: [],
     },
     {
-      name: 'Coordination/Meta Day',
+      name: "Coordination/Meta Day",
       date: {
-        from: '2023-08-17',
-        to: '2023-08-17',
+        from: "2023-08-17",
+        to: "2023-08-17",
       },
       data: [],
     },
     {
-      name: 'Unconference Day',
+      name: "Unconference Day",
       date: {
-        from: '2023-08-18',
-        to: '2023-08-18',
+        from: "2023-08-18",
+        to: "2023-08-18",
       },
       data: [],
     },
     {
-      name: 'Bus Trip',
+      name: "Bus Trip",
       date: {
-        from: '2023-08-19',
-        to: '2023-08-24',
+        from: "2023-08-19",
+        to: "2023-08-24",
       },
       data: [] as ScheduleEventType[],
     },
   ];
+
+  const metaRegenDayGrouped = getCalForBuild.data.reduce(
+    (grouped: any, event: any) => {
+      const day = DateTime.fromISO(event.start.dateTime).toLocaleString(
+        DateTime.DATE_SHORT
+      );
+      if (day.includes("8/16/2023")) {
+        (grouped[event.location] = grouped[event.location] || []).push(event);
+      }
+
+      return grouped;
+    },
+    {}
+  );
+
+  const coordinationDAODayGrouped = getCalForBuild.data.reduce(
+    (grouped: any, event: any) => {
+      const day = DateTime.fromISO(event.start.dateTime).toLocaleString(
+        DateTime.DATE_SHORT
+      );
+      if (day.includes("8/17/2023")) {
+        (grouped[event.location] = grouped[event.location] || []).push(event);
+      }
+
+      return grouped;
+    },
+    {}
+  );
+
+  const unconferenceGrouped = getCalForBuild.data.reduce(
+    (grouped: any, event: any) => {
+      const day = DateTime.fromISO(event.start.dateTime).toLocaleString(
+        DateTime.DATE_SHORT
+      );
+      if (day.includes("8/18/2023")) {
+        (grouped[event.location] = grouped[event.location] || []).push(event);
+      }
+
+      return grouped;
+    },
+    {}
+  );
+
   // filter data for tabs *Meta/Regen Day*, *Coordination/DAO Day*, *The Unconference*
   const metaRegenDay = getCalForBuild.data.filter((event) => {
-    const day = DateTime.fromISO(event.start.dateTime).toLocaleString(DateTime.DATE_SHORT);
-    return day.includes('16/08/2023');
+    const day = DateTime.fromISO(event.start.dateTime).toLocaleString(
+      DateTime.DATE_SHORT
+    );
+
+    if (day.includes("8/16/2023")) {
+      return event;
+    }
   });
+
   const coordinationDAODay = getCalForBuild.data.filter((event) => {
-    const day = DateTime.fromISO(event.start.dateTime).toLocaleString(DateTime.DATE_SHORT);
-    return day.includes('17/08/2023');
+    const day = DateTime.fromISO(event.start.dateTime).toLocaleString(
+      DateTime.DATE_SHORT
+    );
+
+    if (day.includes("8/17/2023")) {
+      return event;
+    }
   });
+
   const unconference = getCalForBuild.data.filter((event) => {
-    const day = DateTime.fromISO(event.start.dateTime).toLocaleString(DateTime.DATE_SHORT);
-    return day.includes('18/08/2023');
+    const day = DateTime.fromISO(event.start.dateTime).toLocaleString(
+      DateTime.DATE_SHORT
+    );
+
+    if (day.includes("8/18/2023")) {
+      return event;
+    }
   });
 
   const warmupDays: ScheduleEventType[] = days.filter((event) => {
-    if (event.grouping === 'warmup') {
+    if (event.grouping === "warmup") {
       return event;
     }
   });
 
   const bustripDays: ScheduleEventType[] = days.filter((event) => {
-    if (event.grouping === 'bustrip') {
+    if (event.grouping === "bustrip") {
       return event;
     }
   });
@@ -102,7 +167,10 @@ const filterDataForTabs = () => {
   if (warmupDays.length > 0) {
     tabs[0].data = warmupDays;
   }
+
   if (metaRegenDay.length > 0) {
+    console.log({ metaRegenDayGrouped });
+
     tabs[1].data = metaRegenDay;
   }
   if (coordinationDAODay.length > 0) {
@@ -130,7 +198,7 @@ const tabData = filterDataForTabs();
 const meta = {
   title: `${SITE.title}: Event sponsors`,
   description:
-    'Sponsor MetaFest Croatia - Bronze, Gold, Diamond tiers with perks including logo placement, NFT tickets, and speaking opportunities. Optional Expansion Packs available. Join one of the best events of 2023. Apply now.',
+    "Sponsor MetaFest Croatia - Bronze, Gold, Diamond tiers with perks including logo placement, NFT tickets, and speaking opportunities. Optional Expansion Packs available. Join one of the best events of 2023. Apply now.",
   canonical: getCanonical(getHomePermalink()),
   image: socialImage,
 };
@@ -163,12 +231,14 @@ const meta = {
             tabData.tabs.map((tab: TabType, index: number) => {
               const displayDate =
                 tab.date.from === tab.date.to
-                  ? `${DateTime.fromISO(tab.date.from).toFormat('d')} ${DateTime.fromISO(tab.date.from).toFormat(
-                      'LLL'
-                    )}`
-                  : `${DateTime.fromISO(tab.date.from).toFormat('d')} - ${DateTime.fromISO(tab.date.to).toFormat(
-                      'd'
-                    )} ${DateTime.fromISO(tab.date.to).toFormat('LLL')}`;
+                  ? `${DateTime.fromISO(tab.date.from).toFormat(
+                      "d"
+                    )} ${DateTime.fromISO(tab.date.from).toFormat("LLL")}`
+                  : `${DateTime.fromISO(tab.date.from).toFormat(
+                      "d"
+                    )} - ${DateTime.fromISO(tab.date.to).toFormat(
+                      "d"
+                    )} ${DateTime.fromISO(tab.date.to).toFormat("LLL")}`;
 
               return (
                 <li role="presentation" class="tab">
@@ -176,7 +246,7 @@ const meta = {
                     href={`#tab-section-${index + 1}`}
                     id={`tab${index + 1}`}
                     role="tab"
-                    aria-selected={index === 0 ? 'true' : 'false'}
+                    aria-selected={index === 0 ? "true" : "false"}
                     class="text-2xl text-gradient flex flex-col px-3 py-2"
                   >
                     <span class="font-bold">{tab.name}</span>
@@ -189,42 +259,49 @@ const meta = {
       </ol>
       <div
         class={clsx(
-          'tab-content grid flex-nowrap w-full relative overflow-hidden',
+          "tab-content grid flex-nowrap w-full relative overflow-hidden",
           `grid-cols-${tabData?.tabs.length}`
         )}
       >
         {
           tabData?.tabs &&
             tabData?.tabs.map((tab: TabType, index: number) => {
-              // console.log({ tab, index });
+              // console.log("TAB:", tab.data);
+
               return (
                 <div
                   class={clsx(
-                    'tab-section w-full overflow-y-hidden',
-                    index === 0 ? 'active' : '',
-                    typeof tab.data === 'string' && 'tab-section--md'
+                    "tab-section w-full overflow-y-hidden",
+                    index === 0 ? "active" : "",
+                    typeof tab.data === "string" && "tab-section--md"
                   )}
                   id={`tab-section-${index + 1}`}
                   tabindex="-1"
                   role="tabpanel"
                   aria-labelledby={`tab${index + 1}`}
-                  aria-hidden={index === 0 ? 'false' : 'true'}
+                  aria-hidden={index === 0 ? "false" : "true"}
                   hidden={index === 0 ? false : true}
                 >
-                  {tab.data && tab.data.length ? (
-                    <ol class={clsx('schedule__list tiers grid grid-cols-3 gap-5 items-stretch w-full')}>
+                  {tab.data && tab.data.length > 0 ? (
+                    <ol
+                      class={clsx(
+                        "schedule__list tiers grid grid-cols-3 gap-5 items-stretch w-full"
+                      )}
+                    >
                       {tab.data.map((event: any) => {
                         if (event.grouping !== undefined) {
                           return (
                             <li class="group relative text-left flex flex-col rounded-2xl p-[1px]">
-                              <div class="group-hover:opacity-0 transition-all duration-500 p-3 md:p-5 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 items-center h-full w-full flex flex-col overflow-hidden z-10">
-                                <div class="event-heading flex items-center justify-between z-10 mb-3 group-hover:-translate-y-4 transition-all duration-200">
-                                  <h3 class="text-left font-sans text-base font-bold m-0 inline-flex ">
+                              <div class="group-hover:opacity-100 opacity-0 transition-all duration-500 p-3 md:p-5 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 items-center h-full w-full flex flex-col overflow-hidden z-10">
+                                <div class="event-heading flex items-center justify-between z-10 my-3 group-hover:translaye-y-0 -translate-y-4 transition-all duration-200">
+                                  <h3 class="text-left font-sans text-lg font-bold m-0 inline-flex ">
                                     {event.title}
                                   </h3>
                                 </div>
-                                <div class="prose prose-xs prose-ul:list-none prose-ul:pl-0 prose-li:mb-3 prose-li:pl-0 text-left z-10 group-hover:translate-y-4 duration-200">
-                                  <Markdown class="z-10 text-base">{event.description}</Markdown>
+                                <div class="prose prose-xs prose-ul:list-none prose-ul:pl-0 prose-li:mb-3 prose-li:pl-0 text-left z-10 group-hover:translate-y-0 translate-y-4 duration-200">
+                                  <Markdown class="z-10 text-base">
+                                    {event.description}
+                                  </Markdown>
                                 </div>
                               </div>
                               <div class="mt-0 inset-[1px] absolute overflow-hidden z-0 rounded-2xl">
@@ -238,12 +315,15 @@ const meta = {
                             </li>
                           );
                         }
+
                         return <ScheduleItem event={event} />;
                       })}
                     </ol>
                   ) : (
                     <div class="flex flex-col items-center justify-center w-full h-full">
-                      <p class="text-xl font-bold text-center">Awaiting content for this day. Check back later. </p>
+                      <p class="text-xl font-bold text-center">
+                        Awaiting content for this day. Check back later.{" "}
+                      </p>
                     </div>
                   )}
                 </div>
@@ -254,8 +334,14 @@ const meta = {
     </div>
   </SponsorsSection>
   <div class="pt-32"></div>
-  <div class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto">
-    <div class="relative w-full h-full" x-data="{shown: false}" x-intersect:once="shown = true">
+  <div
+    class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto"
+  >
+    <div
+      class="relative w-full h-full"
+      x-data="{shown: false}"
+      x-intersect:once="shown = true"
+    >
       <Plants />
     </div>
   </div>
@@ -264,47 +350,52 @@ const meta = {
 
 <script>
   const tablist = document.querySelector("[role='tablist']") as HTMLElement;
-  const tabs = Array.from(tablist.querySelectorAll('a')) as HTMLElement[];
-  const tabContainer = document.querySelector('.tab-content') as HTMLElement;
+  const tabs = Array.from(tablist.querySelectorAll("a")) as HTMLElement[];
+  // const tabContainer = document.querySelector(".tab-content") as HTMLElement;
   // eslint-disable-next-line no-undef
-  const panels = document.querySelectorAll(".tab-section[role='tabpanel']") as NodeListOf<HTMLElement>;
-  const heights: number[] = panels.forEach((panel) => panel.offsetHeight) as any;
+  const panels = document.querySelectorAll(
+    ".tab-section[role='tabpanel']"
+  ) as NodeListOf<HTMLElement>;
+  // const heights: number[] = panels.forEach(
+  //   (panel) => panel.offsetHeight
+  // ) as any;
   // console.log({ heights });
-  const LEFT_ARROW = 'leftarrow';
-  const RIGHT_ARROW = 'rightarrow';
-  const DOWN_ARROW = 'downarrow';
+  const LEFT_ARROW = "leftarrow";
+  const RIGHT_ARROW = "rightarrow";
+  const DOWN_ARROW = "downarrow";
 
   const switchTab = (oldTab: HTMLElement, newTab: HTMLElement) => {
     newTab.focus();
-    newTab.removeAttribute('tabindex');
-    newTab.setAttribute('aria-selected', 'true');
+    newTab.removeAttribute("tabindex");
+    newTab.setAttribute("aria-selected", "true");
 
-    oldTab.removeAttribute('aria-selected');
-    oldTab.setAttribute('tabindex', '-1');
+    oldTab.removeAttribute("aria-selected");
+    oldTab.setAttribute("tabindex", "-1");
     // console.log(panels[tabs.indexOf(newTab)].offsetHeight);
     panels[tabs.indexOf(oldTab)].hidden = true;
     panels[tabs.indexOf(newTab)].hidden = false;
-    panels[tabs.indexOf(oldTab)].ariaHidden = 'true';
-    panels[tabs.indexOf(newTab)].ariaHidden = 'false';
-    tabContainer.style.height = `${heights[tabs.indexOf(newTab)]}px`;
-    panels[tabs.indexOf(newTab)].classList.add('active');
-    panels[tabs.indexOf(oldTab)].classList.remove('active');
+    panels[tabs.indexOf(oldTab)].ariaHidden = "true";
+    panels[tabs.indexOf(newTab)].ariaHidden = "false";
+    panels[tabs.indexOf(newTab)].classList.add("active");
+    panels[tabs.indexOf(oldTab)].classList.remove("active");
   };
 
   window.addEventListener(
-    'load',
+    "load",
     () => {
       tabs.forEach((tab, i) => {
-        tab.addEventListener('click', (e) => {
+        tab.addEventListener("click", (e) => {
           e.preventDefault();
-          let currentTab = tablist.querySelector('[aria-selected]') as HTMLElement;
+          let currentTab = tablist.querySelector(
+            "[aria-selected]"
+          ) as HTMLElement;
           if (e.currentTarget !== currentTab) {
             switchTab(currentTab, e.currentTarget as HTMLElement);
           }
         });
 
         tab.addEventListener(
-          'keydown',
+          "keydown",
           (e) => {
             const index = tabs.indexOf(e.currentTarget as HTMLElement);
             if (e.key === DOWN_ARROW) {

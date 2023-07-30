@@ -7,6 +7,7 @@
     "rootDir": "./",
     "outDir": "./dist",
     "baseUrl": ".",
+    "lib": ["dom", "es6", "dom.iterable", "scripthost"],
     "paths": {
       "~/*": ["src/*"]
     },
