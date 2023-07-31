@@ -226,7 +226,7 @@ const meta = {
     full
     mega
   >
-    <div class="tabs tabs--horizontal schedule-wrapper w-full relative">
+    <div class="tabs tabs--horizontal schedule-wrapper w-full relative mb-32">
       <ol class="tablist schedule-filters flex items-end w-full" role="tablist">
         {
           tabData?.tabs &&
@@ -261,15 +261,13 @@ const meta = {
       </ol>
       <div
         class={clsx(
-          "tab-content grid flex-nowrap w-full relative overflow-hidden",
-          `grid-cols-${tabData?.tabs.length}`
+          "tab-content flex-nowrap w-full relative overflow-hidden"
+          // `grid-cols-${tabData?.tabs.length}`
         )}
       >
         {
           tabData?.tabs &&
             tabData?.tabs.map((tab: TabType, index: number) => {
-              console.log("TAB:", tab.data);
-
               return (
                 <div
                   class={clsx(
@@ -292,7 +290,6 @@ const meta = {
                     >
                       {tab.data.map((event: any) => {
                         if (event.grouping !== undefined) {
-                          // console.log("EVENT:", event.links);
                           return <ScheduleItemAlt event={event} />;
                         }
 
@@ -337,15 +334,15 @@ const meta = {
 <script>
   const tablist = document.querySelector("[role='tablist']") as HTMLElement;
   const tabs = Array.from(tablist.querySelectorAll("a")) as HTMLElement[];
-  // const tabContainer = document.querySelector(".tab-content") as HTMLElement;
+  const tabContainer = document.querySelector(".tab-content") as HTMLElement;
   // eslint-disable-next-line no-undef
   const panels = document.querySelectorAll(
     ".tab-section[role='tabpanel']"
   ) as NodeListOf<HTMLElement>;
-  // const heights: number[] = panels.forEach(
-  //   (panel) => panel.offsetHeight
-  // ) as any;
-  // console.log({ heights });
+  const heights: number[] = panels.forEach(
+    (panel) => panel.offsetHeight
+  ) as any;
+  console.log({ heights });
   const LEFT_ARROW = "leftarrow";
   const RIGHT_ARROW = "rightarrow";
   const DOWN_ARROW = "downarrow";

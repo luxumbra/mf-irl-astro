@@ -41,7 +41,7 @@
       @apply rounded-2xl transition-all duration-300 ease-out;
 
       &[hidden] {
-        @apply flex invisible translate-y-0 opacity-0 pointer-events-none order-3;
+        @apply hidden translate-y-0 opacity-0 pointer-events-none order-3;
       }
 
       &.active {
