@@ -16,12 +16,14 @@ import "~/components/widgets/schedule-tabs.css";
 import ScheduleItem from "~/components/atoms/ScheduleItem.astro";
 import ScheduleItemAlt from "~/components/atoms/ScheduleItemAlt.astro";
 import { days } from "~/content/schedule";
+import * as bustripContent from "~/content/schedule/schedule-bustrip.md";
+
 import type { ScheduleEventType } from "~/content/schedule";
 
 type TabType = {
   name: string;
   date: TabDateType;
-  data: [] | ScheduleEventType[];
+  data: [] | ScheduleEventType[] | any;
 };
 
 type TabDateType = {
@@ -180,8 +182,9 @@ const filterDataForTabs = () => {
   if (unconference.length > 0) {
     tabs[3].data = unconference;
   }
-  if (bustripDays.length > 0) {
-    tabs[4].data = bustripDays;
+  if (bustripContent) {
+    // tabs[4].data = bustripDays;
+    tabs[4].data = bustripContent;
   }
 
   return {
@@ -265,7 +268,7 @@ const meta = {
         {
           tabData?.tabs &&
             tabData?.tabs.map((tab: TabType, index: number) => {
-              // console.log("TAB:", tab.data);
+              console.log("TAB:", tab.data);
 
               return (
                 <div
@@ -297,11 +300,17 @@ const meta = {
                       })}
                     </ol>
                   ) : (
-                    <div class="flex flex-col items-center justify-center w-full h-full">
-                      <p class="text-xl font-bold text-center">
-                        Awaiting content for this day. Check back later.{" "}
-                      </p>
-                    </div>
+                    <>
+                      {tab.data && tab.data.rawContent ? (
+                        <Markdown>{tab.data.rawContent}</Markdown>
+                      ) : (
+                        <div class="flex flex-col items-center justify-center w-full h-full">
+                          <p class="text-xl font-bold text-center">
+                            Awaiting content for this day. Check back later.{" "}
+                          </p>
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
               );

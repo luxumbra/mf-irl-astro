@@ -18,7 +18,7 @@ const { event } = Astro.props;
       </h3>
     </div>
     <div
-      class="prose prose-xs prose-ul:list-none prose-ul:pl-0 prose-li:mb-3 prose-li:pl-0 text-left text-accent-light-alpha-90 z-10 group-hover:translate-y-0 translate-y-4 duration-200"
+      class="prose prose-xs prose-ul:list-none prose-ul:pl-0 prose-li:mb-3 prose-li:pl-0 text-left text-accent-light-alpha-90 z-10 group-hover:translate-y-0 translate-y-4 duration-200 overflow-auto max-h-[250px]"
     >
       <Markdown class="z-10 text-base">
         {event.description}
