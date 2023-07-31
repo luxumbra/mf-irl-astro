@@ -226,7 +226,9 @@ const meta = {
     full
     mega
   >
-    <div class="tabs tabs--horizontal schedule-wrapper w-full relative mb-32">
+    <div
+      class="tabs tabs--horizontal schedule-wrapper w-11/12 lg:w-full relative mb-80"
+    >
       <ol class="tablist schedule-filters flex items-end w-full" role="tablist">
         {
           tabData?.tabs &&
@@ -261,7 +263,7 @@ const meta = {
       </ol>
       <div
         class={clsx(
-          "tab-content flex-nowrap w-full relative overflow-hidden"
+          "tab-content mb-32 flex-nowrap w-full relative overflow-hidden"
           // `grid-cols-${tabData?.tabs.length}`
         )}
       >
@@ -285,7 +287,7 @@ const meta = {
                   {tab.data && tab.data.length > 0 ? (
                     <ol
                       class={clsx(
-                        "schedule__list tiers grid grid-cols-3 gap-5 items-stretch w-full"
+                        "schedule__list tiers flex flex-col xl:grid xl:grid-cols-3 gap-x-0 gap-y-5 xl:gap-5 items-stretch w-full"
                       )}
                     >
                       {tab.data.map((event: any) => {
@@ -316,7 +318,7 @@ const meta = {
       </div>
     </div>
   </SponsorsSection>
-  <div class="pt-32"></div>
+
   <div
     class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto"
   >

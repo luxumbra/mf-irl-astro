@@ -250,17 +250,5 @@ So, my fellow adventurers, are you ready to immerse yourselves in the history an
 			}
 		],
 		grouping: "warmup"
-	},
-	{
-		title: "Nintendo Switch",
-		description: ``,
-		image: "https://i.imgur.com/RqwESP5.png",
-		links: [
-			{
-				title: "Nintendo Switch",
-				url: "https://www.nabava.net/konzole/nintendo-switch-cijena-36733531"
-			}
-		],
-		grouping: "warmup"
 	}
 ];

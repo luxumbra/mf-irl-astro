@@ -1,10 +1,10 @@
 ---
 // import { Icon } from 'astro-icon';
-import { Icon } from 'astro-icon';
-import Section from '../core/Section.astro';
-import Markdown from '@astrojs/markdown-component';
+import { Icon } from "astro-icon";
+import Section from "../core/Section.astro";
+import Markdown from "@astrojs/markdown-component";
 
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 
 export interface SponsorsSectionProps {
   title: string;
@@ -15,16 +15,21 @@ export interface SponsorsSectionProps {
   sectionId?: string;
 }
 
-const { alt, full, mega, title, precis, sectionId } = Astro.props as SponsorsSectionProps;
+const { alt, full, mega, title, precis, sectionId } =
+  Astro.props as SponsorsSectionProps;
 const id = uuid();
-const contentStyles = alt ? 'section__content--alt flex justify-center' : 'section__content flex justify-center';
+const contentStyles = alt
+  ? "section__content--alt flex justify-center"
+  : mega
+  ? "section__content--mega flex justify-center"
+  : "section__content flex justify-center";
 ---
 
 <Section sectionId={sectionId ?? id}>
   <div class={contentStyles}>
     <div
       x-show="shown"
-      class="invisible"
+      class="invisible w-full"
       x-bind:class="{ 'invisible': !shown }"
       x-transition:enter="transition ease-out duration-500"
       x-transition:enter-start="opacity-0 transform translate-y-8"
@@ -41,7 +46,7 @@ const contentStyles = alt ? 'section__content--alt flex justify-center' : 'secti
             <slot />
           </div>
         ) : (
-          <div class="w-full mx-auto">
+          <div class="w-11/12 xl:w-full mx-auto">
             <slot />
           </div>
         )
