@@ -20,7 +20,7 @@ const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
 
 <li class="ticket-method mb-0-">
   <p
-    class="text-2xl text-accent-light-alpha-90 mb-3 flex items-center space-x-2 flex-shrink justify-between"
+    class="text-base xl:text-2xl text-accent-light-alpha-90 mb-1 xl:mb-3 flex items-center space-x-2 flex-shrink justify-between"
   >
     <span class="inline-flex items-center gap-2">
       <Icon icon="ph:clock-fill" client:load />
@@ -38,7 +38,7 @@ const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
       >
         <Icon
           icon="bi:calendar2-plus-fill"
-          className="w-6 h-6 text-accent-light-alpha-90"
+          className="w-4 h-4 xl:w-6 xl:h-6 text-accent-light-alpha-90"
           client:load
         />
       </button>
@@ -51,7 +51,7 @@ const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
       class="p-3 md:p-5 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 items-center h-full w-full flex flex-col overflow-hidden z-10"
     >
       <div class="flex items-start justify-start w-full">
-        <h3 class="block text-left font-sans text-xl font-normal m-0">
+        <h3 class="block text-left font-sans text-sm xl:text-xl font-normal m-0">
           {event.summary}
         </h3>
       </div>
@@ -59,12 +59,12 @@ const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
       <div
         class="schedule__item__description w-full text-off-white my-3 flex-grow"
       >
-        <Markdown class="text-off-white">
+        <Markdown class="text-off-white text-sm xl:text-base">
           <Fragment set:html={event.description} />
         </Markdown>
       </div>
       <div class="w-full self-end justify-self-end">
-        <span class="inline-flex items-center gap-2">
+        <span class="inline-flex items-center gap-2 text-sm xl:text-inherit">
           <Icon icon="octicon:location-16" client:load />
           {event.location ?? "TBC"}
         </span>

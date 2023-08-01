@@ -11,16 +11,16 @@ const { event } = Astro.props;
     class="group-hover:opacity-100 opacity-0 transition-all duration-500 p-3 md:p-5 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-90 items-center h-full w-full flex flex-col overflow-hidden z-10"
   >
     <div
-      class="event-heading flex items-center justify-between z-10 my-3 group-hover:translaye-y-0 -translate-y-4 transition-all duration-200"
+      class="event-heading flex items-center justify-between z-10 my-2 xl:my-3 group-hover:translate-y-0 -translate-y-4 transition-all duration-200"
     >
-      <h3 class="text-left font-sans text-lg font-bold m-0 inline-flex">
+      <h3 class="text-left font-sans text-sm xl:text-lg font-bold m-0 inline-flex">
         {event.title}
       </h3>
     </div>
     <div
-      class="prose prose-xs prose-ul:list-none prose-ul:pl-0 prose-li:mb-3 prose-li:pl-0 text-left text-accent-light-alpha-90 z-10 group-hover:translate-y-0 translate-y-4 duration-200 overflow-auto max-h-[250px]"
+      class="prose prose-xs prose-ul:list-none prose-ul:pl-0 prose-li:mb-3 prose-li:pl-0 text-left text-xs xl:text-inherit text-accent-light-alpha-90 z-10 group-hover:translate-y-0 translate-y-4 duration-200 overflow-auto max-h-[250px]"
     >
-      <Markdown class="z-10 text-base">
+      <Markdown class="z-10 text-xs xl:text-base">
         {event.description}
       </Markdown>
     </div>
@@ -28,7 +28,7 @@ const { event } = Astro.props;
       event.links && event.links.length > 0 && (
         <ul class="list-none flex flex-col justify-start items-start mt-5 space-y-2 w-full ">
           {event.links.map((link: EventLinkType) => (
-            <li class="mb-0">
+            <li class="mb-0 text-xs xl:text-base">
               <a
                 href={link.url}
                 rel="no-referrer"

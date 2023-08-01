@@ -212,7 +212,7 @@ const meta = {
 	</AddToCalButton>
  -->
 <Layout {meta}>
-  <div class="pt-32"></div>
+  <div class="pt-16 xl:pt-32"></div>
   <SponsorsSection
     title="Festival Schedule"
     precis="The festival will be held over 3 days, with a variety of events, workshops, and talks. see below..."
@@ -220,7 +220,7 @@ const meta = {
     mega
   >
     <div
-      class="tabs tabs--horizontal schedule-wrapper w-11/12 lg:w-full relative mb-80"
+      class="tabs tabs--horizontal schedule-wrapper w-full relative mb-32 2xl:mb-80"
     >
       <ol class="tablist schedule-filters flex items-end w-full" role="tablist">
         {
@@ -295,7 +295,9 @@ const meta = {
                   ) : (
                     <>
                       {tab.data && tab.data.rawContent ? (
+												<div class="max-w-3xl mx-auto prose prose-sm xl:prose-lg prose-h3:text-accent-light-alpha-90 prose-img:mx-auto">
                         <Markdown>{tab.data.rawContent}</Markdown>
+												</div>
                       ) : (
                         <div class="flex flex-col items-center justify-center w-full h-full">
                           <p class="text-xl font-bold text-center">
