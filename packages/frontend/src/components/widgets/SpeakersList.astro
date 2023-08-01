@@ -4,6 +4,18 @@ import './tabs.css';
 
 import speakers from '~/data/speakers.json';
 import { motion } from 'framer-motion';
+
+export type SpeakerOrgType = {
+	name: string;
+	url?: string;
+}
+
+export type SpeakerType = {
+	name: string;
+	image: string;
+	url: string;
+	orgs?: SpeakerOrgType[];
+};
 ---
 
 <!-- Slider main container -->
@@ -12,7 +24,7 @@ import { motion } from 'framer-motion';
     {
       speakers &&
         speakers.length > 0 &&
-        speakers.map((speaker, i) => {
+        speakers.map((speaker: SpeakerType, i: number) => {
           const image = `/assets/images/speakers/${speaker.image}`;
           const isExternal = speaker.url && speaker.url.startsWith('https');
           const delay = parseFloat(((i + 1) * 0.05).toFixed(2));
@@ -27,7 +39,7 @@ import { motion } from 'framer-motion';
             >
               <a
                 href={speaker.url ?? '#'}
-                class="flex flex-col p-3 lg:p-5 text-center"
+                class="flex flex-col p-3 lg:p-5 lg:pb-2 text-center focus:outline-none"
                 title={speaker.name}
                 target={isExternal && '_blank'}
                 rel={isExternal && 'nofollow'}
@@ -44,6 +56,20 @@ import { motion } from 'framer-motion';
                 />
                 <span>{speaker.name}</span>
               </a>
+							{speaker.orgs && <span class="block text-xs text-center text-accent-light-alpha-60 mb-1">of</span> }
+							<ul class="pb-3">
+								{speaker.orgs && speaker.orgs.map((org: SpeakerOrgType) => {
+
+									if (org.url) {
+										return (<li class="text-xs bg-transparent">
+											{org.url && <a href={org.url ?? '#'} target="_blank" rel="nofollow">{org.name}</a>}
+										</li>
+										)
+									} else {
+										return (<li class="text-xs bg-transparent">{org.name}</li>)
+									}
+								})}
+								</ul>
             </motion.li>
           );
         })

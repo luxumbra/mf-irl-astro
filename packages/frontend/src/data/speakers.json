@@ -2,222 +2,461 @@
   {
     "name": "Aaron Soskin",
     "image": "AaronSoskin.jpg",
-    "url": "https://twitter.com/AaronSoskin"
+    "url": "https://twitter.com/AaronSoskin",
+    "orgs": [
+      {
+        "name": "Govrn"
+      }
+    ]
   },
   {
     "name": "Hanzi Freinacht",
     "image": "hfreinacht.jpg",
-    "url": "https://twitter.com/HFreinacht"
+    "url": "https://twitter.com/HFreinacht",
+    "orgs": [
+      {
+        "name": "Metamoderna"
+      }
+    ]
   },
   {
     "name": "Angela",
     "image": "Angela.jpg",
-    "url": "https://twitter.com/akrtws"
-  },
-  {
-    "name": "Anna-Marie Swan",
-    "image": "Anna-MarieSwan.jpg",
-    "url": "https://twitter.com/MrsBadgerface"
+    "url": "https://twitter.com/akrtws",
+    "orgs": [
+      {
+        "name": "TokenEngineering"
+      }
+    ]
   },
   {
     "name": "Antonio",
     "image": "AntonioPagliano.jpg",
-    "url": "https://twitter.com/antonio_paglino"
-  },
-  {
-    "name": "Bau",
-    "image": "Bau.jpg",
-    "url": "https://twitter.com/BausBuns"
-  },
-  {
-    "name": "dan13ram",
-    "image": "dan13ram.jpg",
-    "url": "https://twitter.com/dan13ram"
+    "url": "https://twitter.com/antonio_paglino",
+    "orgs": [
+      {
+        "name": "Pagliano ReFi Sicily"
+      }
+    ]
   },
   {
     "name": "DeFi Dude",
     "image": "DeFiDude.jpg",
-    "url": "https://twitter.com/defidude"
+    "url": "https://twitter.com/defidude",
+    "orgs": [
+      {
+        "name": "Builda"
+      }
+    ]
   },
   {
     "name": "Dr. Nick",
     "image": "DrNick.jpg",
-    "url": "https://twitter.com/DrNickA"
+    "url": "https://twitter.com/DrNickA",
+    "orgs": [
+      {
+        "name": "Factory DAO"
+      }
+    ]
   },
   {
     "name": "Elco",
     "image": "Elco.jpg",
-    "url": "https://twitter.com/duartedao"
+    "url": "https://twitter.com/duartedao",
+    "orgs": [
+      {
+        "name": "The DAOist"
+      }
+    ]
   },
   {
     "name": "Felix Fritsch",
     "image": "FelixFritsch.jpg",
-    "url": "https://twitter.com/FelixFritsch2"
+    "url": "https://twitter.com/FelixFritsch2",
+    "orgs": [
+      {
+        "name": "Crypto Commons Association"
+      }
+    ]
   },
   {
     "name": "HBesso",
     "image": "HumbertoBesso.jpg",
-    "url": "https://twitter.com/HumbertoBesso"
-  },
-  {
-    "name": "James Young",
-    "image": "JamesYoung.jpg",
-    "url": "https://twitter.com/jamesyoung"
+    "url": "https://twitter.com/HumbertoBesso",
+    "orgs": [
+      {
+        "name": "Urbánika"
+      }
+    ]
   },
   {
     "name": "Jeremy Akers",
     "image": "JeremyAkers.jpg",
-    "url": "https://twitter.com/gospelofchange"
+    "url": "https://twitter.com/gospelofchange",
+    "orgs": [
+      {
+        "name": "Wise Crowds"
+      },
+      {
+        "name": "Regens Unite"
+      }
+    ]
   },
   {
     "name": "Luka Sučić",
     "image": "LSkywalker.jpg",
-    "url": "https://twitter.com/Beler"
+    "url": "https://twitter.com/Beler",
+    "orgs": [
+      {
+        "name": "Daedalus Angels"
+      }
+    ]
   },
   {
     "name": "Manu of DoinGud",
     "image": "Manu.jpg",
-    "url": "https://twitter.com/ManuAlzuru"
+    "url": "https://twitter.com/ManuAlzuru",
+    "orgs": [
+      {
+        "name": "DoinGud"
+      }
+    ]
   },
   {
     "name": "METADREAMER",
     "image": "METADREAMER.png",
-    "url": "https://twitter.com/META_DREAMER"
+    "url": "https://twitter.com/META_DREAMER",
+    "orgs": [
+      {
+        "name": "MetaFactory"
+      }
+    ]
   },
   {
     "name": "Ori Shimony",
     "image": "OriShimony.jpg",
-    "url": "https://twitter.com/orishim"
+    "url": "https://twitter.com/orishim",
+    "orgs": [
+      {
+        "name": "Mechanism Institute"
+      },
+      {
+        "name": "dOrg"
+      }
+    ]
   },
   {
     "name": "peth",
     "image": "pethofMetaGame.png",
-    "url": "https://twitter.com/petheth"
+    "url": "https://twitter.com/petheth",
+    "orgs": [
+      {
+        "name": "MetaGame"
+      }
+    ]
   },
   {
-    "name": "Sebnem",
+    "name": "Sebnem Solsista",
     "image": "Solsista.png",
-    "url": "https://twitter.com/sebnem"
+    "url": "https://twitter.com/sebnem",
+    "orgs": [
+      {
+        "name": "Younergy Crypto"
+      }
+    ]
   },
   {
-    "name": "TBSocialist",
+    "name": "The Blockchain Socialist",
     "image": "TheBlockchainSocialist.jpg",
     "url": "https://twitter.com/TBSocialist"
   },
   {
-    "name": "Yalor",
-    "image": "Yalor.jpg",
-    "url": "https://twitter.com/YalorMewn"
-  },
-  {
     "name": "Anna",
     "image": "Anna.jpg",
-    "url": "https://twitter.com/KaicAnna"
-  },
-  {
-    "name": "Atlas Sloth",
-    "image": "Atlas_Sloth.jpg",
-    "url": "https://twitter.com/Atlas_Sloth"
+    "url": "https://twitter.com/KaicAnna",
+    "orgs": [
+      {
+        "name": "ReFi DAO"
+      }
+    ]
   },
   {
     "name": "Grace Rachmany",
     "image": "GraceRachmany.jpg",
-    "url": "https://twitter.com/RebeccaRachmany"
+    "url": "https://twitter.com/RebeccaRachmany",
+    "orgs": [
+      {
+        "name": "DAOleadership"
+      },
+      {
+        "name": "Voice of Humanity"
+      }
+    ]
   },
   {
     "name": "MinChi",
     "image": "MinChi.jpg",
-    "url": "https://twitter.com/minchi_p"
+    "url": "https://twitter.com/minchi_p",
+    "orgs": [
+      {
+        "name": "frens.company"
+      },
+      {
+        "name": "SheFi"
+      }
+    ]
   },
   {
     "name": "LSDan",
     "image": "LSDan.jpg",
-    "url": "https://twitter.com/LSDan_DeFi"
+    "url": "https://twitter.com/LSDan_DeFi",
+    "orgs": [
+      {
+        "name": "DCV Capital"
+      },
+      {
+        "name": "Trebuchet"
+      }
+    ]
   },
   {
     "name": "playerzer0x",
     "image": "playerzer0x.jpg",
-    "url": "https://twitter.com/playerzer0x"
+    "url": "https://twitter.com/playerzer0x",
+    "orgs": [
+      {
+        "name": "Mochi"
+      }
+    ]
   },
   {
     "name": "Phil H",
     "image": "philh.jpg",
-    "url": "https://twitter.com/phil_h"
+    "url": "https://twitter.com/phil_h",
+    "orgs": [
+      {
+        "name": "dazidao"
+      },
+      {
+        "name": "Mangrove"
+      },
+      {
+        "name": "dOrg"
+      }
+    ]
   },
   {
     "name": "Rebecca Collins",
     "image": "rebecca-collins.jpg",
-    "url": "https://twitter.com/introsbective"
+    "url": "https://twitter.com/introsbective",
+    "orgs": [
+      {
+        "name": "Google"
+      }
+    ]
   },
   {
     "name": "Jawna Standish",
     "image": "Jawna_Standish.jpg",
-    "url": "https://twitter.com/Jawna_Standish"
+    "url": "https://twitter.com/Jawna_Standish",
+    "orgs": [
+      {
+        "name": "MIDAO"
+      }
+    ]
   },
   {
-    "name": "rugsarian",
-    "image": "rugsarian.jpg",
-    "url": "https://twitter.com/rugsarian"
+    "name": "Anastasia",
+    "image": "rusgarian.jpg",
+    "url": "https://twitter.com/rusgarian",
+    "orgs": [
+      {
+        "name": "DAOESCO"
+      },
+      {
+        "name": "DAO Palace"
+      }
+    ]
   },
   {
     "name": "Rok Kranjc",
     "image": "carniolanfox.jpg",
-    "url": "https://twitter.com/carniolanfox"
+    "url": "https://twitter.com/carniolanfox",
+    "orgs": [
+      {
+        "name": "@futurescraft"
+      }
+    ]
   },
   {
     "name": "Rich O'Grady",
     "image": "honestly_rich.jpg",
-    "url": "https://twitter.com/honestly_rich"
+    "url": "https://twitter.com/honestly_rich",
+    "orgs": [
+      {
+        "name": "Node Guardians"
+      },
+      {
+        "name": "Chinwags"
+      }
+    ]
   },
   {
     "name": "Rob Morris",
     "image": "recipromancer.jpg",
-    "url": "https://twitter.com/recipromancer"
+    "url": "https://twitter.com/recipromancer",
+    "orgs": [
+      {
+        "name": "funDAOmental"
+      },
+      {
+        "name": "Prismatik"
+      }
+    ]
   },
   {
-    "name": "Sam",
+    "name": "Samuel Delesque",
     "image": "samueldelesque.jpg",
-    "url": "https://twitter.com/samueldelesque"
+    "url": "https://twitter.com/samueldelesque",
+    "orgs": [
+      {
+        "name": "traditionaldreamfactory"
+      },
+      {
+        "name": "re:build"
+      },
+      {
+        "name": "Closer DAO"
+      }
+    ]
   },
   {
     "name": "Carolina Carvalho",
     "image": "carolina-carvalho.jpeg",
-    "url": "https://www.linkedin.com/in/carolina-carvalho-457523152/"
+    "url": "https://www.linkedin.com/in/carolina-carvalho-457523152/",
+    "orgs": [
+      {
+        "name": "Global Regeneration CoLab"
+      }
+    ]
   },
   {
     "name": "Vlad Petrea",
     "image": "vladpetrea.jpeg",
-    "url": "https://www.linkedin.com/in/vladpetrea/"
+    "url": "https://www.linkedin.com/in/vladpetrea/",
+    "orgs": [
+      {
+        "name": "Moonshot Pirates"
+      }
+    ]
   },
   {
     "name": "Andrej Berlin",
     "image": "andrejberlin.jpg",
-    "url": "https://twitter.com/kischiman"
+    "url": "https://twitter.com/kischiman",
+    "orgs": [
+      {
+        "name": "Deep Work"
+      }
+    ]
   },
   {
     "name": "Sky",
     "image": "sminert.jpg",
-    "url": "https://twitter.com/sminert"
+    "url": "https://twitter.com/sminert",
+    "orgs": [
+      {
+        "name": "MetaCartel"
+      },
+      {
+        "name": "Public Nouns"
+      }
+    ]
   },
   {
     "name": "Feems",
     "image": "feemschats.jpg",
-    "url": "https://twitter.com/feemschats"
+    "url": "https://twitter.com/feemschats",
+    "orgs": [
+      {
+        "name": "Work on Chain"
+      },
+      {
+        "name": "Snapshot"
+      }
+    ]
   },
   {
     "name": "Dr. Mihaela Ulieru",
     "image": "mihaelaulieru.jpg",
-    "url": "https://www.linkedin.com/in/mihaelaulieru/"
+    "url": "https://www.linkedin.com/in/mihaelaulieru/",
+    "orgs": [
+      {
+        "name": "SingularityNET"
+      },
+      {
+        "name": "The Consilience Project"
+      },
+      {
+        "name": "WEF"
+      }
+    ]
   },
   {
     "name": "Dor Garbash",
     "image": "dorgarbash.jpg",
-    "url": "https://twitter.com/garbash"
+    "url": "https://twitter.com/garbash",
+    "orgs": [
+      {
+        "name": "Radical Ecosystems"
+      }
+    ]
   },
   {
     "name": "Lauri Paloheimo",
     "image": "lauripaloheimo.jpg",
-    "url": "https://www.facebook.com/lauri.paloheimo.7"
+    "url": "https://www.facebook.com/lauri.paloheimo.7",
+    "orgs": [
+      {
+        "name": "Pandatron AI"
+      }
+    ]
+  },
+  {
+    "name": "Ven Gist",
+    "image": "vengist.png",
+    "url": "https://twitter.com/0xd2_eth",
+    "orgs": [
+      {
+        "name": "DAOhaus"
+      },
+      {
+        "name": "Public Nouns"
+      }
+    ]
+  },
+  {
+    "name": "Paul Wackerow",
+    "image": "paulwackerow.png",
+    "url": "https://twitter.com/wackerow",
+    "orgs": [
+      {
+        "name": "Ethereum Foundation"
+      }
+    ]
+  },
+  {
+    "name": "Clara Gromaches",
+    "image": "claragromaches.png",
+    "url": "https://twitter.com/claragromaches",
+    "orgs": [
+      {
+        "name": "W3ST"
+      },
+      {
+        "name": "dOrg"
+      }
+    ]
   },
   {
     "name": "You?",

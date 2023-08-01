@@ -1,0 +1,15 @@
+{
+  "site": {
+    "id": "af811a6c-b91e-4cd6-aa02-cd278e21659c",
+    "team": "luxumbra-team",
+    "platform": "ipfs",
+    "source": "ipfs",
+    "name": "metafest-prod"
+  },
+  "build": {
+    "baseDir": "",
+    "publicDir": "dist",
+    "command": "",
+    "rootDir": ""
+  }
+}

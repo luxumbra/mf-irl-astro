@@ -253,7 +253,7 @@
   .ticket-methods {
     .tier,
     .expansion-pack {
-      @apply mx-auto transform transition-all duration-200 ease-in-out min-h-full h-full flex flex-col flex-1 mb-8 xl:mb-0;
+      @apply mx-auto transform transition-all duration-200 ease-in-out h-auto flex flex-col flex-1 mb-8 xl:mb-0;
 
       &__header {
         @apply flex flex-row justify-between;
@@ -408,10 +408,18 @@
         background-image: url('../images/hammered-bg.png');
 
         @apply bg-top bg-cover;
+
+        ul {
+          @apply flex flex-col items-center justify-start space-y-1 h-auto flex-shrink gap-1;
+
+          li {
+            @apply rounded-none px-2 bg-transparent bg-none mb-0 text-center text-accent-light-alpha-90;
+          }
+        }
       }
 
       a {
-        @apply space-y-3 capitalize focus:outline-dashed hover:no-underline	hover:scale-105 focus:outline-primary-alpha-60 focus:scale-105 transition-all duration-200 ease-in-out;
+        @apply space-y-3 capitalize focus:outline-dashed hover:no-underline	hover:scale-105 transition-all duration-200 ease-in-out;
 
         &:not(.btn) {
           &:hover {
@@ -419,7 +427,7 @@
           }
         }
         span {
-          @apply text-xs lg:text-sm 3xl:text-base whitespace-nowrap;
+          @apply text-xs lg:text-sm 3xl:text-base;
         }
       }
     }

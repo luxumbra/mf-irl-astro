@@ -23,9 +23,7 @@ const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
     class="text-base xl:text-2xl text-accent-light-alpha-90 mb-1 xl:mb-3 flex items-center space-x-2 flex-shrink justify-between"
   >
     <span class="inline-flex items-center gap-2">
-      <Icon icon="ph:clock-fill" client:load />
-      {startTime} - {endTime}
-      {offset}
+      {startTime}
     </span>
     <a
       href={event.htmlLink}
