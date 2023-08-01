@@ -126,31 +126,25 @@ const filterDataForTabs = () => {
 
   // filter data for tabs *Meta/Regen Day*, *Coordination/DAO Day*, *The Unconference*
   const metaRegenDay = getCalForBuild.data.filter((event) => {
-    const day = DateTime.fromISO(event.start.dateTime).toLocaleString(
-      DateTime.DATE_SHORT
-    );
+		const eventDate = DateTime.fromISO(event.start.dateTime);
 
-    if (day.includes("8/16/2023")) {
+    if (eventDate.day === 16 && eventDate.month === 8) {
       return event;
     }
   });
 
   const coordinationDAODay = getCalForBuild.data.filter((event) => {
-    const day = DateTime.fromISO(event.start.dateTime).toLocaleString(
-      DateTime.DATE_SHORT
-    );
+		const eventDate = DateTime.fromISO(event.start.dateTime);
 
-    if (day.includes("8/17/2023")) {
+    if (eventDate.day === 17 && eventDate.month === 8) {
       return event;
     }
   });
 
   const unconference = getCalForBuild.data.filter((event) => {
-    const day = DateTime.fromISO(event.start.dateTime).toLocaleString(
-      DateTime.DATE_SHORT
-    );
+		const eventDate = DateTime.fromISO(event.start.dateTime);
 
-    if (day.includes("8/18/2023")) {
+    if (eventDate.day === 18 && eventDate.month === 8) {
       return event;
     }
   });
@@ -183,7 +177,6 @@ const filterDataForTabs = () => {
     tabs[3].data = unconference;
   }
   if (bustripContent) {
-    // tabs[4].data = bustripDays;
     tabs[4].data = bustripContent;
   }
 
@@ -270,6 +263,7 @@ const meta = {
         {
           tabData?.tabs &&
             tabData?.tabs.map((tab: TabType, index: number) => {
+
               return (
                 <div
                   class={clsx(

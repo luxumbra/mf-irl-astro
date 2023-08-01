@@ -10,7 +10,7 @@
       @apply flex flex-row justify-start xl:justify-center w-11/12 xl:w-full text-left m-0 p-0 space-y-0 space-x-3 border-b-[1px] border-accent overflow-scroll;
 
       li {
-        @apply mb-0 h-full flex-grow xl:flex-shrink w-auto p-0;
+        @apply mb-0 h-full  w-auto p-0;
 
         background-image: url('../../assets/images/hammered-bg.png');
 
