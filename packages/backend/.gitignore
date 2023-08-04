@@ -1,5 +1,6 @@
 node_modules
 .env
 keys.json
+keys-*.json
 # Local Netlify folder
 .netlify
