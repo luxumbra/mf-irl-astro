@@ -68,6 +68,15 @@
         }
       }
 
+      .markdown-wrapper {
+        a {
+          @apply underline text-accent-light-alpha-90;
+        }
+        img {
+          @apply w-full h-auto rounded-2xl my-16;
+        }
+      }
+
       /* &__content {
       }
 

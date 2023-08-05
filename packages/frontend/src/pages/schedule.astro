@@ -276,7 +276,7 @@ const meta = {
 									{index === 0 && tab.data && tab.data.length > 0 && (
 										<div class="flex flex-col space-y-20">
 											{tab.data.filter((event: any) => event.grouping === undefined).length > 0 && (
-												<div class="">
+												<div class="text-left">
 													<h3>Scheduled Events</h3>
 													<ol
 														class={clsx(
@@ -290,7 +290,7 @@ const meta = {
 												</div>
 											)}
 											{tab.data.filter((event: any) => event.grouping !== undefined).length > 0 && (
-												<div>
+												<div class="text-left">
 										<h3>Choose your own adventure</h3>
 										<ol
 											class={clsx(
@@ -324,7 +324,7 @@ const meta = {
                   ) : (
                     <>
                       {tab.data && tab.data.rawContent && (
-												<div class="max-w-3xl mx-auto prose prose-sm xl:prose-lg prose-h3:text-accent-light-alpha-90 prose-img:mx-auto">
+												<div class="markdown-wrapper max-w-3xl mx-auto">
                         <Markdown>{tab.data.rawContent}</Markdown>
 												</div>
                       )}
