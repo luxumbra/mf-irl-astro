@@ -34,9 +34,13 @@
           @apply text-secondary-dark text-base outline-none 2xl:text-xl 4xl:text-2xl font-sans uppercase inline-flex items-center px-4 transition-colors duration-200;
           @apply hover:text-primary focus:text-primary;
 
-          &:last-child {
-            @apply hover:text-secondary-dark hover:scale-125 hover:rotate-6 shadow-black shadow-md hover:shadow-xl transition-all duration-200 ease-in-out;
+          &.btn {
+            @apply hover:text-secondary-dark hover:scale-105 hover:rotate-6 hover:bg-transparent p-2 transition-all duration-200 ease-in-out;
             @apply focus:text-secondary-dark;
+
+            &:first-child {
+              @apply hover:-rotate-6;
+            }
           }
         }
       }

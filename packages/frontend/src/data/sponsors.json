@@ -55,6 +55,11 @@
     "url": "https://twitter.com/debtdao"
   },
   {
+    "name": "Holochain",
+    "logo": "holochain.png",
+    "url": "https://www.holochain.org/"
+  },
+  {
     "name": "Your DAO?",
     "logo": "mystery.png",
     "url": "/event-sponsors"

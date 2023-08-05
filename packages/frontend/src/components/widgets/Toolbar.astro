@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon';
+import { Icon as Iconify } from '@iconify/react';
 import NavItem from '~/components/atoms/NavItem.astro';
 import Plants from '~/components/widgets/Plants.astro';
 import ThreeD from '~/components/widgets/ThreeD';
@@ -22,11 +23,18 @@ import ThreeD from '~/components/widgets/ThreeD';
 		x-transition:leave-start="opacity-100 transform translate-y-0"
 		x-transition:leave-end="opacity-0 transform translate-y-8"
 	>
+	<div class="inline-flex items-center space-x-2">
 		<a
 			href="/tickets"
 			class="btn btn-xs ml-1.5 bg-gradient-tertiary text-secondary-dark transition-all duration-200 ease-in-out"
-			>Tickets</a
+			><Iconify icon="mdi:calendar-outline" class="w-5 h-5" client:load /> Tickets</a
 		>
+		<a
+		href="/schedule"
+		class="btn btn-xs ml-1.5 bg-gradient-tertiary text-secondary-dark transition-all duration-200 ease-in-out"
+		><Iconify icon="mdi:ticket" class="w-8 h-8" client:load /> Schedule</a
+	>
+</div>
 		<button
 			x-on:click="menuOpen = !menuOpen"
 			type="button"

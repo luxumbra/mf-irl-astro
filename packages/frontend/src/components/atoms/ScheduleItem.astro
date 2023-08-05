@@ -18,11 +18,11 @@ const endTime = DateTime.fromISO(event.end.dateTime).toLocaleString(
 const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
 ---
 
-<li class="ticket-method mb-0-">
+<li class="ticket-method mb-0 group">
   <p
-    class="text-base xl:text-2xl text-accent-light-alpha-90 mb-1 xl:mb-3 flex items-center space-x-2 flex-shrink justify-between"
+    class="text-base xl:text-2xl text-accent-light-alpha-90 mb-1 xl:mb-3 flex items-center space-x-2 flex-shrink justify-between "
   >
-    <span class="inline-flex items-center gap-2">
+    <span class="inline-flex items-center gap-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
       {startTime}
     </span>
     <a
@@ -32,11 +32,11 @@ const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
       class="cal-link"
     >
       <button
-        class="btn p-2 bg-transparent hover:scale-125 hover:text-white text-sm text-accent-light-alpha-90 mb-0 inline-flex rounded-2xl items-center justify-center transition-all duration-200 ease-in-out"
+        class="btn p-2 bg-transparent hover:scale-125 hover:text-white hover:bg-transparent hover:outline-none hover:border-none text-sm text-accent-light-alpha-90 mb-0 inline-flex rounded-2xl items-center justify-center transition-all duration-200 ease-in-out"
       >
         <Icon
           icon="bi:calendar2-plus-fill"
-          className="w-4 h-4 xl:w-6 xl:h-6 text-accent-light-alpha-90"
+          className="w-5 h-5 xl:w-6 xl:h-6 text-accent-light-alpha-90"
           client:load
         />
       </button>
