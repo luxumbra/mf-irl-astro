@@ -574,7 +574,7 @@ export const CrewButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
     <button
       data-buy-method="crew"
       className={classes}
-      data-tally-open="nG675k"
+      data-tally-open="wdNQVo"
       data-tally-layout="modal"
       data-tally-width="800"
       data-tally-align-left="1"
@@ -595,7 +595,7 @@ export const MetagamerButton = ({ text, disabled }: BuyButtonProps): JSX.Element
     <button
       data-buy-method="metagamer"
       className={classes}
-      data-tally-open="mRxrkj"
+      data-tally-open="w54DaZ"
       data-tally-layout="modal"
       data-tally-width="800"
       data-tally-align-left="1"
@@ -833,12 +833,10 @@ export const TicketMethod = ({
           {price.metagamer && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
               <span className="relative bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-fuchsia-400">
-                MetaGamer tickets{' '}
-                <img
-                  src="https://metagame.wtf/favicon.png"
-                  alt="MetaGame"
-                  className="inline-flex items-center h-5 w-auto -translate-x-2 -translate-y-1"
-                />
+                DAO Summoner tickets{' '}
+                <b role="img" aria-label="rocket emoji">
+                  🚀
+                </b>
               </span>
               <span className="text-2xl md:text-3xl font-bold uppercase">
                 {price.metagamer > 0 && currencySymbol}
