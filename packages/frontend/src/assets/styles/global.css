@@ -634,6 +634,13 @@
       }
     }
   }
+
+  .tooltip-mf-primary {
+    @apply bg-gradient-to-r from-primary to-accent;
+
+    --tooltip-color: #82d36eff;
+    --tooltip-text-color: #060c14ff;
+  }
 }
 
 @layer utilities {

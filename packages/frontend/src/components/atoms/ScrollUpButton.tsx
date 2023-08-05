@@ -45,7 +45,7 @@ export const ScrollUpButton = ({ accent }: ScrollUpButtonProps): JSX.Element => 
             viewport={{ once: false }}
             transition={{ duration: 0.5 }}
           >
-            <div className="tooltip tooltip-left tooltip-accent" data-tip="Scroll to top">
+            <div className="tooltip tooltip-left tooltip-accent font-bold" data-tip="Scroll to top">
               <Icon icon="gg:push-up" color={`var(--${accent ?? 'projectAccent'})`} className="w-8 xl:w-10 h-auto" />
             </div>
           </motion.div>

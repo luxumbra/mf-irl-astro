@@ -2,6 +2,7 @@
 import './header.css';
 import { motion } from 'framer-motion';
 import { Icon } from 'astro-icon';
+import { Icon as Iconify } from "@iconify/react";
 // import ToggleTheme from '~/components/core/ToggleTheme.astro';
 ---
 
@@ -17,11 +18,21 @@ import { Icon } from 'astro-icon';
 			<a href="/#speakers">Speakers</a>
 			<a href="/#sponsors">Sponsors</a>
 			<a href="/#join">Join</a>
+			<div class="absolute right-5 3xl:right-5 top-1/4 -translate-y-1/4 3xl:-translate-y-0 flex items-center gap-x-3">
+				<div class="tooltip tooltip-bottom tooltip-primary font-bold" data-tip="Full Schedule">
+				<a
+				href="/schedule"
+				class="btn btn-ghost focus:outline-primary focus:text-secondary-dark hover:text-secondary-dark outline-dashed transition-all duration-200 ease-in-out rounded-full"
+				><Iconify icon="mdi:calendar-outline" width="40" height="40" client:visible /> <span class="sr-only">Schedule</span></a>
+			</div>
+			<div class="tooltip tooltip-bottom tooltip-primary font-bold" data-tip="Buy Tickets">
 			<a
 				href="/tickets"
-				class="absolute group right-5 3xl:right-10 top-1/4 -translate-y-1/4 3xl:-translate-y-0 px-3 3xl:px-5 py-1 3xl:py-3 font-bold btn btn-ghost bg-gradient-tertiary focus:outline-primary focus:text-secondary-dark outline-dashed transition-all duration-200 ease-in-out"
-				>Tickets</a
+				class="group btn btn-ghost focus:outline-primary focus:text-secondary-dark hover:text-primary outline-dashed transition-all duration-200 ease-in-out rounded-full"
+				><Iconify icon="mdi:ticket" class="group-hover:fill-current " width="40" height="40" client:visible /> <span class="sr-only">Tickets</span></a
 			>
+		</div>
+			</div>
 		</menu>
 
 		<motion.a
@@ -46,9 +57,9 @@ import { Icon } from 'astro-icon';
 		// function to toggle the header class on scroll
 		const scrollHeader = () => {
 			if (window.scrollY > 0) {
-				header.classList.add('header--scrolled');
+				header?.classList.add('header--scrolled');
 			} else {
-				header.classList.remove('header--scrolled');
+				header?.classList.remove('header--scrolled');
 			}
 		};
 
