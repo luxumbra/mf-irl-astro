@@ -124,6 +124,14 @@ const filterDataForTabs = () => {
     {}
   );
 
+	const warmupDaysEvents = getCalForBuild.data.filter((event) => {
+		const eventDate = DateTime.fromISO(event.start.dateTime);
+
+		if (eventDate.day >= 11 && eventDate.day <= 15) {
+			return event;
+		}
+	});
+
   // filter data for tabs *Meta/Regen Day*, *Coordination/DAO Day*, *The Unconference*
   const metaRegenDay = getCalForBuild.data.filter((event) => {
 		const eventDate = DateTime.fromISO(event.start.dateTime);
@@ -161,13 +169,13 @@ const filterDataForTabs = () => {
     }
   });
 
-  if (warmupDays.length > 0) {
+  if (warmupDays.length > 0 && warmupDaysEvents.length === 0) {
     tabs[0].data = warmupDays;
-  }
+  } else if (warmupDays.length > 0 && warmupDaysEvents.length > 0) {
+		tabs[0].data = warmupDays.concat(warmupDaysEvents);
+	}
 
   if (metaRegenDay.length > 0) {
-    console.log({ metaRegenDayGrouped });
-
     tabs[1].data = metaRegenDay;
   }
   if (coordinationDAODay.length > 0) {
@@ -199,18 +207,6 @@ const meta = {
 };
 ---
 
-<!--
-
-		<AddToCalButton
-		name={event.summary}
-		startDate={event.start.dateTime}
-		endDate={event.end.dateTime}
-		options={['google', 'apple', 'outlook', 'outlookcom', 'yahoo', 'office365']}
-		client:load
-	>
-		<Icon icon="bi:calendar2-plus-fill" className="w-8" client:load />
-	</AddToCalButton>
- -->
 <Layout {meta}>
   <div class="pt-16 xl:pt-32"></div>
   <SponsorsSection
@@ -263,7 +259,6 @@ const meta = {
         {
           tabData?.tabs &&
             tabData?.tabs.map((tab: TabType, index: number) => {
-
               return (
                 <div
                   class={clsx(
@@ -278,7 +273,41 @@ const meta = {
                   aria-hidden={index === 0 ? "false" : "true"}
                   hidden={index === 0 ? false : true}
                 >
-                  {tab.data && tab.data.length > 0 ? (
+									{index === 0 && tab.data && tab.data.length > 0 && (
+										<div class="flex flex-col space-y-20">
+											{tab.data.filter((event: any) => event.grouping === undefined).length > 0 && (
+												<div class="">
+													<h3>Scheduled Events</h3>
+													<ol
+														class={clsx(
+															"schedule__list tiers flex flex-col xl:grid xl:grid-cols-3 gap-x-0 gap-y-5 xl:gap-5 items-stretch w-full"
+														)}
+													>
+														{tab.data.filter((event: any) => event.grouping === undefined).map((event: any) => {
+															return <ScheduleItem event={event} />;
+														})}
+													</ol>
+												</div>
+											)}
+											{tab.data.filter((event: any) => event.grouping !== undefined).length > 0 && (
+												<div>
+										<h3>Choose your own adventure</h3>
+										<ol
+											class={clsx(
+												"schedule__list tiers flex flex-col xl:grid xl:grid-cols-3 gap-x-0 gap-y-5 xl:gap-5 items-stretch w-full"
+											)}
+										>
+											{tab.data.filter((event: any) => event.grouping !== undefined).map((event: any) => {
+												return <ScheduleItemAlt event={event} />;
+											})}
+										</ol>
+									</div>
+											)}
+
+								</div>
+									)}
+
+                  {index > 0 && tab.data && tab.data.length > 0 ? (
                     <ol
                       class={clsx(
                         "schedule__list tiers flex flex-col xl:grid xl:grid-cols-3 gap-x-0 gap-y-5 xl:gap-5 items-stretch w-full"
@@ -294,19 +323,21 @@ const meta = {
                     </ol>
                   ) : (
                     <>
-                      {tab.data && tab.data.rawContent ? (
+                      {tab.data && tab.data.rawContent && (
 												<div class="max-w-3xl mx-auto prose prose-sm xl:prose-lg prose-h3:text-accent-light-alpha-90 prose-img:mx-auto">
                         <Markdown>{tab.data.rawContent}</Markdown>
 												</div>
-                      ) : (
-                        <div class="flex flex-col items-center justify-center w-full h-full">
+                      )}
+                    </>
+                  )}
+
+									{tab.data && tab.data.length === 0 && (
+										<div class="flex flex-col items-center justify-center w-full h-full">
                           <p class="text-xl font-bold text-center">
                             Awaiting content for this day. Check back later.{" "}
                           </p>
                         </div>
-                      )}
-                    </>
-                  )}
+											)}
                 </div>
               );
             })
@@ -340,7 +371,7 @@ const meta = {
   const heights: number[] = panels.forEach(
     (panel) => panel.offsetHeight
   ) as any;
-  console.log({ heights });
+  // console.log({ heights });
   const LEFT_ARROW = "leftarrow";
   const RIGHT_ARROW = "rightarrow";
   const DOWN_ARROW = "downarrow";
