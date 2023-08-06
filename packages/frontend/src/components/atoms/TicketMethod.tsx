@@ -382,7 +382,7 @@ export const CryptoModalButton = ({
                     min="1"
                     value={quantity}
                     onChange={(e) => setQuantity(+e.target.value)}
-                    className="input font-bold text-center text-xl md:text-2xl w-3/12"
+                    className="input font-bold text-center text-xl md:text-2xl w-3/12 bg-secondary-dark-alpha-30"
                   />
                   <button
                     data-buy-method="crypto"
@@ -411,7 +411,7 @@ export const CryptoModalButton = ({
                     value={quantityB}
                     min="1"
                     onChange={(e) => setQuantityB(+e.target.value)}
-                    className="input font-bold text-center  text-xl md:text-2xl w-3/12"
+                    className="input font-bold text-center  text-xl md:text-2xl w-3/12 bg-secondary-dark-alpha-30"
                   />
                   <button
                     data-buy-method="crypto"
@@ -574,7 +574,7 @@ export const CrewButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
     <button
       data-buy-method="crew"
       className={classes}
-      data-tally-open="nG675k"
+      data-tally-open="wdNQVo"
       data-tally-layout="modal"
       data-tally-width="800"
       data-tally-align-left="1"
@@ -595,7 +595,7 @@ export const MetagamerButton = ({ text, disabled }: BuyButtonProps): JSX.Element
     <button
       data-buy-method="metagamer"
       className={classes}
-      data-tally-open="mRxrkj"
+      data-tally-open="w54DaZ"
       data-tally-layout="modal"
       data-tally-width="800"
       data-tally-align-left="1"
@@ -833,12 +833,10 @@ export const TicketMethod = ({
           {price.metagamer && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
               <span className="relative bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-fuchsia-400">
-                MetaGamer tickets{' '}
-                <img
-                  src="https://metagame.wtf/favicon.png"
-                  alt="MetaGame"
-                  className="inline-flex items-center h-5 w-auto -translate-x-2 -translate-y-1"
-                />
+                DAO Summoner tickets{' '}
+                <b role="img" aria-label="rocket emoji">
+                  🚀
+                </b>
               </span>
               <span className="text-2xl md:text-3xl font-bold uppercase">
                 {price.metagamer > 0 && currencySymbol}
