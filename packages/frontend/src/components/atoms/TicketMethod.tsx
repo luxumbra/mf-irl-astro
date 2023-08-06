@@ -382,7 +382,7 @@ export const CryptoModalButton = ({
                     min="1"
                     value={quantity}
                     onChange={(e) => setQuantity(+e.target.value)}
-                    className="input font-bold text-center text-xl md:text-2xl w-3/12"
+                    className="input font-bold text-center text-xl md:text-2xl w-3/12 bg-secondary-dark-alpha-30"
                   />
                   <button
                     data-buy-method="crypto"
@@ -411,7 +411,7 @@ export const CryptoModalButton = ({
                     value={quantityB}
                     min="1"
                     onChange={(e) => setQuantityB(+e.target.value)}
-                    className="input font-bold text-center  text-xl md:text-2xl w-3/12"
+                    className="input font-bold text-center  text-xl md:text-2xl w-3/12 bg-secondary-dark-alpha-30"
                   />
                   <button
                     data-buy-method="crypto"
