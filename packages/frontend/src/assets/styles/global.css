@@ -544,10 +544,24 @@
       table {
         @apply -translate-x-2 md:translate-x-0;
         th {
-          @apply text-xs md:text-sm font-normal md:font-bold;
+          @apply text-xs md:text-sm font-normal md:font-bold bg-secondary-dark-alpha-90;
         }
         td {
-          @apply text-xs md:text-sm;
+          @apply text-xs md:text-sm bg-secondary-dark-alpha-30;
+        }
+
+        tr {
+          &:nth-of-type(odd) {
+            td {
+              @apply bg-secondary-alpha-30;
+            }
+          }
+
+          &:nth-of-type(even) {
+            td {
+              @apply bg-secondary-dark-alpha-60;
+            }
+          }
         }
       }
     }
