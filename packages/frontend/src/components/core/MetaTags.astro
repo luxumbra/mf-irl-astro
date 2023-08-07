@@ -6,7 +6,7 @@ import { getRelativeUrlByFilePath } from '~/utils/directories';
 
 import defaultImageSrc from '~/assets/images/socials/metafest-shared.jpg';
 
-import { SITE, HOSTNAME } from '~/config.mjs';
+import { SITE, HOSTNAME, FACEBOOK_PIXEL_ID } from '~/config.mjs';
 import Fonts from '~/components/atoms/Fonts.astro';
 import ExtraMetaTags from '~/components/atoms/ExtraMetaTags.astro';
 
@@ -43,6 +43,12 @@ const image =
 <!-- Fathom - beautiful, simple website analytics -->
 <script src="https://cdn.usefathom.com/script.js" data-site="VHJSDIIW" defer></script>
 <!-- / Fathom -->
+
+<!-- Facebook Pixel Code -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '6654311354625109'); fbq('track', 'PageView');</script>
+<noscript> <img height="1" width="1" src={`https://www.facebook.com/tr?id=6654311354625109&ev=PageView&noscript=1`} /></noscript>
+<!-- End Facebook Pixel Code -->
+
 <AstroSeo
   title={title}
   description={description}
