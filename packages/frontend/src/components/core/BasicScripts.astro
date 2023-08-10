@@ -2,34 +2,35 @@
 ---
 
 <script>
-	import Alpine from 'alpinejs';
-	import focus from '@alpinejs/focus';
-	import Toolkit from '@alpine-collective/toolkit';
-	import Screen from '@alpine-collective/toolkit-screen';
-	import intersect from '@alpinejs/intersect';
+  import Alpine from "alpinejs";
+  import focus from "@alpinejs/focus";
+  import Toolkit from "@alpine-collective/toolkit";
+  import Screen from "@alpine-collective/toolkit-screen";
+  import intersect from "@alpinejs/intersect";
 
-	if (typeof window !== 'undefined') {
-		Alpine.plugin(intersect);
-		Alpine.plugin(focus);
-		Alpine.plugin(Toolkit);
-		Alpine.plugin(Screen);
-		// Alpine.start()
-	}
+  if (typeof window !== "undefined") {
+    Alpine.plugin(intersect);
+    Alpine.plugin(focus);
+    Alpine.plugin(Toolkit);
+    Alpine.plugin(Screen);
+    // Alpine.start()
+  }
 </script>
 
 <script is:inline>
 // Set "light" theme as default
 if (!localStorage.theme) {
-	localStorage.theme = 'dark';
+	localStorage.theme = "dark";
 }
 
 if (
-	localStorage.theme === 'dark' ||
-	(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+	localStorage.theme === "dark" ||
+	(!("theme" in localStorage) &&
+		window.matchMedia("(prefers-color-scheme: dark)").matches)
 ) {
-	document.documentElement.classList.add('dark');
+	document.documentElement.classList.add("dark");
 } else {
-	document.documentElement.classList.remove('dark');
+	document.documentElement.classList.remove("dark");
 }
 
 function attachEvent(selector, event, fn) {
@@ -42,37 +43,39 @@ function attachEvent(selector, event, fn) {
 }
 
 window.onload = function () {
-	const isMobile = window.matchMedia('(max-width: 768px)').matches;
+	const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-	attachEvent('[data-aw-toggle-menu]', 'click', function (elem) {
-		elem.classList.toggle('expanded');
-		document.body.classList.toggle('overflow-hidden');
-		document.getElementById('header')?.classList.toggle('h-screen');
-		document.querySelector('#header nav')?.classList.toggle('hidden');
+	attachEvent("[data-aw-toggle-menu]", "click", function (elem) {
+		elem.classList.toggle("expanded");
+		document.body.classList.toggle("overflow-hidden");
+		document.getElementById("header")?.classList.toggle("h-screen");
+		document.querySelector("#header nav")?.classList.toggle("hidden");
 	});
 
-	attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
-		document.documentElement.classList.toggle('dark');
-		localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+	attachEvent("[data-aw-toggle-color-scheme]", "click", function () {
+		document.documentElement.classList.toggle("dark");
+		localStorage.theme = document.documentElement.classList.contains("dark")
+			? "dark"
+			: "light";
 	});
 
-	attachEvent('[data-aw-social-share]', 'click', function (elem) {
-		const network = elem.getAttribute('data-aw-social-share');
-		const url = encodeURIComponent(elem.getAttribute('data-aw-url'));
-		const text = encodeURIComponent(elem.getAttribute('data-aw-text'));
+	attachEvent("[data-aw-social-share]", "click", function (elem) {
+		const network = elem.getAttribute("data-aw-social-share");
+		const url = encodeURIComponent(elem.getAttribute("data-aw-url"));
+		const text = encodeURIComponent(elem.getAttribute("data-aw-text"));
 
 		let href;
 		switch (network) {
-			case 'facebook':
+			case "facebook":
 				href = `https://www.facebook.com/sharer.php?u=${url}`;
 				break;
-			case 'twitter':
+			case "twitter":
 				href = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
 				break;
-			case 'whatsapp':
+			case "whatsapp":
 				href = `https://wa.me/?text=${text}%20${url}`;
 				break;
-			case 'mail':
+			case "mail":
 				href = `mailto:?subject=%22${text}%22&body=${text}%20${url}`;
 				break;
 
@@ -80,21 +83,21 @@ window.onload = function () {
 				return;
 		}
 
-		const newlink = document.createElement('a');
-		newlink.target = '_blank';
+		const newlink = document.createElement("a");
+		newlink.target = "_blank";
 		newlink.href = href;
 		newlink.click();
 	});
 
-	const canvas = document.querySelectorAll('.canvas-wrapper');
+	const canvas = document.querySelectorAll(".canvas-wrapper");
 
 	if (canvas && isMobile) {
 		for (let i = 0; i < canvas.length; i++) {
-			canvas[i].style.display = 'none';
+			canvas[i].style.display = "none";
 		}
 	}
 
-	if (typeof window !== 'undefined') {
+	if (typeof window !== "undefined") {
 		// const menuItems = document.querySelectorAll('.mobile-menu a');
 		// when a user clicks a nemu item close the menu and mark the item `.active`
 	}

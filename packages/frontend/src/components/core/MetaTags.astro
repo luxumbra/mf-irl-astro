@@ -1,14 +1,14 @@
 ---
-import { AstroSeo } from '@astrolib/seo';
+import { AstroSeo } from "@astrolib/seo";
 // import { GoogleAnalytics } from '@astrolib/analytics';
-import { getImage } from '@astrojs/image';
-import { getRelativeUrlByFilePath } from '~/utils/directories';
+import { getImage } from "@astrojs/image";
+import { getRelativeUrlByFilePath } from "~/utils/directories";
 
-import defaultImageSrc from '~/assets/images/socials/metafest-shared.jpg';
+import defaultImageSrc from "~/assets/images/socials/metafest-shared.jpg";
 
-import { SITE, HOSTNAME, FACEBOOK_PIXEL_ID } from '~/config.mjs';
-import Fonts from '~/components/atoms/Fonts.astro';
-import ExtraMetaTags from '~/components/atoms/ExtraMetaTags.astro';
+import { SITE, HOSTNAME, FACEBOOK_PIXEL_ID } from "~/config.mjs";
+import Fonts from "~/components/atoms/Fonts.astro";
+import ExtraMetaTags from "~/components/atoms/ExtraMetaTags.astro";
 
 const { src: defaultImage } = await getImage({
   src: defaultImageSrc,
@@ -19,7 +19,7 @@ const { src: defaultImage } = await getImage({
 
 const {
   title = SITE.name,
-  description = '',
+  description = "",
   image: _image = defaultImage,
 
   canonical,
@@ -27,26 +27,60 @@ const {
   nofollow = false,
 
   ogTitle = title,
-  ogType = 'website',
+  ogType = "website",
 } = Astro.props;
 
 const image =
-  typeof _image === 'string'
+  typeof _image === "string"
     ? new URL(_image, HOSTNAME)
-    : _image && typeof _image['src'] !== 'undefined'
+    : _image && typeof _image["src"] !== "undefined"
     ? new URL(getRelativeUrlByFilePath(_image.src), HOSTNAME)
     : null;
 ---
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script
+  src="https://consent.cookiefirst.com/sites/metafest.wtf-ab3baccc-f8c8-4baa-8794-bb7469f83059/consent.js"
+></script>
 <!-- Fathom - beautiful, simple website analytics -->
-<script src="https://cdn.usefathom.com/script.js" data-site="VHJSDIIW" defer></script>
+<script src="https://cdn.usefathom.com/script.js" data-site="VHJSDIIW" defer
+></script>
 <!-- / Fathom -->
 
 <!-- Facebook Pixel Code -->
-<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '6654311354625109'); fbq('track', 'PageView');</script>
-<noscript> <img height="1" width="1" src={`https://www.facebook.com/tr?id=6654311354625109&ev=PageView&noscript=1`} /></noscript>
+<script>
+  !(function (f, b, e, v, n, t, s) {
+    if (f.fbq) return;
+    n = f.fbq = function () {
+      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+    };
+    if (!f._fbq) f._fbq = n;
+    n.push = n;
+    n.loaded = !0;
+    n.version = "2.0";
+    n.queue = [];
+    t = b.createElement(e);
+    t.async = !0;
+    t.src = v;
+    s = b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t, s);
+  })(
+    window,
+    document,
+    "script",
+    "https://connect.facebook.net/en_US/fbevents.js"
+  );
+  fbq("init", "6654311354625109");
+  fbq("track", "PageView");
+</script>
+<noscript>
+  <img
+    height="1"
+    width="1"
+    src={`https://www.facebook.com/tr?id=6654311354625109&ev=PageView&noscript=1`}
+  />
+</noscript>
 <!-- End Facebook Pixel Code -->
 
 <AstroSeo
@@ -63,9 +97,9 @@ const image =
     images: image ? [{ url: image.href }] : undefined,
   }}
   twitter={{
-    handle: '@MetaFam',
+    handle: "@MetaFam",
     // site: '@site',
-    cardType: image ? 'summary_large_image' : undefined,
+    cardType: image ? "summary_large_image" : undefined,
   }}
 />
 
