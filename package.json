@@ -18,7 +18,7 @@
     "backend:deploy": "pnpm run --filter @metafest/backend deploy",
     "mf-deploy-stage": "pnpm run --filter @metafest/backend deploy-stage && pnpm run --filter @metafest/frontend deploy-stage",
     "site:dev": "pnpm run -r dev",
-    "clean:libsndist": "CMD='rm -rf node_modules/ packages/*/node_modules/ packages/frontend/dist/ packages/backend/.netlify' && echo \"$CMD\" && eval $CMD"
+    "clean:libsndist": "CMD='rm -rf pnpm-lock.yaml node_modules/ packages/*/node_modules/ packages/frontend/dist/ packages/backend/.netlify' && echo \"$CMD\" && eval $CMD"
   },
   "devDependencies": {
     "typescript": "^4.9.4"
