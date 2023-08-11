@@ -628,6 +628,14 @@
 
         &:first-of-type {
           @apply text-center text-xl lg:text-4xl font-bold  bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent;
+
+          img {
+            @apply inline-block w-12 h-12 rounded-full mr-2;
+
+            &:last-of-type {
+              @apply ml-2;
+            }
+          }
         }
       }
     }
