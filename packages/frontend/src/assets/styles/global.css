@@ -624,7 +624,7 @@
     .expired-copy {
       @apply max-w-3xl;
       p {
-        @apply text-center text-xl lg:text-2xl font-normal text-accent;
+        @apply text-center text-xl lg:text-xl font-normal text-accent;
 
         &:first-of-type {
           @apply text-center text-xl lg:text-4xl font-bold  bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent;
@@ -636,7 +636,15 @@
               @apply ml-2;
             }
           }
+
+          & + p {
+            @apply text-center text-xl lg:text-xl font-normal text-accent;
+          }
         }
+
+        /* &:last-of-type {
+          @apply text-center text-base lg:text-base font-normal text-accent;
+        } */
       }
     }
   }
