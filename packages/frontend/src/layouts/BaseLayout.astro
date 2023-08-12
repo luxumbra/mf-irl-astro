@@ -1,41 +1,45 @@
 ---
-import Header from '~/components/widgets/Header.astro';
-import Footer from '~/components/widgets/Footer.astro';
-import Toolbar from '~/components/widgets/Toolbar.astro';
+import Header from "~/components/widgets/Header.astro";
+import Footer from "~/components/widgets/Footer.astro";
+import Toolbar from "~/components/widgets/Toolbar.astro";
 
-import MetaTags from '~/components/core/MetaTags.astro';
-import BasicScripts from '~/components/core/BasicScripts.astro';
-import { ScrollUpButton } from '~/components/atoms/ScrollUpButton';
-import TestBanner from '~/components/widgets/TestBanner.astro';
+import MetaTags from "~/components/core/MetaTags.astro";
+import BasicScripts from "~/components/core/BasicScripts.astro";
+import { ScrollUpButton } from "~/components/atoms/ScrollUpButton";
 
-import '~/assets/styles/index.css';
+import "~/assets/styles/index.css";
 const { meta = {} } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="motion-safe:scroll-smooth bg-secondary-dark" data-theme="dark">
-	<head>
-		<MetaTags {...meta} />
-	</head>
+<html
+  lang="en"
+  class="motion-safe:scroll-smooth bg-secondary-dark"
+  data-theme="dark"
+>
+  <head>
+    <MetaTags {...meta} />
+  </head>
 
-	<body class="antialiased text-off-white tracking-normal">
-		<Header />
-		<Toolbar />
-		<slot />
+  <body class="antialiased text-off-white tracking-normal">
+    <Header />
+    <Toolbar />
+    <slot />
 
-		<!-- <TestBanner /> -->
+    <!-- <TestBanner /> -->
 
-		<ScrollUpButton accent={'projectAccent'} client:load />
-		<Footer />
-		<div id="root" class="fixed top-0 left-0 w-screen h-full overflow-hidden"></div>
-		<BasicScripts />
-		<style is:global>
-			:root {
-				--projectAccent: #348e7b;
-			}
-			img {
-				content-visibility: auto;
-			}
-		</style>
-	</body>
+    <ScrollUpButton accent={"projectAccent"} client:load />
+    <Footer />
+    <div id="root" class="fixed top-0 left-0 w-screen h-full overflow-hidden">
+    </div>
+    <BasicScripts />
+    <style is:global>
+      :root {
+        --projectAccent: #348e7b;
+      }
+      img {
+        content-visibility: auto;
+      }
+    </style>
+  </body>
 </html>

@@ -663,6 +663,10 @@
     --tooltip-color: #82d36eff;
     --tooltip-text-color: #060c14ff;
   }
+
+  .iub__us-widget {
+    @apply !absolute !max-h-0 !p-0 !overflow-hidden;
+  }
 }
 
 @layer utilities {
