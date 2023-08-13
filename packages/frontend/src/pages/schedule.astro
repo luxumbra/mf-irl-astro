@@ -333,15 +333,20 @@ const meta = {
                           <h3>Scheduled Events</h3>
                           <ol
                             class={clsx(
-                              "schedule__list tiers flex flex-col xl:grid xl:grid-cols-3 gap-x-0 gap-y-5 xl:gap-5 items-stretch w-full"
+                              "schedule__list tiers flex flex-col xl:grid xl:grid-cols-3 gap-x-0 gap-y-5 xl:gap-5 xl:gap-y-8 items-stretch w-full"
                             )}
                           >
                             {tab.data
                               .filter(
                                 (event: any) => event.grouping === undefined
                               )
-                              .map((event: any) => {
-                                return <ScheduleItem event={event} />;
+                              .map((event: any, i: number) => {
+                                const delay = parseFloat(
+                                  ((i + 1) * 0.1).toFixed(1)
+                                );
+                                return (
+                                  <ScheduleItem event={event} delay={delay} />
+                                );
                               })}
                           </ol>
                         </div>
@@ -360,8 +365,17 @@ const meta = {
                               .filter(
                                 (event: any) => event.grouping !== undefined
                               )
-                              .map((event: any) => {
-                                return <ScheduleItemAlt event={event} />;
+                              .map((event: any, i: number) => {
+                                const delay = parseFloat(
+                                  ((i + 1) * 0.1).toFixed(1)
+                                );
+
+                                return (
+                                  <ScheduleItemAlt
+                                    event={event}
+                                    delay={delay}
+                                  />
+                                );
                               })}
                           </ol>
                         </div>
@@ -387,16 +401,26 @@ const meta = {
                               "schedule__list tiers flex flex-col xl:grid xl:grid-cols-3 gap-x-0 gap-y-5 xl:gap-5 items-stretch w-full"
                             )}
                           >
-                            {(events as any[]).map((event: any) => {
+                            {(events as any[]).map((event: any, i: number) => {
                               const now = DateTime.local();
+                              const delay = parseFloat(
+                                ((i + 1) * 0.1).toFixed(1)
+                              );
                               if (event.grouping !== undefined) {
-                                return <ScheduleItemAlt event={event} />;
+                                return (
+                                  <ScheduleItemAlt
+                                    event={event}
+                                    delay={delay}
+                                  />
+                                );
                               }
 
                               const start = DateTime.fromISO(event.start);
                               const end = DateTime.fromISO(event.end);
                               // if (end > now) {
-                              return <ScheduleItem event={event} />;
+                              return (
+                                <ScheduleItem event={event} delay={delay} />
+                              );
                               // }
                               // return <ScheduleItem event={event} />;
                             })}

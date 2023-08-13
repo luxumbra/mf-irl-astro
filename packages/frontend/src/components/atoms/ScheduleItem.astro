@@ -3,8 +3,9 @@ import { DateTime } from "luxon";
 import { Icon } from "@iconify/react";
 import Markdown from "@astrojs/markdown-component";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 
-const { event } = Astro.props;
+const { event, delay } = Astro.props;
 
 const date = DateTime.fromISO(event.start.dateTime, {
   zone: "Europe/Zagreb",
@@ -24,13 +25,17 @@ const offset = DateTime.fromISO(event.start.dateTime, {
   setZone: true,
 }).zoneName;
 
-const hasHappened =
-  DateTime.fromISO(event.end.dateTime, {
-    zone: "Europe/Zagreb",
-  }).diffNow().milliseconds < 0;
+// const hasHappened =
+//   DateTime.fromISO(event.end.dateTime, {
+//     zone: "Europe/Zagreb",
+//   }).diffNow().milliseconds < 0;
 ---
 
-<li class={clsx("ticket-method mb-0 group", hasHappened && "opacity-50")}>
+<motion.li
+  className="ticket-method mb-0"
+  viewport={{ once: true }}
+  client:visible
+>
   <p
     class="text-base xl:text-2xl text-accent-light-alpha-90 mb-1 xl:mb-3 flex items-center space-x-2 flex-shrink justify-between"
   >
@@ -38,14 +43,20 @@ const hasHappened =
       class="relative inline-flex items-center gap-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
     >
       {startTime}
-      <i class="absolute top-0 -right-8 text-xs text-off-white">{offset}</i>
+      <i
+        class="absolute -top-2 -right-2 opacity-60 text-xs text-off-white not-italic -z-10"
+        >{offset}</i
+      >
     </span>
-
-    <span
-      class="inline-flex items-center gap-2 flex-shrink text-base bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent flex-grow justify-end text-right"
-    >
-      {date}
-    </span>
+    {
+      // compare event date with 2023-08-16 and hide date if less than that
+      DateTime.fromISO(event.start.dateTime) <
+        DateTime.fromISO("2023-08-16") && (
+        <span class="inline-flex items-center gap-2 flex-shrink bg-clip-text text-transparent bg-gradient-to-r from-off-white to-accent flex-grow justify-end text-right text-3xl opacity-40 font-bold translate-y-2">
+          {date}
+        </span>
+      )
+    }
     <a
       href={event.htmlLink}
       target="_blank"
@@ -53,11 +64,11 @@ const hasHappened =
       class="cal-link"
     >
       <button
-        class="btn p-2 bg-transparent hover:scale-125 hover:text-white hover:bg-transparent hover:outline-none hover:border-none text-sm text-accent-light-alpha-90 mb-0 inline-flex rounded-2xl items-center justify-center transition-all duration-200 ease-in-out"
+        class="group btn p-2 bg-transparent hover:scale-125 hover:text-white hover:bg-transparent hover:outline-transparent hover:border-transparent text-sm text-accent-light-alpha-90 mb-0 inline-flex rounded-2xl items-center justify-center transition-all duration-200 ease-in-out"
       >
         <Icon
           icon="bi:calendar2-plus-fill"
-          className="w-5 h-5 xl:w-6 xl:h-6 text-accent-light-alpha-90"
+          className="w-5 h-5 xl:w-6 xl:h-6 text-accent-light-alpha-90 group-hover:text-accent transition-all duration-200 ease-in-out"
           client:load
         />
       </button>
@@ -96,7 +107,7 @@ const hasHappened =
     >
     </div>
   </div>
-</li>
+</motion.li>
 
 <script>
   if (typeof window !== "undefined") {
