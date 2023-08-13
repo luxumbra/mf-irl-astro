@@ -1,5 +1,7 @@
 #!/bin/bash
-cd ./
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+
+cd $SCRIPT_DIR
 
 # Pull the latest code
 git pull origin main
