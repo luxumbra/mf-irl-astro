@@ -33,18 +33,15 @@ fi
 echo "Installing dependencies..."
 pnpm install
 
-echo "cd into $SCRIPT_DIR/packages/frontend ..."
-cd $SCRIPT_DIR/packages/frontend
+echo "Operating inside pwd $PWD ..."
 
 # Run the build command
 echo "Building the frontend..."
-pnpm build
+pnpm frontend:build
 
 # Deploy to Fleek
 echo "Deploying to Fleek..."
-pnpm deploy
-
-cd $SCRIPT_DIR
+pnpm frontend:deploy
 
 # Exit
 echo "Done."

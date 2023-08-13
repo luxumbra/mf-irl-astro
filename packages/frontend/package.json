@@ -8,7 +8,6 @@
     "start": "astro dev",
     "build": "astro build",
     "deploy": "cross-env FLEEK_API_KEY=$FLEEK_API_KEY fleek site:deploy",
-    "deploy-remote": "process.env.FLEEK_API_KEY fleek site:deploy",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier -w .",
