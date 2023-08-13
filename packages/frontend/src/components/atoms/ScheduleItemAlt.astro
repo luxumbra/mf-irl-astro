@@ -1,19 +1,30 @@
 ---
 import { Icon } from "@iconify/react";
 import Markdown from "@astrojs/markdown-component";
+import { motion } from "framer-motion";
+import { Image } from "@astrojs/image/components";
 import type { EventLinkType } from "~/content/schedule";
 
-const { event } = Astro.props;
+const { event, delay } = Astro.props;
 ---
 
-<li class="group relative text-left flex flex-col rounded-2xl p-[1px] mb-0">
+<motion.li
+  className="relative text-left flex flex-col rounded-2xl p-[1px] mb-0 group"
+  initial={{ opacity: 0, y: 20, scale: 0.8 }}
+  animate={{ opacity: 1, y: 0, scale: 1 }}
+  transition={{ duration: 0.2, delay: delay }}
+  viewport={{ once: true }}
+  client:visible
+>
   <div
     class="group-hover:opacity-100 opacity-0 transition-all duration-500 p-3 md:p-5 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-90 items-center h-full w-full flex flex-col overflow-hidden z-10"
   >
     <div
       class="event-heading flex items-center justify-between z-10 my-2 xl:my-3 group-hover:translate-y-0 -translate-y-4 transition-all duration-200"
     >
-      <h3 class="text-left font-sans text-sm xl:text-lg font-bold m-0 inline-flex">
+      <h3
+        class="text-left font-sans text-sm xl:text-lg font-bold m-0 inline-flex"
+      >
         {event.title}
       </h3>
     </div>
@@ -49,14 +60,24 @@ const { event } = Astro.props;
     }
   </div>
   <div class="mt-0 inset-[1px] absolute overflow-hidden z-0 rounded-2xl">
-    <img
+    <!-- <img
       src={event.image}
       alt={event.title}
       class="w-full h-full object-cover object-bottom"
+    /> -->
+    <Image
+      class="w-full h-full object-cover object-bottom"
+      src={event.image}
+      aspectRatio={1}
+      alt={event.name}
+      width="450"
+      loading={"lazy"}
+      format={"webp"}
+      placeholder={"blur"}
     />
   </div>
   <div
     class="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-none"
   >
   </div>
-</li>
+</motion.li>

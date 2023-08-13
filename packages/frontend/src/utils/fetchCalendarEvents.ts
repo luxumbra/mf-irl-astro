@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const fetchCalendarData = async () => {
 	try {
-		const scheduleEndpoint = 'http://localhost:8888/.netlify/functions/fetch-schedule';
+		const scheduleEndpoint = 'https://api.metafest.wtf/events';
 
 		const response = await axios.get(scheduleEndpoint);
 

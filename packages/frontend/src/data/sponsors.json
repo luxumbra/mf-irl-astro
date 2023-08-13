@@ -60,6 +60,11 @@
     "url": "https://www.holochain.org/"
   },
   {
+    "name": "Tomi",
+    "logo": "tomi.png",
+    "url": "https://tomi.com/"
+  },
+  {
     "name": "Your DAO?",
     "logo": "mystery.png",
     "url": "/event-sponsors"

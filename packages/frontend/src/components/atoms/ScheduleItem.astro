@@ -2,29 +2,61 @@
 import { DateTime } from "luxon";
 import { Icon } from "@iconify/react";
 import Markdown from "@astrojs/markdown-component";
-const { event } = Astro.props;
+import clsx from "clsx";
+import { motion } from "framer-motion";
 
-const date = DateTime.fromISO(event.start.dateTime).toLocaleString({
+const { event, delay } = Astro.props;
+
+const date = DateTime.fromISO(event.start.dateTime, {
+  zone: "Europe/Zagreb",
+}).toLocaleString({
   weekday: "short",
   month: "short",
   day: "numeric",
 });
-const startTime = DateTime.fromISO(event.start.dateTime).toLocaleString(
-  DateTime.TIME_24_SIMPLE
-);
-const endTime = DateTime.fromISO(event.end.dateTime).toLocaleString(
-  DateTime.TIME_24_SIMPLE
-);
-const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
+const startTime = DateTime.fromISO(event.start.dateTime, {
+  zone: "Europe/Zagreb",
+}).toLocaleString(DateTime.TIME_24_SIMPLE);
+const endTime = DateTime.fromISO(event.end.dateTime, {
+  zone: "Europe/Zagreb",
+}).toLocaleString(DateTime.TIME_24_SIMPLE);
+const offset = DateTime.fromISO(event.start.dateTime, {
+  // zone: "Europe/Zagreb",
+  setZone: true,
+}).zoneName;
+
+// const hasHappened =
+//   DateTime.fromISO(event.end.dateTime, {
+//     zone: "Europe/Zagreb",
+//   }).diffNow().milliseconds < 0;
 ---
 
-<li class="ticket-method mb-0 group">
+<motion.li
+  className="ticket-method mb-0"
+  viewport={{ once: true }}
+  client:visible
+>
   <p
-    class="text-base xl:text-2xl text-accent-light-alpha-90 mb-1 xl:mb-3 flex items-center space-x-2 flex-shrink justify-between "
+    class="text-base xl:text-2xl text-accent-light-alpha-90 mb-1 xl:mb-3 flex items-center space-x-2 flex-shrink justify-between"
   >
-    <span class="inline-flex items-center gap-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+    <span
+      class="relative inline-flex items-center gap-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
+    >
       {startTime}
+      <i
+        class="absolute -top-2 -right-2 opacity-60 text-xs text-off-white not-italic -z-10"
+        >{offset}</i
+      >
     </span>
+    {
+      // compare event date with 2023-08-16 and hide date if less than that
+      DateTime.fromISO(event.start.dateTime) <
+        DateTime.fromISO("2023-08-16") && (
+        <span class="inline-flex items-center gap-2 flex-shrink bg-clip-text text-transparent bg-gradient-to-r from-off-white to-accent flex-grow justify-end text-right text-3xl opacity-40 font-bold translate-y-2">
+          {date}
+        </span>
+      )
+    }
     <a
       href={event.htmlLink}
       target="_blank"
@@ -32,11 +64,11 @@ const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
       class="cal-link"
     >
       <button
-        class="btn p-2 bg-transparent hover:scale-125 hover:text-white hover:bg-transparent hover:outline-none hover:border-none text-sm text-accent-light-alpha-90 mb-0 inline-flex rounded-2xl items-center justify-center transition-all duration-200 ease-in-out"
+        class="group btn p-2 bg-transparent hover:scale-125 hover:text-white hover:bg-transparent hover:outline-transparent hover:border-transparent text-sm text-accent-light-alpha-90 mb-0 inline-flex rounded-2xl items-center justify-center transition-all duration-200 ease-in-out"
       >
         <Icon
           icon="bi:calendar2-plus-fill"
-          className="w-5 h-5 xl:w-6 xl:h-6 text-accent-light-alpha-90"
+          className="w-5 h-5 xl:w-6 xl:h-6 text-accent-light-alpha-90 group-hover:text-accent transition-all duration-200 ease-in-out"
           client:load
         />
       </button>
@@ -49,7 +81,9 @@ const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
       class="p-3 md:p-5 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 items-center h-full w-full flex flex-col overflow-hidden z-10"
     >
       <div class="flex items-start justify-start w-full">
-        <h3 class="block text-left font-sans text-sm xl:text-xl font-normal m-0">
+        <h3
+          class="block text-left font-sans text-sm xl:text-xl font-normal m-0"
+        >
           {event.summary}
         </h3>
       </div>
@@ -73,7 +107,7 @@ const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
     >
     </div>
   </div>
-</li>
+</motion.li>
 
 <script>
   if (typeof window !== "undefined") {

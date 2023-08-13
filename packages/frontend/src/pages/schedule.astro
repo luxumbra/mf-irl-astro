@@ -17,7 +17,7 @@ import ScheduleItem from "~/components/atoms/ScheduleItem.astro";
 import ScheduleItemAlt from "~/components/atoms/ScheduleItemAlt.astro";
 import { days } from "~/content/schedule";
 import * as bustripContent from "~/content/schedule/schedule-bustrip.md";
-import defaultImageSrc from '~/assets/images/socials/metafest-shared.jpg';
+import defaultImageSrc from "~/assets/images/socials/metafest-shared.jpg";
 import type { ScheduleEventType } from "~/content/schedule";
 
 type TabType = {
@@ -124,17 +124,17 @@ const filterDataForTabs = () => {
     {}
   );
 
-	const warmupDaysEvents = getCalForBuild.data.filter((event) => {
-		const eventDate = DateTime.fromISO(event.start.dateTime);
+  const warmupDaysEvents = getCalForBuild.data.filter((event) => {
+    const eventDate = DateTime.fromISO(event.start.dateTime);
 
-		if (eventDate.day >= 11 && eventDate.day <= 15) {
-			return event;
-		}
-	});
+    if (eventDate.day >= 11 && eventDate.day <= 15) {
+      return event;
+    }
+  });
 
   // filter data for tabs *Meta/Regen Day*, *Coordination/DAO Day*, *The Unconference*
   const metaRegenDay = getCalForBuild.data.filter((event) => {
-		const eventDate = DateTime.fromISO(event.start.dateTime);
+    const eventDate = DateTime.fromISO(event.start.dateTime);
 
     if (eventDate.day === 16 && eventDate.month === 8) {
       return event;
@@ -142,7 +142,7 @@ const filterDataForTabs = () => {
   });
 
   const coordinationDAODay = getCalForBuild.data.filter((event) => {
-		const eventDate = DateTime.fromISO(event.start.dateTime);
+    const eventDate = DateTime.fromISO(event.start.dateTime);
 
     if (eventDate.day === 17 && eventDate.month === 8) {
       return event;
@@ -150,7 +150,7 @@ const filterDataForTabs = () => {
   });
 
   const unconference = getCalForBuild.data.filter((event) => {
-		const eventDate = DateTime.fromISO(event.start.dateTime);
+    const eventDate = DateTime.fromISO(event.start.dateTime);
 
     if (eventDate.day === 18 && eventDate.month === 8) {
       return event;
@@ -172,8 +172,8 @@ const filterDataForTabs = () => {
   if (warmupDays.length > 0 && warmupDaysEvents.length === 0) {
     tabs[0].data = warmupDays;
   } else if (warmupDays.length > 0 && warmupDaysEvents.length > 0) {
-		tabs[0].data = warmupDays.concat(warmupDaysEvents);
-	}
+    tabs[0].data = warmupDays.concat(warmupDaysEvents);
+  }
 
   if (metaRegenDay.length > 0) {
     tabs[1].data = metaRegenDay;
@@ -204,7 +204,7 @@ const meta = {
   title: `${SITE.title}: Full schedule of events`,
   description: "The full schedule of events for MetaFest: Croatia. ",
   canonical: getCanonical(getHomePermalink()),
-	image: defaultImageSrc
+  image: defaultImageSrc,
 };
 ---
 
@@ -239,7 +239,7 @@ const meta = {
                   <a
                     href={`#tab-section-${index + 1}`}
                     id={`tab${index + 1}`}
-										data-tab={index}
+                    data-tab={index}
                     role="tab"
                     aria-selected={index === 0 ? "true" : "false"}
                     class="text-2xl text-gradient flex flex-col px-3 py-2"
@@ -267,121 +267,184 @@ const meta = {
                     "tab-section w-full overflow-y-hidden overflow-x-visible rounded-none",
                     index === 0 ? "active" : "",
                     typeof tab.data === "string" && "tab-section--md",
-										index > 0 && index < 4 ? "pt-20 xl:pt-0" : "pt-0 xl:pt-0"
-									)}
+                    index > 0 && index < 4 ? "pt-20 xl:pt-0" : "pt-0 xl:pt-0"
                   )}
                   id={`tab-section-${index + 1}`}
-									data-content={`${index}`}
+                  data-content={`${index}`}
                   tabindex="-1"
                   role="tabpanel"
                   aria-labelledby={`tab${index + 1}`}
                   aria-hidden={index === 0 ? "false" : "true"}
                   hidden={index === 0 ? false : true}
                 >
+                  {index !== 0 &&
+                    index < 4 &&
+                    tab.data &&
+                    tab.data.length > 0 && (
+                      <div class="filters absolute top-0 right-0 w-full xl:w-auto">
+                        <div class="form-control group flex-col-reverse w-full">
+                          {index !== 0 && (
+                            <label class="label opacity-0 group-hover:opacity-100 -translate-y-4 group-hover:-translate-y-1 transition-all duration-200 ease-in-out z-0 sr-only xl:not-sr-only">
+                              <span class="label-text text-sm">
+                                Filter by Location
+                              </span>
+                            </label>
+                          )}
+                          <div
+                            class={clsx(
+                              "bg-gradient-to-r from-primary via-accent-alpha-60 to-transparent rounded-md p-[1px] shadow-black shadow-2xl z-10",
+                              index === 0
+                                ? "opacity-20 pointer-events-none"
+                                : "opacity-100"
+                            )}
+                          >
+                            <select
+                              id={`locationFilter-${index}`}
+                              class={clsx(
+                                "locationFilter select rounded-md bg-secondary-dark-alpha-90 text-primary font-bold w-full xl:w-auto",
+                                index === 0 && "disabled:cursor-not-allowed"
+                              )}
+                              data-tab={index}
+                              aria-disabled={index === 0 ? true : false}
+                              disabled={index === 0 ? true : false}
+                            >
+                              <option value="">All Locations</option>
+                              {Array.from(
+                                new Set(
+                                  tab.data.map(
+                                    (event: any) => event.location || "TBC"
+                                  )
+                                )
+                              ).map((location: any) => (
+                                <option value={location}>{location}</option>
+                              ))}
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    )}
 
-								{index !== 0 && index < 4 && tab.data && tab.data.length > 0 && (
-									<div class="filters absolute top-0 right-0 w-full xl:w-auto">
-										<div class="form-control group flex-col-reverse w-full">
-											{index !== 0 && <label class="label opacity-0 group-hover:opacity-100 -translate-y-4 group-hover:-translate-y-1 transition-all duration-200 ease-in-out z-0 sr-only xl:not-sr-only"><span class="label-text text-sm">Filter by Location</span></label>}
-											<div class={clsx("bg-gradient-to-r from-primary via-accent-alpha-60 to-transparent rounded-md p-[1px] shadow-black shadow-2xl z-10", index === 0 ? "opacity-20 pointer-events-none" : "opacity-100")}>
-												<select id={`locationFilter-${index}`} class={clsx("locationFilter select rounded-md bg-secondary-dark-alpha-90 text-primary font-bold w-full xl:w-auto", index === 0 && 'disabled:cursor-not-allowed')} data-tab={index} aria-disabled={index === 0 ? true : false} disabled={index === 0 ? true : false}>
-													<option value="">All Locations</option>
-													{Array.from(new Set(tab.data.map((event: any) => event.location || 'TBC'))).map((location: any) => (
-														<option value={location}>{location}</option>
-													))}
-												</select>
-											</div>
-										</div>
-									</div>
-								)}
+                  {index === 0 && tab.data && tab.data.length > 0 && (
+                    <div class="flex flex-col space-y-20">
+                      {tab.data.filter(
+                        (event: any) => event.grouping === undefined
+                      ).length > 0 && (
+                        <div class="text-left" data-event-type="scheduled">
+                          <h3>Scheduled Events</h3>
+                          <ol
+                            class={clsx(
+                              "schedule__list tiers flex flex-col xl:grid xl:grid-cols-3 gap-x-0 gap-y-5 xl:gap-5 xl:gap-y-8 items-stretch w-full"
+                            )}
+                          >
+                            {tab.data
+                              .filter(
+                                (event: any) => event.grouping === undefined
+                              )
+                              .map((event: any, i: number) => {
+                                const delay = parseFloat(
+                                  ((i + 1) * 0.1).toFixed(1)
+                                );
+                                return (
+                                  <ScheduleItem event={event} delay={delay} />
+                                );
+                              })}
+                          </ol>
+                        </div>
+                      )}
+                      {tab.data.filter(
+                        (event: any) => event.grouping !== undefined
+                      ).length > 0 && (
+                        <div class="text-left" data-event-type="unscheduled">
+                          <h3>Choose your own adventure</h3>
+                          <ol
+                            class={clsx(
+                              "schedule__list tiers flex flex-col xl:grid xl:grid-cols-3 gap-x-0 gap-y-5 xl:gap-5 items-stretch w-full"
+                            )}
+                          >
+                            {tab.data
+                              .filter(
+                                (event: any) => event.grouping !== undefined
+                              )
+                              .map((event: any, i: number) => {
+                                const delay = parseFloat(
+                                  ((i + 1) * 0.1).toFixed(1)
+                                );
 
-									{index === 0 && tab.data && tab.data.length > 0 && (
-										<div class="flex flex-col space-y-20">
-											{tab.data.filter((event: any) => event.grouping === undefined).length > 0 && (
-												<div class="text-left" data-event-type="scheduled">
-													<h3>Scheduled Events</h3>
-													<ol
-														class={clsx(
-															"schedule__list tiers flex flex-col xl:grid xl:grid-cols-3 gap-x-0 gap-y-5 xl:gap-5 items-stretch w-full"
-														)}
-													>
-														{tab.data.filter((event: any) => event.grouping === undefined).map((event: any) => {
-															return <ScheduleItem event={event} />;
-														})}
-													</ol>
-												</div>
-											)}
-											{tab.data.filter((event: any) => event.grouping !== undefined).length > 0 && (
-												<div class="text-left" data-event-type="unscheduled">
-										<h3>Choose your own adventure</h3>
-										<ol
-											class={clsx(
-												"schedule__list tiers flex flex-col xl:grid xl:grid-cols-3 gap-x-0 gap-y-5 xl:gap-5 items-stretch w-full"
-											)}
-										>
-											{tab.data.filter((event: any) => event.grouping !== undefined).map((event: any) => {
-												return <ScheduleItemAlt event={event} />;
-											})}
-										</ol>
-									</div>
-											)}
-
-								</div>
-									)}
+                                return (
+                                  <ScheduleItemAlt
+                                    event={event}
+                                    delay={delay}
+                                  />
+                                );
+                              })}
+                          </ol>
+                        </div>
+                      )}
+                    </div>
+                  )}
 
                   {index > 0 && tab.data && tab.data.length > 0 ? (
-										<div class="flex flex-col space-y-20">
-											{Object.entries(tab.data.reduce((groups: any, event: any) => {
-												const key = event.location || 'TBC';
-												if (!groups[key]) groups[key] = [];
+                    <div class="flex flex-col space-y-20">
+                      {Object.entries(
+                        tab.data.reduce((groups: any, event: any) => {
+                          const key = event.location || "TBC";
+                          if (!groups[key]) groups[key] = [];
 
-												groups[key].push(event);
-												return groups;
-											}, {})).map(([location, events]) => (
-												<div data-event-location={location} class="location">
-													<h3>{location}</h3>
-													<ol
-														class={clsx(
-															"schedule__list tiers flex flex-col xl:grid xl:grid-cols-3 gap-x-0 gap-y-5 xl:gap-5 items-stretch w-full"
-														)}
-													>
-														{(events as any[]).map((event: any) => {
-															const now = DateTime.local();
-															if (event.grouping !== undefined) {
-																return <ScheduleItemAlt event={event} />;
-															}
+                          groups[key].push(event);
+                          return groups;
+                        }, {})
+                      ).map(([location, events]) => (
+                        <div data-event-location={location} class="location">
+                          <h3>{location}</h3>
+                          <ol
+                            class={clsx(
+                              "schedule__list tiers flex flex-col xl:grid xl:grid-cols-3 gap-x-0 gap-y-5 xl:gap-5 items-stretch w-full"
+                            )}
+                          >
+                            {(events as any[]).map((event: any, i: number) => {
+                              const now = DateTime.local();
+                              const delay = parseFloat(
+                                ((i + 1) * 0.1).toFixed(1)
+                              );
+                              if (event.grouping !== undefined) {
+                                return (
+                                  <ScheduleItemAlt
+                                    event={event}
+                                    delay={delay}
+                                  />
+                                );
+                              }
 
-																const start = DateTime.fromISO(event.start);
-																const end = DateTime.fromISO(event.end);
-																// if (end > now) {
-																	return <ScheduleItem event={event} />;
-																// }
-															// return <ScheduleItem event={event} />;
-														})}
-													</ol>
-
-													</div>
-
-											))}
-										</div>
-
+                              const start = DateTime.fromISO(event.start);
+                              const end = DateTime.fromISO(event.end);
+                              // if (end > now) {
+                              return (
+                                <ScheduleItem event={event} delay={delay} />
+                              );
+                              // }
+                              // return <ScheduleItem event={event} />;
+                            })}
+                          </ol>
+                        </div>
+                      ))}
+                    </div>
                   ) : (
                     <>
                       {tab.data && tab.data.rawContent && (
-												<div class="markdown-wrapper max-w-3xl mx-auto">
-                        <Markdown>{tab.data.rawContent}</Markdown>
-												</div>
+                        <div class="markdown-wrapper max-w-3xl mx-auto">
+                          <Markdown>{tab.data.rawContent}</Markdown>
+                        </div>
                       )}
                     </>
                   )}
 
-									{tab.data && tab.data.length === 0 && (
-										<div class="flex flex-col items-center justify-center w-full h-full">
-                          <p class="text-xl font-bold text-center">
-                            Awaiting content for this day. Check back later.{" "}
-                          </p>
-                        </div>
-											)}
+                  {tab.data && tab.data.length === 0 && (
+                    <div class="flex flex-col items-center justify-center w-full h-full">
+                      <p class="text-xl font-bold text-center">
+                        Awaiting content for this day. Check back later.{" "}
+                      </p>
+                    </div>
+                  )}
                 </div>
               );
             })
@@ -405,54 +468,65 @@ const meta = {
 </Layout>
 
 <script>
-	if (typeof window !== 'undefined') {
-			console.log('loaded');
-			const filters = document.querySelectorAll('.locationFilter');
-			filters?.forEach((filterElement) => {
-				filterElement.addEventListener('change', function(this: HTMLSelectElement) {
-					const selectedValue = (this as HTMLSelectElement).value;
-					console.log('Select value changed to:', (this as HTMLSelectElement).value);
-					const tabNumber = (this as HTMLElement).getAttribute('data-tab');
-        	const tabContent = document.querySelector(`[data-content="${tabNumber}"]`);
-					console.log('tabContent', {tabContent, tabNumber});
-					if (!tabContent) return;
+  if (typeof window !== "undefined") {
+    console.log("loaded");
+    const filters = document.querySelectorAll(".locationFilter");
+    filters?.forEach((filterElement) => {
+      filterElement.addEventListener(
+        "change",
+        function (this: HTMLSelectElement) {
+          const selectedValue = (this as HTMLSelectElement).value;
+          console.log(
+            "Select value changed to:",
+            (this as HTMLSelectElement).value
+          );
+          const tabNumber = (this as HTMLElement).getAttribute("data-tab");
+          const tabContent = document.querySelector(
+            `[data-content="${tabNumber}"]`
+          );
+          console.log("tabContent", { tabContent, tabNumber });
+          if (!tabContent) return;
 
-					// Show all items if no location is selected
-					if (selectedValue === '') {
-						console.log('selectedValue empty');
-							tabContent.querySelectorAll('[data-event-location]').forEach(function(item) {
-									item.classList.remove('hidden');
-									item.classList.remove('isFiltered');
-							});
-							return;
-					}
+          // Show all items if no location is selected
+          if (selectedValue === "") {
+            console.log("selectedValue empty");
+            tabContent
+              .querySelectorAll("[data-event-location]")
+              .forEach(function (item) {
+                item.classList.remove("hidden");
+                item.classList.remove("isFiltered");
+              });
+            return;
+          }
 
-					// Show only the items with the selected location within the tab content and hide all others
-					if (selectedValue !== '' ) {
-						console.log('selectedValue', selectedValue);
-						tabContent.querySelectorAll('[data-event-location]').forEach(function(item) {
-									item.classList.add('hidden');
-									item.classList.remove('isFiltered');
-							});
+          // Show only the items with the selected location within the tab content and hide all others
+          if (selectedValue !== "") {
+            console.log("selectedValue", selectedValue);
+            tabContent
+              .querySelectorAll("[data-event-location]")
+              .forEach(function (item) {
+                item.classList.add("hidden");
+                item.classList.remove("isFiltered");
+              });
 
-						tabContent.querySelectorAll(`[data-event-location="${selectedValue}"]`).forEach(function(item) {
-								item.classList.remove('hidden');
-								item.classList.add('isFiltered');
-						});
-						return;
-					}
+            tabContent
+              .querySelectorAll(`[data-event-location="${selectedValue}"]`)
+              .forEach(function (item) {
+                item.classList.remove("hidden");
+                item.classList.add("isFiltered");
+              });
+            return;
+          }
 
-					// tabContent.querySelectorAll(`[data-event-location="${selectedValue}"]`).forEach(function(item) {
+          // tabContent.querySelectorAll(`[data-event-location="${selectedValue}"]`).forEach(function(item) {
 
-					//     item.classList.remove('hidden');
-					// });
-
-
-				})
-
-			})
-	}
-	</script>
+          //     item.classList.remove('hidden');
+          // });
+        }
+      );
+    });
+  }
+</script>
 
 <script>
   const tablist = document.querySelector("[role='tablist']") as HTMLElement;

@@ -761,13 +761,16 @@ export const TicketMethod = ({
           {price.squadStandard && (
             <p className="text-lg md:text-xl text-off-white flex items-center justify-between w-full">
               <span className="flex-grow">4 Standard tickets</span>
-              <span
-                className="text-sm md:text-base line-through inline-flex -translate-y-5 translate-x-3 -rotate-12"
-                aria-label={`Normal price ${currencySymbol}${price.squadStandard}`}
-              >
-                {price.squadStandard > 0 && currencySymbol}
-                {price.squadStandard}
-              </span>
+              {discount > 0 && (
+                <span
+                  className="text-sm md:text-base line-through inline-flex -translate-y-5 translate-x-3 -rotate-12"
+                  aria-label={`Normal price ${currencySymbol}${price.squadStandard}`}
+                >
+                  {price.squadStandard > 0 && currencySymbol}
+                  {price.squadStandard}
+                </span>
+              )}
+
               <span
                 className="text-2xl md:text-3xl font-bold uppercase"
                 aria-label={`Discounted squad price ${currencySymbol}${applyDiscount(price.squadStandard, discount)}`}
@@ -786,14 +789,15 @@ export const TicketMethod = ({
                   ✨
                 </b>
               </span>
-              <span
-                className="text-sm md:text-base line-through inline-flex -translate-y-5 translate-x-3 -rotate-12"
-                aria-label={`Normal price ${currencySymbol}${price.squadPatron}`}
-              >
-                {price.squadPatron > 0 && currencySymbol}
-                {price.squadPatron}
-              </span>
-
+              {discount > 0 && (
+                <span
+                  className="text-sm md:text-base line-through inline-flex -translate-y-5 translate-x-3 -rotate-12"
+                  aria-label={`Normal price ${currencySymbol}${price.squadPatron}`}
+                >
+                  {price.squadPatron > 0 && currencySymbol}
+                  {price.squadPatron}
+                </span>
+              )}
               <span
                 className="text-2xl md:text-3xl font-bold uppercase"
                 aria-label={`Discounted squad price ${currencySymbol}${applyDiscount(price.patron, discount)}`}
