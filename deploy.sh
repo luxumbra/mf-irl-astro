@@ -11,9 +11,12 @@ cd $SCRIPT_DIR
 echo "Sourcing .env ..."
 source $SCRIPT_DIR/.env
 
+# Checkout to main branch
+git checkout main
+
 # Pull the latest code
 echo "Pulling the latest code..."
-git fetch && git pull origin develop
+git fetch && git pull origin main
 
 # Check if pnpm is installed
 echo "Checking if pnpm is installed and install if not..."
