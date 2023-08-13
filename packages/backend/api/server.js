@@ -7,6 +7,8 @@ require('dotenv').config();
 const express = require('express');
 const { DateTime } = require('luxon');
 const { google } = require('googleapis');
+const cors = require('cors');
+const e = require('express');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -28,6 +30,10 @@ const corsOptions = {
 	],
 	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
+
+app.use(cors(corsOptions));
+app.use(express.json());
+
 app.get('/events', async (req, res) => {
 	const calId = fnOptions.GOOGLE_CALENDAR_ID;
 	const calendarId = `${calId}@group.calendar.google.com`;
