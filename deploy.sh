@@ -8,8 +8,8 @@ SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 echo "cd into $SCRIPT_DIR ..."
 cd $SCRIPT_DIR
 
-echo "Sourcing .env.system..."
-env > $SCRIPT_DIR/.env.system
+echo "Sourcing .env ..."
+source $SCRIPT_DIR/.env
 
 # Pull the latest code
 echo "Pulling the latest code..."
