@@ -1,4 +1,9 @@
 #!/bin/bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm use 18
+
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 echo "cd into $SCRIPT_DIR ..."
 cd $SCRIPT_DIR
@@ -14,7 +19,7 @@ git fetch && git pull origin develop
 echo "Checking if pnpm is installed and install if not..."
 if ! command -v pnpm &> /dev/null; then
     echo "pnpm not found! Installing..."
-    npm install -g pnpm
+    sudo npm install -g pnpm
     if [ $? -ne 0 ]; then
         echo "Failed to install pnpm. Exiting."
         exit 1
