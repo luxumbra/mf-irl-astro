@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const fetchCalendarData = async () => {
 	try {
-		const scheduleEndpoint = 'http://localhost:8811/events';
+		const scheduleEndpoint = 'https://api.metafest.wtf/events';
 
 		const response = await axios.get(scheduleEndpoint);
 

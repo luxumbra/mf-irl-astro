@@ -8,8 +8,8 @@
   },
   "build": {
     "baseDir": "",
-    "publicDir": "dist",
-    "command": "",
+    "publicDir": "packages/frontend/dist",
+    "command": "npm i -g pnpm && pnpm install && pnpm frontend:build",
     "rootDir": ""
   }
 }
