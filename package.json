@@ -10,7 +10,7 @@
     "frontend:dev": "pnpm run --filter @metafest/frontend dev",
     "frontend:build": "pnpm run --filter @metafest/frontend build",
     "frontend:preview": "pnpm run --filter @metafest/frontend preview",
-    "frontend:deploy-stage": "pnpm run --filter @metafest/frontend deploy-stage",
+    "frontend:deploy": "pnpm run --filter @metafest/frontend deploy",
     "frontend:lint": "pnpm run --filter @metafest/frontend lint",
     "backend:dev": "pnpm run --filter @metafest/backend dev",
     "backend:build": "pnpm run --filter @metafest/backend build",
