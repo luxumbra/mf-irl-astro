@@ -45,7 +45,7 @@ app.get('/events', async (req, res) => {
 		const result = await calendar.events.list(
 			{
 				calendarId,
-				// timeMin: new Date().toISOString(),
+				timeMin: new Date().toISOString(),
 				singleEvents: true,
 				orderBy: 'startTime',
 			}
