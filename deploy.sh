@@ -13,7 +13,10 @@ source $SCRIPT_DIR/.env
 
 # Pull the latest code
 echo "Pulling the latest code..."
-git fetch && git pull origin develop
+git fetch && git pull origin main
+
+# Checkout to main branch
+git checkout main
 
 # Check if pnpm is installed
 echo "Checking if pnpm is installed and install if not..."
