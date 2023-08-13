@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "deploy-stage": "cross-env FLEEK_API_KEY=$FLEEK_API_KEY fleek site:deploy",
+    "deploy": "cross-env FLEEK_API_KEY=$FLEEK_API_KEY fleek site:deploy",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier -w .",
