@@ -2,28 +2,49 @@
 import { DateTime } from "luxon";
 import { Icon } from "@iconify/react";
 import Markdown from "@astrojs/markdown-component";
+import clsx from "clsx";
+
 const { event } = Astro.props;
 
-const date = DateTime.fromISO(event.start.dateTime).toLocaleString({
+const date = DateTime.fromISO(event.start.dateTime, {
+  zone: "Europe/Zagreb",
+}).toLocaleString({
   weekday: "short",
   month: "short",
   day: "numeric",
 });
-const startTime = DateTime.fromISO(event.start.dateTime).toLocaleString(
-  DateTime.TIME_24_SIMPLE
-);
-const endTime = DateTime.fromISO(event.end.dateTime).toLocaleString(
-  DateTime.TIME_24_SIMPLE
-);
-const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
+const startTime = DateTime.fromISO(event.start.dateTime, {
+  zone: "Europe/Zagreb",
+}).toLocaleString(DateTime.TIME_24_SIMPLE);
+const endTime = DateTime.fromISO(event.end.dateTime, {
+  zone: "Europe/Zagreb",
+}).toLocaleString(DateTime.TIME_24_SIMPLE);
+const offset = DateTime.fromISO(event.start.dateTime, {
+  // zone: "Europe/Zagreb",
+  setZone: true,
+}).zoneName;
+
+const hasHappened =
+  DateTime.fromISO(event.end.dateTime, {
+    zone: "Europe/Zagreb",
+  }).diffNow().milliseconds < 0;
 ---
 
-<li class="ticket-method mb-0 group">
+<li class={clsx("ticket-method mb-0 group", hasHappened && "opacity-50")}>
   <p
-    class="text-base xl:text-2xl text-accent-light-alpha-90 mb-1 xl:mb-3 flex items-center space-x-2 flex-shrink justify-between "
+    class="text-base xl:text-2xl text-accent-light-alpha-90 mb-1 xl:mb-3 flex items-center space-x-2 flex-shrink justify-between"
   >
-    <span class="inline-flex items-center gap-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+    <span
+      class="relative inline-flex items-center gap-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
+    >
       {startTime}
+      <i class="absolute top-0 -right-8 text-xs text-off-white">{offset}</i>
+    </span>
+
+    <span
+      class="inline-flex items-center gap-2 flex-shrink text-base bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent flex-grow justify-end text-right"
+    >
+      {date}
     </span>
     <a
       href={event.htmlLink}
@@ -49,7 +70,9 @@ const offset = DateTime.fromISO(event.start.dateTime).offsetNameShort;
       class="p-3 md:p-5 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 items-center h-full w-full flex flex-col overflow-hidden z-10"
     >
       <div class="flex items-start justify-start w-full">
-        <h3 class="block text-left font-sans text-sm xl:text-xl font-normal m-0">
+        <h3
+          class="block text-left font-sans text-sm xl:text-xl font-normal m-0"
+        >
           {event.summary}
         </h3>
       </div>

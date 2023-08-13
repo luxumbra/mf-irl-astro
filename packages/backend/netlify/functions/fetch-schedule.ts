@@ -39,7 +39,7 @@ const handler: Handler = async (event, context) => {
     const res = await calendar.events.list(
       {
         calendarId,
-        timeMin: new Date().toISOString(),
+        // timeMin: new Date().toISOString(),
         // maxResults: 10,
         singleEvents: true,
         orderBy: 'startTime',
