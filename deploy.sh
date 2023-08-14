@@ -1,7 +1,6 @@
 #!/bin/bash
 source ~/.bashrc
 
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 nvm use 18
@@ -9,6 +8,9 @@ nvm use 18
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 echo "cd into $SCRIPT_DIR ..."
 cd $SCRIPT_DIR
+
+# Source config
+source $SCRIPT_DIR/config.sh
 
 echo "Sourcing .env ..."
 source $SCRIPT_DIR/.env
