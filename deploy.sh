@@ -1,4 +1,6 @@
 #!/bin/bash
+source ~/.bashrc
+
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -10,6 +12,9 @@ cd $SCRIPT_DIR
 
 echo "Sourcing .env ..."
 source $SCRIPT_DIR/.env
+source $SCRIPT_DIR/packages/frontend/.env
+
+env > /path/to/debug_env.log
 
 # Checkout to main branch
 git checkout develop
