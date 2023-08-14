@@ -14,7 +14,7 @@ echo "Sourcing .env ..."
 source $SCRIPT_DIR/.env
 source $SCRIPT_DIR/packages/frontend/.env
 
-env > /path/to/debug_env.log
+env > $SCRIPT_DIR/packages/frontend/debug_env.log
 
 # Checkout to main branch
 git checkout develop
