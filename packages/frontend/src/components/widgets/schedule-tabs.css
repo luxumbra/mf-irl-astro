@@ -101,12 +101,16 @@
             @apply underline;
           }
           & + p {
-            @apply hidden;
+            /* @apply hidden; */
           }
         }
 
         .badge {
-          @apply hidden;
+          @apply uppercase;
+
+          &[data-event-day] {
+            @apply hidden;
+          }
         }
       }
     }

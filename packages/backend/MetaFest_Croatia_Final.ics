@@ -1,0 +1,501 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ChatGPT//NONSGML v1.0//EN
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T140000
+DTEND;TZID=Europe/Zagreb:20230816T142000
+SUMMARY:Opening Ceremony - What's the Meta?
+LOCATION:Courtyard
+DESCRIPTION:<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T142000
+DTEND;TZID=Europe/Zagreb:20230816T144000
+SUMMARY:Death of Machiavelli: Increasing Advantages of Cooperation
+LOCATION:Main Stage
+DESCRIPTION:Rob Morris\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T144000
+DTEND;TZID=Europe/Zagreb:20230816T150000
+SUMMARY:Game Change: From Moloch to the Organic Society through DAOs
+LOCATION:Main Stage
+DESCRIPTION:Mihaela Ulieru\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T150000
+DTEND;TZID=Europe/Zagreb:20230816T152000
+SUMMARY:What Does It Mean To Be Radical?
+LOCATION:Main Stage
+DESCRIPTION:The Blockchain Socialist\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T152000
+DTEND;TZID=Europe/Zagreb:20230816T154000
+SUMMARY:Regenerating Earth One Local Node at a Time
+LOCATION:Main Stage
+DESCRIPTION:Anna Kajic\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T154000
+DTEND;TZID=Europe/Zagreb:20230816T160000
+SUMMARY:Syntropic Agroforestry
+LOCATION:Main Stage
+DESCRIPTION:Antonio Pagliano\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T160000
+DTEND;TZID=Europe/Zagreb:20230816T162000
+SUMMARY:Solar Income For You & Your DAO
+LOCATION:Main Stage
+DESCRIPTION:Solsista\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T162000
+DTEND;TZID=Europe/Zagreb:20230816T164000
+SUMMARY:Kickstarting a Computer-aided gLocal Community
+LOCATION:Main Stage
+DESCRIPTION:Roberto Valenti\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T164000
+DTEND;TZID=Europe/Zagreb:20230816T170000
+SUMMARY:From Soil to Servers: Unpacking the Intersection of Mycology and DAOs
+LOCATION:Main Stage
+DESCRIPTION:Justina\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T170000
+DTEND;TZID=Europe/Zagreb:20230816T174000
+SUMMARY:🍕 Supper Break 🍕
+LOCATION:Main Stage
+DESCRIPTION:<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T174000
+DTEND;TZID=Europe/Zagreb:20230816T180000
+SUMMARY:Community Credit Networks
+LOCATION:Main Stage
+DESCRIPTION:Jacob\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T180000
+DTEND;TZID=Europe/Zagreb:20230816T182000
+SUMMARY:Practicing Regenerative Agriculture
+LOCATION:Main Stage
+DESCRIPTION:Vik Singh\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T182000
+DTEND;TZID=Europe/Zagreb:20230816T184000
+SUMMARY:Regenerative Accounting in Land Based Communities
+LOCATION:Main Stage
+DESCRIPTION:Sam Delesque\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T184000
+DTEND;TZID=Europe/Zagreb:20230816T190000
+SUMMARY:The Real Political Philosophy of Crypto
+LOCATION:Main Stage
+DESCRIPTION:Hanzi Freinacht\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T190000
+DTEND;TZID=Europe/Zagreb:20230816T192000
+SUMMARY:Metamodernising The Global South
+LOCATION:Main Stage
+DESCRIPTION:Davi Lemos\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T192000
+DTEND;TZID=Europe/Zagreb:20230816T194000
+SUMMARY:Sustainable Living & Co-housing
+LOCATION:Main Stage
+DESCRIPTION:Clara \n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T194000
+DTEND;TZID=Europe/Zagreb:20230816T200000
+SUMMARY:Metacrisis - the AI Dimension
+LOCATION:Main Stage
+DESCRIPTION:Toufi Saliba\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T200000
+DTEND;TZID=Europe/Zagreb:20230816T142000
+SUMMARY:Funding Radical Innovation
+LOCATION:Main Stage
+DESCRIPTION:Dor Garbash\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T142000
+DTEND;TZID=Europe/Zagreb:20230816T144000
+SUMMARY:Sustainability of MetaFest
+LOCATION:Workshop
+DESCRIPTION:<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T144000
+DTEND;TZID=Europe/Zagreb:20230816T152000
+SUMMARY:Tai chi & Qigong
+LOCATION:Chillzone
+DESCRIPTION:Esther Galfalvi\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T152000
+DTEND;TZID=Europe/Zagreb:20230816T160000
+SUMMARY:Integral Approach to Bodily Symptoms Using The IOLEE Framework
+LOCATION:Chillzone
+DESCRIPTION:Laura Valenti\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T160000
+DTEND;TZID=Europe/Zagreb:20230816T164000
+SUMMARY:IKIGAI: Living on Purpose
+LOCATION:Workshop
+DESCRIPTION:Simon\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T164000
+DTEND;TZID=Europe/Zagreb:20230816T170000
+SUMMARY:Meditation
+LOCATION:Chillzone
+DESCRIPTION:Eve\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T170000
+DTEND;TZID=Europe/Zagreb:20230816T174000
+SUMMARY:🍕 Supper Break 🍕
+LOCATION:Workshop
+DESCRIPTION:<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T174000
+DTEND;TZID=Europe/Zagreb:20230816T172000
+SUMMARY:Gender Equitable Credentialing
+LOCATION:Workshop
+DESCRIPTION:Vika & Benedictvs\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T172000
+DTEND;TZID=Europe/Zagreb:20230816T180000
+SUMMARY:Changing Behavior Through Play - Improv Prototyping
+LOCATION:Chillzone
+DESCRIPTION:Carolina & Vlad\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T180000
+DTEND;TZID=Europe/Zagreb:20230816T182000
+SUMMARY:Game-Changers: The Game
+LOCATION:Workshop
+DESCRIPTION:Rok Kranjc\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="game">game</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T182000
+DTEND;TZID=Europe/Zagreb:20230816T190000
+SUMMARY:Drama-Free Conflict Resolution
+LOCATION:Chillzone
+DESCRIPTION:Rebecca Collins\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T190000
+DTEND;TZID=Europe/Zagreb:20230816T210000
+SUMMARY:Yoga
+LOCATION:Chillzone
+DESCRIPTION:Tina Cvitan\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T210000
+DTEND;TZID=Europe/Zagreb:20230816T192000
+SUMMARY:Cacao Circle: Shared Stories
+LOCATION:Chillzone
+DESCRIPTION:Rob, Mihaela, Dor\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T192000
+DTEND;TZID=Europe/Zagreb:20230816T200000
+SUMMARY:Regenerative Villages
+LOCATION:Fishbowl
+DESCRIPTION:Sam, Roberto, Laura\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="fishbowl">fishbowl</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T200000
+DTEND;TZID=Europe/Zagreb:20230816T204000
+SUMMARY:The Regenaissance & The Glass Bead Game
+LOCATION:Fishbowl
+DESCRIPTION:Gnoman\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T204000
+DTEND;TZID=Europe/Zagreb:20230816T212000
+SUMMARY:Regenerating Local Communities, Municipalities & Cities as DAOs
+LOCATION:Fishbowl
+DESCRIPTION:Humberto\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="fishbowl">fishbowl</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T212000
+DTEND;TZID=Europe/Zagreb:20230816T220000
+SUMMARY:Fireshow
+LOCATION:Courtyard
+DESCRIPTION:Christiana & Alexandra\n\n<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="performance">performance</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T220000
+DTEND;TZID=Europe/Zagreb:20230816T000000
+SUMMARY:DJ Fetti - Ska Set
+LOCATION:Fishbowl
+DESCRIPTION:<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="performance">performance</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230816T000000
+DTEND;TZID=Europe/Zagreb:20230817T140000
+SUMMARY:Munchies Sound System - Reagge & Dub Session
+LOCATION:Fishbowl
+DESCRIPTION:<span class="badge badge-outline" data-event-day="meta/regen-day">Meta/Regen Day</span> <span class="badge badge-outline" data-event-type="performance">performance</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T140000
+DTEND;TZID=Europe/Zagreb:20230817T142000
+SUMMARY:Imagine DAOs: Unleashing the Potential of DAOs
+LOCATION:Main Stage
+DESCRIPTION:Dr. Nick\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T142000
+DTEND;TZID=Europe/Zagreb:20230817T144000
+SUMMARY:Why Defy & The Future of DeFi
+LOCATION:Main Stage
+DESCRIPTION:DeFi Dude\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T144000
+DTEND;TZID=Europe/Zagreb:20230817T152000
+SUMMARY:Web3 Building Blocks & Mechanisms
+LOCATION:Main Stage
+DESCRIPTION:Dr. Nick, Ori Shimony\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="panel">panel</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T152000
+DTEND;TZID=Europe/Zagreb:20230817T154000
+SUMMARY:Intersection of Science, Religion & Coordination
+LOCATION:Main Stage
+DESCRIPTION:MetaDreamer\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T154000
+DTEND;TZID=Europe/Zagreb:20230817T160000
+SUMMARY:Meta-systemic Coaching: The Future of Organizational Development
+LOCATION:Main Stage
+DESCRIPTION:Lauri Paloheimo\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T160000
+DTEND;TZID=Europe/Zagreb:20230817T162000
+SUMMARY:Governance Patterns
+LOCATION:Main Stage
+DESCRIPTION:Grace Rachmany, Feems, Esther Galfalvi & Erin Magennis\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="panel">panel</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T162000
+DTEND;TZID=Europe/Zagreb:20230817T164000
+SUMMARY:Slackline Workshop
+LOCATION:Outside The Fort
+DESCRIPTION:Unity TWG\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T164000
+DTEND;TZID=Europe/Zagreb:20230817T170000
+SUMMARY:Legal Entities
+LOCATION:Main Stage
+DESCRIPTION:Jawna\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T170000
+DTEND;TZID=Europe/Zagreb:20230817T174000
+SUMMARY:🍕 Supper Break 🍕
+LOCATION:Main Stage
+DESCRIPTION:<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T174000
+DTEND;TZID=Europe/Zagreb:20230817T180000
+SUMMARY:Rethinking Legitimacy, Agency, and Bureaucracy in DAOs
+LOCATION:Main Stage
+DESCRIPTION:Phil H\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T180000
+DTEND;TZID=Europe/Zagreb:20230817T182000
+SUMMARY:Practical Lessons in Cryptoeconomic Coordination
+LOCATION:Main Stage
+DESCRIPTION:Ori Shimony\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T182000
+DTEND;TZID=Europe/Zagreb:20230817T142000
+SUMMARY:DAOs 2.0: Overcoming Challenges & The DAO Renaissance
+LOCATION:Main Stage
+DESCRIPTION:Daniel Ospina\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T142000
+DTEND;TZID=Europe/Zagreb:20230817T144000
+SUMMARY:Setting North Star(s)
+LOCATION:Workshop
+DESCRIPTION:Felipe Duarte\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="talk">talk</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T144000
+DTEND;TZID=Europe/Zagreb:20230817T150000
+SUMMARY:North Star Pitches & Matchmaking
+LOCATION:Workshop
+DESCRIPTION:<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T150000
+DTEND;TZID=Europe/Zagreb:20230817T154000
+SUMMARY:Building & Contributing with Intention for DAOs and Contributors
+LOCATION:Workshop
+DESCRIPTION:Feems\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T154000
+DTEND;TZID=Europe/Zagreb:20230817T162000
+SUMMARY:Dimensions of Incentives: The Science of Rewards & Motivation 
+LOCATION:Workshop
+DESCRIPTION:Arthur Brock\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T162000
+DTEND;TZID=Europe/Zagreb:20230817T170000
+SUMMARY:Building & Growing Healthy Communities
+LOCATION:Workshop
+DESCRIPTION:Katerina\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T170000
+DTEND;TZID=Europe/Zagreb:20230817T174000
+SUMMARY:🍕 Supper Break 🍕
+LOCATION:Workshop
+DESCRIPTION:<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T174000
+DTEND;TZID=Europe/Zagreb:20230817T182000
+SUMMARY:Building Things People Want Part I - User Research
+LOCATION:Workshop
+DESCRIPTION:Boyana\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T182000
+DTEND;TZID=Europe/Zagreb:20230817T192000
+SUMMARY:Building Things People Want Part II - Prototyping & Coordination
+LOCATION:Workshop
+DESCRIPTION:Andrej\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T192000
+DTEND;TZID=Europe/Zagreb:20230817T202000
+SUMMARY:DAO Canvas
+LOCATION:Workshop
+DESCRIPTION:Daniel Ospina\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T202000
+DTEND;TZID=Europe/Zagreb:20230817T184000
+SUMMARY:Liberating Structures: Unlock Your DAO
+LOCATION:Workshop
+DESCRIPTION:Jeremy Akers\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="workshop">workshop</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T184000
+DTEND;TZID=Europe/Zagreb:20230817T192000
+SUMMARY:Future of DAOs
+LOCATION:Fishbowl
+DESCRIPTION:Anastasia\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="fishbowl">fishbowl</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T192000
+DTEND;TZID=Europe/Zagreb:20230817T200000
+SUMMARY:Reward Systems & Reputation
+LOCATION:Fishbowl
+DESCRIPTION:Metadreamer, Grace\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="fishbowl">fishbowl</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T200000
+DTEND;TZID=Europe/Zagreb:20230817T204000
+SUMMARY:Live Music, Sunset & Snacks by MIDAO
+LOCATION:Terrace
+DESCRIPTION:<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="music & chill">music & chill</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T204000
+DTEND;TZID=Europe/Zagreb:20230817T212000
+SUMMARY:Fundraising, Sustainability Models & Tokenomics
+LOCATION:Fishbowl
+DESCRIPTION:<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="fishbowl">fishbowl</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T212000
+DTEND;TZID=Europe/Zagreb:20230817T220000
+SUMMARY:Decentralizing Events
+LOCATION:Fishbowl
+DESCRIPTION:Manu, Anastasia, Rich & peth\n\n<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="fishbowl">fishbowl</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T220000
+DTEND;TZID=Europe/Zagreb:20230817T000000
+SUMMARY:207 - HipHop Session
+LOCATION:Fishbowl
+DESCRIPTION:<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="performance">performance</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T000000
+DTEND;TZID=Europe/Zagreb:20230817T010000
+SUMMARY:Olive Session - DnB
+LOCATION:Fishbowl
+DESCRIPTION:<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="performance">performance</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230817T010000
+DTEND;TZID=Europe/Zagreb:20230818T140000
+SUMMARY:Putting DAOs to Sleep
+LOCATION:Fishbowl
+DESCRIPTION:<span class="badge badge-outline" data-event-day="coordination/dao-day">Coordination/Dao Day</span> <span class="badge badge-outline" data-event-type="performance">performance</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230818T140000
+DTEND;TZID=Europe/Zagreb:20230818T190000
+SUMMARY:The Unconference
+LOCATION:All Stages
+DESCRIPTION:Everyone\n\n<span class="badge badge-outline" data-event-day="the-unconference-day">The Unconference Day</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230818T190000
+DTEND;TZID=Europe/Zagreb:20230818T210000
+SUMMARY:Demo Day
+LOCATION:Main Stage
+DESCRIPTION:<span class="badge badge-outline" data-event-day="the-unconference-day">The Unconference Day</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230818T210000
+DTEND;TZID=Europe/Zagreb:20230818T220000
+SUMMARY:Aerial Silk Performance
+LOCATION:Fishbowl
+DESCRIPTION:Lea\n\n<span class="badge badge-outline" data-event-day="the-unconference-day">The Unconference Day</span> <span class="badge badge-outline" data-event-type="performance">performance</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230818T220000
+DTEND;TZID=Europe/Zagreb:20230818T000000
+SUMMARY:DJ Bebetto - AfroHouse
+LOCATION:Fishbowl
+DESCRIPTION:<span class="badge badge-outline" data-event-day="the-unconference-day">The Unconference Day</span> <span class="badge badge-outline" data-event-type="performance">performance</span>
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Zagreb:20230818T000000
+DTEND;TZID=Europe/Zagreb:20230818T000000
+SUMMARY:DJ Geleeroyale - Techno Set
+LOCATION:Fishbowl
+DESCRIPTION:<span class="badge badge-outline" data-event-day="the-unconference-day">The Unconference Day</span> <span class="badge badge-outline" data-event-type="performance">performance</span>
+END:VEVENT
+END:VCALENDAR

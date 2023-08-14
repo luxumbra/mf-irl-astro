@@ -24,7 +24,7 @@ export const earlyBirdEndsFormatted = DateTime.fromISO(earlyBirdEnds).toLocaleSt
 export const STRIPE_DISCOUNT_KEY_STANDARD = '9AQaH95IAalcbf24gg';
 export const STRIPE_DISCOUNT_KEY_PATRON = '5kA8z14Ew64W5UIbIJ';
 export const FACEBOOK_PIXEL_ID = import.meta.env.PUBLIC_FACEBOOK_PIXEL_ID;
-export const scheduleCalCode = 'e74ae9228fe5c6db02868a72e40d3cdc068028db6be3782dc438145db799d012';
+export const scheduleCalCode = '7217cdefafa6d032013d229b276a831e3f687bad2861ffe388878795d4ccb805';
 
 export const FAQ_URL = 'https://meta-game.notion.site/MetaFest-FAQ-ff18e665f7964264854f3d7191a04959?pvs=4';
 

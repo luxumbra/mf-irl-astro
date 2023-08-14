@@ -31,11 +31,6 @@ type TabDateType = {
   to: string;
 };
 
-// type EventDayType = {
-//   location: string;
-//   events: [];
-// };
-
 const getCalForBuild = await fetchCalendarData();
 const filterDataForTabs = () => {
   if (!getCalForBuild) return;
