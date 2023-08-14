@@ -16,7 +16,7 @@ echo "Sourcing .env ..."
 source $SCRIPT_DIR/.env
 source $SCRIPT_DIR/packages/frontend/.env
 
-env > $SCRIPT_DIR/packages/frontend/debug_env.log
+# env > $SCRIPT_DIR/packages/frontend/debug_env.log
 
 # Checkout to main branch
 git checkout develop
@@ -40,14 +40,14 @@ else
 fi
 
 # # Install dependencies
-# echo "Installing dependencies..."
-# pnpm install
+echo "Installing dependencies..."
+pnpm install
 
 # echo "Operating inside pwd $PWD ..."
 
 # # Run the build command
-# echo "Building the frontend..."
-# pnpm frontend:build
+echo "Building the frontend..."
+pnpm frontend:build
 
 # Deploy to Fleek
 echo "Deploying to Fleek..."
