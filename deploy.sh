@@ -37,15 +37,15 @@ else
     echo "pnpm is already installed."
 fi
 
-# Install dependencies
-echo "Installing dependencies..."
-pnpm install
+# # Install dependencies
+# echo "Installing dependencies..."
+# pnpm install
 
-echo "Operating inside pwd $PWD ..."
+# echo "Operating inside pwd $PWD ..."
 
-# Run the build command
-echo "Building the frontend..."
-pnpm frontend:build
+# # Run the build command
+# echo "Building the frontend..."
+# pnpm frontend:build
 
 # Deploy to Fleek
 echo "Deploying to Fleek..."
