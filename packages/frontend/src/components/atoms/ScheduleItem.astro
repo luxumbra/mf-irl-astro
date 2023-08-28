@@ -57,6 +57,14 @@ const offset = DateTime.fromISO(event.start.dateTime, {
         </span>
       )
     }
+
+    <button>
+      <Icon
+        icon="mdi:youtube"
+        className="w-5 h-5 xl:w-6 xl:h-6 text-accent-light-alpha-90 group-hover:text-accent transition-all duration-200 ease-in-out"
+        client:load
+      />
+    </button>
     <a
       href={event.htmlLink}
       target="_blank"

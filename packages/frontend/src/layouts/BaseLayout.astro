@@ -8,6 +8,7 @@ import BasicScripts from "~/components/core/BasicScripts.astro";
 import { ScrollUpButton } from "~/components/atoms/ScrollUpButton";
 
 import "~/assets/styles/index.css";
+
 const { meta = {} } = Astro.props;
 ---
 
@@ -27,7 +28,6 @@ const { meta = {} } = Astro.props;
     <slot />
 
     <!-- <TestBanner /> -->
-
     <ScrollUpButton accent={"projectAccent"} client:load />
     <Footer />
     <div id="root" class="fixed top-0 left-0 w-screen h-full overflow-hidden">
