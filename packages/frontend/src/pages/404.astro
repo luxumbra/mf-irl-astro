@@ -1,11 +1,26 @@
 ---
-import Layout from '~/layouts/BaseLayout.astro';
-import { SITE } from '~/config.mjs';
-import Error404 from '~/components/widgets/Error404.astro';
+import Layout from "~/layouts/BaseLayout.astro";
+import { SITE } from "~/config.mjs";
+import Error404 from "~/components/widgets/Error404.astro";
+import ThreeD from "~/components/widgets/ThreeD";
+import Plants from "~/components/widgets/Plants.astro";
 
 const title = `Error 404 — ${SITE.name}`;
 ---
 
 <Layout meta={{ title }}>
-	<Error404 />
+  <Error404 />
+
+  <div
+    class="absolute h-[50vh] w-full overflow-y-visible z-[9] inset-0 top-auto"
+  >
+    <div
+      class="relative w-full h-full"
+      x-data="{shown: false}"
+      x-intersect:once="shown = true"
+    >
+      <Plants />
+    </div>
+  </div>
+  <ThreeD client:visible />
 </Layout>

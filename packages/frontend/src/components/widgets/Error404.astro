@@ -1,8 +1,10 @@
 ---
-import { getHomePermalink } from "~/utils/permalinks";
+import { SITE } from "~/config.mjs";
+
+const title = `Error 404 — ${SITE.name}`;
 ---
 
-<section class="section flex items-center h-screen p-16">
+<section class="relative section flex items-center h-screen p-16 z-10">
   <div
     class="container flex flex-col items-center justify-center px-5 mx-auto my-8"
   >
