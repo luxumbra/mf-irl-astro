@@ -73,6 +73,9 @@ export interface PayloadOptions {
   items: CryptoItemType[];
 }
 
+// Temporarily disables every buy button on the tickets page
+const TICKETS_DISABLED = true;
+
 const activeBtnClasses =
   'btn btn-ghost bg-gradient-tertiary  text-secondary hover:scale-95 focus:outline-dashed focus:outline-primary w-auto';
 const disabledBtnClasses =
@@ -93,6 +96,7 @@ export const FiatButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
       data-tally-emoji-animation="wave"
       data-tally-auto-close="10000"
       aria-disabled={disabled}
+      disabled={disabled}
     >
       {text}
     </button>
@@ -115,6 +119,7 @@ export const UnlockProtocolButton = ({ text, disabled }: BuyButtonProps) => {
       onClick={handleButtonClick}
       onTouchEnd={handleButtonClick}
       aria-disabled={disabled}
+      disabled={disabled}
     >
       {text}
     </button>
@@ -291,7 +296,7 @@ export const CryptoModalButton = ({
 
   return (
     <>
-      <button className={classes} onClick={toggleModal} aria-disabled={disabled}>
+      <button className={classes} onClick={toggleModal} aria-disabled={disabled} disabled={disabled}>
         {text}
       </button>
       <Modal
@@ -530,6 +535,7 @@ export const SeedButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
       data-tally-emoji-animation="wave"
       data-tally-auto-close="5000"
       aria-disabled={disabled}
+      disabled={disabled}
     >
       {text}
     </button>
@@ -551,6 +557,7 @@ export const SquadButton = ({ text, disabled }: BuyButtonProps): JSX.Element => 
       data-tally-emoji-animation="wave"
       data-tally-auto-close="5000"
       aria-disabled={disabled}
+      disabled={disabled}
     >
       {text}
     </button>
@@ -561,7 +568,12 @@ export const SponsorButton = ({ text, disabled }: BuyButtonProps): JSX.Element =
   const classes = disabled ? disabledBtnClasses : activeBtnClasses;
 
   return (
-    <a href="/event-sponsors" data-buy-method="sponsor" className={classes}>
+    <a
+      href={disabled ? undefined : '/event-sponsors'}
+      data-buy-method="sponsor"
+      className={classes}
+      aria-disabled={disabled}
+    >
       {text}
     </a>
   );
@@ -582,6 +594,7 @@ export const CrewButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
       data-tally-emoji-animation="wave"
       data-tally-auto-close="5000"
       aria-disabled={disabled}
+      disabled={disabled}
     >
       {text}
     </button>
@@ -603,6 +616,7 @@ export const MetagamerButton = ({ text, disabled }: BuyButtonProps): JSX.Element
       data-tally-emoji-animation="wave"
       data-tally-auto-close="5000"
       aria-disabled={disabled}
+      disabled={disabled}
     >
       {text}
     </button>
@@ -620,7 +634,13 @@ export const DiscountsButton = ({ text, disabled, ticketType }: BuyButtonProps):
   };
 
   return (
-    <button data-buy-method="discounts" className={classes} onClick={() => onHandleClick()} aria-disabled={disabled}>
+    <button
+      data-buy-method="discounts"
+      className={classes}
+      onClick={() => onHandleClick()}
+      aria-disabled={disabled}
+      disabled={disabled}
+    >
       {text}
     </button>
   );
@@ -649,11 +669,12 @@ export const TicketMethod = ({
   const handleMethod = (method: string, cta: string) => {
     switch (method) {
       case 'fiat':
-        return <FiatButton text={cta} />;
+        return <FiatButton text={cta} disabled={TICKETS_DISABLED} />;
       case 'crypto':
         return (
           <CryptoModalButton
             text={cta}
+            disabled={TICKETS_DISABLED}
             prices={price}
             isEarlyBird={isEarlyBird}
             earlyBirdExpires={earlyBirdExpires}
@@ -661,19 +682,19 @@ export const TicketMethod = ({
           />
         );
       case 'unlock':
-        return <UnlockProtocolButton text={cta} />;
+        return <UnlockProtocolButton text={cta} disabled={TICKETS_DISABLED} />;
       case 'seeds':
-        return <SeedButton text={cta} />;
+        return <SeedButton text={cta} disabled={TICKETS_DISABLED} />;
       case 'squad':
-        return <SquadButton text={cta} />;
+        return <SquadButton text={cta} disabled={TICKETS_DISABLED} />;
       case 'sponsor':
-        return <SponsorButton text={cta} />;
+        return <SponsorButton text={cta} disabled={TICKETS_DISABLED} />;
       case 'crew':
-        return <CrewButton text={cta} />;
+        return <CrewButton text={cta} disabled={TICKETS_DISABLED} />;
       case 'metagamer':
-        return <MetagamerButton text={cta} />;
+        return <MetagamerButton text={cta} disabled={TICKETS_DISABLED} />;
       case 'discounts':
-        return <DiscountsButton text={cta} ticketType={title} />;
+        return <DiscountsButton text={cta} disabled={TICKETS_DISABLED} ticketType={title} />;
       default:
         return null;
     }
