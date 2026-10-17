@@ -95,6 +95,8 @@ importers:
       eslint-plugin-import: ^2.26.0
       eslint-plugin-jsx-a11y: ^6.6.1
       eslint-plugin-prettier: ^4.2.1
+      eslint-plugin-react: ^7.33.0
+      eslint-plugin-react-hooks: ^4.6.0
       eslint-plugin-vue: ^9.8.0
       flowbite: ^1.6.4
       flowbite-react: ^0.4.2
@@ -216,6 +218,8 @@ importers:
       eslint-plugin-import: 2.28.0_zx2ldm4646tzugbvbfrlkdfxxm
       eslint-plugin-jsx-a11y: 6.7.1_eslint@8.46.0
       eslint-plugin-prettier: 4.2.1_uwd6mivoiun2lkt37dfjhzrhvq
+      eslint-plugin-react: 7.33.0_eslint@8.46.0
+      eslint-plugin-react-hooks: 4.6.0_eslint@8.46.0
       eslint-plugin-vue: 9.15.1_eslint@8.46.0
       limax: 2.1.0
       mdast-util-to-string: 3.2.0

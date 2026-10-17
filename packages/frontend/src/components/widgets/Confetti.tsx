@@ -1,11 +1,11 @@
 import { useCallback } from 'react';
 import { Particles } from 'react-particles';
-import type { Container, Engine, IOptions } from 'tsparticles-engine';
+import type { Container, Engine, ISourceOptions } from 'tsparticles-engine';
 import { loadFull } from 'tsparticles';
 import './confetti.css';
 // const root = ReactDOM.createRoot(document.querySelector('#root'))
 
-const Confetti = (config: any) => {
+const Confetti = (config: ISourceOptions) => {
   const particlesInit = useCallback(async (engine: Engine) => {
     // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
