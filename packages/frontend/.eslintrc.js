@@ -10,11 +10,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', 'react-hooks'],
-  rules: {
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    'react/no-unknown-property': 'error',
-  },
+  rules: {},
   overrides: [
     {
       files: ['*.js'],
@@ -43,6 +39,10 @@ module.exports = {
           { argsIgnorePattern: '^_', destructuredArrayIgnorePattern: '^_' },
         ],
         '@typescript-eslint/no-non-null-assertion': 'off',
+        // React rules only apply to the React (.tsx) code, not Astro templates.
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'warn',
+        'react/no-unknown-property': 'error',
         'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
       },
     },
