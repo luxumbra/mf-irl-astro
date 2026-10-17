@@ -91,7 +91,6 @@
     "add-to-calendar-button-react": "^2.2.8",
     "alpinejs": "^3.10.5",
     "astro-embed": "^0.2.1",
-    "astro-particles": "^2.9.3",
     "astro-sanity": "^1.0.0",
     "astro-seo": "^0.6.0",
     "axios": "^1.4.0",

@@ -77,7 +77,6 @@ importers:
       astro: 1.6.10
       astro-embed: ^0.2.1
       astro-icon: ^0.8.0
-      astro-particles: ^2.9.3
       astro-sanity: ^1.0.0
       astro-seo: ^0.6.0
       autoprefixer: ^10.4.13
@@ -153,7 +152,6 @@ importers:
       add-to-calendar-button-react: 2.3.0_biqbaboplfbrettd7655fr4n2y
       alpinejs: 3.12.3
       astro-embed: 0.2.1_astro@1.6.10
-      astro-particles: 2.10.0
       astro-sanity: 1.1.7_sharp@0.31.3
       astro-seo: 0.6.1
       axios: 1.4.0
@@ -3055,12 +3053,6 @@ packages:
       resolve-pkg: 2.0.0
       svgo: 2.8.0
     dev: true
-
-  /astro-particles/2.10.0:
-    resolution: {integrity: sha512-DE1azMdcu2dkXxEKd7seoRqbhlh4UnTfinWM+RF5jm00tPtaJ+cjrz5nKHRnzYcyTAR18MaRAC4lIKf3tu86iQ==}
-    dependencies:
-      tsparticles-engine: 2.11.1
-    dev: false
 
   /astro-sanity/1.1.7_sharp@0.31.3:
     resolution: {integrity: sha512-qKm6iupsxyaWLvNaxizqnxSYfkiY5ufzZPzAtu73lcS2ZvX+fYHAqj7Pc3b7fYp1oNEaTS1iv32KZDbADCniAw==}
