@@ -57,7 +57,6 @@ importers:
       '@fontsource/montserrat': ^4.5.13
       '@fontsource/sue-ellen-francisco': ^4.5.10
       '@iconify/react': ^4.1.0
-      '@mrcaidev/eslint-config-astro-react': ^0.1.1
       '@netlify/functions': ^1.6.0
       '@react-three/drei': ~9.32.12
       '@react-three/fiber': ~8.8.11
@@ -193,7 +192,6 @@ importers:
       '@astrolib/seo': 0.2.2_astro@1.6.10
       '@fontsource/inter': 4.5.15
       '@iconify/react': 4.1.1_react@18.2.0
-      '@mrcaidev/eslint-config-astro-react': 0.1.1_qzrgnijdkb26bxvpro4ocvcfk4
       '@tailwindcss/forms': 0.5.4_tailwindcss@3.3.3
       '@tailwindcss/typography': 0.5.9_tailwindcss@3.3.3
       '@types/alpinejs': 3.7.2
@@ -1875,28 +1873,6 @@ packages:
       vfile: 5.3.7
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@mrcaidev/eslint-config-astro-react/0.1.1_qzrgnijdkb26bxvpro4ocvcfk4:
-    resolution: {integrity: sha512-B9PhBq7vlADNmS7wMpHY0w0mmHC+mumlZuB5jGPLwKu1QU0U71uciBhS16gKUncstFl8SUzDilDGyaNj7ZsSBw==}
-    peerDependencies:
-      eslint: ^8.24.0
-    dependencies:
-      '@typescript-eslint/eslint-plugin': 5.62.0_h4bzsnnpkoy5vait27krl57wui
-      '@typescript-eslint/parser': 5.62.0_qzrgnijdkb26bxvpro4ocvcfk4
-      eslint: 8.46.0
-      eslint-config-prettier: 8.9.0_eslint@8.46.0
-      eslint-import-resolver-node: 0.3.7
-      eslint-import-resolver-typescript: 3.5.5_ay3lolor7yfwlazxrf64uc3lny
-      eslint-plugin-astro: 0.19.0_eslint@8.46.0
-      eslint-plugin-import: 2.28.0_l4wv2ryudfgmv67zjhubgmsfdm
-      eslint-plugin-jsx-a11y: 6.7.1_eslint@8.46.0
-      eslint-plugin-react: 7.33.0_eslint@8.46.0
-      eslint-plugin-react-hooks: 4.6.0_eslint@8.46.0
-    transitivePeerDependencies:
-      - eslint-import-resolver-webpack
-      - supports-color
-      - typescript
     dev: true
 
   /@netlify/functions/1.6.0:

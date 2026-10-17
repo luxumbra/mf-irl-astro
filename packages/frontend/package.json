@@ -27,7 +27,6 @@
     "@astrolib/seo": "^0.2.1",
     "@fontsource/inter": "^4.5.14",
     "@iconify/react": "^4.1.0",
-    "@mrcaidev/eslint-config-astro-react": "^0.1.1",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.8",
     "@types/alpinejs": "^3.7.1",
