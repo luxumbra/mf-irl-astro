@@ -73,9 +73,6 @@ export interface PayloadOptions {
   items: CryptoItemType[];
 }
 
-// Temporarily disables every buy button on the tickets page
-const TICKETS_DISABLED = true;
-
 const activeBtnClasses =
   'btn btn-ghost bg-gradient-tertiary  text-secondary hover:scale-95 focus:outline-dashed focus:outline-primary w-auto';
 const disabledBtnClasses =
@@ -96,7 +93,6 @@ export const FiatButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
       data-tally-emoji-animation="wave"
       data-tally-auto-close="10000"
       aria-disabled={disabled}
-      disabled={disabled}
     >
       {text}
     </button>
@@ -106,7 +102,6 @@ export const FiatButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
 export const UnlockProtocolButton = ({ text, disabled }: BuyButtonProps) => {
   const classes = disabled ? disabledBtnClasses : activeBtnClasses;
   const handleButtonClick = () => {
-    if (disabled) return;
     // open new tab with the following url
     const url =
       'https://app.unlock-protocol.com/checkout?paywallConfig=%7B%22locks%22%3A%7B%220xcbaca4fbbf7ed460645d6257533bf50ff4246514%22%3A%7B%22network%22%3A10%2C%22skipRecipient%22%3Atrue%7D%7D%2C%22icon%22%3A%22%22%2C%22pessimistic%22%3Atrue%2C%22skipRecipient%22%3Atrue%7D';
@@ -120,7 +115,6 @@ export const UnlockProtocolButton = ({ text, disabled }: BuyButtonProps) => {
       onClick={handleButtonClick}
       onTouchEnd={handleButtonClick}
       aria-disabled={disabled}
-      disabled={disabled}
     >
       {text}
     </button>
@@ -297,7 +291,7 @@ export const CryptoModalButton = ({
 
   return (
     <>
-      <button className={classes} onClick={toggleModal} aria-disabled={disabled} disabled={disabled}>
+      <button className={classes} onClick={toggleModal} aria-disabled={disabled}>
         {text}
       </button>
       <Modal
@@ -536,7 +530,6 @@ export const SeedButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
       data-tally-emoji-animation="wave"
       data-tally-auto-close="5000"
       aria-disabled={disabled}
-      disabled={disabled}
     >
       {text}
     </button>
@@ -558,7 +551,6 @@ export const SquadButton = ({ text, disabled }: BuyButtonProps): JSX.Element => 
       data-tally-emoji-animation="wave"
       data-tally-auto-close="5000"
       aria-disabled={disabled}
-      disabled={disabled}
     >
       {text}
     </button>
@@ -569,12 +561,7 @@ export const SponsorButton = ({ text, disabled }: BuyButtonProps): JSX.Element =
   const classes = disabled ? disabledBtnClasses : activeBtnClasses;
 
   return (
-    <a
-      href={disabled ? undefined : '/event-sponsors'}
-      data-buy-method="sponsor"
-      className={classes}
-      aria-disabled={disabled}
-    >
+    <a href="/event-sponsors" data-buy-method="sponsor" className={classes}>
       {text}
     </a>
   );
@@ -595,7 +582,6 @@ export const CrewButton = ({ text, disabled }: BuyButtonProps): JSX.Element => {
       data-tally-emoji-animation="wave"
       data-tally-auto-close="5000"
       aria-disabled={disabled}
-      disabled={disabled}
     >
       {text}
     </button>
@@ -617,7 +603,6 @@ export const MetagamerButton = ({ text, disabled }: BuyButtonProps): JSX.Element
       data-tally-emoji-animation="wave"
       data-tally-auto-close="5000"
       aria-disabled={disabled}
-      disabled={disabled}
     >
       {text}
     </button>
@@ -635,13 +620,7 @@ export const DiscountsButton = ({ text, disabled, ticketType }: BuyButtonProps):
   };
 
   return (
-    <button
-      data-buy-method="discounts"
-      className={classes}
-      onClick={() => onHandleClick()}
-      aria-disabled={disabled}
-      disabled={disabled}
-    >
+    <button data-buy-method="discounts" className={classes} onClick={() => onHandleClick()} aria-disabled={disabled}>
       {text}
     </button>
   );
@@ -670,12 +649,11 @@ export const TicketMethod = ({
   const handleMethod = (method: string, cta: string) => {
     switch (method) {
       case 'fiat':
-        return <FiatButton text={cta} disabled={TICKETS_DISABLED} />;
+        return <FiatButton text={cta} />;
       case 'crypto':
         return (
           <CryptoModalButton
             text={cta}
-            disabled={TICKETS_DISABLED}
             prices={price}
             isEarlyBird={isEarlyBird}
             earlyBirdExpires={earlyBirdExpires}
@@ -683,19 +661,19 @@ export const TicketMethod = ({
           />
         );
       case 'unlock':
-        return <UnlockProtocolButton text={cta} disabled={TICKETS_DISABLED} />;
+        return <UnlockProtocolButton text={cta} />;
       case 'seeds':
-        return <SeedButton text={cta} disabled={TICKETS_DISABLED} />;
+        return <SeedButton text={cta} />;
       case 'squad':
-        return <SquadButton text={cta} disabled={TICKETS_DISABLED} />;
+        return <SquadButton text={cta} />;
       case 'sponsor':
-        return <SponsorButton text={cta} disabled={TICKETS_DISABLED} />;
+        return <SponsorButton text={cta} />;
       case 'crew':
-        return <CrewButton text={cta} disabled={TICKETS_DISABLED} />;
+        return <CrewButton text={cta} />;
       case 'metagamer':
-        return <MetagamerButton text={cta} disabled={TICKETS_DISABLED} />;
+        return <MetagamerButton text={cta} />;
       case 'discounts':
-        return <DiscountsButton text={cta} disabled={TICKETS_DISABLED} ticketType={title} />;
+        return <DiscountsButton text={cta} ticketType={title} />;
       default:
         return null;
     }
