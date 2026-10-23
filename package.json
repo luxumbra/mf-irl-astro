@@ -20,6 +20,9 @@
     "site:dev": "pnpm run -r dev",
     "clean:libsndist": "CMD='rm -rf pnpm-lock.yaml node_modules/ packages/*/node_modules/ packages/frontend/dist/ packages/backend/.netlify' && echo \"$CMD\" && eval $CMD"
   },
+  "engines": {
+    "node": "22.x"
+  },
   "devDependencies": {
     "typescript": "^4.9.4"
   }
