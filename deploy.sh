@@ -3,7 +3,8 @@ source ~/.bashrc
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-nvm use 18
+nvm install 22.23.4
+nvm use 22.23.4
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 echo "cd into $SCRIPT_DIR ..."
@@ -29,7 +30,7 @@ git fetch && git pull origin develop
 echo "Checking if pnpm is installed and install if not..."
 if ! command -v pnpm &> /dev/null; then
     echo "pnpm not found! Installing..."
-    sudo npm install -g pnpm
+    sudo npm install -g pnpm@7
     if [ $? -ne 0 ]; then
         echo "Failed to install pnpm. Exiting."
         exit 1
