@@ -70,7 +70,7 @@
     "vite-plugin-glsl": "^1.0.1"
   },
   "engines": {
-    "node": "^14.15.0 || >=16.0.0"
+    "node": ">=22.23.4"
   },
   "dependencies": {
     "@alpine-collective/toolkit-screen": "^1.0.2",
