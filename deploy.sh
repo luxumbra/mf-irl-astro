@@ -3,8 +3,7 @@ source ~/.bashrc
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-nvm install 22.23.4
-nvm use 22.23.4
+nvm install 22.23.4 && nvm use 22.23.4 || { echo "Failed to activate Node 22.23.4. Exiting."; exit 1; }
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 echo "cd into $SCRIPT_DIR ..."
@@ -28,8 +27,9 @@ git fetch && git pull origin develop
 
 # Check if pnpm is installed
 echo "Checking if pnpm is installed and install if not..."
-if ! command -v pnpm &> /dev/null; then
-    echo "pnpm not found! Installing..."
+# The lockfile is v5.4, which needs pnpm 7 (newer majors reject it).
+if ! command -v pnpm &> /dev/null || [ "$(pnpm --version | cut -d. -f1)" != "7" ]; then
+    echo "pnpm 7 not found! Installing..."
     sudo npm install -g pnpm@7
     if [ $? -ne 0 ]; then
         echo "Failed to install pnpm. Exiting."
